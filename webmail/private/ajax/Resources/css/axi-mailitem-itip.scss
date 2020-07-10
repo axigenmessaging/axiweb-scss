@@ -1,0 +1,101 @@
+/**
+ * @fileOverview The WebMail mail item iTip base style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Apr 21, 2020
+ */
+
+@import "axi-custom-scrollbar";
+@import "../../../../../include/webmail/common/mixins";
+@import "/css/axigen-web-fonts.css";
+
+
+/*******************************************************************************
+ * Global rules
+ */
+body {
+	margin: 0;
+	padding: 18px;
+	box-sizing: border-box;
+	@include font-body-text(10pt, 400);
+}
+
+a {
+	text-decoration: none;
+	transition: opacity .2s ease-in-out;
+
+	&:hover {
+		opacity: .7;
+	}
+}
+
+p {
+	@include font-body-text(10pt, 400);
+
+	&.shortDesc {
+		margin-bottom: 13px;
+	}
+}
+
+.iTipFields {
+	& .container {
+		display: flex;
+		align-items: center;
+
+		& .label { 
+			min-width: 100px;
+			padding: 2px 0;
+
+			& span {
+				padding-right: 8px;
+				@include font-body-text(10pt, 600);
+			}
+		}
+
+		& .content { 
+			@include font-body-text(10pt, 400);
+			flex-grow: 1;
+		}
+
+		&.iTipFieldDescription {
+			flex-wrap: wrap;
+
+			& .label {
+				display: flex;
+				align-items: center;
+				width: 100%;
+
+				&::after {
+					flex-grow: 1;
+					height: 1px;
+					content: "";
+				}
+			}
+
+			& .content {
+				margin-top: 10px;
+			}
+		}		
+	}
+}
+
+/* RTL */
+body.rtl { 
+	direction: rtl; 
+
+	.iTipFields {
+		& .container {
+			display: flex;
+
+			& .label { 
+				& span {
+					padding-right: 0;
+					padding-left: 8px;
+				}
+			}
+		}
+	}
+}

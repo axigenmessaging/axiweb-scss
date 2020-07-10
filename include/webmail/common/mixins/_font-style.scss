@@ -1,0 +1,23 @@
+@mixin font-body-text ($size: false, $weight: false,  $lh: false) {
+    font-family: "Source Sans Pro", sans-serif;   
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+@mixin font-title-text ($size: false, $weight: false, $lh: false) {
+    font-family: "Titillium Web", sans-serif;   
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+
+// Language specific tweaks
+@mixin font-body-text-lang-fa () {
+    font-family: "Vazir", "Source Sans Pro", sans-serif;   
+}
+
+@mixin font-title-text-lang-fa () {
+    font-family: "Vazir", "Titillium Web", sans-serif;   
+}

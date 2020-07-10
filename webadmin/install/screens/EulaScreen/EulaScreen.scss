@@ -1,0 +1,32 @@
+/**
+ * @fileOverview The EULA screen style sheet.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ *
+ * @author Iulian Pobleanu <iulian.pobleanu@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 23, 2018
+ */
+
+@import "../../../../include/webadmin/theme-default/variables";
+@import "../../../../include/webadmin/mixins";
+
+.eula-screen {
+    & iframe {
+        margin-top: 20px;
+        width: 455px;
+        height: 330px;
+        border: 1px solid #ccc;
+
+        @include laptop-smaller-height {
+            width: 405px;   
+            height: 280px;
+            box-sizing: border-box;
+        }
+
+        @include phone {
+            width: calc(100% - 40px);            
+        }
+    }
+}

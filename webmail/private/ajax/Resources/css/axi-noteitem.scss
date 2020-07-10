@@ -1,0 +1,22 @@
+ /**
+ * @fileOverview The WebMail note item base style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "/css/axigen-web-fonts.css";
+@import "../../../../../include/webmail/common/mixins";
+@import "axi-custom-scrollbar";
+
+body {
+	margin: 0;
+	@include font-body-text(10pt, 400);
+
+	&.note-view {
+		margin: 18px;
+	}
+}

@@ -1,0 +1,310 @@
+/**
+ * @fileOverview The WebMail IE11 base style sheet.
+ *
+ * @copyright Copyright (c) 2019 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date May 4, 2020
+ */
+
+
+/*******************************************************************************
+ * Ext overrides
+ */
+body.ext-ie11 {
+	// Checkbox
+	.x-form-check-wrap-inner, 
+	.x-form-radio-wrap-inner {
+    	display: flex;
+	}
+
+	// Radio
+	.x-form-radio-wrap {
+	    &.x-form-check-checked {	    	
+	        & .x-form-radio {
+		    	position: relative;
+
+	            &::before {
+	            	position: absolute;
+	            	left: 0;
+	            	right: 0;
+	            	top: 0;
+	            	bottom: 0;
+	            	margin: auto;
+	            }
+	        }
+	    }
+	}
+}
+
+
+/*******************************************************************************
+ * Global Axi components
+ */
+body.ext-ie11 {
+	.x-axi-button-big-rounding {
+	    &.edit-button {
+	        .x-btn-text {
+	            &::before {
+	                text-indent: -2px;
+	            }
+	        }
+	    }
+
+	    &.delete-button {
+	        & .x-btn-text {
+	            &::before {
+	                text-indent: -2px;
+	            }
+	        }
+	    }
+	}
+
+	// Action bar
+	.x-axi-action-bar {
+	    & .content {
+	    	position: relative;
+	    	padding-left: 25px;
+
+	        &::before {
+	        	position: absolute;
+	        	top: -1px;
+	        	left: 0;
+	        }
+	    }
+
+	    & .actions {
+	        & .but-action {
+	            &.action-accept,
+	            &.action-accept-tentative,
+	            &.action-reject,
+	            &.action-propose {
+		        	position: relative;
+			    	padding-left: 28px;
+
+	                &::before {
+			        	position: absolute;
+			        	top: -1px;
+			        	left: 8px;
+	                }
+	            }
+	        }       
+	    }
+	}
+
+	// Recurrence icon
+	.x-axi-has-recurrency {
+		position: relative;
+
+	    &::after {
+	    	position: absolute;
+	    	top: 7px;
+	    	left: -9px;
+	    	right: -9px;
+	    }
+	}
+
+	// Recurrence exception icon
+	.x-axi-had-recurrency {
+	    position: relative;
+
+	    &::before {
+	        position: absolute;
+	        left: calc(50% - 1px);
+	        width: 1px;
+	        height: 16px;
+	        transform: rotate(25deg);
+	        z-index: 1;
+	        content: "";
+	    }
+
+	    &::after {
+	    	position: absolute;
+	    	top: 7px;
+	    	left: -9px;
+	    	right: -9px;
+	    }
+	}
+}
+
+
+/*******************************************************************************
+ * App
+ */
+body.ext-ie11 {
+	// Sidebar
+	& .x-axi-tree-sidebar-menu {
+		& .light-menu {
+		    & > div {
+			    & .sidebar-settings-menus-wrapper {
+			    	& .sidebar-settings-menu-wrapper {
+			    		& > div {
+				    		& ul {
+				    			& li {
+								    &.x-axi-tree-sidebar-menu-display {
+								    	& a {
+								    		&::before {
+								    			top: 0;
+								    		}
+								    	}
+								    }
+				    			}
+				    		}
+			    		}
+
+				    	&.sidebar-display-menu-wrapper {
+				    		& ul {
+				    			& li {
+					    			&.more-space {
+					    				& a {
+					    					& span {
+					    						&::after {
+					    							top: 7px;
+					    						}
+					    					}
+					    				}
+					    			}
+
+					    			&.more-content {
+					    				& a {
+					    					& span {
+					    						&::after {
+					    							top: 5px;
+					    						}
+					    					}
+					    				}
+					    			}
+				    			}
+					    	}
+				    	}
+
+			    	}
+			    }
+		    }
+		}
+	}
+
+	// Top tabs
+	.x-axi-view-body > .x-tab-panel > .x-tab-panel-header {
+		& > .x-tab-strip-wrap {
+			& > ul.x-tab-strip li {
+				& .x-tab-strip-text {
+					&::before {
+						padding-right: 19px;
+					}
+				}
+			}
+		}
+	}
+
+	// Windows
+	& .x-axi-window {
+		// Settings window
+		 &.x-axi-settings-window {
+		 	& .x-axi-window-tabpanel {
+                // Settings -> Interface
+                &.x-axi-interface-tabpanel {
+                    // Localization
+                    & .x-axi-localization-pref-wrap {
+                    	& .x-axi-settings-row-wrapper-workingdays {
+                    		& .x-form-check-wrap-inner  {
+	                    		& .x-form-cb-label {
+	                    			max-width: none;
+	                    			padding: 0 3px;
+	                    		}                    			
+                    		}
+                    	}
+
+                        & .x-axi-settings-row-wrapper-update-timezone {
+                            & .x-form-check-wrap-container-full-width {
+                            	& .x-form-check-wrap {
+                            		width: auto;
+
+                            		& + .x-column {
+                            			position: relative;
+                            			top: -6px;
+                            		}
+                            	}
+                            }
+                        }
+                    }
+                }
+		 	}
+		 }
+
+		// Availability (Free / Busy) window 
+		&.x-axi-freebusy-window {
+			& .x-axi-freebusy-region {
+				&.x-axi-freebusy-canvas-region {
+					& .x-axi-free-busy-form-container {
+						& > .x-panel-bwrap > .x-panel-body {
+							& .x-axi-time-end-after {
+								& .x-form-field-wrap {
+									width: auto !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/*******************************************************************************
+ *  Reading pane right vs. south vs. none
+ */
+body.ext-ie11 {
+}
+
+
+/*******************************************************************************
+ *  More space vs. More content
+ */
+body.ext-ie11 {
+}
+
+
+/*******************************************************************************
+ *  RTL
+ */
+body.ext-ie11.rtl {
+	/**
+	 * Ext overrides
+	 */
+	// Action bar
+	.x-axi-action-bar {
+	    & .content {
+	    	padding-left: 0;
+	    	padding-right: 25px;
+
+	        &::before {
+	        	left: auto;
+	        	right: 0;
+	        }
+	    }
+
+	    & .actions {
+	        & .but-action {
+	            &.action-accept,
+	            &.action-accept-tentative,
+	            &.action-reject,
+	            &.action-propose {
+		    		padding-left: 10px;
+		    		padding-right: 28px;
+
+		            &::before {
+			        	left: auto;
+			        	right: 8px;
+		            }
+		        }
+	        }        
+	    }
+	}
+
+	/**
+	 * App
+	 */
+}

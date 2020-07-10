@@ -1,0 +1,13 @@
+@mixin font-source-sans($size: false, $weight: false,  $lh: false) {
+    font-family: "Source Sans Pro", sans-serif;   
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+@mixin font-titillium-web($size: false, $weight: false, $lh: false) {
+    font-family: "Titillium Web", sans-serif;   
+    @if $size { font-size: $size; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}

@@ -1,0 +1,1311 @@
+.x-axi-composer {
+    // Common components
+    %x-axi-cal-two-way-fork {
+        margin-left: 8px;
+        margin-right: 8px;
+        width: 10px;
+        height: 34px;
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    %x-axi-cal-three-way-fork {
+        position: relative;
+        margin-left: 8px;
+        margin-right: 8px;
+        width: 10px;
+        height: 68px;
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            content: "";
+        }
+    }
+
+    %x-axi-cal-weekly-from-dots {
+        position: relative;
+        margin-left: 8px;
+        margin-right: 8px;
+        width: 10px;
+        height: calc(22px * 6);
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+
+        &::before,
+        &::after {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 22px;
+            box-sizing: border-box;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            content: "";
+        }
+
+        &::before {
+            top: 22px;
+        }
+
+        &::after {
+            bottom: 22px;
+        }
+
+        & span {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+        }
+    }
+
+    & .x-axi-hspacer {
+        height: 1px;
+    }
+
+    & .x-form-item-label {
+        padding: 0 8px;
+    }
+
+    & .x-axi-folder-selection-row {
+        padding: 7px 0;
+        border-bottom: 1px solid;
+
+        & .x-axi-folder-selection-combo {
+            & > .x-form-field-wrap {
+                & > .x-form-field {
+                    height: 40px;
+                    box-sizing: border-box;
+                    border: none;
+                }
+
+                & > .x-form-trigger {
+                    min-height: 40px;
+                    box-sizing: border-box;
+                    border: none;
+                }
+            }
+        }
+
+        & .x-axi-high-input {
+            border: none;
+        }
+    }
+
+    & .x-axi-hide-label .x-form-item-label {
+        display: none !important;
+    }
+
+    & .x-axi-attendees-row,
+    & .x-axi-assignees-row {
+        border-bottom: 1px solid;
+
+        // Attendees availability / responses tooltip
+        @at-root .x-axi-calendar-dialog-tooltip .x-tip-body {
+            & .x-axi-calendar-dialog-tooltip-attendee-status-availability {
+                display: inline-flex;
+                align-items: center;
+
+                &:not(:last-child)::after {
+                    width: 5px;
+                    content: "";
+                }
+            }
+
+            & .freebusy-legend-container {
+                margin-left: -5px;
+                margin-right: -5px;
+            }
+        }
+    }
+
+    // Toolbar icons used in multiple places
+    %save-send-icon {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        content: "\e013";        
+    }
+
+    %addressbook-icon {
+        content: "\e004";
+    }
+
+    %items-delete-icon {
+        content: "\e007";
+    }
+
+    %more-icon {
+        content: "\e009";
+    }
+
+    %close-icon {
+        font-size: 32px;
+        content: "\e000"; /// Other icons
+    }
+
+    // Folder selection combo
+    @at-root .x-axi-folder-selection-combo-list {
+        & .x-combo-list-inner {
+            padding: 10px 10px 5px;
+            box-sizing: border-box;
+
+            & .x-combo-list-group {
+                padding-bottom: 2px;
+                @include font-body-text(12px, 600);
+                cursor: default;
+
+                &:not(:first-child) {
+                    margin-top: 7px;
+                }
+            }
+
+            & .x-combo-list-item {
+                margin-left: -10px;
+                margin-right: -10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+
+    // START Mail Composer
+    &.x-axi-mail-composer {
+        & .mail-compose-toolbar {
+            padding: 0 10px;
+
+            & .x-toolbar-table {
+                position: relative;
+                top: -1px;
+            }
+
+            & .x-axi-save-button {
+                display: none;
+            }
+
+            & .x-btn-text {
+                &.send-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+                }
+
+                &.add-attachment-icon::before {
+                    position: relative;
+                    top: 2px;
+                    line-height: 28px;
+                    font-size: 50px;
+                    content: "\e007"; /// Other icons
+                }
+
+                &.addressbook-icon::before {
+                    @extend %addressbook-icon;
+                }
+
+                &.signatures-icon::before {
+                    content: "\e011";
+                }
+
+                &.mails-delete-icon::before {
+                    @extend %items-delete-icon;
+                }
+
+                &.mails-more-icon::before {
+                    @extend %more-icon;
+                }
+
+                &.close-icon::before {
+                    @extend %close-icon;
+                }
+            }
+        }
+
+        & .x-axi-compose-north {
+            padding: 0 10px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+
+            & .x-axi-email-address-row-container {
+                margin: 0;
+                padding: 0;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+
+                & .x-form-item-button-label {
+                    padding: 8px 0;
+                    box-sizing: border-box;
+                    overflow: hidden;
+
+                    & > .x-btn-wrap {
+                        height: 24px;
+
+                        & .x-btn-center {
+                            text-align: left;
+                            vertical-align: top;
+
+                            & em {
+                                display: flex;
+                                height: 100%;
+
+                                & .x-btn-text {
+                                    padding-bottom: 1px;
+                                    transition: color .2s ease-in-out;
+                                }                                
+                            }
+                        }
+                    }
+                }
+
+                & .x-form-field-wrap {
+                    & .x-form-trigger {
+                        border: none;
+
+                        &::before {
+                            border-top-width: 7px;
+                            border-left-width: 5px;
+                            border-right-width: 5px;
+                        }
+                    }
+
+                    & .x-form-field {
+                        min-height: 36px;
+                        padding: 0 3px;
+                        box-sizing: border-box;
+                        border: none;
+                    }
+                }
+
+                // This calculation should use $email-address-object-height
+                // but this variable is defined in _axi_components and not
+                // available here.
+                //
+                // TODO: Refactor the email address objects to have the 
+                // variable available.  
+                & .email-address-objects-container {
+                    max-height: calc(4 * 24px); /// Max 4 rows                        
+                }
+
+                // Combo
+                & .x-form-item-button-label + .x-axi-combo {
+                    padding: 8px 0;
+
+                    & .x-form-field-wrap {
+                        height: 24px;
+
+                        & .x-form-field {
+                            min-height: 24px;
+                            padding: 0 6px;
+                            line-height: normal;
+                        }
+                    }
+                }
+
+                // Subject
+                & .x-axi-high-input {
+                    margin-top: 5px;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+
+        & .x-axi-compose-south {
+            // Attachments panel
+            & .x-axi-attlist-panel {
+                box-sizing: border-box;
+                border-bottom: 1px solid;            
+            }
+
+            // HTML Editor toolbar
+            & .x-html-editor-tb {
+                & .x-toolbar {
+                    padding: 0;
+                    border: none;
+
+                    & .ytb-sep {
+                        height: 33px;
+                    }
+                }
+            }
+        }
+    }
+    // END Mail Composer
+
+    // START Calendar Composer
+    &.x-axi-calendar-composer {
+        & .new-meeting-toolbar {
+            padding: 0 10px;
+
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+                }
+
+                &.addressbook-icon::before {
+                    @extend %addressbook-icon;
+                }
+
+                &.mails-delete-icon::before {
+                    @extend %items-delete-icon;
+                }
+
+                &.mails-more-icon::before {
+                    @extend %more-icon;
+                }
+
+                &.close-icon::before {
+                    @extend %close-icon;
+                }
+            }
+        }
+
+        & .x-axi-collapsable-title-panel-body {
+            & > div {
+                padding-top: 7px;
+                padding-bottom: 8px;
+            }
+
+            & .x-form-item-label {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            & .x-axi-full-firstcell,
+            & .x-axi-full-secondcell {
+                width: 1px;
+            }
+
+            & .x-axi-cal-two-way-fork {
+                @extend %x-axi-cal-two-way-fork;
+            }
+
+            & .x-axi-cal-three-way-fork {
+                @extend %x-axi-cal-three-way-fork;
+            }
+
+            & .x-axi-cal-weekly-from-dots {
+                @extend %x-axi-cal-weekly-from-dots;
+            }
+
+            & .x-axi-folder-selection-row {
+                padding-left: 10px;
+                padding-right: 10px;
+
+                & .x-axi-combo {
+                    width: 1px; /// Auto-size based on the child width
+
+                    & > .x-form-field-wrap {
+                        &::before {
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 2px;
+                            content: "";
+                        }
+
+                        & > .x-form-field {
+                            flex-grow: unset;
+                            max-width: calc(100% - 17px - 13px);
+                        }
+                    }
+
+                    @at-root .x-axi-folder-selection-combo-list.x-axi-events-combo {
+                        & .x-combo-list-item {
+                            position: relative;
+                            padding-left: 28px;
+
+                            &::before {
+                                position: absolute;
+                                top: 6px;
+                                left: 10px;
+                                display: block;
+                                width: 13px;
+                                height: 13px;
+                                border-radius: 2px;
+                                content: "";
+                            }
+                        }
+                    }
+                }
+
+                // Indent all except the last one (attendees)
+                & ~ div:not(.x-axi-attendees-row) {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+            }
+
+            & .x-axi-location-row {
+                padding-top: 3px;
+                padding-bottom: 3px;
+                border-bottom: 1px solid;
+
+                & .x-axi-full-firstcell {
+                    width: 1px; /// Auto-size based on the child width
+                }
+
+                & .x-axi-textfield {
+                    line-height: 30px;
+                    border: none;
+                }
+            }
+
+            & .x-axi-recurrence-row {
+                & .x-form-radio-wrap {
+                    height: 30px;
+                }
+
+                & .x-form-item-label {
+                    height: 30px;
+                    line-height: 30px;
+                }
+
+                & .x-table-layout-cell {
+                    height: 34px;
+                }
+
+                & .x-column-inner {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                    &.x-axi-datetime-combo,
+                    &.x-axi-radio {
+                        width: auto !important;
+                    }
+                }
+
+                .x-axi-time-interval-combo {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                    & .x-form-field-wrap {
+                        & + .x-form-field-wrap {
+                            margin-left: 5px;
+                        }
+                    }
+                }
+
+                & .freq-daily {
+                    & + .x-axi-time-interval-combo {
+
+                    }
+                }
+
+                & .x-axi-rec-weekly {
+                    & .x-table-layout-cell.x-axi-checkbox {
+                        height: 22px;
+                    }
+                }
+            }
+
+            & .x-axi-fromuntil-row {
+                & .x-form-radio-wrap {
+                    height: 30px;
+                }
+
+                & .x-form-item-label {
+                    height: 30px;
+                    line-height: 30px;                    
+                }
+
+                & .x-table-layout-cell {
+                    height: 34px;
+                }
+
+                .x-axi-daily-until {
+                    & .x-axi-datefield-wrap {
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            & .x-axi-showas-row {
+                & .x-axi-showas-combo {
+                    & .x-form-field-wrap {
+                        position: relative;
+
+                        &::before {
+                            position: absolute;
+                            top: 10px;
+                            left: 6px;
+                        }
+
+                        & .x-form-field {
+                            padding-left: 19px;
+                        }
+                    }
+                }
+
+                @at-root .x-combo-list .x-combo-list-item {
+                    &.menu-item-availability-free,
+                    &.menu-item-availability-busy,
+                    &.menu-item-availability-ooo,
+                    &.menu-item-availability-tentative {
+                        display: flex;
+                        align-items: center;
+
+                        &::before {
+                            margin-right: 4px;
+                        }
+                    }
+                }
+            }
+
+            & .x-axi-reminder-row {
+                padding-top: 0;
+                padding-bottom: 0;
+
+                & .x-axi-first-reminder-action-button .x-btn-text,
+                & .x-axi-second-reminder-action-button .x-btn-text {
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    padding: 0;
+                    border-radius: 15px;
+
+                    &::before {
+                        position: absolute;
+                        left: -2px;
+                    }
+                }
+
+                & + div {
+                    margin-top: 10px;
+                }
+            }
+
+            & .x-axi-attendees-row {
+                padding-top: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+
+                & .x-axi-calendar-composer-attendees-container {
+
+                    // Free / busy infotip
+                    & .x-axi-info-tooltip-panel {
+                        & .x-panel-body {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            cursor: pointer;
+
+                            &::before {
+                                position: relative;
+                                top: -1px;
+                                font-size: 32px;
+                                z-index: 1;
+                                transition: color .2s ease-in-out;
+                                content: "\e017";
+                            }
+
+                            &::after {
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                margin: 0 auto;
+                                width: 22px;
+                                height: 22px;
+                                border-radius: 50%;
+                                transition: background-color .2s ease-in-out;
+                                content: "";
+                            }
+                        }
+
+                        &.x-axi-info-tooltip-panel-busy .x-panel-body {
+                            &::before {
+                            }
+
+                            &::after {
+                            }
+                        }
+                    }
+
+                    // Email address objects
+                    & .email-address-list {
+                        // This calculation should use $email-address-object-height
+                        // but this variable is defined in _axi_components and not
+                        // available here.
+                        //
+                        // TODO: Refactor the email address objects to have the 
+                        // variable available.  
+                        & .email-address-objects-container {
+                            margin: 0;
+                            max-height: calc(4 * 24px); /// Max 4 rows                        
+
+                            & .axi-textfield-wrapper .x-form-field-wrap .x-form-field {
+                                border: none;
+                            }
+                        }
+                    }                    
+                }
+
+                & .x-axi-availability-button-noicon {
+                    & .x-btn-center {
+                        & .x-btn-text {
+                            @extend %button-small-rounding;                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // END Calendar Composer
+
+    // START Tasks Composer
+    &.x-axi-tasks-composer {
+        & .new-task-toolbar {
+            padding: 0 10px;
+            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+                }
+
+                &.addressbook-icon::before {
+                    @extend %addressbook-icon;
+                }
+
+                &.close-icon::before {
+                    @extend %close-icon;
+                }
+            }
+        }
+
+        & .x-axi-collapsable-title-panel-body {
+            & > div {
+                padding-top: 7px;
+                padding-bottom: 8px;
+            }
+
+            & .x-axi-datefield-wrap {
+                width: auto !important;
+            }
+
+            & .x-form-item-label {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            & .x-axi-folder-selection-row {
+                padding-left: 10px;
+                padding-right: 10px;
+
+                & .x-axi-combo {
+                    width: 1px; /// Auto-size based on the child width
+                }
+
+                // Indent all except the last one (attendees)
+                & ~ div:not(.x-axi-assignees-row) {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+            }
+
+            & .x-axi-cal-two-way-fork {
+                @extend %x-axi-cal-two-way-fork;
+            }
+
+            & .x-axi-cal-three-way-fork {
+                @extend %x-axi-cal-three-way-fork;
+            }
+
+            & .x-axi-cal-weekly-from-dots {
+                @extend %x-axi-cal-weekly-from-dots;
+            }
+
+            & .x-axi-progress-slider-container {
+                & td {
+                    vertical-align: top;
+
+                    &.x-axi-horz-slider-ticks {
+                        position: relative;
+                        padding-top: 14px;
+
+                        &::after {
+                            position: absolute;
+                            top: 19px;
+                            left: 0;
+                            width: 100%;
+                            height: 2px;
+                            background: url(../images/common/x-axi-slider-ticks.gif) repeat-x 0 0;
+                            opacity: .6;
+                            content: "";
+                        }
+                    }
+
+                    & .x-axi-horz-slider-desc {
+                        @include font-body-text(13px, 400);
+                        text-align: center;
+                        cursor: default;
+                    }
+                }
+            }
+
+            & .x-axi-recurrence-row {
+                margin-top: 10px;
+
+                & .x-form-radio-wrap {
+                    height: 30px;
+                }
+
+                & .x-form-item-label {
+                    display: block;
+                    height: 30px;
+                    line-height: 30px;
+                }
+
+                & .x-axi-rec-weekly {
+                    & .x-table-layout-cell.x-axi-checkbox {
+                        height: 22px;
+                    }
+                }
+            }
+
+            & .x-axi-fromuntil-row {
+                & .x-form-radio-wrap {
+                    height: 30px;
+                }
+
+                & .x-form-item-label {
+                    height: 30px;
+                    line-height: 30px;                    
+                }
+
+                & .x-table-layout-cell {
+                    height: 34px;
+                }
+
+                & .x-axi-daily-until {
+                    & .x-axi-datefield-wrap {
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            & .x-axi-reminder-row {
+                & > .x-column-inner > .x-form-item-label {
+                    display: block;
+                    height: 30px;
+                    line-height: 30px;
+                }
+
+                & .x-axi-custom-reminder-container {
+                    width: auto !important;
+                }
+            }
+
+            & .x-axi-assignees-row {
+                padding: 0 10px 12px;
+
+                & .x-form-item-button-label {
+                    padding: 0;
+
+                    & > .x-btn-wrap {
+                        height: 24px;
+
+                        & .x-btn-center {
+                            text-align: left;
+                            vertical-align: top;
+
+                            & em {
+                                display: flex;
+                                height: 24px;
+
+                                & .x-btn-text {
+                                    padding-bottom: 1px;
+                                    transition: color .2s ease-in-out;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .x-axi-tasks-composer-assignees-container {
+                    // Email address objects
+                    & .email-address-list {
+                        padding: 0;
+
+                        // This calculation should use $email-address-object-height
+                        // but this variable is defined in _axi_components and not
+                        // available here.
+                        //
+                        // TODO: Refactor the email address objects to have the 
+                        // variable available.  
+                        & .email-address-objects-container {
+                            align-items: flex-start;
+                            margin: 0;
+                            max-height: calc(4 * 24px); /// Max 4 rows                        
+
+                            & .axi-textfield-wrapper .x-form-field-wrap .x-form-field {
+                                padding-top: 0;
+                                padding-bottom: 0;
+                                border: none;
+                            }
+                        }
+                    }                    
+                }
+
+                & .x-form-clear-left {
+                    display: none;
+                }
+            }
+        }
+
+        & .x-axi-newtask-htmleditor-panel {
+            & textarea.x-form-field {
+                padding: 18px;
+            }
+        }
+    }
+    // END Tasks Composer
+
+    // START Notes Composer
+    &.x-axi-notes-composer {
+        & .new-note-toolbar {
+            padding: 0 10px;
+            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+                }
+
+                &.close-icon::before {
+                    @extend %close-icon;
+                }
+            }
+        }
+
+        & .x-axi-folder-selection-row {
+            padding-left: 10px;
+            padding-right: 10px;
+
+            & > .x-column-inner {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+        & .x-axi-htmleditor-panel {
+            & .x-html-editor-wrap {
+                height: 100%;
+            }
+        }
+    }
+    // END Notes Composer
+
+    // START Contacts Composer
+    &.x-axi-contacts-composer {
+        & .new-contact-toolbar {
+            padding: 0 10px;
+            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+                }
+
+                &.close-icon::before {
+                    @extend %close-icon;
+                }
+            }
+        }
+
+        & .x-axi-collapsable-title-panel-body {
+            & .x-form-item:not(.x-hide-label) {
+                & > .x-form-item-label {
+                    display: flex;
+                    align-items: center;
+                    height: 30px;
+                }                
+            }
+
+            & .x-axi-contact-area-label {
+                margin: 10px;
+            }
+
+            & .x-axi-contact-area-label ~ div {
+                padding-left: 10px;
+                padding-right: 10px;
+                box-sizing: border-box;
+            }
+
+            & .x-axi-uploadphoto-blue-button {
+                display: flex;
+                justify-content: center;
+
+                & .x-btn-wrap {
+                    & .x-btn-center {
+                        & em {
+                            display: block;
+
+                            & button {
+                                padding: 0;
+                                width: 55px;
+                                height: 57px;
+                                background: url(../images/common/x-axi-silhouette-big.svg) center center no-repeat;
+                                opacity: .5;
+                            }   
+                        }
+                    }
+                }
+            }
+
+            & .x-axi-folder-selection-row {
+                & .x-column-inner {
+                    display: flex;
+
+                    & .x-axi-details-button-container {
+                        position: relative;
+                        flex-grow: 1;
+                        
+                        & .x-axi-textfield {
+                            padding-right: 30px;
+                        }
+
+                        & .x-axi-button-container {
+                            position: absolute;
+                            top: 9px;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+
+            & .x-axi-email-row {
+                padding: 3px 0;
+                border-bottom: 1px solid;
+
+                & .x-panel-body {
+                    display: flex;
+
+                    & .x-form-item-label {
+                        display: flex;
+                        align-items: center;
+                        line-height: 32px;
+                    }
+
+                    & .x-axi-textfield {
+                        flex-grow: 1;
+                        line-height: 30px;
+                        border: none;
+                    }
+                }
+            }
+
+            & .x-axi-phone-row {
+                display: flex;
+                padding: 3px 0;
+                border-bottom: 1px solid;
+
+                & > .x-panel-bwrap {
+                    flex-grow: 1;
+
+                    & .x-panel-body {
+                        display: flex;
+
+                        &.x-axi-phone-details-container {
+                            display: flex;
+
+                            & > .x-form-field-wrap {
+                                & > .x-form-field,
+                                & > .x-form-trigger {
+                                    border: none;
+                                }
+                            }
+
+                            & .x-axi-details-button-container {
+                                position: relative;
+                                flex-grow: 1;
+
+                                & .x-panel-body {
+                                    position: relative;
+
+                                    & .x-axi-textfield {
+                                        flex-grow: 1;
+                                        line-height: 30px;
+                                        padding-right: 30px;
+                                        border: none;
+                                    }
+
+                                    & .x-axi-button-container {
+                                        position: absolute;
+                                        top: 5px;
+                                        right: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            & .x-axi-personal-business-details-container {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid;
+
+                & .x-axi-contact-area-label {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+                & .x-axi-contact-area-label + .x-form-item {
+                    align-items: center;
+                }
+
+                & .x-axi-contact-details-row-wrapper {
+                    display: flex;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+
+                    & > .x-axi-textfield {
+                        flex-grow: 1;
+                    }
+
+                    &.x-axi-combo-more-container {
+                        justify-content: flex-end;
+                    }
+
+                    &.x-axi-contact-details-row-wrapper-extra-row {
+                        & > .x-panel-bwrap {
+                            flex-grow: 1;
+                        }
+                    }
+                }
+
+                & .x-axi-personal-details-container,
+                & .x-axi-business-details-container {
+                    & .x-axi-button-small-rounding {
+                        display: flex;
+                        align-items: center;
+
+                        & .x-btn-wrap {
+                            margin: 0 5px;
+                        }
+
+                        &::before,
+                        &::after {
+                            flex-grow: 1;
+                            height: 1px;
+                            content: "";
+                        }
+                    }
+
+                    & .x-axi-remove-field-button-container {
+                        position: relative;
+
+                        & .x-axi-textfield-container {
+                            display: flex;
+
+                            & > .x-axi-textfield {
+                                flex-grow: 1;
+                            }
+                        }
+
+                        & .x-axi-button-container {
+                            height: 30px;
+                        }
+
+                        & .x-axi-remove-field-button {
+                            position: relative;
+                            top: 4px;
+                            right: 0;
+
+                            & button {
+                                width: 22px;
+                                height: 22px;
+                                line-height: 20px;
+                                padding: 0 5px;
+
+                                &::before {
+                                    position: absolute;
+                                    top: 2px;
+                                    display: block;
+                                    font-size: 18px;
+                                    content: "\e000";
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-phone-row-wrapper,
+                    & .x-axi-address-row-wrapper {
+                        & > .x-panel-bwrap {
+                            flex-grow: 1;
+
+                            & .x-axi-details-button-container {
+                                position: relative;
+
+                                & .x-axi-textfield-container {
+                                    position: relative;
+                                    display: flex;
+
+                                    & .x-axi-textfield {
+                                        flex-grow: 1;
+                                        padding-right: 30px;
+                                    }
+                                }
+
+                                & .x-axi-details-button {
+                                    position: absolute;
+                                    top: 4px;
+                                    right: 0;
+                                }
+                            }
+                        }
+
+                        &.x-axi-contact-details-row-wrapper-extra-row {
+                            & .x-axi-remove-field-button-container {
+                                & > .x-axi-details-button-container {
+                                    max-width: calc(100% - 32px);
+
+                                    & > .x-panel-bwrap > .x-panel-body {
+                                        max-width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .x-axi-htmleditor-panel {
+            & .x-axi-contact-dialog-htmleditor,
+            & .x-axi-panel-htmleditor {
+                & textarea.x-form-field,
+                & .x-panel-body {
+                    padding: 18px;
+                    border: none;
+                    @include font-body-text(13px, 400);
+                }                
+            }
+        }
+    }
+    // END Contacts Composer
+
+    // START DLISTs Composer
+    &.x-axi-dlist-composer {
+        & .new-dlist-toolbar {
+            padding: 0 10px;
+            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+                }
+
+                &.close-icon::before {
+                    @extend %close-icon;
+                }
+            }
+        }
+
+        & .x-axi-collapsible-title-panel-body {
+            & .x-axi-folder-selection-row {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        & .x-axi-dlist-members-list {
+            border-bottom: 1px solid;
+
+            & .x-axi-fieldset-with-tools {
+                display: flex;
+                flex-wrap: wrap;
+
+                & > .x-fieldset-header {
+                    flex-grow: 1;
+                    display: flex;
+                    align-items: center;
+                    @include font-body-text(13px, 400);
+
+                    & .x-fieldset-header-text {
+                        padding: 0 8px;
+                    }
+
+                    &::after {
+                        flex-grow: 1;
+                        height: 1px;
+                        content: "";
+                    }
+                }
+
+                & > .x-axi-fieldset-tools-container {
+                    display: flex;
+                }
+
+                & > .x-fieldset-bwrap {
+                    width: 100%;
+                }
+            }
+
+            & .x-axi-grid {
+                margin-top: 10px;
+
+                & .x-grid3-body {
+                    & .x-grid3-row {
+                        margin-bottom: 2px;
+                        padding: 3px 5px;
+                        box-sizing: border-box;
+                        border-radius: 2px;
+
+                        & .x-grid3-row-table {
+                            height: 30px;
+
+                            & td {
+                                vertical-align: middle;
+                                padding: 0 5px;
+                                box-sizing: border-box;
+
+                                &.edit-button,
+                                &.delete-button {
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .x-axi-htmleditor-panel {
+            & .x-axi-contact-dialog-htmleditor,
+            & .x-axi-panel-htmleditor {
+                & textarea.x-form-field,
+                & .x-panel-body {
+                    padding: 18px;
+                    border: none;
+                    @include font-body-text(13px, 400);
+                }                
+            }
+        }
+    }
+    // END DLISTs Composer
+}

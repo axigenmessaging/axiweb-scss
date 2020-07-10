@@ -1,0 +1,52 @@
+/**
+ * @fileOverview The final screen style sheets.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ *
+ * @author Iulian Pobleanu <iulian.pobleanu@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 2, 2018
+ */
+
+@import "../../../../include/webadmin/theme-default/variables";
+@import "../../../../include/webadmin/mixins";
+
+.finished-screen {
+    & .content-container {
+    	margin-top: 90px;
+    }
+
+    & .checkmark {
+        display: block;
+        margin: 0 auto 20px;
+        width: 62px;
+        height: 62px;
+        border: 2px solid $border-color;
+        border-radius: 50%;
+
+        &::after {
+            display: block;
+            margin: 12px auto;
+            width: 18px;
+            height: 28px;
+            border: solid $border-color;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            content: '';
+        }
+
+        &.error::before {
+            position: absolute;
+            display: block;
+            margin: 13px auto;
+            margin-left: 15px;
+            width: 18px;
+            height: 28px;
+            border: solid $border-color;
+            border-width: 0 2px 0 0;
+            transform: rotate(45deg);
+            content: '';
+        }
+    }
+}

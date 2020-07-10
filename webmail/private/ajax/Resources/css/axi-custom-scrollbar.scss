@@ -1,0 +1,43 @@
+$scrollbar-track-color: transparent;        /// The background of the scrollbar
+$scrollbar-thumb-color: #808080;            /// The moving part of the scrollbar
+$scrollbar-thumb-hover-color: #4c4c4c;
+$window-scrollbar-thumb-cover-color: #ccc;
+
+/**
+ * Custom scrollbar (based on browser support)
+ */
+
+/* Chrome and Safari */
+* {
+    &::-webkit-scrollbar {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: 4px;
+        background-color: $scrollbar-thumb-color;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        -webkit-background-clip: content;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $scrollbar-thumb-hover-color;
+    }
+
+    @at-root .x-axi-window *::-webkit-scrollbar-thumb:hover {
+        background-color: $window-scrollbar-thumb-cover-color;
+    }
+}
+
+/* Firefox (64+) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb-color transparent;
+}

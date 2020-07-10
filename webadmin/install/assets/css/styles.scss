@@ -1,0 +1,567 @@
+/**
+ * @fileOverview The main Onboarding style sheet.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ * 
+ * @author Mihai Oprea <mihai.oprea@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 11, 2018
+ */
+
+@import "../../../../include/webadmin/theme-default/variables";
+@import "../../../../include/webadmin/mixins";
+
+/* General */
+* {
+    @include font-source-sans(13px, 400)
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a, button {
+    transition: opacity .2s ease-in-out; 
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+input {
+    &:focus {
+        border-color: rgba($accent-color, .7);        
+    }
+
+    & disabled {
+        opacity: .5;        
+    }
+}
+
+/* App */
+#root {
+    height: 100%;
+}
+
+.app {
+    height: 100%;
+
+    & .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: $white-color;
+        opacity: .88;
+        z-index: 1;
+    }
+
+    &::before {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 217px;
+        height: 100%;
+        background: url('/install/assets/images/blurred-bg-left.png') left top no-repeat;
+        z-index: 1;
+        content: "";
+
+        @include phone {
+            display: none;
+        }
+    }
+
+    &::after {
+        position: fixed;
+        top: 0;
+        left: 200px;
+        width: calc(100% - 200px);
+        height: 100%;
+        background: url('/install/assets/images/blurred-bg-main.jpg') center top no-repeat;
+        content: "";
+
+        @include phone {
+            left: 0;
+            width: 100%;
+        }
+    }
+}
+
+.header {
+    position: relative;
+    z-index: 2;
+}
+
+/* Generic components */
+.react-select div[class*="-Input"] {
+    & > div {
+        font-size: 16px;
+    }
+
+    & > div > input {
+        max-height: 28px;
+        line-height: 28px;    
+    }
+}
+
+.infotip-i { /* Incomplete definition */
+    background-image: url('/install/assets/images/i-icon.svg');
+    background-position: left 2px top 2px;
+    background-repeat: no-repeat;
+    background-size: 18px;
+
+    &.infotip-hover {
+        position: relative;
+        display: block;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+
+        & > span {
+            position: absolute;
+            display: block;
+            padding: 10px;
+            box-sizing: border-box;
+            background: $white-color;
+            box-shadow: 0 0 20px 0 rgba($box-shadow-color, 0.2);
+            border: 1px solid $border-color;
+            border-radius: 3px;
+            text-align: left;
+            color: $text-main-color;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        &:hover,
+        &.show {
+            opacity: 1;
+
+            & > span {
+                opacity: 1;
+            }
+        }
+
+        &.right > span {
+            top: -15px;
+            left: 35px;
+            z-index: 2;
+
+            @include phone {
+                top: 40px;
+                left: auto;
+                right: -10px;
+            }
+
+            & .arrow-one {
+                position: absolute;
+                left: -11px;
+                top: 14px;
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 11px solid transparent;
+                border-bottom: 11px solid transparent;
+                border-right: 11px solid $border-color;
+                z-index: 2;
+
+                @include phone {
+                    top: -11px;
+                    left: auto;
+                    right: 9px;
+                    border-left: 11px solid transparent;
+                    border-right: 11px solid transparent;
+                    border-top: none;
+                    border-bottom: 11px solid $border-color;
+                }
+            }
+
+            & .arrow-two {
+                position: absolute;
+                left: -9px;
+                top: 15px;
+                display: block;
+                margin-right: -14px;
+                width: 0;
+                height: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid $white-color;
+                z-index: 2;
+
+                @include phone {
+                    top: -10px;
+                    left: auto;
+                    right: 24px;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: none;
+                    border-bottom: 11px solid $white-color;
+                }
+            }
+        }        
+    }
+}
+
+.loadingMessage { 
+    & h1 {
+        display: table;
+        margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+        @include font-titillium-web(36px, 200, 42px);
+        text-align: center;
+        color: $text-heading-color;
+    }
+
+    & h2 {
+        display: table;
+        margin: 10px auto 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        @include font-source-sans(22px, 200, 28px);
+        text-align: center;
+        color: $text-main-color;
+    }
+}
+
+/* Screens */
+.screen {
+    position: relative;
+    margin-top: 100px;
+    z-index: 2;
+
+    @include laptop-small-height {
+        margin-top: 45px;
+    }
+
+    @include laptop-smaller-height {
+        margin-top: 30px;
+    }
+
+    @include phone {
+        margin-top: 40px;
+    }
+
+    & h1 {
+        display: table;
+        margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+        @include font-titillium-web(36px, 200, 42px);
+        text-align: center;
+        color: $text-heading-color;
+
+        @include laptop-smaller-height {
+            font-size: 32px;
+            line-height: 36px;
+        }
+
+        @include phone {
+            width: 100%;
+            font-size: 32px;
+            line-height: 36px;
+        }
+    }
+
+    & h2 {
+        display: table;
+        margin: 10px auto 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        @include font-source-sans(22px, 200, 28px);
+        text-align: center;
+        color: $text-main-color;
+
+        @include laptop-smaller-height {
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 300;
+        }
+
+        @include phone {
+            width: 100%;
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 300;
+        }
+
+        & div {
+            @include font-source-sans(22px, 200, 28px);
+            text-align: center;
+            color: $text-main-color;
+
+            @include phone {
+                font-size: 18px;
+                line-height: 24px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    & .panel-header {
+        min-height: 80px;
+
+        @include laptop-small-height {
+            min-height: 20px;
+        }
+
+        @include laptop-smaller-height {
+            min-height: 10px;
+        }
+
+        & h1 {
+            width: 500px;
+
+            @include phone {
+                width: 100%;
+                font-size: 32px;
+                line-height: 36px;
+            }
+        }
+
+        & h2 {
+            width: 500px;
+
+            @include phone {
+                width: 100%;
+                font-size: 18px;
+                line-height: 24px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    & .panel-content {
+        position: relative;
+        display: table;
+        margin: 30px auto 0;
+        width: 500px;
+        border: 1px solid $border-color;
+        border-bottom: none;
+        border-radius: 3px 3px 4px 4px;
+
+        @include laptop-smaller-height {
+            margin-top: 20px;
+            width: 440px;
+        }
+
+        @include phone {
+            margin-top: 20px;
+            width: 100%;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+        }
+
+        & .error-container {
+            min-height: 60px;
+            padding: 20px 50px;
+            box-sizing: border-box;
+        }
+
+        & .content-container {
+            padding: 0 50px;
+            min-height: 250px;
+
+            @include laptop-smaller-height {
+                min-height: 226px;
+            }
+
+            @include phone {
+                padding: 0 35px;
+            }
+
+            & > div {
+                position: relative;
+                margin-top: 20px;
+
+                &.two-columns-container {
+                    display: flex;
+
+                    & > div {
+                        width: calc(50% - 8px);
+
+                        &:first-child {
+                            margin-right: 16px;
+                        }
+                    }
+
+                }
+            }
+
+            & input {
+                width: 100%;
+                height: 40px;
+                box-sizing: border-box;
+                background: transparent;
+                font-size: 16px;
+                text-align: center;
+                color: $text-heading-color;
+                outline: none;    
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                &[type="text"],
+                &[type="password"] {
+                    &.invalid,
+                    &.invalid {
+                        border-color: rgba($error-color, .7);
+
+                        & + label {
+                            color: $error-color;
+                        }
+
+                        &:focus {
+                            & + label {
+                                color: $error-color;
+                            }
+                        }
+                    }
+
+                    & + label {
+                        position: absolute;
+                        display: inline-block;
+                        top: 8px;
+                        left: 15px;
+                        padding: 2px 5px;
+                        background: $white-color;
+                        @include font-source-sans(14px, 400, 1.5em);
+                        text-transform: uppercase;
+                        text-align: left;
+                        white-space: nowrap;
+                        color: $label-color;
+                        transition: all 0.3s ease-in-out;
+                        pointer-events: none;
+                        cursor: default;
+                        z-index: 1;
+                        content: attr(placeholder);
+                    }
+
+                    &:focus { 
+                        & + label {
+                            top: -10.5px;
+                            left: 15px;
+                            font-size: 12px;
+                            color: $accent-color;    
+                            transition-duration: 0.2s;
+                        }
+                    }
+
+                    &:not(.empty) {
+                        & + label {
+                            top: -10.5px;
+                            left: 15px;
+                            font-size: 12px;
+                            color: $label-color;
+                            transition-duration: 0.2s;
+                        }
+
+                        &:focus {
+                            & + label {
+                                color: $accent-color; 
+                            }
+                        }
+                    }
+
+                    &:disabled {
+                        & + label {
+                            top: -10.5px;
+                            left: 15px;
+                            font-size: 12px;
+                            transition-duration: 0.2s;
+                        }
+                    }
+                }
+
+                & + label + .infotip-i.infotip-hover {
+                    position: absolute;
+                    top: calc(50% - 9px);
+                    left: calc(100% + 5px);
+                }
+            }
+
+            & .radio-block {
+                &.invalid {
+                    border-color: rgba($error-color, .7);
+
+                    & label {
+                        color: $error-color;
+                    }
+                }
+            }
+        }
+
+        & .button-container {
+            margin-top: 50px;
+            margin-left: 1px;
+            width: calc(100% - 2px);
+
+            @include laptop-smaller-height {
+                margin-top: 30px;
+            }
+
+            @include phone {
+                margin-top: 30px;
+            }
+
+            & td:first-child {
+                border-bottom: 1px solid $border-color;
+            }
+
+            & td:nth-child(2) {
+                width: 250px;
+            }
+
+            & td:last-child {
+                border-bottom: 1px solid $border-color;
+            }
+        }
+
+        & button {
+            position: relative;
+            display: table;
+            margin: 0 auto;
+            min-width: 250px;
+            padding: 0 50px;
+            box-sizing: border-box;
+            line-height: 50px;
+            background: $button-color;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: $white-color;
+            cursor: pointer;
+            transition: opacity .2s ease-in-out;
+        }
+    }
+
+    &.loading {
+        & .panel-content::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent url('/images/default/ajax-loader-big-darkbg-blue.svg') center center no-repeat;
+            background-size: 80px;
+            z-index: 10;
+            -webkit-animation: rotation 1.5s infinite linear;
+            content: "";
+        }
+    }
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}

@@ -1,0 +1,88 @@
+/**
+ * @fileOverview The WebMail Edge (Spartan) base style sheet.
+ *
+ * @copyright Copyright (c) 2019 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date May 8, 2020
+ */
+
+
+/*******************************************************************************
+ * Ext overrides
+ */
+body.ext-msedge {
+}
+
+
+/*******************************************************************************
+ * Global Axi components
+ */
+body.ext-msedge {
+}
+
+
+/*******************************************************************************
+ * App
+ */
+body.ext-msedge {
+	// Sidebar
+	& .x-axi-tree-sidebar-menu {
+		& .light-menu {
+		    & > div {
+			    & .sidebar-settings-menus-wrapper {
+			    	& .sidebar-settings-menu-wrapper {
+				    	&.sidebar-display-menu-wrapper {
+				    		& ul {
+				    			& li {
+					    			&.more-space {
+					    				& a {
+					    					& span {
+					    						&::after {
+					    							top: 7px;
+					    						}
+					    					}
+					    				}
+					    			}
+
+					    			&.more-content {
+					    				& a {
+					    					& span {
+					    						&::after {
+					    							top: 5px;
+					    						}
+					    					}
+					    				}
+					    			}
+				    			}
+					    	}
+				    	}
+
+			    	}
+			    }
+		    }
+		}
+	}
+}
+
+
+/*******************************************************************************
+ *  Reading pane right vs. south vs. none
+ */
+body.ext-msedge {
+}
+
+
+/*******************************************************************************
+ *  More space vs. More content
+ */
+body.ext-msedge {
+}
+
+
+/*******************************************************************************
+ *  RTL
+ */
+body.ext-msedge.rtl {
+}

@@ -1,0 +1,28 @@
+/**
+ * @fileOverview The WebMail mail item iTip theme specific style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Apr 21, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-breeze/variables";
+
+
+a {
+	color: $theme-main-color;
+}
+
+.iTipFields {
+	& .container {
+		&.iTipFieldDescription {
+			& .label {
+				&::after {
+					background-color: $inner-border-color;
+				}
+			}
+		}		
+	}
+}

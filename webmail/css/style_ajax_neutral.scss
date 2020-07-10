@@ -1,0 +1,310 @@
+/**
+ * @fileOverview The WebMail login theme Neutral style sheet.
+ *
+ * @copyright Copyright (c) 2020 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Apr 2, 2020
+ */
+
+@import "../../include/webmail/theme-neutral/variables";
+@import "../../include/webmail/theme-neutral/stubs";
+
+
+/*******************************************************************************
+ * Global rules
+ */
+body.theme-neutral {
+    html, body {
+        color: $window-label-text-color;
+    }
+
+    a {
+        color: $theme-main-color;
+    }
+
+    p {
+        color: $theme-main-lighter-color;
+    }
+}
+
+
+/*******************************************************************************
+ * Ext overrides
+ */
+body.theme-neutral {
+    // Loading mask
+    .loading-spinner {
+        @extend %loading-spinner;
+    }
+
+    .x-mask-loading {
+        & div {
+            & .wrapp {
+                background-color: $loader-background-color;
+
+                & .msg-text {
+                    color: $loader-text-color;
+                }
+            }
+        }
+    }
+
+    // Text field, text area
+    .x-form-text, 
+    textarea.x-form-field {
+        border-color: $window-input-border-color;
+        transition: border-color .2s ease-in-out;
+
+        &.x-form-focus {
+            border-color: $window-input-focus-border-color;
+        }
+    }
+
+    .x-form-field {
+        color: $window-input-text-color;        
+    }
+
+    // Checkbox
+    .x-form-check,
+    .x-grid3-row-checker, 
+    .x-grid3-hd-checker {
+        border-color: $window-checkbox-border-color;
+    }
+
+    .x-form-check-checked .x-form-check,
+    .x-grid3-hd-checker-on .x-grid3-hd-checker, 
+    .x-grid3-row-selected .x-grid3-row-checker {
+        border-color: $window-checkbox-checked-border-color;
+    }
+
+    .x-form-cb-label {
+        color: $window-checkbox-label-text-color;   
+    }
+
+    // Checked
+    .x-form-check-checked .x-form-check,
+    .x-grid3-hd-checker-on .x-grid3-hd-checker, 
+    .x-grid3-row-selected .x-grid3-row-checker {
+        background-color: $checkbox-checked-background-color;
+        border-color: $checkbox-checked-border-color;
+        
+        &::before {
+            border-color: $checkbox-checked-checker-color; 
+        }
+    }
+
+    // Radio
+    .x-form-radio-wrap {
+        & .x-form-radio {
+            background-color: $radio-background-color; 
+            border-color: $radio-border-color;
+            transition: background-color .2s ease-in-out, border-color .2s ease-in-out;
+        }
+
+        & .x-form-cb-label {
+            color: $theme-main-lighter-color;
+        }
+
+        &.x-form-check-checked {
+            & .x-form-radio {
+                background-color: $radio-selected-background-color; 
+                border-color: $radio-selected-border-color;
+
+                &::before {
+                    background-color: $radio-selected-checker-background-color; 
+                }
+            }
+        }
+    }
+
+    // Combo
+    .x-form-field-wrap {
+        & .x-form-field {
+            border-color: $window-combo-border-color;
+            color: $theme-main-lighter-color;
+        }
+
+        & .x-form-trigger {
+            border-color: $window-combo-border-color;
+
+            &::before {
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-top-color: $window-combo-arrow-trigger-border-color;
+            }
+        }
+
+        &.x-trigger-wrap-focus {
+            & .x-form-field {
+                border-color: $window-combo-focus-border-color;
+                color: $theme-main-color;
+            }
+
+            & .x-form-trigger {
+                border-color: $window-combo-focus-border-color;
+
+                &::before {
+                    border-top-color: $window-combo-focus-border-color;
+                }
+            }
+        }
+    }
+
+    .x-combo-list {
+        & .x-combo-list-inner {
+            background-color: $window-combo-list-background-color;
+            border-color: $window-combo-list-border-color;
+            color: $window-combo-list-text-color;           
+
+            & .x-combo-selected,
+            & .x-axi-item-selected { /// Axi extension
+                background: $combo-list-selected-background-color;
+                color: $combo-list-selected-text-color;
+            }
+        }
+    }
+}
+
+
+/*******************************************************************************
+ * Global Axi components
+ */
+body.theme-neutral {
+    // Fields with animated labels
+    .x-axi-label {
+        & .x-form-item-label {
+            color: $input-placeholder-text-color;
+
+            &::before {
+                background-color: $input-animated-label-label-background-color;
+            }
+
+            &.x-form-focus {
+                color: $theme-main-color;
+            }
+        }
+    }
+
+    .x-axi-link {
+        & .x-btn-center button {
+            @extend %outline-button;
+            color: $theme-main-color;
+        }
+
+        &.x-btn-over {
+            & .x-btn-center button {
+                @extend %outline-button-hover;
+                color: $theme-main-color;
+            }
+        }    
+    }
+
+    // Submit button
+    .x-axi-button {
+        & .x-btn-center button {
+            @extend %highlight-button;
+        }
+    }
+
+    // Global messages
+    @import "../../include/webmail/theme-neutral/global-messages";
+}
+
+
+/*******************************************************************************
+ *  App
+ */
+body.theme-neutral {
+    // START Background image 
+    background-image: url(../private/ajax/Resources/images/theme-neutral/loading-bg-neutral-rpeast-morespace.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.axi-reading-pane-south {
+        background-image: url(../private/ajax/Resources/images/theme-neutral/loading-bg-neutral-rpsouth-morespace.png);
+    }
+
+    &.axi-reading-pane-none {
+        background-image: url(../private/ajax/Resources/images/theme-neutral/loading-bg-neutral-rpnone-morespace.png);
+    }
+
+    &.axi-more-content {
+        background-image: url(../private/ajax/Resources/images/theme-neutral/loading-bg-neutral-rpeast-morecontent.png);
+
+        &.axi-reading-pane-south {
+            background-image: url(../private/ajax/Resources/images/theme-neutral/loading-bg-neutral-rpsouth-morecontent.png);
+        }
+
+        &.axi-reading-pane-none {
+            background-image: url(../private/ajax/Resources/images/theme-neutral/loading-bg-neutral-rpnone-morecontent.png);
+        }
+    }
+    // END Background image 
+
+    // Overlay
+    &::before {
+        background-color: $mask-level-0;
+    }
+
+    .main-container {
+        & .center-container {
+            & h1 {
+                color: $window-title-text-color;
+            }
+
+            & h2,
+            & .h2 {
+                color: $window-subtitle-text-color;
+            }
+
+            & .domainname-container {
+                &::before {
+                    background-color: $input-animated-label-label-background-color;
+                    color: $theme-main-lighter-color;
+                }
+            }
+
+            & .x-axi-fieldset {
+                & .x-axi-button-container {
+                    & .x-axi-button {
+                        & .x-form-submit {
+                            @extend %highlight-button;
+                        }
+                    }
+                }
+
+                & #x-form-el-rememberLogin {
+                    & .x-form-check-wrap {
+                        & .x-form-cb-label {
+                            color: $theme-main-lighter-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-container {
+        & p {
+            &.powered-by {
+                border-color: $window-inner-border-color;
+            }
+        }
+    }
+}
+
+
+/*******************************************************************************
+ *  No Script
+ */  
+body.theme-neutral {
+    .errorContainer {
+        & .content {
+            background-color: $message-error-color;
+            color: $message-error-warning-success-text-color;
+        }
+    }
+}

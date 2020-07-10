@@ -1,0 +1,39 @@
+// START Global messages
+#x-message-container {
+	& .x-axi-window-message {
+		& .message-column {
+			border-color: $message-error-warning-success-separator-color;
+			
+			& a {
+				border-color: $message-error-warning-success-button-border-color;
+				color: $message-error-warning-success-button-text-color;
+			}
+		}
+	    
+	    & .close {
+			&::before {
+				background-color: $message-error-warning-success-separator-color;
+			}
+
+	        &::after {
+	            color: $message-error-warning-success-close-button-color;
+	        }
+	    }
+
+		&.x-axi-window-message-error {
+			background-color: $message-error-color;
+			color: $message-error-warning-success-text-color;
+		}
+
+		&.x-axi-window-message-warning {
+			background-color: $message-warning-color;
+			color: $message-error-warning-success-text-color;
+		}
+
+		&.x-axi-window-message-info {
+			background-color: $message-success-color;
+			color: $message-error-warning-success-text-color;
+		}
+	}
+}
+// END Global messages

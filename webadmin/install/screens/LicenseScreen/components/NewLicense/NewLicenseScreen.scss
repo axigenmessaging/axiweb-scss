@@ -1,0 +1,96 @@
+/**
+ * @fileOverview The new (trial) license screen style sheet.
+ *
+ * @copyright Copyright (c) 2019 Axigen Messaging. All rights reserved.
+ *
+ * @author Iulian Pobleanu <iulian.pobleanu@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Oct 2, 2019
+ */
+
+@import "../../../../../../include/webadmin/theme-default/variables";
+@import "../../../../../../include/webadmin/mixins";
+
+.new-license-screen {
+    text-align: center;
+
+    & .license-type-container {
+        position: relative;
+        display: table;
+        width: 100%;
+        padding: 18px 5px 13px 5px;
+        box-sizing: border-box;
+        border: 1px solid $border-color;
+        border-radius: 2px;
+
+        & > label:first-child {
+            position: absolute;
+            top: -11.5px;
+            left: 15px;
+            display: inline-block;
+            padding: 2px 5px;
+            background: $white-color;
+            @include font-source-sans(12px, 400, 1.5em);
+            text-align: left;
+            text-transform: uppercase;
+            color: $label-color;
+            white-space: nowrap;
+            pointer-events: none;
+            content: attr(placeholder);
+            cursor: default;
+            z-index: 1;
+        }
+
+        & .radio-container {
+            position: relative;
+            display: table-cell;
+            width: 50%;
+            box-sizing: border-box;
+            cursor: pointer;
+
+            &:first-of-type {
+                border-right: 1px solid $border-color;
+            }
+        }
+
+        & input[type="radio"] {
+            width: 14px;
+            height: 14px;
+            box-sizing: border-box;
+            border-radius: 50%; 
+            cursor: pointer;
+
+            & + label {
+                display: block;
+                font-size: 12px;
+                font-weight: 700;
+                color: $label-color;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+
+            &:checked {
+                background: $accent-color;
+                border-color: $accent-color;
+
+                & + label {
+                    color: $accent-color;
+
+                    &::after {
+                        position: absolute;
+                        top: 4px;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        width: 6px;
+                        height: 6px;
+                        background: $white-color;
+                        border-radius: 50%;
+                        content: "";
+                    }
+                }
+            }
+        }
+    }
+}
