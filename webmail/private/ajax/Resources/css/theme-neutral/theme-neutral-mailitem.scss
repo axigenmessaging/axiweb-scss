@@ -30,3 +30,23 @@ a {
 		text-decoration: none;
 	}
 }
+
+// Combo
+@import "../../../../../../include/webmail/theme-neutral/ext-overrides-combo-list";
+
+.mention-combo-list {
+	& .x-combo-list-item {
+		& * {
+			color: $text-main-color;
+		}
+	}
+
+	& .x-combo-list-inner {
+		& .x-combo-selected,
+		& .x-axi-item-selected {	/// Axi extension 
+			& * {
+				color: $combo-list-selected-text-color;
+			}
+		}
+	}
+} 

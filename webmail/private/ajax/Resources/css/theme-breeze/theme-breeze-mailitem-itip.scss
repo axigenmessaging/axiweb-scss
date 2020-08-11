@@ -21,6 +21,10 @@ a {
 			& .label {
 				&::after {
 					background-color: $inner-border-color;
+
+					@at-root body.dark & {
+						background-color: $dark-mode-inner-border-color;
+					}
 				}
 			}
 		}		

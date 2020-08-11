@@ -16,6 +16,11 @@
  */
 html, body {
 	color: $text-main-color;
+
+	@at-root body.dark {
+		background-color: $dark-mode-theme-background-color;
+		color: $dark-mode-text-main-color;
+	}
 }
 
 a {
@@ -34,6 +39,10 @@ textarea:focus::placeholder {
 
 hr {
 	background-color: $inner-border-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-inner-border-color;
+	}
 }
 
 
@@ -52,8 +61,16 @@ hr {
         & .wrapp {
         	background-color: $loader-background-color;
 
+            @at-root body.dark & {
+            	background-color: $dark-mode-loader-background-color;
+            }
+
             & .msg-text {
                 color: $loader-text-color;
+
+                @at-root body.dark & {
+	                color: $dark-mode-loader-text-color;                	
+                }
             }
         }
     }
@@ -69,6 +86,10 @@ hr {
 .x-tab-panel-footer {
 	&::after {
 		background-color: $inner-border-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-inner-border-color;
+		}
 	}
 }
 
@@ -102,6 +123,10 @@ ul.x-tab-strip {
 	& li {
 		border-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
 		& .x-tab-strip-text {
 			color: $tab-text-color;
 
@@ -115,13 +140,25 @@ ul.x-tab-strip {
 		&.x-tab-strip-active {
 			background-color: $tab-background-color;
 
+			@at-root body.dark & {
+				background-color: $dark-mode-tab-background-color;
+			}
+
 			& .x-tab-strip-text {
 				color: $tab-active-text-color;
+
+				@at-root body.dark & {
+					color: $dark-mode-tab-active-text-color;
+				}
 				
 				& strong,
 				& b,
 				& em {
 					color: $tab-active-text-color;
+
+					@at-root body.dark & {
+						color: $dark-mode-tab-active-text-color;
+					}
 				}
 			}
 		}
@@ -136,6 +173,10 @@ ul.x-tab-strip {
 	&:hover {
 		&::before {
 			color: $tab-active-text-color;
+
+			@at-root body.dark & {
+				color: $dark-mode-tab-active-text-color;
+			}
 		}
 	}
 }
@@ -146,6 +187,10 @@ textarea.x-form-field {
 	border-color: $input-border-color;
     transition: border-color .2s ease-in-out;
 
+    @at-root body.dark & {
+    	border-color: $dark-mode-input-border-color;
+    }
+
 	&.x-form-focus {
 		border-color: $input-focus-border-color;
 	}
@@ -153,6 +198,10 @@ textarea.x-form-field {
 
 .x-form-field {
 	color: $input-text-color;
+
+	@at-root body.dark & {
+		color: $dark-mode-input-text-color;
+	}
 }
 
 // Checkbox
@@ -161,6 +210,10 @@ textarea.x-form-field {
 .x-grid3-hd-checker {
 	background-color: $checkbox-background-color;
 	border-color: $checkbox-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-checkbox-border-color;
+	}
 }
 
 // Checked
@@ -176,51 +229,7 @@ textarea.x-form-field {
 }
 
 // Combo
-.x-form-field-wrap {
-	& .x-form-field {
-		border-color: $combo-border-color;
-	    transition: border-color .2s ease-in-out, color .2s ease-in-out;
-	}
-
-	& .x-form-trigger {
-		border-color: $combo-border-color;
-	    transition: border-color .2s ease-in-out;
-
-		&::before {
-		    border-top-color: $combo-arrow-trigger-border-color;
-		    border-right-color: transparent;
-		    border-left-color: transparent;
-		}
-	}
-
-	&.x-trigger-wrap-focus {
-		& .x-form-field {
-			border-color: $combo-focus-border-color;
-			color: $combo-focus-text-color;
-		}
-
-		& .x-form-trigger {
-			border-color: $combo-focus-border-color;
-
-			&::before {
-				border-top-color: $combo-focus-border-color;
-			}
-		}
-	}
-}
-
-.x-combo-list {
-	& .x-combo-list-inner {
-		background-color: $combo-list-background-color;
-		border-color: $combo-list-border-color;		
-
-		& .x-combo-selected,
-		& .x-axi-item-selected { /// Axi extension
-			background: $combo-list-selected-background-color;
-			color: $combo-list-selected-text-color;
-		}
-	}
-}
+@import "../../../../../../include/webmail/theme-breeze/ext-overrides-combo-list";
 
 // Radio
 .x-form-radio-wrap {
@@ -228,10 +237,18 @@ textarea.x-form-field {
     	background-color: $radio-background-color; 
         border-color: $radio-border-color;
         transition: background-color .2s ease-in-out, border-color .2s ease-in-out;
+
+        @at-root body.dark & {
+        	border-color: $dark-mode-radio-border-color;
+        }
     }
 
     & .x-form-cb-label {
         color: $text-main-color;
+
+        @at-root body.dark & {
+			color: $dark-mode-text-main-color;
+        }
     }
 
     &.x-form-check-checked {
@@ -249,6 +266,10 @@ textarea.x-form-field {
 // Panel
 .x-panel-header {
 	color: $panel-header-text-color;
+
+	@at-root body.dark & {
+		color: $dark-mode-panel-header-text-color;
+	}
 }
 
 // Horizontal Slider
@@ -259,7 +280,11 @@ textarea.x-form-field {
 
 	& .x-slider-thumb {
 		background-color: $theme-main-color;
-		box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+		box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+		@at-root body.dark & {
+			box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+		}
 	}
 }
 
@@ -648,7 +673,13 @@ textarea.x-form-field {
 .x-menu {
 	background-color: $menu-background-color;
 	border-color: $menu-border-color;
-	box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-menu-background-color;
+		border-color: $dark-mode-menu-border-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
 
 	&.x-axi-no-shadow { /// Axi extension
 		box-shadow: none;
@@ -658,6 +689,10 @@ textarea.x-form-field {
 .x-menu-list-item {
 	& a.x-menu-item {
 		color: $text-main-color;
+
+		@at-root body.dark & {
+			color: $dark-mode-text-main-color;
+		}
 
 		&.bullet {
 			&::after {
@@ -678,6 +713,10 @@ textarea.x-form-field {
 		& a.x-menu-item {
 			color: $menu-item-hover-text-color;
 			opacity: 1;
+
+			@at-root body.dark & {
+				color: $menu-item-hover-text-color;
+			}
 
 			&.bullet {
 				&::after {
@@ -716,6 +755,10 @@ textarea.x-form-field {
 
 .x-menu-sep { 
 	background-color: $inner-border-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-inner-border-color;
+	}
 }
 
 // Ext Quick tips
@@ -723,7 +766,15 @@ textarea.x-form-field {
 	& .x-tip-body {
 		background-color: $menu-background-color;
 		border-color: $menu-border-color;
-		box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+		box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+		color: $text-main-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-menu-background-color;
+			border-color: $dark-mode-menu-border-color;
+			box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+			color: $dark-mode-text-main-color;
+		}
 	}
 }
 
@@ -731,6 +782,10 @@ textarea.x-form-field {
 .x-toolbar {
     & .ytb-sep {
 		background-color: $inner-border-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-inner-border-color;
+		}
     }
 
     & .x-btn {
@@ -748,7 +803,12 @@ textarea.x-form-field {
 .x-dd-drag-proxy {
 	background-color: $menu-background-color;
 	border-color: $menu-border-color;
-	box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-menu-background-color;
+		border-color: $dark-mode-menu-border-color;
+	}
 
     // Checkmark icon
     &.x-dd-drop-ok,
@@ -789,23 +849,79 @@ textarea.x-form-field {
     }
 }
 
+// Color palette + date picker
+.x-menu-plain {
+	background-color: $menu-background-color !important;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-menu-background-color !important;
+	}
+
+}
+
+// Color palette
+.x-color-palette {
+	& a {
+		background-color: $menu-background-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-menu-background-color; 
+		}
+
+		&:hover,
+		&.x-color-palette-sel {
+			background-color: $color-palette-color-selected-background-color;
+
+			@at-root body.dark & {
+				background-color: $color-palette-color-selected-background-color;
+			}
+		}
+
+		&.color-FFFFFF {
+			& em {
+				border-color: $inner-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+			}
+		}
+	}
+}
+
 // Tree 
 .x-tree-node {
 	color: $text-main-color;
+
+	@at-root body.dark & {
+		color: $dark-mode-text-main-color;
+	}
 
     & .x-tree-node-el {
 		& a {
 			& span {
 				color: $text-main-color;
 
+				@at-root body.dark & {
+					color: $dark-mode-text-main-color;
+				}
+
                 &:first-child {
                 	&::before {
 	                	color: $folder-tree-node-icon-text-color;
+
+	                	@at-root body.dark & {
+	                		color: $dark-mode-folder-tree-node-icon-text-color;	                		
+	                	}
 	                }
                 }
 
                 &.x-axi-folder-counter {
 					color: $folder-tree-node-counter-text-color;
+
+					@at-root body.dark & {
+						color: $dark-mode-folder-tree-node-counter-text-color;
+					}
                 }
 			}
 		}
@@ -818,6 +934,10 @@ textarea.x-form-field {
 	            & span {
 	            	&:first-child {
 	                	color: $folder-tree-node-selected-text-color;
+
+	                	@at-root body.dark & {
+	                		color: $dark-mode-folder-tree-node-selected-text-color;
+	                	}
 
 	                	&::before {
 		                	color: $folder-tree-node-selected-icon-text-color;
@@ -838,8 +958,16 @@ textarea.x-form-field {
 	border-color: transparent;
 }
 
+.x-grid3-row-selected {
+	background-color: $list-not-focused-row-selected-background-color !important;
+}
+
 .x-grid3-row:not(:last-child) {
 	border-color: $inner-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-inner-border-color;
+	}
 }
 
 // Date picker + mini calendar
@@ -853,16 +981,28 @@ textarea.x-form-field {
 
 .x-date-bottom {
 	border-color: $menu-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-menu-border-color;
+	}
 }
 
 .x-date-inner {
 	& a {
 		color: $text-main-color;
+
+		@at-root body.dark & {
+			color: $dark-mode-text-main-color;
+		}
 	}
 
 	& a:hover,
 	& .x-date-disabled a:hover {
 		color: $text-main-color;
+
+		@at-root body.dark & {
+			color: $dark-mode-text-main-color;
+		}
 	}
 
 	& .x-date-selected {
@@ -900,6 +1040,10 @@ textarea.x-form-field {
 	& td {
 		border-top-color: $menu-border-color;
 
+		@at-root body.dark & {
+			border-top-color: $dark-mode-menu-border-color;
+		}
+
 		& button {
 			border-color: $theme-main-color;
 			color: $theme-main-color;
@@ -911,8 +1055,16 @@ td.x-date-mp-month a,
 td.x-date-mp-year a {
 	color: $text-main-color;
 
+	@at-root body.dark & {
+		color: $dark-mode-text-main-color;
+	}
+
 	&:hover {
 		color: $text-main-color;
+
+		@at-root body.dark & {
+			color: $dark-mode-text-main-color;
+		}
 	}
 }
 
@@ -920,6 +1072,10 @@ td.x-date-mp-sep {
 	border-right-width: 1px;
 	border-right-style: solid;
 	border-color: $menu-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-menu-border-color;
+	}
 }
 
 td.x-date-mp-sel a,
@@ -936,8 +1092,86 @@ td.x-date-mp-sel a:hover {
 
 // HTML Editor
 .x-html-editor-wrap {
+	background-color: $theme-background-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-theme-background-color;
+	}
+
     & .x-html-editor-tb {
 		border-color: $inner-border-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+	    // Buttons
+	    & .x-btn {
+	        // Specific buttons
+	        &.x-edit-emoji .x-btn-text {
+	        	&::before {
+	        		color: $html-editor-icon-color;
+
+	        		@at-root body.dark & {
+	        			color: $dark-mode-html-editor-icon-color;
+	        		}
+	        	}
+
+	            @at-root .x-axi-emoji-menu {
+	                & .x-menu.light-menu {
+	                	& .emoji-container {
+	                		& .group {
+	                			& .name {
+	                				color: $html-editor-emoji-groups-text-color;
+
+	                				@at-root body.dark & {
+	                					color: $dark-mode-html-editor-emoji-groups-text-color;
+	                				}
+	                			}
+	                		}
+	                	}
+	                    & .emoji-group-links-container {
+	                    	border-top-color: $inner-border-color;
+
+	                    	@at-root body.dark & {
+	                    		border-top-color: $dark-mode-inner-border-color;
+	                    	}
+
+	                    	& span {	                    		
+		                    	&::before {
+		                    		color: $html-editor-emoji-links-icon-color;
+
+		                    		@at-root body.dark & {
+		                    			color: $dark-mode-html-editor-emoji-links-icon-color;
+		                    		}
+		                    	}
+
+	                    		&.x-axi-active {
+	                    			&::before {
+	                    				color: $html-editor-emoji-links-active-icon-color;
+
+	                    				@at-root body.dark & {
+	                    					color: $dark-mode-html-editor-emoji-links-active-icon-color;
+	                    				}
+	                    			}	
+	                    		}
+		                    }
+	                    }
+	                }
+	            }
+	        }
+
+
+			&.x-edit-more .x-btn-text {
+	        	&::before {
+	        		color: $html-editor-icon-color;
+
+	        		@at-root body.dark & {
+	        			color: $dark-mode-html-editor-icon-color;
+	        		}
+	        	}
+			}
+	    }
     }
 }
 
@@ -945,6 +1179,10 @@ td.x-date-mp-sel a:hover {
     // Font combo
     %font-combo {
     	border-color: $combo-border-color;
+
+    	@at-root body.dark & {
+    		border-color: $dark-mode-combo-border-color;
+    	}
     }
 
     @at-root {
@@ -959,6 +1197,10 @@ td.x-date-mp-sel a:hover {
 	    & .x-form-arrow-trigger {
 	    	border-color: $combo-border-color;
 
+	    	@at-root body.dark & {
+	    		border-color: $dark-mode-combo-border-color;
+	    	}
+
 	    	&::before {
 	    		border-top-color: $combo-arrow-trigger-border-color;
 	    	}
@@ -967,6 +1209,10 @@ td.x-date-mp-sel a:hover {
 	    &.x-trigger-wrap-focus {
 		    & .x-form-arrow-trigger {
 		    	border-color: $combo-border-color;
+
+		    	@at-root body.dark & {
+		    		border-color: $dark-mode-combo-border-color;
+		    	}
 		    }
 	    }    	
     }
@@ -1028,12 +1274,20 @@ td.x-date-mp-sel a:hover {
 // START Date picker
 .x-axi-cal-menu {
 	background-color: $folder-tree-background-color !important;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-folder-tree-background-color !important;
+	}
 }
 // END Date picker
 
 // START Axi High Text
 .x-axi-high-text {
     color: $text-contrast-color;
+
+    @at-root body.dark & {
+    	color: $dark-mode-text-contrast-color;
+    }
 }
 // END Axi High Text
 
@@ -1060,6 +1314,10 @@ td.x-date-mp-sel a:hover {
     & .x-panel-body {
         &::after {
         	background-color: $inner-border-color;
+
+			@at-root body.dark & {
+				background-color: $dark-mode-inner-border-color;
+			}
         }
     }
 }
@@ -1098,8 +1356,23 @@ td.x-date-mp-sel a:hover {
 	border-color: $search-input-border-color;
 
 	// Focus
+	&:focus,
 	&.x-form-focus {
 		border-color: $search-input-focus-border-color;
+	}
+
+	@at-root {
+		body.dark .x-axi-search-input,
+		body.dark.ext-strict .x-toolbar .x-form-text.x-axi-search-input, /// Firefox
+		body.dark.ext-safari .x-toolbar .x-form-text.x-axi-search-input,
+		body.dark.ext-chrome .x-toolbar .x-form-text.x-axi-search-input {
+			border-color: $dark-mode-search-input-border-color;
+
+			// Focus
+			&.x-form-focus {
+				border-color: $search-input-focus-border-color;
+			}
+		}		
 	}
 }
 
@@ -1115,6 +1388,16 @@ td.x-date-mp-sel a:hover {
 				&.x-form-focus,
 				&.x-form-focus + .x-form-trigger {
 					border-color: $search-input-focus-border-color;
+				}
+
+				@at-root body.dark & {
+					border-color: $dark-mode-search-input-border-color;
+
+					// Focus
+					&.x-form-focus,
+					&.x-form-focus + .x-form-trigger {
+						border-color: $search-input-focus-border-color;
+					}
 				}
             }
 
@@ -1231,51 +1514,93 @@ td.x-date-mp-sel a:hover {
 .menu-tooltip-arrow-left {
 	&::before {
 		border-right-color: $menu-border-color;
+
+		@at-root body.dark & {
+			border-right-color: $dark-mode-menu-border-color;
+		}
 	}
 
 	&::after {
 		border-right-color: $menu-background-color;
+
+		@at-root body.dark & {
+			border-right-color: $dark-mode-menu-background-color;
+		}
 	}
 }
 
 .menu-tooltip-arrow-right {
 	&::before {
 		border-left-color: $menu-border-color;
+
+		@at-root body.dark & {
+			border-left-color: $dark-mode-menu-border-color;
+		}
 	}
 
 	&::after {
 		border-left-color: $menu-background-color;
+
+		@at-root body.dark & {
+			border-left-color: $dark-mode-menu-background-color;
+		}
 	}
 }
 
 // Dark tooltips
 .dark-tooltip {
 	background-color: $dark-tooltip-background-color;
-	box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
 	color: $dark-tooltip-text-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-dark-tooltip-background-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
 
 	// Arrows
 	& .dark-tooltip-arrow-top {
 		border-bottom-color: $dark-tooltip-background-color;
+
+		@at-root body.dark & {
+			border-bottom-color: $dark-mode-dark-tooltip-background-color;
+		}
 	}
 
 	& .dark-tooltip-arrow-bottom {
 	    border-top-color: $dark-tooltip-background-color;
+
+		@at-root body.dark & {
+			border-top-color: $dark-mode-dark-tooltip-background-color;
+		}
 	}
 
 	& .dark-tooltip-arrow-left {
 		border-right-color: $dark-tooltip-background-color;
+
+		@at-root body.dark & {
+			border-right-color: $dark-mode-dark-tooltip-background-color;
+		}
 	}
 
 	& .dark-tooltip-arrow-right {
 		border-left-color: $dark-tooltip-background-color;
+
+		@at-root body.dark & {
+			border-left-color: $dark-mode-dark-tooltip-background-color;
+		}
 	}
 }
 
 .x-tip {
 	& .dark-tooltip {
 		background-color: $dark-tooltip-background-color;
-		box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+		box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-dark-tooltip-background-color;
+			box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+		}
 	}
 
 	& .dark-tooltip { 
@@ -1289,19 +1614,37 @@ td.x-date-mp-sel a:hover {
 .x-tip.x-axi-tips-window {
 	background-color: $menu-background-color;
 	border-color: $menu-border-color;
-	box-shadow: 0 0 20px 0 rgba($dark-tooltip-background-color, 0.15);
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-menu-background-color;
+		border-color: $dark-mode-menu-border-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
 
     & .x-tip-header {
     	border-color: $light-tooltip-header-border-color;
 
+    	@at-root body.dark & {
+    		border-color: $dark-mode-light-tooltip-header-border-color;
+    	}
+
     	& .x-tip-header-text {
     		color: $light-tooltip-header-text-color;
+
+    		@at-root body.dark & {
+    			color: $dark-mode-light-tooltip-header-text-color;
+    		}
     	}
     }
 
     & .contenthr,
     & .hr {
         background-color: $light-tooltip-separator-border-color;
+
+        @at-root body.dark & {
+        	background-color: $dark-mode-light-tooltip-separator-border-color;
+        }
     }
 
     // Arrows
@@ -1309,10 +1652,18 @@ td.x-date-mp-sel a:hover {
     &.x-axi-topright-arrow {
         &::before {
         	border-bottom-color: $menu-border-color;
+
+			@at-root body.dark & {
+				border-bottom-color: $dark-mode-menu-border-color;
+			}
         }
 
         &::after {
         	border-bottom-color: $menu-background-color;
+
+			@at-root body.dark & {
+				border-bottom-color: $dark-mode-menu-background-color;
+			}
         }
     }
 
@@ -1320,10 +1671,18 @@ td.x-date-mp-sel a:hover {
     &.x-axi-leftbottom-arrow {
         &::before {
         	border-right-color: $menu-border-color;
+
+			@at-root body.dark & {
+				border-right-color: $dark-mode-menu-border-color;
+			}
         }
 
         &::after {
         	border-right-color: $menu-background-color;
+
+			@at-root body.dark & {
+				border-right-color: $dark-mode-menu-background-color;
+			}
         }
 	}
 
@@ -1331,10 +1690,18 @@ td.x-date-mp-sel a:hover {
     &.x-axi-bottomright-arrow {
         &::before {
         	border-top-color: $menu-border-color;
+
+			@at-root body.dark & {
+				border-top-color: $dark-mode-menu-border-color;
+			}
         }
 
         &::after {
         	border-top-color: $menu-background-color;
+
+			@at-root body.dark & {
+				border-top-color: $dark-mode-menu-background-color;
+			}
         }
     }
 
@@ -1342,10 +1709,18 @@ td.x-date-mp-sel a:hover {
     &.x-axi-rightbottom-arrow {
         &::before {
         	border-left-color: $menu-border-color;
+
+			@at-root body.dark & {
+				border-left-color: $dark-mode-menu-border-color;
+			}
         }
 
         &::after {
         	border-left-color: $menu-background-color;
+
+			@at-root body.dark & {
+				border-left-color: $dark-mode-menu-background-color;
+			}
         }
 	}
 }
@@ -1356,6 +1731,10 @@ td.x-date-mp-sel a:hover {
     & a span,               /// Tree panel
     & div {                 /// Tree grid
         color: $folder-tree-root-node-text-color;
+
+        @at-root body.dark & {
+	        color: $dark-mode-folder-tree-root-node-text-color;        	
+        }
     }
 
     &::after {
@@ -1410,12 +1789,20 @@ td.x-date-mp-sel a:hover {
 
             		& span {
             			color: $text-main-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-text-main-color;
+						}
             		}
 
 					& .x-grid3-col {
 						&.x-grid3-td-icon {
 							& .x-grid3-col-icon::before {
 								color: $folder-tree-node-icon-text-color;
+
+								@at-root body.dark & {
+									color: $dark-mode-folder-tree-node-icon-text-color;
+								}
 							}
 						}
 					}
@@ -1426,6 +1813,10 @@ td.x-date-mp-sel a:hover {
 
             		& span {
         				color: $folder-tree-node-selected-text-color;
+
+        				@at-root body.dark & {
+        					color: $dark-mode-folder-tree-node-selected-text-color;
+        				}
         			}
 
 					& .x-grid3-row-table {
@@ -1465,6 +1856,10 @@ td.x-date-mp-sel a:hover {
 			background: $list-not-focused-row-selected-background-color !important;
 			border-color: $list-not-focused-row-selected-border-color;
 
+			@at-root body.dark & {
+				border-color: $dark-mode-list-not-focused-row-selected-border-color;
+			}
+
 				& span {
 					// Inherited color
 				}
@@ -1476,6 +1871,10 @@ td.x-date-mp-sel a:hover {
 				& .x-grid3-row-checker {
 					background-color: transparent;
 					border-color: $checkbox-border-color;
+
+					@at-root body.dark & {
+						border-color: $dark-mode-checkbox-border-color;
+					}
 
 					&::before {
 						display: none;
@@ -1531,8 +1930,24 @@ td.x-date-mp-sel a:hover {
 						background-color: transparent;
 						border-color: $checkbox-border-color;
 
+						@at-root body.dark & {
+							border-color: $dark-mode-checkbox-border-color;
+						}
+
 						&::before {
 							display: none;
+						}
+					}
+				}
+
+				&.x-axi-active {
+					& .x-grid3-td-checker {
+						& .x-grid3-row-checker {
+							border-color: $checkbox-border-color;
+
+							@at-root body.dark & {
+								border-color: rgba($checkbox-border-color, .8);
+							}
 						}
 					}
 				}
@@ -1544,6 +1959,10 @@ td.x-date-mp-sel a:hover {
 	& .x-grid3-header {
 		border-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
 		& .x-grid3-header-inner {
 			& .x-grid3-hd-inner {
 				display: flex;
@@ -1551,6 +1970,10 @@ td.x-date-mp-sel a:hover {
 
 				& span {
 					color: $list-footer-color;
+
+					@at-root body.dark & {
+						color: $dark-mode-list-footer-color;
+					}
 				}
 			}
 		}
@@ -1564,6 +1987,10 @@ td.x-date-mp-sel a:hover {
 		& .x-menu-item {
 			&::before {
 				color: $text-main-color;
+
+				@at-root body.dark & {
+					color: $dark-mode-text-main-color;
+				}
 			}
 		}
 	}
@@ -1585,6 +2012,10 @@ td.x-date-mp-sel a:hover {
 	}
     & .x-axi-list-cmenu-sort-asc + .x-axi-list-cmenu-sort-desc {
         border-color: $inner-border-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
     }
 }
 // END Axi list
@@ -1594,6 +2025,10 @@ td.x-date-mp-sel a:hover {
 	& .no-thumbnail {
 		background-color: $thumbnail-no-thumbnail-background-color;
 		color: $thumbnail-no-thumbnail-text-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-thumbnail-no-thumbnail-background-color;
+		}
 	}
 
 	& .thumbnail {
@@ -1619,6 +2054,10 @@ td.x-date-mp-sel a:hover {
         & em {
             &::before {
  				color: $print-button-text-color;
+
+ 				@at-root body.dark & {
+ 					color: $dark-mode-print-button-text-color; 					
+ 				}
             }
         }
     }
@@ -1633,6 +2072,10 @@ td.x-date-mp-sel a:hover {
             	& .x-btn-center {
             		& .x-btn-text {
 						color: $email-address-object-text-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-email-address-object-text-color;
+						}
             		}
             	}
 
@@ -1645,6 +2088,10 @@ td.x-date-mp-sel a:hover {
 
                             &::after {
 								color: $email-address-object-text-color;
+
+								@at-root body.dark & {
+									color: $dark-mode-email-address-object-text-color;
+								}
                             }
                         }
                     }
@@ -1686,6 +2133,10 @@ td.x-date-mp-sel a:hover {
 %x-axi-attachments-title {
     color: $text-main-color;
 
+	@at-root body.dark & {
+		color: $dark-mode-text-main-color;
+	}
+
     &::after {
 		color: $theme-main-lighter-color;
     }
@@ -1720,7 +2171,11 @@ td.x-date-mp-sel a:hover {
 
     & .x-axi-attachments-view-all-container {
         & .x-axi-attachments-view-all-white-bg {
-        	background-color: $theme-light-mode-background-color;
+        	background-color: $theme-background-color;
+
+        	@at-root body.dark & {
+        		background-color: $dark-mode-theme-background-color;
+        	}
 
             & .x-axi-attachments-view-all-button {
                 @extend %button-small-rounding;
@@ -1736,14 +2191,14 @@ td.x-date-mp-sel a:hover {
 
 // START Attachments drag-and-drop
 .x-axi-upload-dd-container {
-    background-color: rgba($theme-light-mode-background-color, .9);
+    background-color: rgba($theme-background-color, .9);
 
     @supports (backdrop-filter: blur(2px)) {
-	    background-color: rgba($theme-light-mode-background-color, .7);
+	    background-color: rgba($theme-background-color, .7);
     }
 
     @supports (-webkit-backdrop-filter: blur(2px)) {
-	    background-color: rgba($theme-light-mode-background-color, .7);
+	    background-color: rgba($theme-background-color, .7);
     }
 
     & .x-axi-upload-dd-area {
@@ -1767,6 +2222,10 @@ td.x-date-mp-sel a:hover {
 
     & .x-axi-upload-dd-area-separator {
 		color: $attachments-drag-and-drop-separator-text-color;
+
+		@at-root body.dark & {
+			color: $dark-mode-attachments-drag-and-drop-separator-text-color;			
+		}
 
         & .arrow-top,
         & .arrow-bottom {
@@ -1803,7 +2262,11 @@ td.x-date-mp-sel a:hover {
 }
 
 .freebusy-legend-container {
-	border-color: $input-border-color;	
+	border-color: $input-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-input-border-color;
+	}	
 }
 // END Free / Busy
 
@@ -1920,48 +2383,57 @@ td.x-date-mp-sel a:hover {
 
 .x-axi-tree-sidebar-menu {
 	& .light-menu {
-	    & > div {
-		    & .sidebar-settings-menus-wrapper {
-		    	& .sidebar-settings-menu-wrapper {
-		    		& > div {
-			    		& .name {
-			    			color: $menu-title-color;
+    	& .sidebar-menu-wrapper {
+    		& .section {
+    			border-color: $inner-border-color;
 
-			    			&:empty {
-			    				& + .email {
-									color: $menu-title-color;
-			    				}
-			    			}
-			    		}
+				@at-root body.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
 
-			    		& ul {
-			    			& li {
-								&.x-axi-tree-sidebar-menu-display {
-									border-top-color: $inner-border-color;
-									border-bottom-color: $inner-border-color;
+				& .title {
+					color: $menu-title-color;
+
+					@at-root body.dark & {
+						color: $dark-mode-menu-title-color;
+					}
+				}
+
+				&.account {
+		    		& .name {
+		    			color: $menu-title-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-menu-title-color;
+						}
+
+		    			&:empty {
+		    				& + .email {
+								color: $menu-title-color;
+
+								@at-root body.dark & {
+									color: $dark-mode-menu-title-color;
 								}
-
-								&.x-axi-tree-sidebar-menu-settings {
-									&::after {
-										background-color: $inner-border-color;										
-									}
-								}
-			    			}
-			    		}
-			    	}
-
-		    		&.sidebar-display-menu-wrapper {
-		    			& .title {
-		    				& span {
-		    					color: $menu-title-color;
-
-		    					&::after {
-		    						background-color: $inner-border-color;
-		    					}
 		    				}
 		    			}
+		    		}
+				}
 
-		    			& ul {
+	    		&.display-options {
+	    			& ul {
+	    				& li {
+			    			&.axi-active {
+			    				& a {
+			    					&::before {
+			    						background-color: $theme-main-color;
+			    					}
+			    				}
+			    			}
+	    				}
+	    			}
+	    			
+	    			&.display-density {
+	    				& ul {
 		    				& li {
 		    					&.more-space {
 			    					& a {
@@ -1989,25 +2461,98 @@ td.x-date-mp-sel a:hover {
 			    						}
 			    					}
 			    				}
-
-							    &.x-axi-tree-sidebar-menu-themes {
-									border-top-color: $inner-border-color;
-									border-bottom-color: $inner-border-color;
-							    }
-
-				    			&.axi-active {
-				    				& a {
-				    					&::before {
-				    						background-color: $theme-main-color;
-				    					}
-				    				}
-				    			}
 		    				}
 		    			}
 		    		}
-		    	}
-	    	}
-		}
+
+					&.themes {
+						& ul {
+			    			& li {
+			    				&.ocean {
+			    					& a::before {
+			    						background-color: $theme-ocean-color;
+			    					}
+			    				}
+			    				
+			    				&.breeze {
+			    					& a::before {
+			    						background-color: $theme-breeze-color;
+			    					}
+			    				}
+
+			    				&.neutral {
+			    					& a::before {
+			    						background-color: $theme-neutral-color;
+			    					}				    					
+			    				}
+
+			    				&.axi-active {
+			    					&.ocean a {
+			    						border-color: $theme-ocean-color;
+			    					}
+
+			    					&.breeze a {
+			    						border-color: $theme-breeze-color;
+			    					}
+
+			    					&.neutral a {
+			    						border-color: $theme-neutral-color;
+			    					}
+			    				}
+			    			}
+						}
+					}
+
+	    			&.dark-mode {
+	    				& ul {
+		    				& li {
+		    					&.light {
+		    						& a span::before {
+			    						background-color: $dark-mode-light-background-color;
+			    						border-color: $dark-mode-light-border-color;
+		    						}
+		    					}
+
+		    					&.auto {
+		    						& a span::before {
+			    						background-color: $dark-mode-light-background-color;
+			    						border-color: $dark-mode-light-border-color;
+		    						}
+
+		    						& a span .dark-marker::after {
+			    						border-left-color: transparent;
+			    						border-bottom-color: $dark-mode-dark-background-color;
+		    						}
+		    					}
+
+		    					&.dark {
+		    						& a span::before {
+			    						background-color: $dark-mode-dark-background-color;
+			    						border-color: $dark-mode-dark-border-color;
+		    						}
+		    					}
+		    				}
+	    				}
+	    			}
+	    		}
+
+	    		&.bottom-menu {
+		    		& ul {
+		    			& li {
+							&.settings {
+								&::after {
+									background-color: $inner-border-color;
+
+									@at-root body.dark & {
+										background-color: $dark-mode-inner-border-color;
+									}										
+								}
+							}
+		    			}
+		    		}
+	    		}
+    		}
+    	}
 	}
 }
 // END Sidebar
@@ -2074,28 +2619,35 @@ td.x-date-mp-sel a:hover {
 	}
 
 	// Submenu
-	@at-root .x-menu.menu-new {
-		background-color: $new-mail-button-background-color;
-		
-		&::before {
-			background-color: $new-mail-button-separator-color;
-		}
+	@at-root {
+		.x-menu.menu-new,
+		body.dark .x-menu.menu-new {
+			background-color: $new-mail-button-background-color;
 
-		& .x-menu-list-item {
-			background-color: transparent;
-			transition: background-color .2s ease-in-out;
-
-			& a.x-menu-item {
-				color: $new-mail-button-text-color;
+			@at-root body.dark & {
+				box-shadow: 0 0 20px 0 $menu-box-shadow-color;	/// Use the light mode box shadow here
+			}
+			
+			&::before {
+				background-color: $new-mail-button-separator-color;
 			}
 
-			&.x-menu-item-active {
-				background-color: $new-mail-button-hover-background-color;
-			}
-		}
+			& .x-menu-list-item {
+				background-color: transparent;
+				transition: background-color .2s ease-in-out;
 
-		& .x-menu-sep {
-			background-color: $new-mail-button-separator-color;
+				& a.x-menu-item {
+					color: $new-mail-button-text-color;
+				}
+
+				&.x-menu-item-active {
+					background-color: $new-mail-button-hover-background-color;
+				}
+			}
+
+			& .x-menu-sep {
+				background-color: $new-mail-button-separator-color;
+			}
 		}
 	}
 	// END New Mail toolbar
@@ -2104,8 +2656,16 @@ td.x-date-mp-sel a:hover {
 	& .x-axi-west-panel-body {
 		background-color: $folder-tree-background-color;
 
+		@at-root body.dark & {
+			background-color: $dark-mode-folder-tree-background-color;
+		}
+
 		&::after {
-			background-color: $menu-border-color;			
+			background-color: $menu-border-color;
+
+			@at-root body.dark & {
+				background-color: $dark-mode-menu-border-color;
+			}			
 		}
 		
 		// START Check Email button
@@ -2113,6 +2673,10 @@ td.x-date-mp-sel a:hover {
 			& .x-axi-tree-white-border {
 				& .x-axi-check-email {
 					border-color: $menu-border-color;
+
+					@at-root body.dark & {
+						border-color: $dark-mode-menu-border-color;
+					}
 
 					& > table {
 						& .x-btn-left {
@@ -2128,8 +2692,16 @@ td.x-date-mp-sel a:hover {
 
 								color: $check-email-text-color;
 
+								@at-root body.dark & {
+									color: $dark-mode-check-email-text-color;
+								}
+
 								& button {
-									color: $check-email-text-color;								
+									color: $check-email-text-color;	
+
+									@at-root body.dark & {
+										color: $dark-mode-check-email-text-color;
+									}							
 								}
 							}
 						}
@@ -2194,6 +2766,11 @@ td.x-date-mp-sel a:hover {
 					& .x-layout-mini {
 					    background: $inner-border-color;
 					    border-color: $menu-border-color;
+
+						@at-root body.dark & {
+							background: $dark-mode-inner-border-color;
+							border-color: $dark-mode-menu-border-color;
+						}
 					}
 				}
 
@@ -2201,6 +2778,11 @@ td.x-date-mp-sel a:hover {
 					position: relative;
 					background-color: $folder-tree-background-color;
 					border-color: $menu-border-color;
+
+					@at-root body.dark & {
+						background-color: $dark-mode-folder-tree-background-color;
+						border-color: $dark-mode-menu-border-color;
+					}
 				}
 			}
 		}
@@ -2227,6 +2809,10 @@ td.x-date-mp-sel a:hover {
 			& .x-tab-strip-text {
 				&::before {
 					color: $tab-icon-color;
+
+					@at-root body.dark & {
+						color: $dark-mode-tab-icon-color;
+					}
 				}
 			}
 		}
@@ -2246,16 +2832,29 @@ td.x-date-mp-sel a:hover {
 		    		& .x-axi-reminders-grid {
 		    			border-color: $inner-border-color;
 
+						@at-root body.dark & {
+							border-color: $dark-mode-inner-border-color;
+						}
+
 						& .x-grid3-body {
 							& .x-grid3-row {
 								& .x-grid3-cell {
 									& .x-grid3-col-due {
 						    			border-color: $reminders-menu-row-col-due-border-color;
 						    			color: $reminders-menu-row-col-due-text-color;
+
+						    			@at-root body.dark & {
+						    				border-color: $dark-mode-reminders-menu-row-col-due-border-color;
+							    			color: $dark-mode-reminders-menu-row-col-due-text-color;						    				
+						    			}
 									}
 
 									& .x-grid3-col-summary {
 						    			color: $reminders-menu-row-col-summary-text-color;
+
+						    			@at-root body.dark & {
+						    				color: $dark-mode-reminders-menu-row-col-summary-text-color;						    				
+						    			}
 									}
 
 									& .x-grid3-col-options {
@@ -2284,10 +2883,19 @@ td.x-date-mp-sel a:hover {
 										& .x-grid3-col-due {
 											border-color: $reminders-menu-row-hover-col-due-border-color;
 											color: $reminders-menu-row-hover-col-due-text-color;
+
+											@at-root body.dark & {
+												border-color: $reminders-menu-row-hover-col-due-border-color;
+												color: $reminders-menu-row-hover-col-due-text-color;
+											}
 										}
 
 										& .x-grid3-col-summary {
 							    			color: $reminders-menu-row-hover-col-summary-text-color;
+
+							    			@at-root body.dark & {
+							    				color: $reminders-menu-row-hover-col-summary-text-color;
+							    			}
 										}
 
 										& .x-grid3-col-options {
@@ -2341,6 +2949,10 @@ td.x-date-mp-sel a:hover {
 .x-axi-view-body .x-axi-toolbar {
 	border-bottom-color: $inner-border-color;
 
+	@at-root body.dark & {
+		border-bottom-color: $dark-mode-inner-border-color;
+	}
+
 	& .x-toolbar {
 		height: $top-toolbar-height !important;
 
@@ -2363,6 +2975,10 @@ td.x-date-mp-sel a:hover {
 			& + td .ytb-sep {
 				&::after {
 					background-color: $mails-toolbar-search-vertical-separator-color;
+
+					@at-root body.dark & {
+						background-color: $dark-mode-mails-toolbar-search-vertical-separator-color;
+					}
 				}
 			}
 		}
@@ -2401,6 +3017,10 @@ td.x-date-mp-sel a:hover {
 			& + td .ytb-sep {
 				&::after {
 					background-color: $mails-toolbar-search-vertical-separator-color;
+
+					@at-root body.dark & {
+						background-color: $dark-mode-mails-toolbar-search-vertical-separator-color;
+					}
 				}
 			}
 		}
@@ -2412,6 +3032,10 @@ td.x-date-mp-sel a:hover {
 			& + td .ytb-sep {
 				&::after {
 					background-color: $mails-toolbar-search-vertical-separator-color;
+
+					@at-root body.dark & {
+						background-color: $dark-mode-mails-toolbar-search-vertical-separator-color;
+					}
 				}
 			}
 		}
@@ -2425,6 +3049,10 @@ td.x-date-mp-sel a:hover {
 .x-axi-list {
 	border-color: $menu-border-color;
 
+	@at-root body.dark & {
+		border-color: $dark-mode-menu-border-color;
+	}
+
 	// Mails list
 	&.x-axi-mails-list {
 		// List not focused
@@ -2437,6 +3065,10 @@ td.x-date-mp-sel a:hover {
 							& .from {
 								&::after {
 									color: $mails-list-not-focused-row-from-attachment-icon-color;
+
+									@at-root body.dark & {
+										color: $dark-mode-mails-list-not-focused-row-from-attachment-icon-color;
+									}
 								}
 							}
 						}
@@ -2463,6 +3095,10 @@ td.x-date-mp-sel a:hover {
 							& .size {
 								&::before {
 									color: $mails-list-not-focused-row-importance-low-icon-color;
+
+									@at-root body.dark & {
+										color: $dark-mode-mails-list-not-focused-row-importance-low-icon-color;
+									}
 								}
 							}
 						}
@@ -2497,6 +3133,10 @@ td.x-date-mp-sel a:hover {
 					& .x-grid3-col-checker {
 						&::before {
 							color: $mails-list-not-focused-row-refw-icon-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-refw-icon-color;
+							}
 						}
 					}
 				}
@@ -2505,24 +3145,45 @@ td.x-date-mp-sel a:hover {
 					& [class^="x-axi"][class$="-item-row"] {
 						& .from {
 							color: $mails-list-not-focused-row-from-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-from-color;
+							}
 						}
 
 						& .subject {
 							color: $mails-list-not-focused-row-subject-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-subject-color;
+							}
 						}
 
 						& .date,
 						& .size {
 							color: $mails-list-not-focused-row-date-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-date-color;
+							}
 						}
 
 						& .folder {
 							color: $mails-list-not-focused-row-folder-color;
 							border-color: $mails-list-not-focused-row-folder-border-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-folder-color;
+								border-color: $dark-mode-mails-list-not-focused-row-folder-border-color;
+							}
 						}
 						
 						& .snippet {
 							color: $mails-list-not-focused-row-snippet-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-snippet-color;
+							}
 						}
 					}
 				}
@@ -2722,6 +3383,10 @@ td.x-date-mp-sel a:hover {
 	& .x-axi-compose-north {
 		border-bottom-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-bottom-color: $dark-mode-inner-border-color;
+		}
+
 		& > .x-panel-bwrap {
 			& > .x-panel-body {
 				& .x-axi-mail-item-container {
@@ -2729,6 +3394,10 @@ td.x-date-mp-sel a:hover {
 						& .mail-item-summary {
 							& .subject {
 								color: $mail-item-subject-color;
+
+								@at-root body.dark & {
+									color: $dark-mode-mail-item-subject-color;
+								}
 							}
 						}
 					}
@@ -2743,6 +3412,10 @@ td.x-date-mp-sel a:hover {
 				// Attachments panel
 				& .x-axi-attachment-list-container {
 					border-color: $inner-border-color;
+
+					@at-root body.dark & {
+						border-color: $dark-mode-inner-border-color;
+					}
 				}
 			}
 		}
@@ -2782,12 +3455,24 @@ td.x-date-mp-sel a:hover {
 						& .x-axi-attachment-border {
 							border-color: $attachments-tab-attachment-border-color;
 
+							@at-root body.dark & {
+								border-color: $dark-mode-attachments-tab-attachment-border-color;
+							}
+
 							&::after {
-							    border-color: $theme-light-mode-background-color $theme-light-mode-background-color $attachments-tab-attachment-corner-background-color $attachments-tab-attachment-corner-background-color;
+							    border-color: $theme-background-color $theme-background-color $attachments-tab-attachment-corner-background-color $attachments-tab-attachment-corner-background-color;
+
+							    @at-root body.dark & {
+							    	border-color: $dark-mode-theme-background-color $dark-mode-theme-background-color $dark-mode-attachments-tab-attachment-corner-background-color $dark-mode-attachments-tab-attachment-corner-background-color;							    	
+							    }
 							}
 
 							& .x-axi-attachment-body {
 								background-color: $attachments-tab-attachment-background-color;
+
+								@at-root body.dark & {
+									background-color: $dark-mode-attachments-tab-attachment-background-color;
+								}
 
 								& > * {
 									&.x-axi-att-img-type {
@@ -2853,6 +3538,10 @@ td.x-date-mp-sel a:hover {
 			& .active {
 				&::after {
 					background-color: $inner-border-color;
+
+					@at-root body.dark & {
+						background-color: $dark-mode-inner-border-color;
+					}
 				}
 			}
 		}
@@ -2864,7 +3553,11 @@ td.x-date-mp-sel a:hover {
 
 	& .x-axi-calendar-timebar-day {
 		background-color: $theme-main-color;
-		border-color: $theme-light-mode-background-color;
+		border-color: $theme-background-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-theme-background-color;
+		}
 	}
 
 	// Attendees icon
@@ -2901,14 +3594,26 @@ td.x-date-mp-sel a:hover {
 
 	& .x-grid3-scroller {
 		border-color: $inner-border-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
 	}
 
 	& .x-grid3-row {
 		& td {
 			border-color: $inner-border-color;
 
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+
 			&.x-axi-calendar-non-working-day {
 				background-color: $calendar-cell-non-working-day-background-color;
+
+				@at-root body.dark & {
+					background-color: $dark-mode-calendar-cell-non-working-day-background-color;
+				}
 			}
 
 			&.x-grid3-cell-selected {
@@ -2916,12 +3621,20 @@ td.x-date-mp-sel a:hover {
 			}
 
 			&.x-grid3-cell-first {
-				background-color: $theme-light-mode-background-color;
+				background-color: $theme-background-color;
+
+				@at-root body.dark & {
+					background-color: $dark-mode-theme-background-color;
+				}
 			}
 		}
 
 		&.x-axi-grid-even {
 			border-bottom-color: rgba($inner-border-color, .6);
+
+			@at-root body.dark & {
+				border-bottom-color: rgba($dark-mode-inner-border-color, .6);
+			}
 		}
 	}
 
@@ -2929,18 +3642,34 @@ td.x-date-mp-sel a:hover {
 	& .x-axi-calendar-allday-panel {
 		border-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
 		& .x-axi-calendar-allday-header {
 			border-color: $inner-border-color;
 			color: $theme-main-lighter-color;
+
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
 		}
 
 		& .x-axi-calendar-allday-column {
 			border-color: $inner-border-color;
+
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
 		}
 	}
 
 	& .x-axi-calendar-timeline-cell {
-	    background-color: $theme-light-mode-background-color;
+	    background-color: $theme-background-color;
+
+	    @at-root body.dark & {
+	    	background-color: $dark-mode-theme-background-color;	    	
+	    }
 
 	    & span {
 	    	color: $theme-main-lighter-color;
@@ -2985,6 +3714,10 @@ td.x-date-mp-sel a:hover {
 			& > .x-panel-header {
 				border-color: $inner-border-color;
 
+				@at-root body.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+
 				& .x-axi-calendar-header-tz {
 					@extend %x-axi-calendar-header;
 				}
@@ -3007,6 +3740,10 @@ td.x-date-mp-sel a:hover {
 		& .x-axi-calendar-panel {
 			& > .x-panel-header {
 				border-color: $inner-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
 
 				& .x-axi-day-view-header td {
 					@extend %x-axi-calendar-header;
@@ -3055,19 +3792,35 @@ td.x-date-mp-sel a:hover {
 	& .x-axi-calendar-search-grid {
 		border-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
 		& .x-grid3-scroller {
 			& .x-grid3-body {
 				& .x-grid-group {
 					& .x-grid-group-hd {
 						background-color: $calendar-search-group-header-background-color;
-						
+
+						@at-root body.dark & {
+							background-color: $dark-mode-calendar-search-group-header-background-color;
+						}
+
 						& div {
-							color: $calendar-search-group-header-text-color;							
+							color: $calendar-search-group-header-text-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-calendar-search-group-header-text-color;
+							}
 						}
 					}
 
 					& .x-grid3-row {
 						border-color: $inner-border-color;
+
+						@at-root body.dark & {
+							border-color: $dark-mode-inner-border-color;
+						}
 
 						& .x-grid3-cell-inner {
 							& .x-axi-search-result-container {
@@ -3077,6 +3830,10 @@ td.x-date-mp-sel a:hover {
 
 										&.x-axi-calendar-search-startDayNumber {
 											color: $calendar-search-results-date-text-color;
+
+											@at-root body.dark & {
+												color: $dark-mode-calendar-search-results-date-text-color;
+											}
 										}
 
 										&.x-axi-calendar-search-folder-color {
@@ -3092,6 +3849,10 @@ td.x-date-mp-sel a:hover {
 					                    &.x-axi-calendar-search-startDayShort,
 					                    &.x-axi-calendar-search-timeInterval {
 											color: $calendar-search-results-second-row-text-color;
+
+											@at-root body.dark & {
+												color: $dark-mode-calendar-search-results-second-row-text-color;
+											}
 					                    }
 									}
 								}
@@ -3112,7 +3873,11 @@ td.x-date-mp-sel a:hover {
 
 						&::after {
 						    background-color: $theme-main-color;
-						    border-color: $theme-light-mode-background-color;
+						    border-color: $theme-background-color;
+
+						    @at-root body.dark & {
+						    	border-color: $dark-mode-theme-background-color;
+						    }
 						}
 					}
 				}
@@ -3142,12 +3907,20 @@ td.x-date-mp-sel a:hover {
 							&.task-priority-low ~ .x-grid3-td-tasksummary {
 								& .x-grid3-col-tasksummary::after {
 									color: $text-main-color;
+
+									@at-root body.dark & {
+										color: $dark-mode-text-main-color;
+									}
 								}								
 							}
 						}
 
 						& .x-grid3-col-tasksummary {
 							color: $tasks-list-not-focused-row-summary-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-tasks-list-not-focused-row-summary-color;
+							}
 						}
 
 						& .x-grid3-col-taskduedate {
@@ -3195,7 +3968,7 @@ td.x-date-mp-sel a:hover {
 						& .x-axi-tasks-quickedit {
 							& .x-axi-textfield,
 							& .x-form-trigger {
-								background-color: $theme-light-mode-background-color;
+								background-color: $theme-background-color;
 							}							
 						}
 					}
@@ -3326,8 +4099,16 @@ td.x-date-mp-sel a:hover {
 	&.x-axi-notes-list {
 		background-color: $notes-list-background-color;
 
+		@at-root body.dark & {
+			background-color: $dark-mode-notes-list-background-color;
+		}
+
 		& .x-grid3-header {
 			background-color: $list-footer-background-color;
+
+			@at-root body.dark & {
+				background-color: $dark-mode-list-footer-background-color;
+			}
 		}
 
 		// List not focused
@@ -3336,23 +4117,45 @@ td.x-date-mp-sel a:hover {
 			border-color: $inner-border-color;
 			border-radius: 2px;
 
+			@at-root body.dark & {
+				background-color: $dark-mode-notes-list-not-focused-row-background-color;
+				border-color: $dark-mode-inner-border-color;
+			}
+
 			& .x-grid3-td-checker ~ td {
 				& [class^="x-axi"][class$="-item-row"] {
 					& .subject {
 						color: $notes-list-not-focused-row-subject-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-notes-list-not-focused-row-subject-color;
+						}
 					}
 
 					& .date {
 						color: $notes-list-not-focused-row-date-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-notes-list-not-focused-row-date-color;
+						}
 					}
 
 					& .snippet {
 						color: $notes-list-not-focused-row-snippet-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-notes-list-not-focused-row-snippet-color;
+						}
 					}
 
 					& .folder {
 						color: $mails-list-not-focused-row-folder-color;
 						border-color: $mails-list-not-focused-row-folder-border-color;
+
+						@at-root body.dark & {
+							color: $dark-mode-mails-list-not-focused-row-folder-color;
+							border-color: $dark-mode-mails-list-not-focused-row-folder-border-color;
+						}
 					}
 				}
 			}
@@ -3419,6 +4222,10 @@ td.x-date-mp-sel a:hover {
 .x-axi-toolbar.notes-toolbar ~ .x-axi-listview-body .x-layout-split,
 .x-axi-notecomposer-htmleditor-panel .x-panel-body-noheader .x-html-editor-wrap {
 	background-color: $notes-list-background-color;
+
+	@at-root body.dark & {
+		background-color: $dark-mode-notes-list-background-color;
+	}
 }
 // END Note item
 // END Notes
@@ -3434,6 +4241,11 @@ td.x-date-mp-sel a:hover {
 						& .folder {
 							color: $mails-list-not-focused-row-folder-color;
 							border-color: $mails-list-not-focused-row-folder-border-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-mails-list-not-focused-row-folder-color;
+								border-color: $dark-mode-mails-list-not-focused-row-folder-border-color;
+							}
 						}
 					}
 				}
@@ -3467,31 +4279,59 @@ td.x-date-mp-sel a:hover {
 	// Common components
     %x-axi-cal-two-way-fork {
     	border-color: $inner-border-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
     }
 
     %x-axi-cal-three-way-fork {
     	border-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
         &::before {
         	background-color: $inner-border-color;
+
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
         }
     }
 
     %x-axi-cal-weekly-from-dots {
     	border-color: $inner-border-color;
 
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
         &::before,
         &::after {
         	border-color: $inner-border-color;
+
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
         }
 
         & span {
         	background-color: $inner-border-color;
+
+			@at-root body.dark & {
+				background-color: $dark-mode-inner-border-color;
+			}
         }
     }
 
 	& .x-axi-hspacer {
 	    background-color: $composers-north-field-border-color;
+
+		@at-root body.dark & {
+			background-color: $dark-mode-composers-north-field-border-color;
+		}
 	}
 
     // Active recipient tooltip
@@ -3499,17 +4339,29 @@ td.x-date-mp-sel a:hover {
         & .x-tip-header {
             & .normal {
                 color: $text-main-color;
+
+				@at-root body.dark & {
+					color: $dark-mode-text-main-color;
+				}
             }
         }
     }
 
     & .x-axi-folder-selection-row {
     	border-color: $inner-border-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
     }
 
     & .x-axi-attendees-row,
     & .x-axi-assignees-row {
     	border-color: $inner-border-color;
+
+		@at-root body.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
     }
 
     %save-send-icon {
@@ -3523,6 +4375,10 @@ td.x-date-mp-sel a:hover {
         & .x-combo-list-inner {
 	        & .x-combo-list-group {
 	            color: $folder-tree-root-node-text-color;
+
+	            @at-root body.dark & {
+		            color: $dark-mode-folder-tree-root-node-text-color;
+	            }
 	        }
 	    }
     }
@@ -3547,8 +4403,16 @@ td.x-date-mp-sel a:hover {
 		& .x-axi-compose-north {
 			border-color: $inner-border-color;
 
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+
 			& .x-axi-email-address-row-container {
 				border-color: $composers-north-field-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
 
 				& .x-form-item-button-label {
 					& > .x-btn-wrap {
@@ -3556,6 +4420,10 @@ td.x-date-mp-sel a:hover {
                             & em {
 								& .x-btn-text {
 									color: $text-main-color;
+
+									@at-root body.dark & {
+										color: $dark-mode-text-main-color;
+									}
 								}
 							}
 						}
@@ -3583,6 +4451,10 @@ td.x-date-mp-sel a:hover {
             // Attachments panel
             & .x-axi-attlist-panel {
 	            border-color: $inner-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
 	        }
 		}
 	}
@@ -3619,6 +4491,10 @@ td.x-date-mp-sel a:hover {
 
         	& .x-axi-location-row {
         		border-color: $composers-north-field-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
         	}
 
         	& .x-axi-folder-selection-row {
@@ -3662,6 +4538,10 @@ td.x-date-mp-sel a:hover {
                     & .x-form-check-wrap {
                     	& .x-form-cb-label {
                     		color: $text-main-color;
+
+							@at-root body.dark & {
+								color: $dark-mode-text-main-color;
+							}
                     	}
                     }
                 }
@@ -3766,6 +4646,10 @@ td.x-date-mp-sel a:hover {
 		                    & em {
 			                    & .x-btn-text {
 			                        color: $text-main-color;
+
+									@at-root body.dark & {
+										color: $dark-mode-text-main-color;
+									}
 			                    }
 			                }
 		                }
@@ -3806,7 +4690,7 @@ td.x-date-mp-sel a:hover {
 	        	background-color: $notes-composer-body-background-color;
 
 	        	& .x-html-editor-tb {
-	        		background-color: $theme-light-mode-background-color;
+	        		background-color: $theme-background-color;
 	        	}
         	}
         }
@@ -3832,14 +4716,26 @@ td.x-date-mp-sel a:hover {
         & .x-axi-collapsable-title-panel-body {
             & .x-axi-email-row {
         		border-color: $composers-north-field-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
             }
 
             & .x-axi-phone-row {
         		border-color: $composers-north-field-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
             }
 
             & .x-axi-personal-business-details-container {
             	border-color: $inner-border-color;
+
+				@at-root body.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
 
                 & .x-axi-personal-details-container,
                 & .x-axi-business-details-container {
@@ -3847,6 +4743,10 @@ td.x-date-mp-sel a:hover {
                         &::before,
                         &::after {
                         	background-color: $inner-border-color;
+
+							@at-root body.dark & {
+								background-color: $dark-mode-inner-border-color;
+							}
                         }
                     }
                 }
@@ -3874,10 +4774,18 @@ td.x-date-mp-sel a:hover {
         & .x-axi-dlist-members-list {
         	border-color: $inner-border-color;
 
+			@at-root body.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+
             & .x-axi-fieldset-with-tools {
                 & > .x-fieldset-header {
                     &::after {
                     	background-color: $inner-border-color;
+
+						@at-root body.dark & {
+							background-color: $dark-mode-inner-border-color;
+						}
                     }
                 }
             }
@@ -4259,92 +5167,6 @@ td.x-date-mp-sel a:hover {
         }
 	}
     // END Settings window
-
-    // START Theme Change Window
-    &.x-axi-theme-change-window {
-        & .x-axi-theme-change-fieldset {
-            & .x-fieldset-bwrap {
-                & .x-fieldset-body {
-                    & .x-axi-theme-button {
-                        & .x-btn-center {
-                        	button {
-                        		color: $window-contrast-color;
-                        	}
-                        }
-
-                        &.theme-button-Ocean {
-                            background: url(../../images/common/themes/theme-ocean-thumb.png) left top no-repeat;
-
-                            & .x-btn-center {
-    	                        & em {
-		                            & button {
-		                            	background-color: $window-theme-change-theme-ocean-color;
-		                            }
-		                        }
-		                    }
-                        }
-
-                        &.theme-button-Breeze {
-                            background: url(../../images/common/themes/theme-breeze-thumb.png) left top no-repeat;
-
-                            & .x-btn-center {
-	                            & em {
-		                            & button {
-		                            	background-color: $window-theme-change-theme-breeze-color;
-		                            }
-		                        }
-		                    }
-                        }
-
-                        &.theme-button-Neutral {
-                            background: url(../../images/common/themes/theme-neutral-thumb.png) left top no-repeat;
-
-                            & .x-btn-center {
-	                            & em {
-		                            & button {
-		                            	background-color: $window-theme-change-theme-neutral-color;
-		                            }
-		                        }
-		                    }
-                        }
-
-                        &.x-btn-over {
-                        	&.theme-button-Ocean {
-	                            & .x-btn-center {
-	    	                        & em {
-			                            & button {
-			                        		background-color: $window-theme-change-theme-ocean-hover-color;
-			                        	}
-			                        }
-			                    }
-                        	}
-
-                        	&.theme-button-Breeze {
-	                            & .x-btn-center {
-	    	                        & em {
-			                            & button {
-			                        		background-color: $window-theme-change-theme-breeze-hover-color;
-			                        	}
-			                        }
-			                    }
-                        	}
-
-                        	&.theme-button-Neutral {
-	                            & .x-btn-center {
-	    	                        & em {
-			                            & button {
-			                        		background-color: $window-theme-change-theme-neutral-hover-color;
-			                        	}
-			                        }
-			                    }
-                        	}
-                        }
-                    }
-                }
-            }
-        }
-    }
-    // END Theme Change Window
 
     // START Address Book window(s)
     &.x-axi-addressbook-window {

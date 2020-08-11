@@ -465,72 +465,7 @@ textarea.x-form-field {
 }
 
 // Combo
-.x-combo-list {
-    padding-top: 2px;
-    background: none;
-    border: none;
-
-    & .x-combo-list-inner {
-        max-width: calc(100% - 2px);
-        border: 1px solid;
-        border-radius: 2px;
-    }
-}
-
-.x-form-field-wrap {
-    display: flex;
-    align-items: center;
-
-    & .x-form-field {
-        padding: 4px 0 4px 6px;
-        border-right-width: 0;
-        border-radius: 2px 0 0 2px; 
-    }
-
-    & .x-form-trigger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 4px 8px 3px;
-        background: none;
-        border-bottom: none;
-        border-top-width: 1px;
-        border-top-style: solid;
-        border-right-width: 1px;
-        border-right-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        border-left-width: 0;
-        border-left-style: solid;
-        border-radius: 0 2px 2px 0;
-
-        &::before {
-            font-size: 0;
-            line-height: 0;
-            border-top-width: 6px;
-            border-top-style: solid;
-            border-right-width: 4px;
-            border-right-style: solid;
-            border-left-width: 4px;
-            border-left-style: solid;
-            transition: border-color .2s ease-in-out;
-            content: "";
-        }
-    }   
-}
-
-.x-combo-list {
-    & .x-combo-selected {
-        border: none !important;
-    }
-}
-
-.x-combo-list-item {
-    padding: 4px 6px;
-    border: none;
-    @include font-body-text(13px, 400);
-    cursor: pointer;
-}
+@import "ext-overrides-combo-list";
 
 // Layout splitters
 .x-layout-split {
@@ -1340,6 +1275,45 @@ td.x-grid3-hd-menu-open .x-grid3-hd-inner {
     }
 }
 
+// Color palette + date picker
+.x-menu-plain {
+    & .x-color-palette,
+    & .x-date-picker {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// Color palette
+.x-color-palette {
+    width: 184px;
+    height: auto;
+    padding: 0 3px;
+
+    & a {
+        padding: 3px;
+        border: none;
+
+        &:hover,
+        &.x-color-palette-sel {
+            border: none;
+            opacity: 1;
+        }
+
+        & em {
+            border-color: transparent;
+
+            & span {
+                width: 15px;
+                height: 15px;
+                line-height: 15px;
+            }
+        }
+    }
+}
+
 // Date picker + mini calendar
 .x-date-picker {
     background: none;
@@ -1599,6 +1573,15 @@ td.x-date-mp-sel a {
         border-radius: 0;
     }
 
+    & .x-toolbar {
+        padding: 0;
+        border: none;
+
+        & .ytb-sep {
+            height: 33px;
+        }
+    }
+
     @at-root {
         .x-html-editor-tb .x-toolbar .x-form-text,
         .ext-safari .x-html-editor-tb .x-toolbar .x-form-text,
@@ -1636,16 +1619,161 @@ td.x-date-mp-sel a {
 
         & .x-btn-text {
             background-image: url(../images/common/html-editor-tb-sprite.png);
+
+            @at-root body.dark & {
+                background-image: url(../images/common/dark-mode/html-editor-tb-sprite.png);
+            }
         }
 
         // Specific buttons
-        &.x-edit-createlink .x-btn-text {
-            width: 18px;
+        &.x-edit-emoji .x-btn-text {
+            display: flex;
+            background: none;
+
+            @at-root body.dark & {
+                background: none;
+            }
+
+            &::before {
+                display: flex;
+                justify-content: center;
+                width: 16px;
+                height: 16px;
+                line-height: 6px;
+                content: "\e001";
+
+                .ext-gecko10plus & {     /// Firefox
+                    line-height: 12px;
+                }
+
+                .ext-msedgium & {       /// MS Edge (Chromium based)
+                    line-height: 12px;
+                }
+            }
+
+            @at-root .x-axi-emoji-menu {
+                & .x-menu.light-menu {
+                    padding: 0;
+
+                    & .emoji-container {
+                        min-width: 300px;
+                        max-width: 300px;
+                        height: 212px;
+                        padding: 0 10px 15px;
+                        box-sizing: border-box;
+                        overflow: auto;
+
+                        & .x-axi-search-input-container {
+                            margin: 15px 0 5px;
+
+                            & .x-axi-search-input {
+                                width: 100%;
+                                @include font-body-text(13px, 400);
+                            }
+                        }
+
+                        & .group {
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            & .name {
+                                width: 100%;
+                                padding: 10px 5px 5px;
+                                box-sizing: border-box;
+                                font-size: 12px;
+                                font-weight: 600;
+                                text-align: left;
+                            }
+
+                            & .emoji {
+                                display: flex;
+                                justify-content: center;
+                                margin: 0 5px;
+                                width: 20px;
+                                line-height: 30px;
+                                font-size: 20px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    & .emoji-group-links-container {
+                        display: flex;
+                        width: 300px;
+                        padding: 8px 10px;
+                        box-sizing: border-box;
+                        border-top-width: 1px;
+                        border-top-style: solid;
+
+                        & span {
+                            width: 20px;
+                            height: 16px;
+                            margin: 0 5px;
+                            cursor: pointer;
+                            transition: opacity .2s ease-in-out, color .2s ease-in-out;
+
+                            &::before {
+                                display: flex;
+                                justify-content: center;
+                                width: 20px;
+                                height: 16px;
+                                line-height: 6px !important;
+
+                                .ext-gecko10plus & {     /// Firefox
+                                    line-height: 12px !important;
+                                }
+                                .ext-msedgium & {       /// MS Edge (Chromium based)
+                                    line-height: 12px !important;
+                                }
+                            }
+
+                            &:hover {
+                                opacity: .7;
+                            }
+
+                            &.search::before {
+                                content: "\e008";
+                            }
+
+                            &.recent::before {
+                                content: "\e000";
+                            }
+
+                            &.smileys-people::before {
+                                content: "\e001";
+                            }
+
+                            &.animals-nature::before {
+                                content: "\e002";
+                            }
+
+                            &.travel-places::before {
+                                content: "\e003";
+                            }
+
+                            &.activities::before {
+                                content: "\e004";
+                            }
+
+                            &.objects::before {
+                                content: "\e005";
+                            }
+
+                            &.symbols::before {
+                                content: "\e006";
+                            }
+
+                            &.flags::before {
+                                content: "\e007";
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        &.x-edit-hr .x-btn-text {
-            width: 14px;
-            background-position-x: -226px;
+        &.x-edit-createlink .x-btn-text {
+            width: 18px;
         }
 
         &.x-edit-bq .x-btn-text {
@@ -1653,12 +1781,103 @@ td.x-date-mp-sel a {
             background-position-x: -240px;
         }
 
-        &.x-edit-ltr .x-btn-text {
-            background-position-x: -251px;
-        }
+        &.x-edit-more {
+            & em {
+                height: 16px;
+                padding: 0;
+                background: none;
+            }
 
-        &.x-edit-rtl .x-btn-text {
-            background-position-x: -266px;
+            & .x-btn-text {
+                width: 18px;
+                background: none;
+                overflow: hidden;
+
+                @at-root body.dark & {
+                    background: none;
+                }
+
+                &::before {
+                    display: flex;
+                    height: 16px;
+                    line-height: 10px;
+                    text-indent: -6px;
+                    content: "\e009";
+                }
+            }
+
+            @at-root .x-edit-more-menu {
+                padding: 0;
+
+                & .x-menu-list {
+                    display: flex;
+
+                    & .x-menu-list-item {
+                        transition: opacity .2s ease-in-out;
+
+                        & .x-menu-item {
+                            padding: 8px 7px; 
+
+                            & .x-menu-item-icon {
+                                display: none;
+                            }
+
+                            &::before {
+                                width: 16px;
+                                height: 16px;
+                                background-image: url(../images/common/html-editor-tb-sprite.png);
+                                content: "";
+
+                                @at-root body.dark & {
+                                    background-image: url(../images/common/dark-mode/html-editor-tb-sprite.png);
+                                }
+                            }
+
+                            &.x-edit-backcolor::before {
+                                background-position-x: -176px;                                
+                            }
+
+                            &.x-edit-hr::before {
+                                width: 14px;
+                                background-position-x: -226px;
+                            }
+
+                            &.x-edit-ltr::before {
+                                background-position-x: -251px;
+                            }
+
+                            &.x-edit-rtl::before {
+                                background-position-x: -266px;
+                            }
+
+                            &.x-edit-sourceedit::before {
+                                background-position-x: -192px;
+                            }
+
+                            &.x-menu-item-arrow {
+                                margin-right: 7px;
+                                background: transparent url(../../Libraries/ext/resources/images/default/toolbar/btn-arrow.gif) no-repeat right 8px;
+                            }
+                        }
+
+                        &.x-menu-item-active {
+                            background: none;
+                            opacity: .7;
+                        }
+
+                        // Separator
+                        &.x-menu-sep-li {
+                            padding: 0;
+
+                            & .x-menu-sep {
+                                margin: 0;
+                                width: 1px;
+                                height: 100%;                                
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

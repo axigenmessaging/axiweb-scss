@@ -34,7 +34,7 @@ textarea::placeholder {
 }
 
 button {
-	transition: opacity .2s ease-in-out;		
+	transition: opacity .2s ease-in-out;
 
 	&:hover {
 		opacity: .7;		
@@ -53,6 +53,10 @@ hr {
 // Prevent Firefox from showing a dotted border on focused elements
 ::-moz-focus-inner {
 	border: 0;
+}
+
+:-moz-focusring {
+	outline: none;
 }
 
 // Prevent IE11 from showing the clear field pseudo-element
@@ -212,210 +216,156 @@ body {
 }
 
 .x-axi-tree-sidebar-menu {
-	max-width: 250px;
+	max-width: 225px;
 	z-index: 9000;
 
 	& .light-menu {
-		margin-bottom: 10px;
-	    width: 250px;
-	    padding: 0;
+		position: relative;
+		bottom: 10px;
+	    width: 225px;
+	    padding: 15px 15px 10px;
 	    box-sizing: border-box;
+	    text-align: left;
+	    transition: bottom .2s ease-in-out;
 
-	    & > div {
-		    overflow-x: hidden;
-		    white-space: nowrap;
+		&.menu-tooltip-arrow-left,
+		&.menu-tooltip-arrow-right {
+			&::before {
+				bottom: 20px;			
+			}
 
-		    & .sidebar-settings-menus-wrapper {
-			    position: relative;
-			    left: 0;
-		    	display: flex;
-		    	width: 200%;
-				transition: left .2s ease-in-out, right .2s ease-in-out;
+			&::after {
+				bottom: 19px;			
+			}
+		}
 
-		    	& .sidebar-settings-menu-wrapper {
-		    		flex: 1 1 50%;
-		    		display: flex;
-		    		flex-direction: column;
-		    		padding: 15px 15px 10px;
-		    		box-sizing: border-box;
+    	& .sidebar-menu-wrapper {
+    		& .section {
+    			padding: 10px 5px;
 
-		    		& > div {
-		    			max-width: 220px;		    			
+				& .title {
+					padding-bottom: 2px;
+					font-weight: 600;
+				}
 
-			    		& .name,
-			    		& .email {
-			    			display: block;
-			    			overflow: hidden;
-			    		}
+    			&:not(:last-child) {
+    				border-bottom-width: 1px;
+    				border-bottom-style: solid;
+    			}
 
-			    		& .name {
-			    			height: 20px;
-							@include font-body-text(15px, 600);
+    			&.account {
+    				padding-top: 0;
 
-							&:empty {
-								display: none;
-
-								& + .email {
-					    			height: 20px;
-									@include font-body-text(15px, 600);
-								}
-							}
-			    		}
-
-			    		&.quota-bar-ct {
-			    			padding: 10px 0;
-			    			flex-grow: 1;
-			    			display: flex;
-			    			flex-direction: column;
-			    			justify-content: center;
-
-			    			& .quota-bar {
-			    				position: relative;
-			    				display: flex;
-			    				align-items: center;
-			    				justify-content: center;
-
-			    				& .quota-text {
-			    					position: absolute;
-			    					left: 0;
-			    					right: 0;
-			    					top: 0;
-			    					bottom: 0;
-			    					display: flex;
-			    					align-items: baseline;
-			    					justify-content: center;
-			    					margin: auto;
-			    					width: 70px;
-			    					@include font-body-text(22px, 200, 70px);
-
-			    					& .percent {
-			    						@include font-body-text(13px, 400);
-			    					}
-			    				}
-			    			}
-
-			    			& + div {
-			    				white-space: normal;
-			    				display: flex;
-			    				justify-content: center;
-
-			    				& .quota-info {
-			    					display: block;
-			    					max-width: 200px;
-			    					padding-bottom: 15px;
-			    				}
-			    			}
-			    		}
-
-			    		& ul {
-			    			& li {
-							    &.x-axi-tree-sidebar-menu-display {
-							    	border-top: 1px solid;
-							    	border-bottom: 1px solid;
-
-							    	& a {
-							    		display: flex;
-							    		align-items: center;
-							    		justify-content: center;
-							    		height: 32px;
-									    padding: 8px 4px;
-									    box-sizing: border-box;
-
-							    		&::before {
-							    			position: relative;
-							    			top: -1px;
-							    			width: 30px;
-							    			font-size: 32px;
-							    			content: "\e038";
-							    		}
-
-							    		& span {
-								    		position: relative;
-								    		display: flex;
-								    		align-items: center;
-								    		justify-content: center;
-								    	}
-							    	}
-							    }
-
-								&.x-axi-tree-sidebar-menu-settings,
-								&.x-axi-tree-sidebar-menu-logout {
-									display: inline-flex;
-									justify-content: center;
-									margin-top: 10px;
-									width: 50%;
-									box-sizing: border-box;
-
-									& a {
-										flex-grow: 1;
-										display: flex;
-							    		align-items: center;
-							    		justify-content: center;
-										padding: 4px;
-									}
-								}
-
-								&.x-axi-tree-sidebar-menu-settings {
-									&::after {
-										width: 1px;
-										content: "";
-									}
-								}
-			    			}
-			    		}
+		    		& .name,
+		    		& .email {
+		    			display: block;
+		    			text-align: center;
+		    			overflow: hidden;
 		    		}
 
-		    		&.sidebar-display-menu-wrapper {
-		    			& .title {
-		    				& span {
-		    					display: flex;
-		    					font-weight: 600;
-		    					align-items: center;
+		    		& .name {
+		    			height: 20px;
+						@include font-body-text(15px, 600);
 
-		    					&::after {
-		    						flex-grow: 1;
-		    						margin-left: 10px;
-		    						height: 1px;
-		    						content: "";
+						&:empty {
+							display: none;
+
+							& + .email {
+				    			height: 20px;
+								@include font-body-text(15px, 600);
+							}
+						}
+		    		}    				
+    			}
+
+    			&.quota {
+		    		& .quota-bar-ct {
+		    			padding: 5px 0 10px;
+		    			flex-grow: 1;
+		    			display: flex;
+		    			flex-direction: column;
+		    			justify-content: center;
+
+		    			& .quota-bar {
+		    				position: relative;
+		    				display: flex;
+		    				align-items: center;
+		    				justify-content: center;
+
+		    				& .quota-text {
+		    					position: absolute;
+		    					left: 0;
+		    					right: 0;
+		    					top: 0;
+		    					bottom: 0;
+		    					display: flex;
+		    					align-items: baseline;
+		    					justify-content: center;
+		    					margin: auto;
+		    					width: 70px;
+		    					@include font-body-text(22px, 200, 70px);
+
+		    					& .percent {
+		    						@include font-body-text(13px, 400);
 		    					}
 		    				}
 		    			}
 
-		    			& ul {
-		    				margin-top: 5px;
-		    				text-align: left;
+		    			& + div {
+		    				white-space: normal;
+		    				display: flex;
+		    				justify-content: center;
 
-		    				&:not(:last-child) {
-			    				margin-bottom: 15px;
+		    				& .quota-info {
+		    					display: block;
+		    					text-align: center;
+		    					padding-bottom: 5px;
+		    				}
+		    			}
+		    		}
+    			}
+
+	    		&.display-options {
+	    			& ul {
+	    				margin-top: 5px;
+	    				text-align: left;
+
+	    				&:not(:last-child) {
+		    				margin-bottom: 15px;
+	    				}
+
+	    				& li {
+		    				& a {
+		    					display: flex;
+								align-items: center;
+		    					padding: 4px 0;
+		    					box-sizing: border-box;
+
+		    					&::before {
+		    						width: 8px;
+		    						height: 8px;
+			    					content: "";
+		    					}
+
+		    					& span {
+		    						display: flex;
+		    						align-items: center;
+		    					}
 		    				}
 
-		    				& li {
+			    			&.axi-active {
 			    				& a {
-			    					display: flex;
-									align-items: center;
-			    					padding: 4px 0;
-			    					box-sizing: border-box;
-
 			    					&::before {
-			    						width: 8px;
-			    						height: 8px;
-				    					content: "";
+			    						border-radius: 4px;
 			    					}
+			    				}	
+			    			}
+			    		}
+			    	}
 
-			    					& span {
-			    						display: flex;
-			    						align-items: center;
-			    					}
-			    				}
-
-				    			&.axi-active {
-				    				& a {
-				    					&::before {
-				    						border-radius: 4px;
-				    					}
-				    				}	
-				    			}
-
+			    	&.reading-pane {
+			    		& ul {
+			    			& li {
 				    			&.readingpane-right {
 				    				& a {
 				    					& span {
@@ -448,7 +398,13 @@ body {
 				    					}
 				    				}
 				    			}
+			    			}
+			    		}
+			    	}
 
+			    	&.display-density {
+			    		& ul {
+			    			& li {
 				    			&.more-space {
 				    				& a {
 				    					& span {
@@ -507,57 +463,140 @@ body {
 				    						}
 				    					}
 				    				}
-				    			}
+				    			}	
+			    			}
+			    		}
+			    	}
 
-							    &.x-axi-tree-sidebar-menu-themes {
-							    	border-top: 1px solid;
-							    	border-bottom: 1px solid;
+					&.themes {
+						& ul {
+							display: flex;
+							align-items: center;
+							padding: 0 2px;
 
-							    	& a {
-							    		display: flex;
-							    		align-items: center;
-							    		justify-content: center;
-									    padding: 10px 4px;
-									    box-sizing: border-box;
+							& li {
+				    			&.theme {
+				    				margin-left: 5px;
+				    				margin-right: 5px;
 
-							    		& span {
-								    		position: relative;
-								    		display: flex;
-								    		align-items: center;
-								    		justify-content: center;
-								    	}
-							    	}
-							    }
+				    				& a {
+				    					display: flex;
+				    					align-items: center;
+				    					justify-content: center;
+					    				width: 34px;
+					    				height: 34px;
+					    				border-radius: 50%;
+				    					border-width: 2px;
+				    					border-style: solid;
+				    					border-color: transparent;
 
-		    				}
+					    				&::before {
+					    					display: block;
+					    					width: 24px;
+					    					height: 24px;
+					    					box-sizing: border-box;
+					    					border-radius: 50%;
+					    					content: "";
+					    				}
+				    				}
+				    			}		    						
+							}
+						}
+					}
+
+					&.dark-mode {
+						& ul {
+							& li {
+		    					& a span {
+			    					&::before {
+										display: block;
+										margin-left: 7px;
+										margin-right: 7px;
+										width: 18px;
+										height: 16px;
+										box-sizing: border-box;
+										border-radius: 2px;
+										content: "";
+									}
+		    					}
+
+		    					&.light {
+		    						& a span::before {
+			    						border-width: 1px;
+			    						border-style: solid;
+									}
+		    					}
+
+		    					&.auto {
+		    						& a span {
+		    							position: relative;
+		    						}
+
+		    						& a span::before {
+		    							border-width: 1px;
+		    							border-style: solid;
+		    						}
+
+		    						& a span .dark-marker {
+			    						position: absolute;
+			    						left: 7px;
+			    						width: 18px;
+			    						height: 16px;
+			    						border-radius: 2px;
+			    						overflow: hidden;
+
+			    						&::after {
+			    							position: absolute;
+		    								left: 0;
+		    								bottom: 0;
+		    								height: 0;
+		    								border: 0;
+		    								border-bottom-width: 16px;
+		    								border-bottom-style: solid;
+		    								border-left-width: 18px;
+		    								border-left-style: solid;
+		    								content: "";
+										}
+		    						}
+		    					}
+							}
+						}
+					}
+	    		}
+
+    			&.bottom-menu {
+    				padding-bottom: 2px;
+
+		    		& ul {
+		    			& li {
+							&.settings,
+							&.logout {
+								display: inline-flex;
+								justify-content: center;
+								width: 50%;
+								box-sizing: border-box;
+
+								& a {
+									flex-grow: 1;
+									display: flex;
+						    		align-items: center;
+						    		justify-content: center;
+									padding: 4px;
+								}
+							}
+
+							&.settings {
+								&::after {
+									width: 1px;
+									content: "";
+								}
+							}
 		    			}
 		    		}
-		    	}
-		    }
-	    }
-
-		&.menu-tooltip-arrow-left,
-		&.menu-tooltip-arrow-right {
-			&::before {
-				bottom: 20px;			
-			}
-
-			&::after {
-				bottom: 19px;			
-			}
-		} 
+    			}
+    		}
+    	}
 	}
-
-	&.show-display-options {
-		& .light-menu {
-			& > div {
-				& .sidebar-settings-menus-wrapper {
-					left: -248px;
-				}			
-			}
-		}
-	}
-
 }
 // END Sidebar
 
@@ -3283,7 +3322,7 @@ body.axi-more-content {
 
 	.x-axi-tree-sidebar-menu {
 		& .light-menu {
-		    margin-bottom: 5px;
+		    bottom: 5px;
 		}
 	}
 
@@ -3436,42 +3475,6 @@ body.axi-more-content {
  *  Language specific tweaks
  */
 body.lang-en {
-	& .x-axi-tree-sidebar-menu {
-		max-width: 200px;
-
-		& .light-menu {
-			width: 200px;
-
-			& > div {
-			    & .sidebar-settings-menus-wrapper {
-			    	& .sidebar-settings-menu-wrapper {
-			    		& > div {
-			    			max-width: 170px;
-			    		}
-			    	}
-			    }
-			}
-		}
-
-		&.show-display-options {
-			& .light-menu {
-				& > div {
-					& .sidebar-settings-menus-wrapper {
-				    	left: -200px;
-
-				    	& > .quota-bar-ct {
-				    		& + div {
-				    			& .quota-info {
-				    				max-width: 150px;
-				    			}
-				    		}
-				    	}
-				    }
-				}
-			}
-		}
-	}
-
 	// Make text uppercase for some of the buttons
 	.x-date-picker .x-date-bottom a,
 	.x-date-mp-btns td button,

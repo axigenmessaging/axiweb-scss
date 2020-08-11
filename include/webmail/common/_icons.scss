@@ -136,7 +136,8 @@
 .x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.fw-read .x-grid3-col-checker::before, 
 .x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.fw-unread .x-grid3-col-checker::before,
 .x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.refw-read .x-grid3-col-checker::before, 
-.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.refw-unread .x-grid3-col-checker::before {
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.refw-unread .x-grid3-col-checker::before,
+.x-html-editor-tb .x-btn.x-edit-more .x-btn-text::before {
     font-family: "axigen-toolbar-icons" !important;
     font-style: normal !important;
     font-weight: normal !important;
@@ -167,9 +168,9 @@
 .x-axi-button-big-rounding.edit-button .x-btn-text::before,
 .x-axi-button-big-rounding.delete-button .x-btn-text::before,
 .x-axi-tree-sidebar-menu-display a::before,
-.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper.sidebar-display-menu-wrapper .readingpane-right a span::before,
-.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper.sidebar-display-menu-wrapper .readingpane-bottom a span::before,
-.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper.sidebar-display-menu-wrapper .readingpane-none a span::before,
+.x-axi-tree-sidebar-menu .sidebar-menu-wrapper .display-options .readingpane-right a span::before,
+.x-axi-tree-sidebar-menu .sidebar-menu-wrapper .display-options .readingpane-bottom a span::before,
+.x-axi-tree-sidebar-menu .sidebar-menu-wrapper .display-options .readingpane-none a span::before,
 .x-tab-strip .x-tab-strip-closable a.x-tab-strip-close::before,
 .x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-axi-tab-panel-header-tools li .reminder-count::after,
 .x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-normal-tab::before,
@@ -177,7 +178,7 @@
 .mail-compose-toolbar .x-btn-text.add-attachment-icon::before,
 %close-icon,
 %tooltip-icon::before,
-.x-axi-view-body .x-axi-toolbar .x-axi-search-input-container .x-axi-reset-search-button .x-btn-text::after,
+.x-axi-search-input-container .x-axi-reset-search-button .x-btn-text::after,
 .x-axi-composer.x-axi-calendar-composer .x-axi-collapsable-title-panel-body .x-axi-attendees-row .x-axi-calendar-composer-attendees-container .x-axi-info-tooltip-panel .x-panel-body::before,
 .x-axi-button-plus .x-btn-text::before,
 .x-axi-button-minus .x-btn-text::before,
@@ -225,9 +226,33 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.x-axi-tree-sidebar-menu-display a span::before,
-.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper.sidebar-display-menu-wrapper .readingpane-right a span::before,
-.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper.sidebar-display-menu-wrapper .readingpane-bottom a span::before,
-.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper.sidebar-display-menu-wrapper .readingpane-none a span::before {
+.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper .display-options .readingpane-right a span::before,
+.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper .display-options .readingpane-bottom a span::before,
+.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper .display-options .readingpane-none a span::before {
     line-height: 16px;
+}
+
+//******************************************************************************
+//* Emoji icons
+//*
+@font-face {
+    font-family: "axigen-emoji";
+    src: url("/fonts/axigen-emoji.woff2") format("woff2"), 
+         url("/fonts/axigen-emoji.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.x-html-editor-tb .x-btn .x-btn-text::before,
+.x-axi-emoji-menu .x-menu.light-menu .emoji-group-links-container span::before {
+    font-family: "axigen-emoji" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 32px !important;
 }

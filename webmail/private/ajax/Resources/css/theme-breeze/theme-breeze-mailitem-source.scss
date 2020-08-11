@@ -12,12 +12,24 @@
 @import "../../../../../../include/webmail/theme-breeze/stubs";
 
 
+@at-root body.dark {
+	color: $dark-mode-text-contrast-color;
+}
+
 .x-axi-sourcetab-iframe-trailing-dots {
 	border-color: $inner-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-inner-border-color;
+	}
 }
 
 .x-axi-sourcetab-iframe-message {
 	color: $text-main-color;
+
+	@at-root body.dark & {
+		color: $dark-mode-text-main-color;
+	}
 }
 
 .x-axi-sourcetab-iframe-download-eml {

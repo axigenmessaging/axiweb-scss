@@ -1,0 +1,71 @@
+// Combo
+// Styled separately as it's used 
+// by the HTML Editor as well
+
+.x-combo-list {
+    padding-top: 2px;
+    background: none;
+    border: none;
+
+    & .x-combo-list-inner {
+        max-width: calc(100% - 2px);
+        border: 1px solid;
+        border-radius: 2px;
+        overflow: auto;
+    }
+}
+
+.x-form-field-wrap {
+    display: flex;
+    align-items: center;
+
+    & .x-form-field {
+        padding: 4px 0 4px 6px;
+        border-right-width: 0;
+        border-radius: 2px 0 0 2px; 
+    }
+
+    & .x-form-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 8px 3px;
+        background: none;
+        border-bottom: none;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-left-width: 0;
+        border-left-style: solid;
+        border-radius: 0 2px 2px 0;
+
+        &::before {
+            font-size: 0;
+            line-height: 0;
+            border-top-width: 6px;
+            border-top-style: solid;
+            border-right-width: 4px;
+            border-right-style: solid;
+            border-left-width: 4px;
+            border-left-style: solid;
+            transition: border-color .2s ease-in-out;
+            content: "";
+        }
+    }   
+}
+
+.x-combo-list {
+    & .x-combo-selected {
+        border: none !important;
+    }
+}
+
+.x-combo-list-item {
+    padding: 4px 6px;
+    border: none;
+    @include font-body-text(13px, 400);
+    cursor: pointer;
+}

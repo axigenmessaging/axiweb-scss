@@ -16,7 +16,7 @@ $inner-border-color: #ededed;
 $text-main-color: #51514f;
 $text-contrast-color: #000;
 $theme-main-lighter-color: #757e80;
-$theme-light-mode-background-color: #fff;
+$theme-background-color: #fff;
 
 //******************************************************************************
 //* Ext overrides
@@ -30,7 +30,7 @@ $highlight-button-border-color: $theme-secondary-color;
 $highlight-button-text-color: #fff;
 
 // Loader
-$loader-background-color: $theme-light-mode-background-color;
+$loader-background-color: $theme-background-color;
 $loader-text-color: $text-main-color;
 
 // Preloader
@@ -42,7 +42,7 @@ $preloader-progressbar-background-color: $theme-main-color;
 $preloader-percent-text-color: $preloader-subtitle-text-color;
 
 // Tabs
-$tab-background-color: $theme-light-mode-background-color;
+$tab-background-color: $theme-background-color;
 $tab-text-color: $theme-main-lighter-color;
 $tab-active-text-color: $text-contrast-color;
 $tab-icon-color: rgba($text-contrast-color, .3);
@@ -72,7 +72,7 @@ $input-focus-placeholder-text-color: rgba($tab-text-color, .5);
 $combo-border-color: #dae2e6;
 $combo-focus-border-color: $theme-main-color;
 $combo-focus-text-color: $theme-main-color;
-$combo-list-background-color: $theme-light-mode-background-color;
+$combo-list-background-color: $theme-background-color;
 $combo-list-border-color: $combo-border-color;
 $combo-arrow-trigger-border-color: rgba($theme-main-lighter-color, .5);
 $combo-focus-arrow-trigger-border-color: $theme-main-color;
@@ -143,7 +143,7 @@ $window-panel-header-text-color: $window-text-color;
 
 // Menu
 $menu-border-color: #dae2e6;
-$menu-background-color: $theme-light-mode-background-color;
+$menu-background-color: $theme-background-color;
 $menu-title-color: $text-contrast-color;
 $menu-item-hover-text-color: #fff;
 
@@ -153,6 +153,11 @@ $toolbar-button-pressed-background-color: rgba($theme-main-color, .15);
 // Drag and drop ghost
 $dd-drop-ok-icon-color: #50a93c;
 $dd-drop-nodrop-icon-color: #d56c5d;
+
+// HTML Editor
+$html-editor-emoji-groups-text-color: rgba($text-main-color, .6);
+$html-editor-emoji-links-icon-color: rgba($text-main-color, .6);
+$html-editor-emoji-links-active-icon-color: $text-contrast-color;
 
 
 //******************************************************************************
@@ -273,6 +278,15 @@ $logo-border-color: rgba(#fff, .2);
 $sidebar-icon-color: rgba(#fff, .4);
 $sidebar-icon-hover-color: rgba(#fff, .7);
 $sidebar-icon-selected-color: rgba(#fff, .7);
+
+// Sidebar menu
+$theme-ocean-color: #4f8fe2;
+$theme-breeze-color: #4c8ea6;
+$theme-neutral-color: #7e898c;
+$dark-mode-light-background-color: #fff;
+$dark-mode-light-border-color: #dae2e6;
+$dark-mode-dark-background-color: $sidebar-background-color;
+$dark-mode-dark-border-color: $sidebar-background-color;
 
 // Folder tree or grid
 $folder-tree-background-color: #f5f5f5;
@@ -441,7 +455,7 @@ $calendar-colors: (
 $calendar-cell-non-working-day-background-color: rgba(#f5f5f5, .7);
 $calendar-cell-selected-background-color: $list-not-focused-row-selected-background-color;
 $calendar-event-description-text-color: #fff;
-$calendar-event-attendees-icon-color: $text-contrast-color;
+$calendar-event-attendees-icon-color: #000;
 $calendar-event-recurrence-icon-color: $calendar-event-attendees-icon-color;
 $calendar-event-tentative-border-color: #fff;
 
@@ -502,13 +516,5 @@ $window-folder-tree-node-icon-text-color: rgba($window-text-color, .2);
 $window-folder-tree-node-selected-background-color: transparent;
 $window-folder-tree-node-selected-text-color: $theme-main-color;
 $window-folder-tree-node-selected-icon-text-color: rgba($theme-main-color, .6);
-
-// Theme change window
-$window-theme-change-theme-ocean-color: rgba(#4f8fe2, .9);
-$window-theme-change-theme-breeze-color: rgba(#4c8ea6, .9);
-$window-theme-change-theme-neutral-color: rgba(#7e898c, .9);
-$window-theme-change-theme-ocean-hover-color: #4f8fe2;
-$window-theme-change-theme-breeze-hover-color: #4c8ea6;
-$window-theme-change-theme-neutral-hover-color: #7e898c;
 // END Windows
 // END Main

@@ -201,6 +201,21 @@ body.rtl {
 	    }
 	}
 
+	// Button with menu
+	.x-btn-with-menu .x-btn-center {
+		padding-right: 0 !important;
+		padding-left: 2px;
+
+		@at-root body.rtl .x-toolbar .x-btn-with-menu .x-btn-center em {
+			background-position: -3px 0;
+		}
+
+		& em {
+			padding-right: 0;
+			padding-left: 8px;
+		}
+	}
+
 	// Tree
 	.x-tree-node {
 	    & .x-tree-node-el {
@@ -290,6 +305,29 @@ body.rtl {
 	        &.ext-safari .x-html-editor-tb .x-toolbar .x-form-text,
 	        &.ext-chrome .x-html-editor-tb .x-toolbar .x-form-text {
 	            @extend %font-combo;
+	        }
+	    }
+
+	    // Buttons
+	    & .x-btn {
+	        &.x-edit-more {
+	            & em {
+	            	padding: 0;
+	            }
+
+	            @at-root body.rtl .x-edit-more-menu {
+	            	& .x-menu-list {
+	            		& .x-menu-list-item {
+	            			& .x-menu-item {
+	                            &.x-menu-item-arrow {
+	                                margin-right: 0;
+	                                margin-left: 7px;
+	                                background-position-x: -3px;
+	                            }
+	            			}
+	            		}
+	            	}
+	            }
 	        }
 	    }
 	}
@@ -602,33 +640,24 @@ body.rtl {
 
 	.x-axi-tree-sidebar-menu {
 		& .light-menu {
-		    & > div {
-			    & .sidebar-settings-menus-wrapper {
-			    	left: auto;
-			    	right: 0;
-			    }
-			}
-		}
+			text-align: right;
 
-		&.show-display-options {
-			& .light-menu {
-			    & > div {
-				    & .sidebar-settings-menus-wrapper {
-				    	right: -250px;
-
-				    	& .sidebar-settings-menu-wrapper {
-				    		&.sidebar-display-menu-wrapper {
-				    			& .title {
-				    				& span {
-				    					&::after {
-				    						margin-left: auto;
-				    						margin-right: 10px;
-				    					}
-				    				}
-				    			}
-				    		}
-				    	}
-				    }
+			& .sidebar-menu-wrapper {
+				& .section {
+					&.display-options {
+						&.dark-mode {
+							& ul {
+								& li {
+									&.auto {
+										& a span .dark-marker {
+											left: auto;
+											right: 7px;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}

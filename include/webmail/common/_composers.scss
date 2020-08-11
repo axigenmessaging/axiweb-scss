@@ -329,18 +329,6 @@
                 box-sizing: border-box;
                 border-bottom: 1px solid;            
             }
-
-            // HTML Editor toolbar
-            & .x-html-editor-tb {
-                & .x-toolbar {
-                    padding: 0;
-                    border: none;
-
-                    & .ytb-sep {
-                        height: 33px;
-                    }
-                }
-            }
         }
     }
     // END Mail Composer

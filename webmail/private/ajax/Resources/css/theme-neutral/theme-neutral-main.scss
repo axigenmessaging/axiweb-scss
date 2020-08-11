@@ -176,51 +176,7 @@ textarea.x-form-field {
 }
 
 // Combo
-.x-form-field-wrap {
-	& .x-form-field {
-		border-color: $combo-border-color;
-	    transition: border-color .2s ease-in-out, color .2s ease-in-out;
-	}
-
-	& .x-form-trigger {
-		border-color: $combo-border-color;
-	    transition: border-color .2s ease-in-out;
-
-		&::before {
-		    border-top-color: $combo-arrow-trigger-border-color;
-		    border-right-color: transparent;
-		    border-left-color: transparent;
-		}
-	}
-
-	&.x-trigger-wrap-focus {
-		& .x-form-field {
-			border-color: $combo-focus-border-color;
-			color: $combo-focus-text-color;
-		}
-
-		& .x-form-trigger {
-			border-color: $combo-focus-border-color;
-
-			&::before {
-				border-top-color: $combo-focus-border-color;
-			}
-		}
-	}
-}
-
-.x-combo-list {
-	& .x-combo-list-inner {
-		background-color: $combo-list-background-color;
-		border-color: $combo-list-border-color;		
-
-		& .x-combo-selected,
-		& .x-axi-item-selected { /// Axi extension
-			background: $combo-list-selected-background-color;
-			color: $combo-list-selected-text-color;
-		}
-	}
-}
+@import "../../../../../../include/webmail/theme-neutral/ext-overrides-combo-list";
 
 // Radio
 .x-form-radio-wrap {
@@ -938,6 +894,39 @@ td.x-date-mp-sel a:hover {
 .x-html-editor-wrap {
     & .x-html-editor-tb {
 		border-color: $inner-border-color;
+
+	    // Buttons
+	    & .x-btn {
+	        // Specific buttons
+	        &.x-edit-emoji .x-btn-text {
+	            @at-root .x-axi-emoji-menu {
+	                & .x-menu.light-menu {
+	                	& .emoji-container {
+	                		& .group {
+	                			& .name {
+	                				color: $html-editor-emoji-groups-text-color;
+	                			}
+	                		}
+	                	}
+	                    & .emoji-group-links-container {
+	                    	border-top-color: $inner-border-color;
+
+	                    	& span {	                    		
+		                    	&::before {
+		                    		color: $html-editor-emoji-links-icon-color;
+		                    	}
+
+	                    		&.x-axi-active {
+	                    			&::before {
+	                    				color: $html-editor-emoji-links-active-icon-color;
+	                    			}	
+	                    		}
+		                    }
+	                    }
+	                }
+	            }
+	        }
+	    }
     }
 }
 
@@ -1098,6 +1087,7 @@ td.x-date-mp-sel a:hover {
 	border-color: $search-input-border-color;
 
 	// Focus
+	&:focus,
 	&.x-form-focus {
 		border-color: $search-input-focus-border-color;
 	}
@@ -1720,7 +1710,7 @@ td.x-date-mp-sel a:hover {
 
     & .x-axi-attachments-view-all-container {
         & .x-axi-attachments-view-all-white-bg {
-        	background-color: $theme-light-mode-background-color;
+        	background-color: $theme-background-color;
 
             & .x-axi-attachments-view-all-button {
                 @extend %button-small-rounding;
@@ -1736,14 +1726,14 @@ td.x-date-mp-sel a:hover {
 
 // START Attachments drag-and-drop
 .x-axi-upload-dd-container {
-    background-color: rgba($theme-light-mode-background-color, .9);
+    background-color: rgba($theme-background-color, .9);
 
     @supports (backdrop-filter: blur(2px)) {
-	    background-color: rgba($theme-light-mode-background-color, .7);
+	    background-color: rgba($theme-background-color, .7);
     }
 
     @supports (-webkit-backdrop-filter: blur(2px)) {
-	    background-color: rgba($theme-light-mode-background-color, .7);
+	    background-color: rgba($theme-background-color, .7);
     }
 
     & .x-axi-upload-dd-area {
@@ -1930,48 +1920,41 @@ td.x-date-mp-sel a:hover {
 
 .x-axi-tree-sidebar-menu {
 	& .light-menu {
-	    & > div {
-		    & .sidebar-settings-menus-wrapper {
-		    	& .sidebar-settings-menu-wrapper {
-		    		& > div {
-			    		& .name {
-			    			color: $menu-title-color;
+    	& .sidebar-menu-wrapper {
+    		& .section {
+    			border-color: $inner-border-color;
 
-			    			&:empty {
-			    				& + .email {
-									color: $menu-title-color;
-			    				}
-			    			}
-			    		}
+				& .title {
+					color: $menu-title-color;
+				}
 
-			    		& ul {
-			    			& li {
-								&.x-axi-tree-sidebar-menu-display {
-									border-top-color: $inner-border-color;
-									border-bottom-color: $inner-border-color;
-								}
+				&.account {
+		    		& .name {
+		    			color: $menu-title-color;
 
-								&.x-axi-tree-sidebar-menu-settings {
-									&::after {
-										background-color: $inner-border-color;										
-									}
-								}
-			    			}
-			    		}
-			    	}
-
-		    		&.sidebar-display-menu-wrapper {
-		    			& .title {
-		    				& span {
-		    					color: $menu-title-color;
-
-		    					&::after {
-		    						background-color: $inner-border-color;
-		    					}
+		    			&:empty {
+		    				& + .email {
+								color: $menu-title-color;
 		    				}
 		    			}
+		    		}
+				}
 
-		    			& ul {
+	    		&.display-options {
+	    			& ul {
+	    				& li {
+			    			&.axi-active {
+			    				& a {
+			    					&::before {
+			    						background-color: $theme-main-color;
+			    					}
+			    				}
+			    			}
+	    				}
+	    			}
+	    			
+	    			&.display-density {
+	    				& ul {
 		    				& li {
 		    					&.more-space {
 			    					& a {
@@ -1999,25 +1982,94 @@ td.x-date-mp-sel a:hover {
 			    						}
 			    					}
 			    				}
-
-							    &.x-axi-tree-sidebar-menu-themes {
-									border-top-color: $inner-border-color;
-									border-bottom-color: $inner-border-color;
-							    }
-
-				    			&.axi-active {
-				    				& a {
-				    					&::before {
-				    						background-color: $theme-main-color;
-				    					}
-				    				}
-				    			}
 		    				}
 		    			}
 		    		}
-		    	}
-	    	}
-		}
+
+					&.themes {
+						& ul {
+			    			& li {
+			    				&.ocean {
+			    					& a::before {
+			    						background-color: $theme-ocean-color;
+			    					}
+			    				}
+			    				
+			    				&.breeze {
+			    					& a::before {
+			    						background-color: $theme-breeze-color;
+			    					}
+			    				}
+
+			    				&.neutral {
+			    					& a::before {
+			    						background-color: $theme-neutral-color;
+			    					}				    					
+			    				}
+
+			    				&.axi-active {
+			    					&.ocean a {
+			    						border-color: $theme-ocean-color;
+			    					}
+
+			    					&.breeze a {
+			    						border-color: $theme-breeze-color;
+			    					}
+
+			    					&.neutral a {
+			    						border-color: $theme-neutral-color;
+			    					}
+			    				}
+			    			}
+						}
+					}
+
+	    			&.dark-mode {
+	    				& ul {
+		    				& li {
+		    					&.light {
+		    						& a span::before {
+			    						background-color: $dark-mode-light-background-color;
+			    						border-color: $dark-mode-light-border-color;
+		    						}
+		    					}
+
+		    					&.auto {
+		    						& a span::before {
+			    						background-color: $dark-mode-light-background-color;
+			    						border-color: $dark-mode-light-border-color;
+		    						}
+
+		    						& a span .dark-marker::after {
+			    						border-left-color: transparent;
+			    						border-bottom-color: $dark-mode-dark-background-color;
+		    						}
+		    					}
+
+		    					&.dark {
+		    						& a span::before {
+			    						background-color: $dark-mode-dark-background-color;
+			    						border-color: $dark-mode-dark-border-color;
+		    						}
+		    					}
+		    				}
+	    				}
+	    			}
+	    		}
+
+	    		&.bottom-menu {
+		    		& ul {
+		    			& li {
+							&.settings {
+								&::after {
+									background-color: $inner-border-color;										
+								}
+							}
+		    			}
+		    		}
+	    		}
+    		}
+    	}
 	}
 }
 // END Sidebar
@@ -2793,7 +2845,7 @@ td.x-date-mp-sel a:hover {
 							border-color: $attachments-tab-attachment-border-color;
 
 							&::after {
-							    border-color: $theme-light-mode-background-color $theme-light-mode-background-color $attachments-tab-attachment-corner-background-color $attachments-tab-attachment-corner-background-color;
+							    border-color: $theme-background-color $theme-background-color $attachments-tab-attachment-corner-background-color $attachments-tab-attachment-corner-background-color;
 							}
 
 							& .x-axi-attachment-body {
@@ -2874,7 +2926,7 @@ td.x-date-mp-sel a:hover {
 
 	& .x-axi-calendar-timebar-day {
 		background-color: $theme-main-color;
-		border-color: $theme-light-mode-background-color;
+		border-color: $theme-background-color;
 	}
 
 	// Attendees icon
@@ -2926,7 +2978,7 @@ td.x-date-mp-sel a:hover {
 			}
 
 			&.x-grid3-cell-first {
-				background-color: $theme-light-mode-background-color;
+				background-color: $theme-background-color;
 			}
 		}
 
@@ -2950,7 +3002,7 @@ td.x-date-mp-sel a:hover {
 	}
 
 	& .x-axi-calendar-timeline-cell {
-	    background-color: $theme-light-mode-background-color;
+	    background-color: $theme-background-color;
 
 	    & span {
 	    	color: $theme-main-lighter-color;
@@ -3122,7 +3174,7 @@ td.x-date-mp-sel a:hover {
 
 						&::after {
 						    background-color: $theme-main-color;
-						    border-color: $theme-light-mode-background-color;
+						    border-color: $theme-background-color;
 						}
 					}
 				}
@@ -3205,7 +3257,7 @@ td.x-date-mp-sel a:hover {
 						& .x-axi-tasks-quickedit {
 							& .x-axi-textfield,
 							& .x-form-trigger {
-								background-color: $theme-light-mode-background-color;
+								background-color: $theme-background-color;
 							}							
 						}
 					}
@@ -3817,7 +3869,7 @@ td.x-date-mp-sel a:hover {
 	        	background-color: $notes-composer-body-background-color;
 
 	        	& .x-html-editor-tb {
-	        		background-color: $theme-light-mode-background-color;
+	        		background-color: $theme-background-color;
 	        	}
         	}
         }
@@ -4270,92 +4322,6 @@ td.x-date-mp-sel a:hover {
         }
 	}
     // END Settings window
-
-    // START Theme Change Window
-    &.x-axi-theme-change-window {
-        & .x-axi-theme-change-fieldset {
-            & .x-fieldset-bwrap {
-                & .x-fieldset-body {
-                    & .x-axi-theme-button {
-                        & .x-btn-center {
-                        	button {
-                        		color: $window-contrast-color;
-                        	}
-                        }
-
-                        &.theme-button-Ocean {
-                            background: url(../../images/common/themes/theme-ocean-thumb.png) left top no-repeat;
-
-                            & .x-btn-center {
-    	                        & em {
-		                            & button {
-		                            	background-color: $window-theme-change-theme-ocean-color;
-		                            }
-		                        }
-		                    }
-                        }
-
-                        &.theme-button-Breeze {
-                            background: url(../../images/common/themes/theme-breeze-thumb.png) left top no-repeat;
-
-                            & .x-btn-center {
-	                            & em {
-		                            & button {
-		                            	background-color: $window-theme-change-theme-breeze-color;
-		                            }
-		                        }
-		                    }
-                        }
-
-                        &.theme-button-Neutral {
-                            background: url(../../images/common/themes/theme-neutral-thumb.png) left top no-repeat;
-
-                            & .x-btn-center {
-	                            & em {
-		                            & button {
-		                            	background-color: $window-theme-change-theme-neutral-color;
-		                            }
-		                        }
-		                    }
-                        }
-
-                        &.x-btn-over {
-                        	&.theme-button-Ocean {
-	                            & .x-btn-center {
-	    	                        & em {
-			                            & button {
-			                        		background-color: $window-theme-change-theme-ocean-hover-color;
-			                        	}
-			                        }
-			                    }
-                        	}
-
-                        	&.theme-button-Breeze {
-	                            & .x-btn-center {
-	    	                        & em {
-			                            & button {
-			                        		background-color: $window-theme-change-theme-breeze-hover-color;
-			                        	}
-			                        }
-			                    }
-                        	}
-
-                        	&.theme-button-Neutral {
-	                            & .x-btn-center {
-	    	                        & em {
-			                            & button {
-			                        		background-color: $window-theme-change-theme-neutral-hover-color;
-			                        	}
-			                        }
-			                    }
-                        	}
-                        }
-                    }
-                }
-            }
-        }
-    }
-    // END Theme Change Window
 
     // START Address Book window(s)
     &.x-axi-addressbook-window {

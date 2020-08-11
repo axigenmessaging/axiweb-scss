@@ -14,6 +14,11 @@
 	background-color: $outline-button-background-color;
 	border-color: $outline-button-border-color;
 	color: $outline-button-text-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-outline-button-border-color;
+		color: $dark-mode-outline-button-text-color;
+	}
 }
 
 %outline-button-hover {

@@ -12,16 +12,28 @@
 @import "../../../../../../include/webmail/theme-breeze/stubs";
 
 
+@at-root body.dark {
+	color: $dark-mode-text-contrast-color;
+}
+
 a {
 	color: $theme-main-color;
 }
 
 .x-axi-messagetab-iframe-trailing-dots {
 	border-color: $inner-border-color;
+
+	@at-root body.dark & {
+		border-color: $dark-mode-inner-border-color;
+	}
 }
 
 .x-axi-messagetab-iframe-message {
 	color: $text-main-color;
+
+	@at-root body.dark & {
+		color: $dark-mode-text-main-color;
+	}
 }
 
 .x-axi-messagetab-iframe-download-eml {
@@ -30,3 +42,27 @@ a {
 		text-decoration: none;
 	}
 }
+
+// Combo
+@import "../../../../../../include/webmail/theme-breeze/ext-overrides-combo-list";
+
+.mention-combo-list {
+	& .x-combo-list-item {
+		& * {
+			color: $text-main-color;
+
+			@at-root body.dark & {
+				color: $dark-mode-text-main-color;
+			}
+		}
+	}
+
+	& .x-combo-list-inner {
+		& .x-combo-selected,
+		& .x-axi-item-selected {	/// Axi extension 
+			& * {
+				color: $combo-list-selected-text-color;
+			}
+		}
+	}
+} 

@@ -1,14 +1,17 @@
-$scrollbar-track-color: transparent;        /// The background of the scrollbar
-$scrollbar-thumb-color: #808080;            /// The moving part of the scrollbar
+$scrollbar-track-color: transparent;                        /// The background of the scrollbar
+$scrollbar-thumb-color: #808080;                            /// The moving part of the scrollbar
+    $dark-mode-scrollbar-thumb-color: #666;                 /// The moving part of the scrollbar
 $scrollbar-thumb-hover-color: #4c4c4c;
+    $dark-mode-scrollbar-thumb-hover-color: #999;
 $window-scrollbar-thumb-cover-color: #ccc;
+    $dark-mode-window-scrollbar-thumb-cover-color: #4d4d4d;
 
 /**
  * Custom scrollbar (based on browser support)
  */
 
 /* Chrome and Safari */
-* {
+body * {
     &::-webkit-scrollbar {
         position: absolute;
         width: 8px;
@@ -25,10 +28,10 @@ $window-scrollbar-thumb-cover-color: #ccc;
         border: 2px solid transparent;
         border-radius: 4px;
         -webkit-background-clip: content;
-    }
 
-    &::-webkit-scrollbar-thumb:hover {
-        background-color: $scrollbar-thumb-hover-color;
+        &:hover {
+            background-color: $scrollbar-thumb-hover-color;
+        }
     }
 
     @at-root .x-axi-window *::-webkit-scrollbar-thumb:hover {
@@ -36,8 +39,26 @@ $window-scrollbar-thumb-cover-color: #ccc;
     }
 }
 
+@at-root body.dark * {
+    &::-webkit-scrollbar-thumb {
+        background-color: $dark-mode-scrollbar-thumb-color;
+
+        &:hover {
+            background-color: $dark-mode-scrollbar-thumb-hover-color;
+        }
+    }
+
+    @at-root body.dark .x-axi-window *::-webkit-scrollbar-thumb:hover {
+        background-color: $dark-mode-window-scrollbar-thumb-cover-color;
+    }
+}
+
 /* Firefox (64+) */
-* {
+body * {
     scrollbar-width: thin;
     scrollbar-color: $scrollbar-thumb-color transparent;
+}
+
+@at-root body.dark * {
+    scrollbar-color: $dark-mode-scrollbar-thumb-color transparent;
 }

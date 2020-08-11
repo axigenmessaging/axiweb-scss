@@ -44,8 +44,16 @@ body.theme-breeze {
             & .wrapp {
                 background-color: $loader-background-color;
 
+                @at-root body.dark & {
+                    background-color: $dark-mode-loader-background-color;
+                }
+            
                 & .msg-text {
                     color: $loader-text-color;
+
+                    @at-root body.dark & {
+                        color: $dark-mode-loader-text-color;                        
+                    }
                 }
             }
         }
