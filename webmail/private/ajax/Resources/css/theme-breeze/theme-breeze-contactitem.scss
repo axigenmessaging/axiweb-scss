@@ -1,0 +1,33 @@
+/**
+ * @fileOverview The WebMail note item theme specific style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-breeze/variables";
+
+@at-root html.dark {
+	color: $dark-mode-text-contrast-color;
+}
+
+@media only screen {
+	@at-root html.dark body.print-page {
+		background-color: $dark-mode-theme-background-color;
+	}
+}
+
+a {
+	color: $theme-main-color;
+}
+
+hr {
+	border-color: $composers-html-elements-hr-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-composers-html-elements-hr-border-color;
+	}
+}

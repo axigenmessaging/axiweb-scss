@@ -1,0 +1,2656 @@
+// START Blur mask
+.x-axi-blur-mask,
+.x-body-masked #IDRegionWest,
+.x-body-masked #IDRegionNorth,
+.x-body-masked .x-axi-view,
+.x-body-masked .x-axi-reminders-menu {
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+// END Blur mask
+
+// START Axi loading mask
+.x-axi-loading-mask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    & .top-mask {
+        top: 14px !important;
+    }
+}
+// END Axi loading mask
+
+// START Axi rounded button
+.x-axi-button-small-rounding,
+.ext-gecko .x-axi-button-small-rounding {   /// Firefox
+    .x-btn-text {
+        @extend %button-small-rounding;
+    }
+
+    &.x-item-disabled,
+    & > .x-btn-wrap.x-item-disabled {
+        @extend %button-small-rounding-disabled;
+    }
+
+    &.x-axi-details-button {
+        & .x-btn-text {
+            width: 30px;
+            padding: 0 9px;
+        }
+
+        &.x-axi-details-button-in-field {
+            & .x-btn-text {
+                @extend %small-circle-button;
+                line-height: 20px;
+                padding: 0 5px;
+            }            
+        }
+    }
+}
+
+.x-axi-button-big-rounding,
+.ext-gecko .x-axi-button-big-rounding {     /// Firefox  
+    & .x-btn-text {
+        @extend %button-big-rounding;
+    }
+
+    &.x-item-disabled,
+    & > .x-btn-wrap.x-item-disabled {
+        @extend %button-big-rounding-disabled;
+    }
+
+    &.x-axi-details-button {
+        & .x-btn-text {
+            width: 30px;
+            padding: 0 9px;
+        }
+
+        &.x-axi-details-button-in-field {
+            & .x-btn-text {
+                @extend %small-circle-button;
+                line-height: 20px;
+                padding: 0 5px;
+            }            
+        }
+    }
+
+    &.x-axi-circle-button {
+        & .x-btn-text {
+            @extend %circle-button;
+        }
+    }
+
+    &.edit-button {
+        .x-btn-text {
+            &::before {
+                position: relative;
+                top: -2px;
+                font-size: 32px;
+                content: "\e037";
+                text-indent: 2px;
+
+                .ext-chrome.ext-mac & {  /// Chrome on macOS
+                    top: 0;
+                }
+
+                .ext-gecko10plus & {     /// Firefox
+                }
+
+                .ext-safari & {          /// Safari
+                    top: 0;
+                }
+
+                .ext-msedgium & {        /// MS Edge (Chromium based)
+                }
+            }
+        }
+    }
+
+    &.delete-button {
+        & .x-btn-text {
+            &::before {
+                position: relative;
+                top: -2px;
+                font-size: 32px;
+                content: "\e036";
+                text-indent: 3px;
+
+                .ext-chrome.ext-mac & {  /// Chrome on macOS
+                    top: 1px;
+                }
+
+                .ext-gecko10plus & {     /// Firefox
+                }
+
+                .ext-safari & {          /// Safari
+                    top: 1px;
+                }
+
+                .ext-msedgium & {        /// MS Edge (Chromium based)
+                }
+            }
+        }
+    }
+
+    &.x-axi-button-plus {
+        & .x-btn-text {
+            padding-left: 5px;
+
+            &::before {
+                position: relative;
+                top: -1px;
+                width: 28px;
+
+                .ext-chrome.ext-mac & {  /// Chrome on macOS
+                    top: 1px;
+                }
+
+                .ext-gecko10plus & {     /// Firefox
+                }
+
+                .ext-safari & {          /// Safari
+                    top: 1px;
+                }
+
+                .ext-msedgium & {        /// MS Edge (Chromium based)
+                }
+            }
+        }
+    }
+}
+// END Axi rounded button
+
+// START Axi plus / minus buttons
+.x-axi-button-plus {
+    & .x-btn-text {
+        position: relative;
+
+        &::before {
+            font-size: 32px;
+            content: "\e020";
+        }
+    }
+}
+
+.x-axi-button-minus {
+    & .x-btn-text {
+        position: relative;
+
+        &::before {
+            font-size: 32px;
+            content: "\e042";
+        }
+    }
+}
+// END Axi plus / minus buttons
+
+// START Axi High Text
+.x-axi-high-text {
+    @include font-body-text(24px, 300);
+}
+// END Axi High Text
+
+// START Axi High Input
+.x-axi-high-input,
+.ext-safari .x-form-text.x-axi-high-input, 
+.ext-chrome .x-form-text.x-axi-high-input {
+    height: 40px;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    @include font-body-text(24px, 300, 36px);
+
+    &.x-axi-no-border {
+        line-height: 38px;
+    }
+
+    &.x-axi-standard-font-size {
+        @include font-body-text(13px, 400, normal);
+    }
+}
+// END Axi High Input
+
+// START Axi Input + Animated Label Control 
+.x-axi-textfield-with-animated-label-wrapper {
+    position: relative;
+    padding-bottom: 8px;
+
+    &:not(:first-child) {
+        padding-top: 8px;
+    }
+
+    & > .x-panel-bwrap {
+        overflow: visible;
+
+        & > .x-axi-high-input-wrapper {
+            overflow: visible;
+        }
+    }
+
+    & .x-axi-form-item-label > label {
+        position: absolute;
+        top: -8px;
+        left: 10px;
+        padding: 0 5px;
+        transition: color .2s ease-in-out;
+    }
+
+    & .x-axi-high-input {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+// END Axi Input + Animated Label Control
+
+// START Axi Contact Area Label
+.x-axi-contact-area-label {
+    & .x-panel-body {
+        display: flex;
+        align-items: center;
+
+        & span {
+            display: flex;
+            padding: 0 8px;
+            box-sizing: border-box;
+            @include font-body-text(13px, 400);
+        }
+
+        &::after {
+            flex-grow: 1;
+            height: 1px;
+            content: "";
+        }
+    }
+}
+// END Axi Contact Area Label
+
+// START Global messages
+@import "global-messages";
+// END Global messages
+
+// START Axi Search Control
+.x-axi-search-input-container {
+    position: relative;
+
+    %search-button {
+        position: absolute;
+        top: calc(50% - 17px);
+        right: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 34px;
+        height: 34px;
+        padding: 0 !important;
+    }
+
+    & .x-axi-search-button {
+        @extend %search-button;
+    }
+
+    & .x-axi-reset-search-button {
+        @extend %search-button;
+
+        & .x-btn-text {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 20px;
+                height: 20px;
+                line-height: 18px;
+                box-sizing: border-box;
+                border: 1px solid;
+                border-radius: 10px;
+                font-size: 20px;
+                text-indent: -1px;
+                content: "\e000";
+            }
+
+            // For some reason, Firefox doesn't render the "x" vertical position correctly, 
+            // so it needs a 1px smaller line-height
+            @at-root body.ext-gecko10plus .x-axi-search-input-container .x-axi-reset-search-button .x-btn-text::after {
+                line-height: 17px;                
+            }
+        }
+
+        &.x-item-disabled {
+            opacity: 0;
+        }
+    }
+
+    // Search control with advanced search
+    &.has-advanced-search {
+        & .x-axi-search-button:not(.x-axi-reset-search-button) {
+            display: none;
+        }
+        
+        & .x-axi-reset-search-button {
+            right: 25px;
+
+            & ~ .x-form-text.x-axi-search-input {
+                padding-right: 60px;
+            } 
+        }
+    }
+
+    & .x-axi-advanced-search {
+        position: absolute;
+        top: calc(50% - 17px);
+        left: auto !important;
+        right: 0;
+        min-width: 34px;
+        height: 34px;
+        padding: 0 !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & .x-btn-text {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+
+            &::before {
+                position: absolute;
+                top: calc(50% - 3px);
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                width: 0;
+                line-height: 0;
+                border-top-width: 6px;
+                border-top-style: solid;
+                border-right-width: 4px;
+                border-right-style: solid;
+                border-left-width: 4px;
+                border-left-style: solid;
+                font-size: 0;
+                content: "";
+            }
+        }
+
+        // Hover
+        @at-root .x-toolbar .x-axi-advanced-search.x-btn.x-btn-over {
+            opacity: 1;
+
+            & button:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.ext-safari .x-form-text.x-axi-search-input, 
+.ext-chrome .x-form-text.x-axi-search-input, {
+    padding-left: 30px;
+    padding-right: 30px; 
+}
+
+.x-axi-search-input,
+.ext-safari .x-toolbar .x-form-text.x-axi-search-input,
+.ext-chrome .x-toolbar .x-form-text.x-axi-search-input {
+    height: 36px !important;
+    padding: 4px 30px;
+    box-sizing: border-box;
+    background-image: url(../images/common/icon-search.svg);
+    background-position: left 8px top 9px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    border: 1px solid;
+    border-radius: 2px; 
+    transition: border-color .2s ease-in-out;
+}
+
+// Advanced search
+.x-axi-advanced-search-panel {
+    padding: 10px 0;
+    z-index: 1000;
+
+    & .x-axi-search-form-body {
+        padding: 10px 0;
+
+        & > .x-panel {
+            padding: 3px 20px;
+
+            & .x-form-item:not(.x-hide-label) {
+                & .x-form-item-label {
+                    display: flex;
+                    align-items: center;
+                    padding: 2px 5px 2px 0;
+                    height: 30px;
+                    line-height: 15px;
+                    box-sizing: border-box;
+                }                
+            }
+
+            & .x-axi-textfield {
+                height: 30px;
+                box-sizing: border-box;
+            }
+
+            & .x-form-field-wrap:not(.x-axi-datefield-wrap) {
+                & .x-form-field {
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    line-height: 26px;
+                }
+
+                & .x-form-trigger {
+                    height: 21px;
+                }
+            }
+
+            & .x-axi-separator {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 30px;
+            }
+
+            & .x-axi-size-field-input {
+                & .x-axi-textfield {
+                    width: calc(100% - 5px);
+                }
+            }
+
+            &.x-form-label-left {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            &.x-axi-advanced-search-has-attachments-more-options-container > .x-panel-bwrap > .x-panel-body {
+                display: flex;
+                align-items: center;
+
+                & .x-axi-advanced-search-has-attachments {
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    flex-basis: 0;
+                }
+            }
+
+            &.x-axi-advanced-search-folder-container {
+                & .x-axi-custom-folders-container {
+                    display: flex;
+
+                    & .x-axi-change-button-container {
+                        display: flex;
+
+                        & label {
+                            flex: 1 1 0;
+                            padding: 0 8px;
+                            font-size: 13px;
+                            height: 30px;
+                            line-height: 30px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        & .x-btn-center {
+                            padding: 0;
+                        }                        
+                    } 
+                }
+            }
+
+            &.x-axi-advanced-search-buttons-container > .x-panel-bwrap > .x-panel-body {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+
+                & .x-axi-adv-search-btn-search {
+                    & .x-btn-center button {
+                        @extend %highlight-button;
+                        min-width: 100px;
+                    }
+                }
+
+                & .x-axi-search-panel-close-button {
+                    & .x-btn-center button {
+                        @extend %outline-button;
+                        min-width: 100px;
+                    }
+                }              
+            }
+        }
+    }
+}
+// END Axi Search Control
+
+// Grid panel / list empty text 
+.x-axi-list,
+.x-axi-grid {
+    & .x-axi-emptytext {
+        margin-top: 30px;
+
+        & .x-axi-view-infomessage {
+            padding: 0 15px;
+            @include font-body-text(13px, 400);
+            text-align: center;
+        }
+    }
+}
+
+// START Axi Textfield
+.x-axi-textfield-container {
+    & .x-axi-textfield {
+        padding: 1px 6px;
+        height: 26px;
+        border-radius: 2px;
+    }
+
+    & textarea.x-axi-textfield {
+        padding: 5px 6px;
+        line-height: 18px;
+        border-radius: 2px;
+    }
+}
+// END Axi Textfield
+
+// START Axi Boxed Menu Button
+.x-btn.x-axi-boxed-button-with-menu {
+    & .x-btn-with-menu {
+        & .x-btn-center {
+            padding: 0 !important;      
+            
+            & em {
+                padding: 0;
+                background: none;
+            }
+        }
+
+        & .x-btn-text,
+        & .x-btn-rawtext {
+            position: relative;
+            @extend %button-small-rounding;
+            padding: 0 32px 0 10px;
+
+            &::after {
+                position: absolute;
+                top: calc(50% - 2px);
+                right: 0;
+                margin-left: 12px;
+                margin-right: 12px;
+                font-size: 0;
+                line-height: 0;
+                border-top-width: 6px;
+                border-top-style: solid;
+                border-right-width: 4px;
+                border-right-style: solid;
+                border-left-width: 4px;
+                border-left-style: solid;
+                transition: border-color .2s ease-in-out;
+                content: "";
+            }
+        }
+    }
+}
+// END Axi Boxed Menu Button
+
+// START Axi Combo
+.x-axi-combo {
+    & > .x-form-field-wrap {        
+        & > .x-form-field {
+            flex-grow: 1;
+            height: 30px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+    }
+
+    @at-root {
+        .ext-safari .x-axi-combo .x-form-field-wrap .x-form-trigger, 
+        .ext-chrome .x-axi-combo .x-form-field-wrap .x-form-trigger,
+        .x-axi-combo .x-form-field-wrap .x-form-trigger {
+            height: 21px;
+        }
+    }
+
+    // High Combo
+    &.x-axi-high-combo {
+        & > .x-form-field-wrap {        
+            & > .x-form-field {
+                height: 40px;
+                padding-left: 8px;
+                padding-right: 8px;
+                @include font-body-text(18px, 300);
+            }
+        }
+
+        @at-root {
+            .ext-safari .x-axi-combo.x-axi-high-combo .x-form-field-wrap .x-form-trigger, 
+            .ext-chrome .x-axi-combo.x-axi-high-combo .x-form-field-wrap .x-form-trigger,
+            .x-axi-combo.x-axi-high-combo .x-form-field-wrap .x-form-trigger {
+                height: 31px;
+            }    
+        }
+    }
+}
+
+.x-axi-combo-button {
+    & > .x-form-field-wrap {
+        position: relative;
+
+        & > .x-form-field {
+            position: relative;
+            max-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            z-index: 2;
+        }
+
+        & > .x-form-arrow-trigger {
+            display: none;
+        }
+    }
+}
+// END Axi Combo
+
+// START Axi Date Combo
+.x-axi-datetime-combo {
+    & .x-form-field-wrap {
+        &.x-axi-datefield-wrap,
+        &.x-axi-timefield-wrap {
+            & .x-form-trigger {
+                height: 30px;
+                box-sizing: border-box;
+                border-left-width: 1px;
+                border-left-style: solid;
+            }
+
+            @at-root {
+                .ext-safari .x-axi-datetime-combo .x-form-field-wrap .x-axi-datefield-wrap,
+                .ext-chrome .x-axi-datetime-combo .x-form-field-wrap .x-axi-datefield-wrap,
+                .ext-safari .x-axi-datetime-combo .x-form-field-wrap .x-axi-timefield-wrap,
+                .ext-chrome .x-axi-datetime-combo .x-form-field-wrap .x-axi-timefield-wrap {
+                    height: 30px;
+                }
+            }
+        }
+
+        &.x-axi-datefield-wrap {
+            & .x-form-trigger {
+                width: 30px;
+
+                &::before {
+                    border: none;
+                    font-size: 32px;
+                    content: "\e009";
+                }
+            }
+        }
+
+        &.x-axi-timefield-wrap {
+            & .x-form-trigger {
+                width: 26px;
+            }
+        }
+    }
+}
+// END Axi Date Combo
+
+// START Axi full table
+.x-axi-full-table .x-table-layout {
+    width: 100%;
+}
+// END Axi full table
+
+// START Info label
+.x-axi-lightbulb-label {
+    & .x-panel-body {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            font-size: 32px;
+            content: "\e017";
+        }
+
+        & label {
+            margin-top: 1px;
+            @include font-body-text(11px, 400, normal);
+        }
+    }
+}
+// END Info label
+
+// START Tooltips
+// Axi tooltip icon
+%tooltip-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 30px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 32px;
+        content: "\e017";
+
+        @at-root {
+            .ext-chrome.ext-mac & {  /// Chrome on macOS
+                top: 1px;
+            }
+
+            .ext-gecko10plus & {     /// Firefox
+            }
+
+            .ext-safari & {          /// Safari
+                top: 2px;
+            }
+
+            .ext-msedgium & {        /// MS Edge (Chromium based)
+            }
+        }
+    }
+}
+
+.x-axi-info-tooltip {
+    @extend %tooltip-icon;
+}
+
+// Menu tooltips
+.menu-tooltip-arrow-left,
+.menu-tooltip-arrow-right {
+    &::before,
+    &::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        line-height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        font-size: 0;
+        content: "";
+    }
+
+    &::before {
+        margin-bottom: -8px;
+    }
+
+    &::after {
+        margin-bottom: -7px;
+    }
+}
+
+.menu-tooltip-arrow-left {
+    &::before {
+        left: -9px;
+        border-right: 10px solid;
+    }
+
+    &::after {
+        left: -8px;
+        border-right: 10px solid;
+    }
+}
+
+.menu-tooltip-arrow-right {
+    &::before {
+        right: -9px;
+        border-left: 10px solid;
+    }
+
+    &::after {
+        right: -8px;
+        border-left: 10px solid;
+    }
+}
+
+// Dark tooltips
+.x-axi-arrow-tooltip {
+    z-index: 15001;         /// Make sure the dark tooltips are higher (z-index) than the HTML editor "..." menu element
+}
+
+.dark-tooltip {
+    display: block;
+    position: relative;
+
+    padding: 10px;
+    border-radius: 2px;
+    @include font-body-text(13px, 400);
+    text-align: center;
+    cursor: default;
+    z-index: 10;
+
+    // Arrows 
+    & .arrow {
+        position: absolute;
+        width: 0;
+        line-height: 0;
+        font-size: 0;
+        content: "";
+
+        // Defines the different arrow positions
+        &.top {
+            top: -7px;
+            left: 50%;
+            margin-left: -8px;
+            border-bottom: 8px solid;
+            border-right: 8px solid transparent;
+            border-left: 8px solid transparent;
+        }
+
+        &.bottom {
+            bottom: -7px;
+            left: 50%;
+            margin-left: -8px;
+            border-top: 8px solid;
+            border-right: 8px solid transparent;
+            border-left: 8px solid transparent;
+        }
+
+        &.left {
+            left: -7px;
+            top: 50%;
+            margin-top: -8px;
+            border-right: 8px solid;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        &.right {
+            right: -7px;
+            top: 50%;
+            margin-top: -8px;
+            border-left: 8px solid;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+    }
+}
+
+.x-tip {
+    & .dark-tooltip {
+        padding: 10px;
+        border-radius: 2px;
+        text-align: center;
+        cursor: default;
+    }
+
+    & .dark-tooltip { 
+        & .x-tip-body {
+            @include font-body-text(13px, 400);
+        }
+    }
+}
+
+// Light tooltips
+.x-tip.x-axi-tips-window {
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    @include font-body-text(13px, 400, 18px);
+    
+    & .x-tip-header {
+        padding: 0 5px 7px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+
+        & .x-tip-header-text {
+            display: block;
+            @include font-body-text(16px, 600);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    & .x-tip-body {
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+
+        @at-root html.dark & {
+            background: none;
+            border: none;
+            box-shadow: none;
+        }
+    }
+
+    & .x-tip-header + .x-tip-bwrap .x-tip-body {
+        padding: 7px 5px 0;
+    }
+
+    & .contenthr,
+    & .hr {
+        margin: 7px -7px;
+        height: 1px;
+    }
+
+    // Arrows
+    &.x-axi-topleft-arrow {
+        &::before {
+            position: absolute;
+            top: -11px;
+            left: 15px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-bottom: 11px solid;
+            border-right: 11px solid transparent;
+            border-left: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-bottom: 10px solid;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-lefttop-arrow {
+        &::before {
+            position: absolute;
+            top: 15px;
+            left: -11px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-right: 11px solid;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            top: 16px;
+            left: -10px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-right: 10px solid;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-topright-arrow {
+        &::before {
+            position: absolute;
+            top: -11px;
+            right: 15px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-bottom: 11px solid;
+            border-right: 11px solid transparent;
+            border-left: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-bottom: 10px solid;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-righttop-arrow {
+        &::before {
+            position: absolute;
+            top: 15px;
+            right: -11px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-left: 11px solid;
+            border-bottom: 11px solid transparent;
+            border-top: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            top: 16px;
+            right: -10px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-left: 10px solid;
+            border-bottom: 10px solid transparent;
+            border-top: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-bottomleft-arrow {
+        &::before {
+            position: absolute;
+            bottom: -11px;
+            left: 15px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-top: 11px solid;
+            border-right: 11px solid transparent;
+            border-left: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            bottom: -10px;
+            left: 16px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-top: 10px solid;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-leftbottom-arrow {
+        &::before {
+            position: absolute;
+            bottom: 15px;
+            left: -11px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-right: 11px solid;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            bottom: 16px;
+            left: -10px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-right: 10px solid;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-bottomright-arrow {
+        &::before {
+            position: absolute;
+            bottom: -11px;
+            right: 15px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-top: 11px solid;
+            border-right: 11px solid transparent;
+            border-left: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            bottom: -10px;
+            right: 16px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-top: 10px solid;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    &.x-axi-rightbottom-arrow {
+        &::before {
+            position: absolute;
+            bottom: 15px;
+            right: -11px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-left: 11px solid;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            bottom: 16px;
+            right: -10px;
+            width: 0;
+            line-height: 0;
+            font-size: 0;
+            border-left: 10px solid;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            content: "";
+        }
+    }
+
+    // Folder tree tooltip
+    &.folder-tree-tooltip {
+        max-width: 250px;
+
+        & .x-tip-body {
+            & .folder-data {
+                width: 100%;
+            }
+        }
+    }
+
+    // Active recipient tooltip
+    &.active-recipient-tooltip {
+        width: 325px !important;
+        min-height: 56px;
+        padding-left: calc(56px + 20px - 5px);
+
+        & .x-tip-header {
+            padding-bottom: 0;
+            border-bottom: none;
+
+            & .x-tip-header-text {
+                margin-bottom: 0;
+                @include font-body-text(20px, 400);
+
+                & .normal {
+                    @include font-body-text(13px, 400);
+                    white-space: normal;
+                }
+            }
+        }
+
+        & .x-tip-bwrap {
+            & .x-tip-body {
+                width: calc(100% - 5px) !important;
+                padding-top: 0;
+                box-sizing: border-box;
+
+                & .tooltip-contact-thumbnail {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    height: 56px;
+
+                    & .x-axi-tooltip-thumbnail-container {
+                        width: 56px;
+                        height: 56px;
+
+                        & .thumbnail-container {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+
+                            & > div {
+                                position: absolute;
+                                width: 56px;
+                                height: 56px;
+                            }
+                        }
+                    }
+                } 
+            }   
+        }
+    }
+}
+// END Tooltips
+
+// START Axi Tree & Grid
+%axi-tree-grid-root {
+    padding: 0 6px 0 10px;
+    margin-bottom: 1px;
+
+    & a span,               /// Tree panel
+    & div {                 /// Tree grid
+        @include font-body-text(12px, 600);
+    }
+
+    &::after {
+        width: 19px;
+        height: 19px;
+        box-sizing: border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+        content: "";
+    }
+
+    &.x-tree-node-expanded::after,      /// Tree panel
+    &.x-grid-group-expanded::after {    /// Tree grid
+        background-image: url(../images/common/calendar-navigation-top.svg);
+        background-position: left 4px top 6px;
+
+        @at-root html.dark & {
+            background-image: url(../images/common/dark-mode/calendar-navigation-top.svg);
+        }
+    }
+
+    &.x-tree-node-collapsed::after,     /// Tree panel
+    &.x-grid-group-collapsed::after {   /// Tree grid
+        background-image: url(../images/common/calendar-navigation-bottom.svg);
+        background-position: left 4px top 7px;
+
+        @at-root html.dark & {
+            background-image: url(../images/common/dark-mode/calendar-navigation-bottom.svg);
+        }
+    }
+}
+
+// Focused
+.x-axi-focused .x-tree-node .x-tree-node-el.x-tree-selected {
+    & .x-tree-elbow-plus {
+        @at-root html.dark & {
+            background-image: url(../images/common/tree-arrow-right.svg);            
+        }
+    }
+
+    & .x-tree-elbow-minus {
+        @at-root html.dark & {
+            background-image: url(../images/common/tree-arrow-bottom.svg);            
+        }
+    }
+}
+
+.x-axi-tree-accordion,
+.x-axi-tree-lines {
+    // Tree Icons
+    & .x-tree-node {
+        & a {
+            & span {
+                user-select: none;
+                -webkit-user-select: none;  /// Safari
+
+                &.x-axi-folder-counter {
+                    padding: 0 6px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+
+        // Inbox
+        & .parent_menu_folder_inbox a span:first-child::before {
+            top: 1px;
+            content: "\e001";
+        }
+
+        // Flagged / Starred
+        & .parent_menu_folder_flagged {
+            @at-root {
+                // Flagging type = flags
+                .flagging-type-flags & {
+                    & a span:first-child::before {
+                        top: 1px;
+                        display: flex;
+                        justify-content: center;
+                        width: 16px;
+                        content: "\e046";
+                    }
+                }
+
+                .flagging-type-flags.ext-edge & {          /// MS Edge (Chromium based)
+                    & a span:first-child::before {
+                        top: -1px;
+                    }
+                }
+
+                .flagging-type-flags.ext-gecko10plus & {   /// Firefox
+                    & a span:first-child::before {
+                        top: -1px;
+                    }
+                }
+
+                // Flagging type = stars
+                .flagging-type-stars & {
+                    & a span:first-child::before {
+                        top: 0;
+                        display: flex;
+                        justify-content: center;
+                        width: 16px;
+                        content: "\e044";
+                    }
+                }
+
+                .flagging-type-stars.ext-edge & {          /// MS Edge (Chromium based)
+                    & a span:first-child::before {
+                        top: -2px;
+                    }
+                }
+
+                .flagging-type-stars.ext-gecko10plus & {   /// Firefox
+                    & a span:first-child::before {
+                        top: -2px;
+                    }
+                }
+            }
+
+            & .x-axi-folder-counter {
+                display: none;
+            }
+        } 
+
+        // Drafts
+        & .parent_menu_folder_drafts a span:first-child::before {
+            top: 1px;
+            content: "\e002";
+        }
+
+        // Sent
+        & .parent_menu_folder_sent a span:first-child::before {
+            top: 1px;
+            content: "\e003";
+        }
+
+        // Trash
+        & .parent_menu_folder_trash a span:first-child::before {
+            content: "\e004";
+        }
+
+        // Spam
+        & .parent_menu_folder_spam a span:first-child::before {
+            content: "\e005";
+        }
+
+        // Archive
+        & .parent_menu_folder_archive a span:first-child::before {
+            content: "\e017";
+        }
+
+        // Filtered email
+        & .parent_menu_folder_filtered_email a span:first-child::before {
+            top: 1px;
+            content: "\e007";
+        }
+
+        // All other personal folders
+        & .parent_menu_folder_mails a span:first-child::before {
+            content: "\e006";
+        }
+
+        // All public & shared folders
+        & .parent_menu_publicfolder_mails a span:first-child::before,
+        & .parent_menu_sharedfolder_mails a span:first-child::before {
+            content: "\e008";
+        }
+
+        // In the edit state (creating / renaming folders),
+        // we, display an editable text field element on top.
+        // This requires us to hide some elements to avoid overlap.
+        &.x-axi-folder-create,
+        &.x-axi-folder-rename {
+            & > .x-tree-node-el {
+                // Hide the arrow
+                & > .x-tree-ec-icon {
+                    visibility: hidden;
+                }
+
+                & > a {
+                    & span {
+                        // Hide the folder icon, name & counter
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+
+        // Same as above, but for the tree grid
+        @at-root .x-axi-tree-nolines .x-tree-node > .x-tree-node-el.x-axi-new-treenode {    /// Treegrid
+            // Hide the arrow
+            & > .x-tree-ec-icon {
+                visibility: hidden;
+            }
+
+            & > a {
+                & span {
+                    // Hide the folder icon, name & counter
+                    visibility: hidden;
+                }
+            } 
+        }
+    }
+
+    // Root nodes
+    & .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails,
+    & .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root,
+    & .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner {
+        @extend %axi-tree-grid-root;
+
+        & .x-tree-elbow-plus,
+        & .x-tree-elbow-minus,
+        & .x-tree-elbow-end-plus,
+        & .x-tree-elbow-end-minus {
+            display: none;
+        }
+
+        // Align the empty root folders at the same level with the
+        // non-empty ones and hide their expand / collapse icons.
+        // e.g. Empty public folder root (always appears for the
+        // users who have management rights on public folders).
+        &.x-axi-empty {
+            & .x-tree-elbow,
+            & .x-tree-elbow-end {
+                display: none;
+            }
+
+            &.x-tree-node-over {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        & a {
+            & span {
+                &:first-child::before {
+                    display: none;
+                }
+            }
+        }
+        
+        // Selected
+        &.x-tree-selected {
+            background-color: transparent;
+        }
+
+        // Hover
+        &.x-tree-node-over {
+            background-color: transparent;
+
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    // Tree Grid
+    & .x-grid-panel {
+        & .x-grid3-scroller {
+            overflow-x: hidden !important;
+
+            & .x-grid3-body {
+                min-width: 100%;
+
+                & .x-grid-group-hd {
+                    @extend %axi-tree-grid-root;
+
+                    display: flex;
+                    align-items: center;
+                    min-width: 100%;
+                    box-sizing: border-box;
+                    border: none;
+
+                    & div {
+                        flex-grow: 1;
+                        padding: 0;
+                        line-height: 23px;
+                        background: none;               
+                    }
+
+                    // Hover
+                    &:hover {
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                & .x-grid-group-body {
+                    overflow: hidden;
+                    transition: height .2s ease-in-out;
+
+                    & .x-grid3-row {
+                        min-width: 100%;
+                        padding: 0 6px 0 10px;
+                        box-sizing: border-box;
+                        border: none;
+
+                        & .x-grid3-row-table {
+                            &.x-axi-grid-row-selected-and-active {
+                                & span {
+                                    font-weight: 600;
+                                }
+                            }
+
+                            // Fixes a RTL rendering issue of the Calendar folder grid
+                            @at-root .x-axi-tree-category-calendar .x-grid3-row-table {
+                                table-layout: auto;
+
+                                // Make sure very long folder names don't break the layout
+                                & tr {
+                                    display: flex;
+                                    align-items: center;
+                                }
+                            }
+
+                            & .x-grid3-col {
+                                vertical-align: middle;
+
+                                &.x-grid3-td-checker {
+                                    width: 18px !important;
+
+                                    & .x-grid3-row-checker {
+                                        position: relative;
+                                        width: 13px;
+                                        height: 13px;
+                                        border: none;
+                                        border-radius: 2px;
+                                    }
+                                }
+
+                                &.x-grid3-td-name {
+                                    a:hover {
+                                        opacity: 1;
+                                    }
+                                }
+
+                                & .x-axi-row-name {
+                                    line-height: 23px;
+                                }
+
+                                &.x-grid3-td-icon {
+                                    width: 21px !important;
+
+                                    & .x-grid3-col-icon {
+                                        font-size: 0;
+                                        width: 21px;
+                                        height: 23px;
+
+                                        &::before {
+                                            display: inline-flex;
+                                            line-height: 23px !important;
+                                            padding-left: 2px;
+                                            padding-right: 3px;
+                                            font-size: 32px !important;
+                                        }
+                                    }
+
+                                    // Calendar folder icons
+                                    &[class*="menu_folder_events"] .x-grid3-col-icon::before {
+                                        content: "\e009";
+                                    }
+
+                                    &[class*="menu_publicfolder_events"] .x-grid3-col-icon::before {
+                                        content: "\e010";
+                                    }
+
+                                    &[class*="menu_sharedfolder_events"] .x-grid3-col-icon::before {
+                                        content: "\e010";
+                                    }
+
+                                    // Tasks folder icons
+                                    &[class*="menu_folder_tasks"] .x-grid3-col-icon::before {
+                                        content: "\e011";
+                                    }
+
+                                    &[class*="menu_publicfolder_tasks"] .x-grid3-col-icon::before {
+                                        content: "\e012";
+                                    }
+
+                                    &[class*="menu_sharedfolder_tasks"] .x-grid3-col-icon::before {
+                                        content: "\e012";
+                                    }
+
+                                    // Notes folder icons
+                                    &[class*="menu_folder_notes"] .x-grid3-col-icon::before {
+                                        content: "\e013";
+                                    }
+
+                                    &[class*="menu_publicfolder_notes"] .x-grid3-col-icon::before {
+                                        content: "\e014";
+                                    }
+
+                                    &[class*="menu_sharedfolder_notes"] .x-grid3-col-icon::before {
+                                        content: "\e014";
+                                    }
+
+                                    // Contacts folder icons
+                                    &[class*="menu_folder_contacts"] .x-grid3-col-icon::before {
+                                        content: "\e015";
+                                    }
+
+                                    &[class*="menu_publicfolder_contacts"] .x-grid3-col-icon::before {
+                                        content: "\e016";
+                                    }
+
+                                    &[class*="menu_sharedfolder_contacts"] .x-grid3-col-icon::before {
+                                        content: "\e016";
+                                    }
+                                }
+
+                                &.x-grid3-td-name {
+                                    width: auto !important;
+                                }
+
+                                & .x-grid3-cell-inner {
+                                    user-select: none;
+                                }
+                            }
+                        } 
+
+                        &.x-grid3-row-selected {
+                            background: none !important;
+
+                            & .x-grid3-row-table {
+                                & .x-grid3-col {
+                                    &.x-grid3-td-checker {
+                                        & .x-grid3-row-checker {
+                                            &::before {
+                                                position: absolute;
+                                                top: 1px;
+                                                left: 4px;
+                                                width: 5px;
+                                                height: 9px;
+                                                border-right: 2px solid #fff;
+                                                border-bottom: 2px solid #fff;
+                                                transform: rotate(35deg);
+                                                content: "";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+}
+// END Axi Tree & Grid
+
+// START Axi list
+.x-axi-list {
+    & .x-grid3-body {
+        min-width: 100%;
+    }
+
+    // List not focused
+    & .x-grid3-row {
+        min-width: 100%;
+        padding: 9px 6px;
+        box-sizing: border-box;
+
+        & > table {
+            width: 100% !important;
+
+            & .x-grid3-td-checker {
+                padding: 3px 6px 3px 0;
+
+                & .x-grid3-col-checker {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            & .x-grid3-td-checker ~ td.x-grid3-cell-last {
+                width: auto !important;
+            }
+        }
+
+        // Row selected
+        &.x-grid3-row-selected {
+        }
+    }
+
+    // Footer
+    & .x-grid3-header {
+        border-top-width: 1px;
+        border-top-style: solid;
+
+        & .x-grid3-td-checker {
+            padding: 3px 6px 3px 0;
+
+            & .x-grid3-hd-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        & .x-grid3-td-checker ~ td.x-grid3-cell-last {
+            width: auto !important;
+        }
+
+        & .x-grid3-header-inner {
+            padding: 7px 6px;
+            box-sizing: border-box;
+
+            & .x-grid3-header-offset {
+                width: 100% !important;
+                padding: 0;
+
+                & > table {
+                    width: 100% !important;
+                }
+            }
+
+            & .x-grid3-hd-inner {
+                & span {
+                    font-size: 12px;
+
+                    &#x-axi-livegrid-info {
+                        flex-grow: 1;
+                        text-align: center;
+                    }
+
+                    &.x-axi-livegrid-sort-info {
+                        padding-left: 3px;
+                        padding-right: 3px;
+                        cursor: pointer;
+
+                        &.asc::before {
+                            position: relative;
+                            top: -1px;
+                            width: 12px;
+                            padding: 0 4px;
+                            font-family: Arial,sans-serif;
+                            content: "\2191";
+                        }
+
+                        &.desc::before {
+                            position: relative;
+                            top: -1px;
+                            width: 12px;
+                            padding: 0 4px;
+                            font-family: Arial,sans-serif;
+                            content: "\2193";
+                        }
+                    }
+                }
+            }
+        }   
+    }
+}
+
+// Context menu
+.x-axi-list-cmenu {
+    & .x-axi-list-cmenu-sort-asc,
+    & .x-axi-list-cmenu-sort-desc {
+        float: left;
+        width: 50%;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+
+        & .x-menu-item {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+
+            &::before {
+                flex-grow: 1;
+                text-align: center;
+                font-family: Arial,sans-serif;
+            }
+
+        }
+
+        & .x-menu-item-icon {
+            display: none;
+        }
+    }
+
+    & .x-axi-list-cmenu-sort-asc {
+        & .x-menu-item {
+            &::before {
+                content: "\2191";
+            }
+        }
+    }
+
+    & .x-axi-list-cmenu-sort-desc {
+        & .x-menu-item {
+            &::before {
+                content: "\2193";
+            }
+        }
+    }
+
+    & .x-axi-list-cmenu-sort-asc + .x-axi-list-cmenu-sort-desc {
+        border-left-width: 1px;
+        border-left-style: solid;
+    }
+}
+// END Axi list
+
+// START Contact thumbnails
+.thumbnail-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    %thumbnail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;        
+    }
+
+    & .no-thumbnail {
+        @extend %thumbnail;
+        max-width: calc(100% - 2px);
+        max-height: calc(100% - 2px); 
+    }
+
+    & .thumbnail {
+        @extend %thumbnail;
+        position: absolute;
+        top: 0;
+        background-size: cover;
+    }
+}
+
+// Thumbnail in tooltip
+.x-axi-tooltip-thumbnail-container .thumbnail-container {
+    & .no-thumbnail {
+        @include font-body-text(21px, 300, 56px);
+    }
+}
+// END Contact thumbnails
+
+// START Action bar
+.x-axi-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    @include font-body-text(13px, 400);
+
+    & .content {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            margin-left: -7px;
+            line-height: 18px;
+            font-size: 32px;
+            content: "\e017";
+        }
+
+        &.empty {
+            display: none;
+
+            & + .actions {
+                margin: 0 auto;
+            }
+        }
+    }
+
+    & .actions {
+        & .but-action {
+            display: inline-flex;
+            margin: 1px 2px;
+            @extend %button-small-rounding;
+            cursor: pointer;
+
+            &::before {
+                margin-left: -8px;
+                width: 29px;
+            }
+
+            &.action-accept {
+                &::before {
+                    font-size: 32px;
+                    content: "\e030";
+                }
+            }
+
+            &.action-accept-tentative {
+                &::before {
+                    font-size: 32px;
+                    content: "\e031";
+                }
+            }
+
+            &.action-reject {
+                &::before {
+                    font-size: 32px;
+                    content: "\e032";
+                }
+            }
+
+            &.action-propose {
+                &::before {
+                    font-size: 32px;
+                    content: "\e033";
+                }
+            }
+        }        
+    }
+
+    &.two-lines {
+        flex-direction: column;
+
+        & .content {
+            margin-top: 3px;
+            margin-bottom: 8px;
+        }
+
+        & .actions {
+            margin-bottom: 3px;
+        }
+    }
+}
+// END Action bar
+
+// START Print button
+.x-axi-print-button {
+    display: flex;
+    align-items: center;
+    max-height: 27px;
+
+    & .x-btn-left,
+    & .x-btn-right {
+        display: none;
+    }
+
+    & .x-btn-center {        
+        & em {
+            &::before {
+                font-size: 32px;
+                content: "\e001";
+            }
+
+            & .x-btn-text {
+                display: none;
+            }
+        }
+    }
+}
+// END Print button
+
+// START Email address objects
+$email-address-object-height: 24px;
+.email-address-list {
+    flex-grow: 1;
+    display: flex;
+
+    & .email-address-objects-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 8px 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        & .axi-email-address-object-wrapper {
+            display: flex;
+            align-items: center;
+            height: $email-address-object-height;
+
+            & > .x-btn {
+                & .x-btn-center {
+                    display: flex;
+                    padding: 0;
+
+                    & .x-btn-text {
+                        padding: 2px 0 2px 3px;
+                        border-radius: 2px;
+                        transition: color .2s ease-in-out;
+                        cursor: move;
+
+                        &::after {
+                            display: inline-flex;
+                            width: 3px;
+                            content: ",";
+                        }
+                    }
+                }
+
+                // Selected
+                &.x-btn-focus {
+                    & .x-btn-center {
+                        & .x-btn-text {
+                            padding: 2px 3px;
+
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .axi-textfield-wrapper {
+            flex-grow: 1;
+            display: flex;
+
+            & .x-form-field-wrap {
+                flex-grow: 1;
+                display: flex;
+
+                & .x-form-field {
+                    min-height: $email-address-object-height !important;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    flex-grow: 1;
+                }
+            }
+        }
+
+        &:not(.email-address-objects-textfield-focused) .axi-email-address-object-wrapper:nth-last-child(3) > .x-btn .x-btn-center .x-btn-text::after {
+                content: "";
+            }
+    }
+
+    @at-root .x-address-objects-dd-drag-proxy {
+        & .x-btn-text {
+            padding: 2px 3px;
+            border-radius: 2px;
+        }
+    }
+
+    & .drop-cursor {
+        position: relative;
+        width: 0;
+        height: 24px;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            content: "";                                    
+        }
+    }
+}
+
+// Email address objects drag proxy
+.x-dd-drag-proxy.x-axi-email-address-objects-proxy {
+    padding: 0;
+
+    & .x-btn-wrap {
+        & .x-btn-center {
+            padding: 0;
+        }
+    }
+}
+
+// END Email address objects
+
+// START Attachments panel 
+%x-axi-attachments-title {  /// Also used in the Attachments tab
+    display: inline-flex;
+    align-items: center;
+    margin-top: 5px;
+    @include font-body-text(18px, 300);
+
+    &::after {
+        display: flex;
+        justify-content: center;
+        width: 30px;
+        line-height: 41px;
+        font-size: 50px;
+        content: "\e007";
+    }
+}
+
+%attachments-panel {
+    $attachment-height: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+
+    & .x-axi-attachments-title {
+        @extend %x-axi-attachments-title;
+    }
+
+    & .x-axi-attachment-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-height: calc(4 * #{$attachment-height});
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    & .x-axi-attachment {
+        display: flex;
+        margin: 0 15px;
+        padding: 0 3px;
+        overflow: hidden;
+
+        & .x-axi-attachment-name {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: $attachment-height;
+            @include font-body-text(13px, 400, $attachment-height);
+            cursor: pointer;
+
+            &::before {
+                display: flex;
+                justify-content: center;
+                width: 20px;
+                margin-right: 1px;
+                font-size: 32px;
+
+                @at-root .ext-gecko10plus & {   /// Firefox
+                    margin-top: -2px;
+                }
+            }
+        }
+
+        & .x-axi-attachment-progressbar {
+            display: flex;
+            align-items: center;
+            
+            &:not(:empty) {
+                padding-left: 5px;
+            }
+
+            & .x-progress-wrap {
+                @include progress-bar(46px, 6px, false);
+            }
+        }
+
+        & .x-axi-attachment-size {
+            display: flex;
+            height: $attachment-height;
+            @include font-body-text(13px, 400, $attachment-height);
+
+            &::before {
+                width: 5px;
+                height: $attachment-height;
+                line-height: $attachment-height;
+                content: "";
+            }
+        }
+
+        & .x-axi-attachment-remove-button {
+            display: flex;
+            height: $attachment-height;
+
+            &::before {
+                line-height: $attachment-height;
+                content: "\e000";
+            }
+        }
+    }
+
+    & .x-axi-attachments-view-all-container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        display: flex;
+        justify-content: center;
+
+        & .x-axi-attachments-view-all-white-bg {
+            padding: 0 8px;
+
+            & .x-axi-attachments-view-all-button {
+                @extend %button-small-rounding;
+                @include font-body-text(13px, 400);
+                cursor: pointer;
+                transition: opacity .2s ease-in-out;
+
+                &:hover {
+                    opacity: .7;
+                }
+            }
+        }
+    }
+}
+
+.x-axi-attachment-list-container {
+    @extend %attachments-panel;
+}
+
+// Attachments icons
+.x-axi-attachment {
+    & .x-axi-attachment-name::before {
+        content: "\e012";
+    }
+
+    & .x-axi-att-img-type {                                         /// Attachments tab
+        & .x-axi-type {
+            margin-top: 17px;
+
+            &::before {
+                content: "\e012";
+            }
+        }
+
+        & + .x-axi-attachment-info {                                /// Attachments tab, file name: don't show any icon
+            & .x-axi-attachment-name::before {
+                display: none;
+            }
+        }
+    }
+
+    &.x-axi-attachment-image {
+        & .x-axi-attachment-name::before {
+            margin-right: 3px;
+            content: "\e002";
+        }
+    }
+
+    & .x-axi-attachment-info.x-axi-attachment-image {               /// Attachments tab, file name: don't show any icon
+        & .x-axi-attachment-name::before {
+            display: none;
+        }
+    }
+
+    &.x-axi-attachment-ppt .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e015";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-ppt::before {            /// Attachments tab
+        content: "\e015";
+    }
+
+    &.x-axi-attachment-doc .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e008";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-doc::before {            /// Attachments tab
+        content: "\e008";
+    }
+
+    &.x-axi-attachment-xls .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e009";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-xls::before {            /// Attachments tab
+        content: "\e009";
+    }
+
+    &.x-axi-attachment-pdf .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e010";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-pdf::before {            /// Attachments tab
+        content: "\e010";
+    }
+
+    &.x-axi-attachment-zip .x-axi-attachment-name::before,
+    &.x-axi-attachment-rar .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e011";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-zip::before,             /// Attachments tab
+    & .x-axi-att-img-type .x-axi-attachment-rar::before {            /// Attachments tab
+        content: "\e011";
+    }
+
+    &.x-axi-attachment-plain .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e013";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-plain::before {          /// Attachments tab
+        content: "\e013";
+    }
+
+    .x-axi-attachment-html .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e014";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-html::before {           /// Attachments tab
+        content: "\e014";
+    }
+
+    &.x-axi-attachment-eml .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e016";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-eml::before {            /// Attachments tab
+        content: "\e016";
+    }
+
+    &.x-axi-attachment-vcard .x-axi-attachment-name::before,
+    &.x-axi-attachment-x-vcard .x-axi-attachment-name::before {
+        margin-right: 3px;
+        content: "\e048";
+    }
+
+    & .x-axi-att-img-type .x-axi-attachment-vcard::before,          /// Attachments tab
+    & .x-axi-att-img-type .x-axi-attachment-x-vcard::before {
+        content: "\e048";
+    }
+}
+// END Attachments panel
+
+// START Attachments drag-and-drop
+.x-axi-upload-dd-container {
+    @supports (backdrop-filter: blur(2px)) {
+        backdrop-filter: blur(2px);
+    }
+
+    @supports (-webkit-backdrop-filter: blur(2px)) {
+        -webkit-backdrop-filter: blur(2px);
+    }
+
+    & .x-axi-upload-dd-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid;
+        
+        & .attachments,
+        & .inline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            border: 1px solid;
+            border-radius: 50%;
+            @include font-body-text(14px, 400);
+            transition: all .2s ease-in-out;
+
+            &::before {
+                transition: all .2s ease-in-out;                
+            }
+
+            &.attachments {
+                width: 130px;
+                height: 130px;
+
+                &::before {
+                    height: 30px;
+                    font-size: 56px;
+                    content: "\e007";
+                }
+            }
+
+            &.inline {
+                width: 160px;
+                height: 160px;
+
+                &::before {
+                    height: 36px;
+                    font-size: 64px;
+                    content: "\e002";
+                }
+            }
+        }
+
+        &.hover {
+            & .attachments,
+            & .inline {
+                border-width: 10px;
+
+                &.attachments {
+                    margin-bottom: 40px;
+                    width: 160px;
+                    height: 160px;
+
+                    &::before {
+                        height: 37.5px;
+                        font-size: 70px;
+                    }
+                }
+
+                &.inline {
+                    margin-top: 80px;
+                    width: 240px;
+                    height: 240px;
+
+                    &::before {
+                        height: 45px;
+                        font-size: 80px;
+                    }
+                }
+
+                // Add / edit signatures drag-and-drop
+                &.inline-small {
+                    margin-top: 0;
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        }
+    }
+
+    & .x-axi-upload-dd-area-separator {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: -45px;
+        @include font-title-text(40px, 200, 50px);
+        text-align: center;
+
+        & .arrow-top,
+        & .arrow-bottom {
+            width: 25px;
+            height: 65px;
+
+            &.arrow-top {
+                transform: rotate(180deg);
+                margin-bottom: 15px;
+            }
+
+            &.arrow-bottom {
+                margin-top: 15px;
+            }
+        }
+    }
+}
+// END Attachments drag-and-drop
+
+// START Free / Busy
+%free-busy-legend-ring {
+    display: block;
+    width: 10px;
+    height: 10px;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-radius: 50%;
+    content: "";  
+}
+
+.x-axi-legend-free,
+.x-axi-legend-busy,
+.x-axi-legend-ooo,
+.x-axi-legend-tentative,
+.x-axi-legend-na {
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+        margin-right: 4px;
+        @extend %free-busy-legend-ring;
+    }
+}
+
+.menu-item-availability-free,
+.menu-item-availability-busy,
+.menu-item-availability-ooo,
+.menu-item-availability-tentative {
+    &::before {
+        @extend %free-busy-legend-ring;
+    }
+}
+
+.freebusy-legend-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px solid;
+
+    & .x-axi-legend-free,
+    & .x-axi-legend-busy,
+    & .x-axi-legend-ooo,
+    & .x-axi-legend-tentative,
+    & .x-axi-legend-na {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+// END Free / Busy
+
+// Attendees icon
+.x-axi-has-attendees {
+    display: flex;
+    position: relative;
+    min-width: 12px;
+    max-width: 12px;
+    height: 14px;
+
+    &::before {
+        position: absolute;
+        top: 1px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 6px;
+        height: 6px;
+        box-sizing: border-box;
+        border: 1px solid;
+        border-radius: 50%;
+        content: "";
+    }
+
+    &::after {
+        position: absolute;
+        top: 6px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 10px;
+        height: 8px;
+        box-sizing: border-box;
+        border: 1px solid;
+        border-radius: 4px;
+        border-bottom-left-radius: 1px;
+        border-bottom-right-radius: 1px;
+        content: "";
+    }
+}
+
+// Recurrence icon
+.x-axi-has-recurrency {
+    display: flex;
+    justify-content: center;
+    min-width: 15px;
+    max-width: 15px;
+    height: 14px;
+
+    &::after {
+        font-size: 32px;
+        content: "\e023";
+    }
+}
+
+// Recurrence exception icon
+.x-axi-had-recurrency {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-width: 15px;
+    max-width: 15px;
+    height: 14px;
+
+    &::before {
+        position: absolute;
+        left: calc(50% - 1px);
+        width: 1px;
+        height: 16px;
+        transform: rotate(25deg);
+        z-index: 1;
+        content: "";
+    }
+
+    &::after {
+        font-size: 32px;
+        content: "\e023";
+    }
+}
+
+// START Axi Components in Window
+.x-axi-window {
+    // Thumbnail in Window
+    & .thumbnail-container {
+        & .no-thumbnail {
+        }
+    }
+
+    // Search input in Window
+    %window-search-input {
+        background-image: url(../images/common/icon-search.svg);
+        background-position: left 8px top 9px;
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+    }
+
+    & .x-axi-search-input {
+        @extend %window-search-input;
+    }
+
+    @at-root {
+        .ext-safari &,
+        .ext-chrome & {
+            & .x-toolbar .x-form-text.x-axi-search-input {
+                @extend %window-search-input;
+            }
+        }
+
+
+    }
+}
+// END Axi Components in Window

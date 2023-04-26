@@ -1,0 +1,105 @@
+/**
+ * @fileOverview The WebMail theme Neutral preloader style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-neutral/variables";
+@import "../../../../../../include/webmail/common/mixins";
+
+%preloader-progress-bar {
+	@include progress-bar(300px, 8px, true);
+}
+
+body {
+    #loading-mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20002;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        & #loading-mask-over {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 20004;
+            background-color: $mask-level-0;
+
+            @at-root html.dark & {
+                background-color: $dark-mode-mask-level-0;
+            }
+        }
+    }
+
+    #progress {
+    	position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        z-index: 20003;
+
+		& .loading-text {
+            @include font-title-text(40px, 200);
+            color: $preloader-title-text-color;
+            text-align: center;
+		}
+
+		& .loading-username {
+			@include font-body-text(20px, 200);
+			text-align: center;
+			color: $preloader-subtitle-text-color;
+		}
+
+		& .x-progress-wrap {
+			margin-top: 35px;
+			@extend %preloader-progress-bar;
+		}
+    }
+}
+
+// RTL
+body.rtl {
+	#loading-mask {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+
+    #progress {
+		& .x-progress-wrap {
+			& .x-progress-inner {
+				& .x-progress-bar {
+					left: auto;
+					right: -1px;
+				}
+			}
+		}
+    }
+}
+
+//  Language specific tweaks
+body.rtl.lang-fa {
+    #progress {
+        & .loading-text {
+            @include font-title-text-lang-fa();
+        }
+    }
+}

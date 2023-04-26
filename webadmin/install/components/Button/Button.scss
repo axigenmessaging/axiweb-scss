@@ -1,0 +1,22 @@
+/**
+ * @fileOverview The button component style sheet.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ *
+ * @author Mihai Oprea <mihai.oprea@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ *
+ * @date Dec 24, 2018
+ */
+
+button {
+	&.disabled {
+		opacity: .8;
+	}
+
+	& .button-loading {
+	  position: absolute;
+	  top: 0.7em;
+	  right: 0.5em;
+	}
+}

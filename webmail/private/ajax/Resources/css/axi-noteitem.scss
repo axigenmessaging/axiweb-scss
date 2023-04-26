@@ -1,0 +1,93 @@
+ /**
+ * @fileOverview The WebMail note item base style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "/css/axigen-web-fonts.css";
+@import "../../../../../include/webmail/common/mixins";
+@import "axi-custom-scrollbar";
+
+body {
+	margin: 0;
+	@include font-body-text(10pt, 400);
+
+	&.note-view {
+		margin: 18px;
+	}
+}
+
+@media only screen {
+	@at-root body.print-page {
+		padding: 15px;
+	}
+}
+
+a {
+	text-decoration: none;
+	transition: opacity .2s ease-in-out;	
+
+	&:hover {
+		opacity: .7;		
+	}
+}
+
+hr {
+	border: none;
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+
+// Make images fit in the viewport, so that
+// the user doesn't have to scroll horizontally.
+img {
+	max-width: 100%;
+}
+
+// Combo
+@import "../../../../../include/webmail/common/_ext-overrides-combo-list";
+
+.mention-container {
+	position: relative;
+	display: inline-block;
+}
+
+.mention-combo-list {	
+	& .x-combo-list-inner {
+		overflow-x: hidden;
+		
+
+		& .x-combo-list-item {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+
+			& * {
+				display: inline;
+				font-style: normal;
+				font-weight: 400;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			& .x-clear {
+				display: none;
+			}
+		}
+	}
+} 
+
+// RTL
+body[style*="direction: rtl"] {
+	.mention-combo-list {
+		left: auto !important;
+		right: 0;
+		direction: ltr;
+		text-align: right;
+	}
+}

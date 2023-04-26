@@ -1,0 +1,665 @@
+// Variables
+// Stick to their usage for consistent naming, where possible. 
+//
+// @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+//
+// @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+// @date Mar 30, 2020
+
+
+//******************************************************************************
+//* Global
+//*
+$theme-main-color: #808080;
+$theme-secondary-color: #dc6060;
+$inner-border-color: #ededed;
+	$dark-mode-inner-border-color: #363636;
+$text-main-color: #51514f;
+	$dark-mode-text-main-color: #aeaeb0;
+$text-contrast-color: #000;
+	$dark-mode-text-contrast-color: #fff;
+$theme-main-lighter-color: #757e80;
+$theme-background-color: #fff;
+	$dark-mode-theme-background-color: #1a1a1a;
+
+//******************************************************************************
+//* Ext overrides
+//*
+// Action buttons
+$outline-button-background-color: transparent;
+$outline-button-border-color: #dae2e6;
+	$dark-mode-outline-button-border-color: #43484A;
+$outline-button-text-color: $text-main-color;
+	$dark-mode-outline-button-text-color: $dark-mode-text-main-color;
+$highlight-button-background-color: $theme-secondary-color;
+$highlight-button-border-color: $theme-secondary-color;
+$highlight-button-text-color: #fff;
+
+// Loader
+$loader-background-color: $theme-background-color;
+	$dark-mode-loader-background-color: $dark-mode-theme-background-color;
+$loader-text-color: $text-main-color;
+	$dark-mode-loader-text-color: $dark-mode-text-main-color;
+
+// Preloader
+$preloader-title-text-color: #fff;
+$preloader-subtitle-text-color: rgba(#fff, .4);
+$preloader-frame-background-color: transparent;
+$preloader-frame-border-color: rgba($theme-main-color, .3);
+$preloader-progressbar-background-color: $theme-main-color;
+$preloader-percent-text-color: $preloader-subtitle-text-color;
+
+// Tabs
+$tab-background-color: $theme-background-color;
+	$dark-mode-tab-background-color: $dark-mode-theme-background-color;
+$tab-text-color: $theme-main-lighter-color;
+$tab-active-text-color: $text-contrast-color;
+	$dark-mode-tab-active-text-color: $dark-mode-text-contrast-color;
+$tab-icon-color: rgba($text-contrast-color, .3);
+	$dark-mode-tab-icon-color: rgba($dark-mode-text-contrast-color, .3);
+
+// Checkbox
+$checkbox-background-color: transparent;
+$checkbox-border-color: #ccc;
+	$dark-mode-checkbox-border-color: #4d4d4d;
+$checkbox-checked-background-color: $theme-main-color;
+$checkbox-checked-border-color: $theme-main-color;
+$checkbox-checked-checker-color: #fff;
+
+// Radio
+$radio-background-color: transparent;
+$radio-border-color: #ccc;
+	$dark-mode-radio-border-color: #4d4d4d;
+$radio-selected-background-color: $theme-main-color;
+$radio-selected-border-color: $theme-main-color;
+$radio-selected-checker-background-color: #fff;
+
+// Input
+$input-border-color: #dae2e6;
+	$dark-mode-input-border-color: #43484A;
+$input-text-color: $text-main-color;
+	$dark-mode-input-text-color: $dark-mode-text-main-color;
+$input-placeholder-text-color: rgba($theme-main-lighter-color, .9);
+$input-focus-border-color: $theme-main-color;
+$input-focus-placeholder-text-color: rgba($tab-text-color, .5);
+
+// Combo
+$combo-border-color: #dae2e6;
+	$dark-mode-combo-border-color: #43484A;
+$combo-focus-border-color: $theme-main-color;
+$combo-focus-text-color: $theme-main-color;
+$combo-list-background-color: $theme-background-color;
+	$dark-mode-combo-list-background-color: $dark-mode-theme-background-color;
+$combo-list-border-color: $combo-border-color;
+	$dark-mode-combo-list-border-color: $dark-mode-combo-border-color;
+$combo-arrow-trigger-border-color: rgba($theme-main-lighter-color, .5);
+$combo-focus-arrow-trigger-border-color: $theme-main-color;
+$combo-list-selected-background-color: $theme-main-color;
+$combo-list-selected-text-color: #fff;
+
+// Window
+$window-border-color: #666;
+$window-inner-border-color: rgba(#666, .6);
+$window-title-text-color: #fff;
+$window-tab-selected-color: rgba(#fff, .7);
+
+// Window buttons 
+$window-action-button-background-color: transparent;
+$window-action-button-border-color: #666;
+$window-action-button-text-color: #666;
+$window-action-button-hover-background-color: transparent;
+$window-action-button-hover-border-color: rgba(#fff, .5);
+$window-action-button-hover-text-color: rgba(#fff, .5);
+$window-action-button-main-background-color: $theme-secondary-color;
+$window-action-button-main-border-color: $theme-secondary-color;
+$window-action-button-main-text-color: #fff;
+$window-action-button-main-hover-background-color: $theme-secondary-color;
+$window-action-button-main-hover-border-color: $theme-secondary-color;
+$window-action-button-main-hover-text-color: #fff;
+
+// Components in Window
+$window-text-color: rgba(#fff, .5);
+
+// Loading mask in Window
+$window-loading-mask-background-color: #fff;
+
+// Fieldset in Window
+$window-fieldset-text-color: rgba(#fff, .6);
+
+// Form element and item in Window
+$window-label-text-color: $window-text-color;
+
+// Checkbox in Window
+$window-checkbox-border-color: rgba(#ccc, .5);
+$window-checkbox-label-text-color: $window-text-color;
+$window-checkbox-checked-border-color: $theme-main-color;
+
+// Input in Window
+$window-input-text-color: $window-text-color;
+$window-input-border-color: #666;
+$window-input-focus-border-color: $theme-main-color;
+
+// Combo in Window
+$window-combo-border-color: $window-input-border-color;
+$window-combo-focus-border-color: $theme-main-color;
+$window-combo-focus-text-color: $theme-main-color;
+$window-combo-list-background-color: #282e30;
+$window-combo-list-border-color: $window-combo-border-color;
+$window-combo-list-text-color: $window-text-color;
+$window-combo-arrow-trigger-border-color: $window-border-color;
+$window-combo-focus-arrow-trigger-border-color: $combo-focus-arrow-trigger-border-color;
+
+// Radio in Window
+$window-radio-border-color: $window-checkbox-border-color;
+$window-radio-selected-background-color: $radio-selected-background-color;
+$window-radio-selected-border-color: $radio-selected-border-color;
+$window-radio-selected-checker-background-color: $radio-selected-checker-background-color;
+
+// Panel
+$panel-header-text-color: $text-contrast-color;
+	$dark-mode-panel-header-text-color: $dark-mode-text-contrast-color;
+$window-panel-header-text-color: $window-text-color;
+
+// Menu
+$menu-border-color: #dae2e6;
+	$dark-mode-menu-border-color: #43484A;
+$menu-background-color: $theme-background-color;
+	$dark-mode-menu-background-color: $dark-mode-theme-background-color;
+$menu-title-color: $text-contrast-color;
+	$dark-mode-menu-title-color: $dark-mode-text-contrast-color;
+$menu-item-hover-text-color: #fff;
+$menu-box-shadow-color: rgba(#0f171a, 0.15);
+	$dark-mode-menu-box-shadow-color: rgba(#000, 0.3);
+
+// Toolbar
+$toolbar-button-pressed-background-color: rgba($theme-main-color, .15);
+
+// Drag and drop ghost
+$dd-drop-ok-icon-color: #50a93c;
+$dd-drop-nodrop-icon-color: #d56c5d;
+$dd-drag-ghost-text-color: #000;
+	$dark-mode-dd-drag-ghost-text-color: #fff;
+	
+// Color palette
+$color-palette-color-selected-background-color: rgba($theme-main-color, .2);
+
+// HTML Editor
+$html-editor-icon-color: $text-contrast-color;
+	$dark-mode-html-editor-icon-color: rgba($dark-mode-text-contrast-color, .8);
+$html-editor-emoji-groups-text-color: rgba($text-main-color, .6);
+	$dark-mode-html-editor-emoji-groups-text-color: rgba($dark-mode-text-main-color, .6);
+$html-editor-emoji-links-icon-color: rgba($text-main-color, .6);
+	$dark-mode-html-editor-emoji-links-icon-color: rgba($dark-mode-text-main-color, .6);
+$html-editor-emoji-links-active-icon-color: $text-contrast-color;
+	$dark-mode-html-editor-emoji-links-active-icon-color: $dark-mode-text-contrast-color;
+
+
+//******************************************************************************
+//* Global Axi components
+//*
+// Overlay mask
+$mask-level-0: rgba(#0f171a, .9);
+$dark-mode-mask-level-0: rgba(#132025, .85);
+$mask-level-1: rgba(#262d30, .8);
+$dark-mode-mask-level-1: rgba(#132025, .75);
+$mask-level-2: rgba(#262d30, .8);
+$dark-mode-mask-level-2: rgba(#132025, .75);
+
+// Global messages
+$message-error-color: rgba(#d56d5d, .95);
+$message-warning-color: rgba(#e5ac00, .95);
+$message-success-color: rgba(#50a93c, .95);
+$message-error-warning-success-separator-color: rgba(#fff, .3);
+$message-error-warning-success-text-color: #fff;
+$message-error-warning-success-close-button-color: rgba(#fff, .6);
+$message-error-warning-success-button-border-color: #fff;
+$message-error-warning-success-button-text-color: #fff;
+$message-error-warning-success-preloader-frame-border-color: rgba(#fff, .3);
+$message-error-warning-success-preloader-progressbar-background-color: #fff;
+
+// Axi Input + Animated Label
+$input-animated-label-label-background-color: #262d30;
+	$dark-mode-input-animated-label-label-background-color: #132024;
+$input-animated-label-disabled-label-color: rgba(#fff, .25);
+
+// Search input
+$search-input-border-color: #ccc;
+	$dark-mode-search-input-border-color: #4d4d4d;
+$search-input-focus-border-color: $theme-main-color;
+
+// Dark Tooltips
+$dark-tooltip-background-color: rgba(#0f171a, .95);
+	$dark-mode-dark-tooltip-background-color: rgba(#27363d, .95);
+$dark-tooltip-text-color: rgba(#fff, .7);
+
+// Light Tooltips
+$light-tooltip-header-border-color: $menu-border-color;
+	$dark-mode-light-tooltip-header-border-color: $dark-mode-menu-border-color;
+$light-tooltip-header-text-color: $text-contrast-color;
+	$dark-mode-light-tooltip-header-text-color: $dark-mode-text-contrast-color;
+$light-tooltip-separator-border-color: $menu-border-color;
+	$dark-mode-light-tooltip-separator-border-color: $dark-mode-menu-border-color;
+
+// Lists
+$list-not-focused-row-border-color: $inner-border-color;
+$list-not-focused-row-selected-background-color: rgba($theme-main-color, .2);
+$list-not-focused-row-selected-border-color: $theme-background-color;
+	$dark-mode-list-not-focused-row-selected-border-color: $dark-mode-theme-background-color;
+$list-focused-row-selected-background-color: $theme-main-color;
+$list-focused-row-selected-border-color: rgba(#fff, .5);
+$list-focused-row-selected-text-color: #fff;
+$list-footer-background-color: $theme-background-color;
+	$dark-mode-list-footer-background-color: $dark-mode-theme-background-color;
+$list-footer-color: rgba($text-main-color, .7);
+	$dark-mode-list-footer-color: rgba($dark-mode-text-main-color, .7);
+
+$grid-panel-row-selected-checkbox-checked-checker-color: $theme-main-color;
+$list-focused-row-selected-checkbox-checked-background-color: #fff;
+$list-focused-row-selected-checkbox-checked-border-color: #fff;
+
+// Contact thumbnails
+$thumbnail-no-thumbnail-background-color: #acb1b3;
+	$dark-mode-thumbnail-no-thumbnail-background-color: rgba(#fff, .2);
+$thumbnail-no-thumbnail-text-color: #fff;
+
+// Print button
+$print-button-text-color: rgba(#51514f, .5);
+	$dark-mode-print-button-text-color: rgba(#aeaeb0, .5);
+
+// Action bar 
+$action-bar-background-color: #f5f5f5;
+	$dark-mode-action-bar-background-color: #2e2e2e;
+
+// Email Address Objects
+$email-address-object-text-color: $text-main-color;
+	$dark-mode-email-address-object-text-color: $dark-mode-text-main-color;
+$email-address-object-hover-text-color: $theme-main-color;
+$email-address-object-focused-background-color: $theme-main-color;
+$email-address-object-focused-text-color: #fff;
+$email-address-object-invalid-text-color: $theme-secondary-color;
+	$dark-mode-email-address-object-invalid-text-color: $email-address-object-invalid-text-color;
+$email-address-object-invalid-hover-text-color: $theme-secondary-color;
+$email-address-object-invalid-focused-background-color: $theme-secondary-color;
+
+// Attachments
+$attachment-background-color: #f5f5f5;
+$attachment-border-color: $inner-border-color;
+$attachments-drag-and-drop-border-color: $inner-border-color;
+	$dark-mode-attachments-drag-and-drop-border-color: $dark-mode-inner-border-color;
+$attachments-drag-and-drop-attachment-background-color: #f5f5f5;
+	$dark-mode-attachments-drag-and-drop-attachment-background-color: #2e2e2e;
+$attachments-drag-and-drop-attachment-border-color: $inner-border-color;
+	$dark-mode-attachments-drag-and-drop-attachment-border-color: $dark-mode-inner-border-color;
+$attachments-drag-and-drop-attachment-text-color: $theme-main-color;
+$attachments-drag-and-drop-separator-text-color: $text-contrast-color;
+	$dark-mode-attachments-drag-and-drop-separator-text-color: $dark-mode-text-contrast-color;
+$attachments-drag-and-drop-attachment-hover-background-color: $inner-border-color;
+	$dark-mode-attachments-drag-and-drop-attachment-hover-background-color: $dark-mode-inner-border-color;
+$attachments-drag-and-drop-attachment-hover-border-color: $inner-border-color;
+	$dark-mode-attachments-drag-and-drop-attachment-hover-border-color: $dark-mode-inner-border-color;
+
+// Free / busy
+$freebusy-busy-color: rgba(#dc6060, .95);
+$freebusy-tentative-color: rgba(#e5ac00, .95);
+$freebusy-free-color: rgba(#50a93c, .95);
+$freebusy-ooo-color: rgba(#ab4cc3, .95);
+$freebusy-na-color: rgba(#666, .95);
+
+// Axi components in Window
+// Contact thumbnails
+$window-thumbnail-no-thumbnail-background-color: rgba(#fff, .2);
+$window-thumbnail-no-thumbnail-text-color: #fff;
+
+// Email Address Objects
+$window-email-address-object-text-color: $window-text-color;
+$window-email-address-object-hover-text-color: $theme-main-color;
+
+
+//******************************************************************************
+//* App
+//*
+// Top Toolbar (and "Check email" button)
+$top-toolbar-height: 52px;
+
+// Reminders
+$reminders-count-width: 66px;
+$reminders-menu-row-col-due-border-color: $inner-border-color;
+	$dark-mode-reminders-menu-row-col-due-border-color: $dark-mode-inner-border-color;
+$reminders-menu-row-col-due-text-color: rgba($text-main-color, .7);
+	$dark-mode-reminders-menu-row-col-due-text-color: rgba($dark-mode-text-main-color, .7);
+$reminders-menu-row-hover-col-due-border-color: rgba($inner-border-color, .5);
+$reminders-menu-row-hover-col-due-text-color: rgba(#fff, .5);
+$reminders-menu-row-col-summary-text-color: $text-main-color;
+	$dark-mode-reminders-menu-row-col-summary-text-color: $dark-mode-text-main-color;
+$reminders-menu-row-hover-col-summary-text-color: #fff;
+$reminders-menu-row-col-options-text-color: $theme-main-color;
+$reminders-menu-row-hover-col-options-text-color: #fff;
+
+// Sidebar
+$sidebar-background-color: #404040;
+$logo-background-color: #404040;
+$logo-border-color: rgba(#fff, .2);
+$sidebar-icon-color: rgba(#fff, .4);
+$sidebar-icon-hover-color: rgba(#fff, .7);
+$sidebar-icon-selected-color: rgba(#fff, .7);
+
+// Sidebar menu
+$theme-ocean-color: #4f8fe2;
+$theme-breeze-color: #4c8ea6;
+$theme-neutral-color: #808080;
+$dark-mode-light-background-color: #fff;
+$dark-mode-light-border-color: #dae2e6;
+$dark-mode-dark-background-color: $sidebar-background-color;
+$dark-mode-dark-border-color: $sidebar-background-color;
+
+// Folder tree or grid
+$folder-tree-background-color: #f5f5f5;
+	$dark-mode-folder-tree-background-color: #2e2e2e;
+
+// Root nodes
+$folder-tree-root-node-text-color: rgba($text-main-color, .6);
+	$dark-mode-folder-tree-root-node-text-color: rgba($dark-mode-text-main-color, .6);
+$folder-tree-root-node-minus-icon-background-color: $inner-border-color;
+	$dark-mode-folder-tree-root-node-minus-icon-background-color: $dark-mode-inner-border-color;
+$folder-tree-root-node-minus-icon-border-color: $menu-border-color;
+	$dark-mode-folder-tree-root-node-minus-icon-border-color: $dark-mode-menu-border-color;
+
+// The other nodes
+$folder-tree-node-counter-text-color: rgba($text-main-color, .6);
+	$dark-mode-folder-tree-node-counter-text-color: rgba($dark-mode-text-main-color, .6);
+$folder-tree-node-icon-text-color: rgba($text-main-color, .4);
+	$dark-mode-folder-tree-node-icon-text-color: rgba($dark-mode-text-main-color, .4);
+
+// Selected
+$folder-tree-node-selected-background-color: rgba($theme-main-color, .1);
+$folder-tree-node-selected-text-color: $text-contrast-color;
+	$dark-mode-folder-tree-node-selected-text-color: $dark-mode-text-contrast-color;
+$folder-tree-node-selected-icon-text-color: $theme-main-color;
+$folder-tree-node-selected-counter-text-color: rgba($theme-main-color, .6);
+
+// Focused
+$folder-tree-focused-node-selected-background-color: $theme-main-color;
+$folder-tree-focused-node-selected-text-color: #fff; 
+$folder-tree-focused-node-selected-icon-text-color: rgba(#fff, .6);
+$folder-tree-focused-node-selected-counter-text-color: rgba(#fff, .6);
+
+// New mail button
+$new-mail-button-background-color: $theme-secondary-color;
+$new-mail-button-hover-background-color: #c75858;
+$new-mail-button-icon-color: rgba(#fff, .5);
+$new-mail-button-text-color: #fff;
+$new-mail-button-separator-color: rgba(#000, .15); 
+$new-mail-button-arrow-color: rgba(#000, .6);
+
+// Check email
+$check-email-text-color: rgba(#51514f, .6);
+	$dark-mode-check-email-text-color: rgba(#aeaeb0, .6);
+
+// Mini calendar
+$datepicker-selected-text-color: #fff;
+$datepicker-days-header-color: rgba($text-main-color, .6);
+	$dark-mode-datepicker-days-header-color: rgba($dark-mode-text-main-color, .6);
+
+// START Main
+// START Top tabs
+// Top area (logo, "New" button, top tabs)
+$top-area-height: 56px;
+$top-tab-strip-background-color: $theme-secondary-color;
+// END Top tabs
+
+// START Main view
+// START Main view toolbar
+$toolbar-icon-color: $theme-main-color;
+$toolbar-icon-text-color: $theme-main-color;
+
+// Mails toolbar
+$mails-toolbar-search-vertical-separator-color: #dae2e6;
+	$dark-mode-mails-toolbar-search-vertical-separator-color: #43484A;
+// END Main view toolbar
+
+// START Mail
+// START Mails list 
+$mails-list-star-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-star-color: rgba(#aeaeb0, .7);
+$mails-list-star-starred-color: #f8cb4e;
+$mails-list-focused-row-selected-star-color: rgba(#fff, .5);
+$mails-list-flag-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-flag-color: rgba(#aeaeb0, .7);
+$mails-list-flag-flagged-color: #dc6060;
+$mails-list-focused-row-selected-flag-color: rgba(#fff, .5);
+
+// Mails list not focused, row not selected
+$mails-list-not-focused-row-refw-icon-color: rgba(#51514f, .8);
+	$dark-mode-mails-list-not-focused-row-refw-icon-color: rgba(#aeaeb0, .8);
+$mails-list-not-focused-row-from-color: $text-contrast-color;
+$mails-list-not-focused-row-draft-color: $theme-secondary-color;
+	$dark-mode-mails-list-not-focused-row-from-color: $dark-mode-text-contrast-color;
+$mails-list-not-focused-row-from-attachment-icon-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-not-focused-row-from-attachment-icon-color: rgba(#aeaeb0, .7);
+$mails-list-not-focused-row-subject-color: $text-contrast-color;
+	$dark-mode-mails-list-not-focused-row-subject-color: $dark-mode-text-contrast-color;
+$mails-list-not-focused-row-date-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-not-focused-row-date-color: rgba(#aeaeb0, .7);
+$mails-list-not-focused-row-folder-border-color: rgba(#51514f, .4);
+	$dark-mode-mails-list-not-focused-row-folder-border-color: rgba(#aeaeb0, .4);
+$mails-list-not-focused-row-folder-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-not-focused-row-folder-color: rgba(#aeaeb0, .7);
+$mails-list-not-focused-row-snippet-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-not-focused-row-snippet-color: rgba(#aeaeb0, .7);
+$mails-list-not-focused-row-importance-high-icon-color: #dc6060;
+$mails-list-not-focused-row-importance-low-icon-color: rgba(#51514f, .7);
+	$dark-mode-mails-list-not-focused-row-importance-low-icon-color: rgba(#aeaeb0, .7);
+$mails-list-not-focused-row-label-background-color: #dae2e6;
+	$dark-mode-mails-list-not-focused-row-label-background-color: #43484A;
+
+// Mails list not focused, row selected
+$mails-list-not-focused-row-selected-refw-icon-color: $mails-list-not-focused-row-refw-icon-color;
+$mails-list-not-focused-row-selected-from-color: $mails-list-not-focused-row-from-color;
+$mails-list-not-focused-row-selected-from-attachment-icon-color: $mails-list-not-focused-row-from-attachment-icon-color;
+$mails-list-not-focused-row-selected-subject-color: $mails-list-not-focused-row-subject-color;
+$mails-list-not-focused-row-selected-date-color: $mails-list-not-focused-row-date-color;
+$mails-list-not-focused-row-selected-folder-border-color: $mails-list-not-focused-row-folder-border-color;
+$mails-list-not-focused-row-selected-folder-color: $mails-list-not-focused-row-folder-color;
+$mails-list-not-focused-row-selected-snippet-color: $mails-list-not-focused-row-snippet-color;
+$mails-list-not-focused-row-selected-importance-high-icon-color: $mails-list-not-focused-row-importance-high-icon-color;
+$mails-list-not-focused-row-selected-importance-low-icon-color: $mails-list-not-focused-row-importance-low-icon-color;
+$mails-list-not-focused-row-selected-label-background-color: rgba($theme-main-color, .3);
+
+// Mails list focused, row selected
+$mails-list-focused-row-selected-refw-icon-color: #fff;
+$mails-list-focused-row-selected-from-color: #fff;
+$mails-list-focused-row-draft-color: #fff;
+$mails-list-focused-row-selected-from-attachment-icon-color: rgba(#fff, .5);
+$mails-list-focused-row-selected-subject-color: #fff;
+$mails-list-focused-row-selected-date-color: rgba(#fff, .5);
+$mails-list-focused-row-selected-folder-border-color: rgba(#fff, .3);
+$mails-list-focused-row-selected-folder-color: rgba(#fff, .5);
+$mails-list-focused-row-selected-snippet-color: rgba(#fff, .5);
+$mails-list-focused-row-selected-importance-high-icon-color: #fff;
+$mails-list-focused-row-selected-importance-low-icon-color: rgba(#fff, .5);
+$mails-list-unread-bullet: $theme-main-color;
+$mails-list-focused-selected-unread-bullet: #fff;
+$mails-list-focused-row-selected-label-background-color: rgba($theme-background-color, .3);
+$mails-list-focused-row-selected-label-text-color: $theme-background-color;
+
+// Conversations list not focused, row not selected
+$conversations-list-not-focused-row-count-border-color: rgba($theme-main-color, .4);
+$conversations-list-not-focused-row-count-color: $theme-main-color;
+
+// Conversations list not focused, row selected
+$conversations-list-not-focused-row-selected-count-border-color: $conversations-list-not-focused-row-count-border-color;
+$conversations-list-not-focused-row-selected-count-color: $conversations-list-not-focused-row-count-color;
+
+// Conversations list focused, row selected
+$conversations-list-focused-row-selected-count-border-color: rgba(#fff, .4);
+$conversations-list-focused-row-selected-count-color: #fff;
+
+// Tasks list
+$tasks-list-not-focused-row-background-color: rgba($theme-main-color, .2);
+
+// Tasks list not focused, row not selected
+$tasks-list-not-focused-row-summary-color: $text-contrast-color;
+	$dark-mode-tasks-list-not-focused-row-summary-color: $dark-mode-text-contrast-color;
+$tasks-list-not-focused-row-duedate-color: rgba($text-main-color, .7);
+$tasks-list-not-focused-row-progress-color: rgba($text-main-color, .7);
+$tasks-list-not-focused-row-overdue-summary-color: #d56c5d;
+$tasks-list-not-focused-row-overdue-duedate-color: rgba($theme-secondary-color, .7);
+$tasks-list-not-focused-row-overdue-progress-color: rgba($theme-secondary-color, .7);
+
+// Tasks list not focused, row selected
+$tasks-list-not-focused-row-selected-summary-color: $tasks-list-not-focused-row-summary-color;
+$tasks-list-not-focused-row-selected-duedate-color: $tasks-list-not-focused-row-duedate-color;
+$tasks-list-not-focused-row-selected-progress-color: $tasks-list-not-focused-row-progress-color;
+
+// Tasks list not focused, row selected
+$tasks-list-focused-row-selected-summary-color: #fff;
+$tasks-list-focused-row-selected-duedate-color: rgba(#fff, .5);
+$tasks-list-focused-row-selected-progress-color: rgba(#fff, .5);
+
+// Notes list
+$notes-list-background-color: #f5f5f5;
+	$dark-mode-notes-list-background-color: #2e2e2e;
+
+// Notes list not focused, row not selected
+$notes-list-not-focused-row-background-color: $theme-background-color;
+	$dark-mode-notes-list-not-focused-row-background-color: $dark-mode-theme-background-color;
+$notes-list-not-focused-row-subject-color: $text-contrast-color;
+	$dark-mode-notes-list-not-focused-row-subject-color: $dark-mode-text-contrast-color;
+$notes-list-not-focused-row-date-color: rgba($text-main-color, .7);
+	$dark-mode-notes-list-not-focused-row-date-color: rgba($dark-mode-text-main-color, .7);
+$notes-list-not-focused-row-snippet-color: rgba($text-main-color, .7);
+	$dark-mode-notes-list-not-focused-row-snippet-color: rgba($dark-mode-text-main-color, .7);
+
+// Notes list not focused, row selected
+$notes-list-not-focused-row-selected-border-color: rgba($theme-main-color, .1);
+$notes-list-not-focused-row-selected-subject-color: $notes-list-not-focused-row-subject-color;
+$notes-list-not-focused-row-selected-date-color: $notes-list-not-focused-row-date-color;
+$notes-list-not-focused-row-selected-snippet-color: $notes-list-not-focused-row-snippet-color;
+
+// Notes list focused, row selected
+$notes-list-focused-row-selected-border-color: $theme-main-color;
+$notes-list-focused-row-selected-subject-color: #fff;
+$notes-list-focused-row-selected-date-color: rgba(#fff, .5);
+$notes-list-focused-row-selected-snippet-color: rgba(#fff, .5);
+// END Mails list
+
+// START Mail item
+$mail-item-unread-bullet-background-color: $mails-list-unread-bullet;
+$mail-item-subject-color: $text-contrast-color;
+	$dark-mode-mail-item-subject-color: $dark-mode-text-contrast-color;
+$mail-item-recipients-info-color: $tab-text-color;
+$mail-item-draft-color: $theme-secondary-color;
+$mail-item-label-background-color: #dae2e6;
+	$dark-mode-mail-item-label-background-color: #43484A;
+$mail-item-star-color: $mails-list-star-color;
+	$dark-mode-mail-item-star-color: $dark-mode-mails-list-star-color;
+$mail-item-star-starred-color: $mails-list-star-starred-color;
+$mail-item-flag-color: $mails-list-flag-color;
+	$dark-mode-mail-item-flag-color: $dark-mode-mails-list-flag-color;
+$mail-item-flag-flagged-color: $mails-list-flag-flagged-color;
+$mail-item-importance-high-icon-color: $mails-list-not-focused-row-importance-high-icon-color; 
+$mail-item-importance-low-icon-color: $mails-list-not-focused-row-importance-low-icon-color;
+	$dark-mode-mail-item-importance-low-icon-color: $dark-mode-mails-list-not-focused-row-importance-low-icon-color;
+// END Mail item
+
+// START Attachments section
+$attachments-tab-attachment-background-color: #f5f5f5;
+	$dark-mode-attachments-tab-attachment-background-color: #2e2e2e;
+$attachments-tab-attachment-border-color: $inner-border-color;
+	$dark-mode-attachments-tab-attachment-border-color: $dark-mode-inner-border-color;
+$attachments-tab-attachment-corner-background-color: $inner-border-color;
+	$dark-mode-attachments-tab-attachment-corner-background-color: $dark-mode-inner-border-color;
+$attachments-tab-attachment-icon-color: rgba($theme-main-color, .3);
+// END Attachments section
+// END Mail
+
+// START Calendar
+// Calendar colors
+$calendar-colors: (
+	cc-1: #f6847c, /// Light red
+	cc-2: #ddac6b, /// Orange
+	cc-3: #5ac0cc, /// Turquoise
+	cc-4: #9ccb58, /// Green
+	cc-5: #f193c2, /// Pink
+	cc-6: #b584c9, /// Purple
+	cc-7: #268ad8, /// Blue
+	cc-8: #927654, /// Brown
+	cc-9: #7c6495 /// Mauve
+);
+
+// Calendar views
+$calendar-cell-non-working-day-background-color: rgba(#f5f5f5, .7);
+	$dark-mode-calendar-cell-non-working-day-background-color: rgba(#2e2e2e, .7);
+$calendar-cell-selected-background-color: $list-not-focused-row-selected-background-color;
+$calendar-event-description-text-color: #fff;
+$calendar-event-attendees-icon-color: #000;
+$calendar-event-recurrence-icon-color: $calendar-event-attendees-icon-color;
+$calendar-event-tentative-border-color: #fff;
+
+// Calendar search
+$calendar-search-group-header-background-color: #f5f5f5;
+	$dark-mode-calendar-search-group-header-background-color: #2e2e2e;
+$calendar-search-group-header-text-color: $text-contrast-color;
+	$dark-mode-calendar-search-group-header-text-color: $dark-mode-text-contrast-color;
+$calendar-search-results-date-text-color: $text-contrast-color;
+	$dark-mode-calendar-search-results-date-text-color: $dark-mode-text-contrast-color;
+$calendar-search-results-second-row-text-color: rgba($text-main-color, .7);
+	$dark-mode-calendar-search-results-second-row-text-color: rgba($dark-mode-text-main-color, .7);
+// END Calendar
+// END Main view
+
+// START Composers
+$composers-toolbar-send-save-button-icon-background-color: $theme-secondary-color;
+$composers-toolbar-send-save-button-icon-text-color: #fff;
+$composers-toolbar-send-save-button-text-color: $theme-secondary-color;
+$composers-north-addressbook-button-hover-text-color: $theme-main-color;
+$composers-north-field-border-color: rgba($inner-border-color, .7);
+	$dark-mode-composers-north-field-border-color: rgba($dark-mode-inner-border-color, .7);
+$composers-html-elements-hr-border-color: #ccc;
+	$dark-mode-composers-html-elements-hr-border-color: #4d4d4d;
+// START Mail Composer
+// END Mail Composer
+
+// START Calendar Composer
+$attendees-availability-icon-background-color: transparent;
+$attendees-availability-icon-text-color: rgba($text-main-color, .75);
+$attendees-availability-free-icon-background-color: $freebusy-free-color;
+$attendees-availability-free-icon-text-color: #fff;
+$attendees-availability-busy-icon-background-color: $freebusy-busy-color;
+$attendees-availability-busy-icon-text-color: #fff;
+$attendees-availability-na-icon-background-color: $freebusy-na-color;
+$attendees-availability-na-icon-text-color: #fff;
+// END Calendar Composer
+
+// START Notes Composer
+$notes-composer-body-background-color: #f5f5f5;
+	$dark-mode-notes-composer-body-background-color: #2e2e2e;
+// END Notes Composer
+
+// START DLISTs Composer
+$composer-dlist-grid-row-not-selected-background-color: rgba($theme-main-color, .2);
+// END DLISTs Composer
+// END Composers
+
+// START Windows
+$window-subtitle-text-color: rgba(#fff, .65);
+$window-contrast-color: #fff;
+$window-sublabel-text-color: rgba(#fff, .35);
+$window-settings-antispam-slider-gradient-start-color: #50a93c;
+$window-settings-antispam-slider-gradient-end-color: #d56c5d;
+
+// Folder tree or grid
+// Root nodes
+$window-folder-tree-root-node-text-color: rgba($window-text-color, .3);
+$window-folder-tree-root-node-minus-icon-background-color: transparent;
+$window-folder-tree-root-node-minus-icon-border-color: $window-inner-border-color;
+
+// The other nodes
+$window-folder-tree-node-icon-text-color: rgba($window-text-color, .2);
+
+// Selected
+$window-folder-tree-node-selected-background-color: transparent;
+$window-folder-tree-node-selected-text-color: $theme-main-color;
+$window-folder-tree-node-selected-icon-text-color: rgba($theme-main-color, .6);
+// END Windows
+// END Main

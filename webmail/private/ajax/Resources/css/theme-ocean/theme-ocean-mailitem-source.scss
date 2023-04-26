@@ -1,0 +1,43 @@
+/**
+ * @fileOverview The WebMail mail item source theme specific style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 31, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-ocean/variables";
+@import "../../../../../../include/webmail/theme-ocean/stubs";
+
+
+@at-root html.dark body {
+	filter: invert(1) hue-rotate(180deg);
+}
+
+.x-axi-sourcetab-iframe-trailing-dots {
+	border-color: $inner-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-inner-border-color;
+		color: $dark-mode-text-contrast-color;
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+.x-axi-sourcetab-iframe-message {
+	color: $text-main-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-text-main-color;
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+.x-axi-sourcetab-iframe-download-eml {
+	& a {
+		@extend %button-small-rounding;
+		text-decoration: none;
+	}
+}

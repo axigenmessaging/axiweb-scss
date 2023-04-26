@@ -1,0 +1,181 @@
+// Variables
+// Stick to their usage for consistent naming, where possible. 
+//
+// @copyright Copyright (c) 2020 Axigen Messaging. All rights reserved.
+//
+// @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+// @date Sep 3, 2020
+
+
+//******************************************************************************
+//* Global
+//*
+$theme-main-color: #4c8ea6;
+$theme-secondary-color: #dc6060;
+$inner-border-color: #e1e9ed;
+$text-main-color: #51514f;
+$text-contrast-color: #000;
+$theme-main-lighter-color: #757e80;
+$theme-background-color: #fff;
+
+
+//******************************************************************************
+//* Components
+//*
+// Lightbox
+$lightbox-background-color: rgba(#1e3740, .2);
+
+// Links
+$links-text-color: $theme-main-color;
+
+// Highlight button
+$primary-highlight-button-background-color: $theme-secondary-color;
+$primary-highlight-button-text-color: #fff;
+
+// Outline button
+$secondary-button-border-color: rgba($theme-main-color, .3);
+$secondary-button-text-color: $theme-main-color;
+
+// List
+$list-border-color: $inner-border-color;
+$list-button-icon-color: $theme-main-color;
+$list-pagenav-text-color: rgba($text-main-color, .7);
+$list-empty-text-color: rgba($text-main-color, .7);
+
+// Search
+$search-field-icon-color: $theme-main-lighter-color;
+$search-field-border-color: $inner-border-color;
+$search-field-placeholder-text-color: rgba($theme-main-lighter-color, .9);
+$search-field-focused-icon-color: $theme-main-color;
+$search-field-focused-placeholder-text-color: rgba($theme-main-lighter-color, .5);
+
+// Checkbox
+$checkbox-background-color: transparent;
+$checkbox-border-color: #ccc;
+$checkbox-checked-background-color: $theme-main-color;
+$checkbox-checked-border-color: $theme-main-color;
+$checkbox-checked-checkmark-color: #fff;
+
+$big-checkbox-background-color: transparent;
+$big-checkbox-border-color: #ccc;
+$big-checkbox-checked-background-color: $checkbox-checked-background-color;
+$big-checkbox-checked-border-color: $checkbox-checked-border-color;
+$big-checkbox-checked-checkmark-color: $checkbox-checked-checkmark-color;
+
+// Radio button
+$radio-background-color: transparent;
+$radio-border-color: #ccc;
+$radio-label-text-color: $text-main-color;
+$radio-checked-background-color: $theme-main-color;
+$radio-checked-border-color: $theme-main-color;
+$radio-checked-checkmark-color: #fff;
+
+// Switch control
+$onoffswitch-background-color: transparent;
+$onoffswitch-border-color: rgba($theme-main-lighter-color, .7);
+$onoffswitch-switch-background-color: rgba($theme-main-lighter-color, .7);
+$onoffswitch-checked-background-color: transparent;
+$onoffswitch-checked-border-color: #57ac44;
+$onoffswitch-checked-switch-background-color: #57ac44;
+
+// Success & error messages
+$message-success-background-color: #1e3740;
+$message-success-text-color: rgba(#fff, .6);
+
+// Close icon
+$close-icon-color: $links-text-color;
+
+// Contact thumbnails
+$thumbnail-no-thumbnail-background-color: #acb1b3;
+$thumbnail-no-thumbnail-text-color: #fff;
+
+
+//******************************************************************************
+//* Login
+//*
+// Title + subtitle
+$login-main-title-color: $text-contrast-color;
+$login-main-subtitle-color: rgba($text-main-color, .7);
+
+// Form
+$login-form-input-label-color: rgba($text-main-color, .7);
+$login-form-input-border-color: #ccc;
+$login-form-input-text-color: $text-main-color;
+$login-form-input-focused-label-color: $theme-main-color;
+$login-form-input-focused-border-color: $theme-main-color;
+$login-form-input-focused-text-color: $theme-main-color;
+$login-form-checkbox-label-text-color: rgba($text-main-color, .7);
+$login-form-submit-button-background-color: $theme-main-color;
+$login-form-submit-button-text-color: #fff;
+
+// Footer
+$login-footer-text-color: rgba($text-main-color, .7);
+$login-footer-border-color: $inner-border-color;
+
+
+//******************************************************************************
+//* App
+//*
+//Sidebar
+$sidebar-background-color: #1e3740;
+$sidebar-header-background-color: #14252b;
+$sidebar-header-text-color: #fff;
+$sidebar-header-subtext-color: rgba(#fff, .4);
+$sidebar-folder-list-border-color: rgba(#fff, .1);
+$sidebar-folder-list-text-color: $theme-main-color;
+$sidebar-footer-background-color: $sidebar-header-background-color;
+$sidebar-links-color: $links-text-color;
+
+// Header
+$header-background-color: #f6f8f8;
+$header-border-color: $inner-border-color;
+
+// Toolbar
+$toolbar-background-color: #f6f8f8;
+$toolbar-border-color: $inner-border-color;
+$toolbar-text-color: rgba($text-main-color, .7);
+$toolbar-button-icon-color: $links-text-color;
+$toolbar-submenu-button-background-color: #fff;
+$toolbar-submenu-button-border-color: #d1dbe0;
+$toolbar-submenu-button-text-color: $theme-main-color;
+$toolbar-links-text-color: $links-text-color;
+
+// Hamburger menu
+$hamburger-menu-text-color: $theme-main-color;
+
+// Mails list
+$mails-list-unread-bullet-color: $theme-main-color;
+$mails-list-from-text-color: $text-contrast-color;
+$mails-list-date-text-color: rgba($text-main-color, .7);
+$mails-list-subject-text-color: $text-contrast-color;
+$mails-list-attachment-icon-color: $text-main-color;
+$mails-list-snippet-text-color: rgba($text-main-color, .7);
+
+// Attachments list
+$attachments-list-attachment-background-color: #f6f8f8;
+$attachments-list-attachment-border-color: $inner-border-color;
+$attachments-list-attachment-download-icon-color: $links-text-color;
+$attachments-list-attachment-link-color: $links-text-color;
+
+// Contacts list
+$contacts-list-name-text-color: $text-contrast-color;
+$contacts-list-email-text-color: $text-contrast-color;
+$contacts-list-phone-text-color: rgba($text-main-color, .7);
+
+// Folder sharing users list
+$sharing-users-list-folder-title-text-color: $text-contrast-color;
+$sharing-users-list-user-text-color: $text-contrast-color;
+$sharing-users-list-perm-text-color: $text-main-color;
+
+// Folder sharing permissions
+$permissions-user-text-color: $text-contrast-color;
+
+// Folders list
+$folders-list-folder-name-text-color: $text-contrast-color;
+
+// Composer
+$composer-button-link-text-color: $text-main-color;
+
+// Mail item
+$mail-item-sender-recipients-text-color: $mails-list-date-text-color; 
+$mail-item-date-text-color: $mails-list-date-text-color;

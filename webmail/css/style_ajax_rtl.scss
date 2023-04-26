@@ -1,0 +1,188 @@
+/**
+ * @fileOverview The WebMail RTL login base style sheet.
+ *
+ * @copyright Copyright (c) 2020 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Apr 6, 2020
+ */
+
+@import "../../include/webmail/common/mixins";
+@import "../../include/webmail/common/stubs";
+
+/*******************************************************************************
+ * Global rules
+ */
+body.rtl {
+    direction: rtl;
+
+    .x-column {
+        float: right;
+    }
+
+    .x-hide-label .x-form-element {
+        padding-right: 0 !important;
+    }
+
+    .ltr-forced {
+        direction: ltr;
+    }
+
+    .text-align-right {
+        text-align: right;
+    }
+}
+
+
+/*******************************************************************************
+ * Ext overrides
+ */
+body.rtl {
+    // Checkbox
+    .x-form-cb-label {
+        margin-left: 4px;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 5px;
+
+        @at-root .x-form-item {
+            & .x-form-cb-label {
+                padding: 0 5px 0 0;
+            }
+        }
+    }
+
+    // Combo
+    .x-form-field-wrap {
+        & .x-form-field {
+            padding: 4px 6px 4px 0;
+            border-right-width: 1px;
+            border-left-width: 0;
+            border-radius: 0 2px 2px 0; 
+        }
+
+        & .x-form-trigger {
+            border-right-width: 0;
+            border-right-style: solid;
+            border-left-width: 1px;
+            border-left-style: solid;
+            border-radius: 2px 0 0 2px;
+        }   
+    }
+}
+
+
+/*******************************************************************************
+ * Global Axi components
+ */
+body.rtl {
+    // Fields with animated labels
+    .x-axi-label {
+        & .x-form-item-label {
+            left: auto;
+            right: 65px;
+
+            &.x-form-focus,
+            &.x-axi-field-notempty {
+                border: none;
+                transform: translate(3px, -24px) scale(0.9, 0.9);
+            }
+        }
+    }
+
+    // Global messages
+    #x-message-container {
+        & .x-axi-window-message {
+            & .message-column {
+                border-right: none;
+                border-left-width: 1px;
+                border-left-style: solid;
+
+                & a {
+                    margin-left: 0;
+                    margin-right: 12px;
+                }
+            }
+        }
+    }
+}
+
+
+/*******************************************************************************
+ *  App
+ */
+body.rtl {
+    .main-container {
+        & .center-container {
+            & .domainname-container:not(:empty) {
+                right: auto;
+                left: 50px;
+
+                &::before {
+                    left: auto;
+                    right: -10px;
+                }
+
+                & .x-form-field-wrap {                
+                    & .x-form-field {
+                        padding-left: 15px;
+                        padding-right: 6px;
+                        border-radius: 0 3px 3px 0;
+                    }
+
+                    & .x-form-trigger {
+                        border-radius: 3px 0 0 3px;
+                    }
+                }
+            }
+
+            & .x-axi-fieldset {
+                & > .x-fieldset-bwrap > .x-fieldset-body {
+                    & > .x-panel {
+                        &.x-axi-link-username-password,
+                        &.x-axi-secure-unsecure-container {
+                            & .x-column-inner {
+                                & .x-column {
+                                    float: none;
+                                }
+                            }
+                        }
+
+                        &.x-axi-captcha-container {
+                            & > .x-panel-bwrap > .x-panel-body {
+                                & .x-axi-captcha-reload {
+                                    right: auto;
+                                    left: 55px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*******************************************************************************
+ *  Page specific tweaks
+ */
+// 2FA login page
+body.rtl.x-axi-2fa-login {
+    .main-container .center-container .x-axi-fieldset {
+        & > .x-fieldset-bwrap > .x-fieldset-body > .x-panel .x-panel-body {
+            & .x-axi-textfield {
+                &:nth-of-type(3) {
+                    margin-right: 0;
+                    margin-left: 5px;
+                }
+
+                &:nth-of-type(4) {
+                    margin-left: 0;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

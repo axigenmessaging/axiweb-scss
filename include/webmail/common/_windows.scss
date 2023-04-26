@@ -1,0 +1,3299 @@
+.x-axi-window {
+    // Common components
+    &.x-axi-frameless-window {
+        & .x-window-body {
+            margin: 0 auto;
+            padding-top: 0;
+            border: none;
+        }
+
+        & .x-window-bbar .x-toolbar > table > tbody > tr > td:first-child,
+        & .x-window-bbar .x-toolbar > table > tbody > tr > td:last-child {
+            border: none;
+        }
+    }
+
+    & .x-axi-window-subtitle {
+        margin-top: 10px;
+        @include font-body-text(20px, 200, normal);
+        text-align: center;
+    }
+
+    %section-title {
+        line-height: 30px;
+        
+        &:first-child {
+            flex-grow: 1;
+        }
+    }
+
+    .x-window-bbar .x-toolbar > table > tbody > tr > td .x-btn .x-btn-center button {
+        min-width: 130px;
+    }
+
+    & .x-axi-section {
+        & > .x-panel-bwrap > .x-panel-body {
+            display: flex;
+            align-items: center;
+
+            & > .x-axi-section-title {
+                @extend %section-title;
+            }
+        }
+    }
+
+    & .x-axi-fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        & .x-fieldset-header.x-axi-section-title {
+            @extend %section-title;
+
+            & ~ .x-fieldset-bwrap {
+                flex-basis: 100%;
+                padding-top: 5px;
+            }
+        }
+
+        // For the Fieldset with buttons, 
+        // the content needs more top padding
+        & .x-axi-fieldset-with-tools {
+            & .x-fieldset-header.x-axi-section-title {
+                & ~ .x-fieldset-bwrap {
+                    padding-top: 10px;
+                }
+            }
+        }
+    }
+
+    & .x-axi-settings-row-wrapper {
+        display: flex;
+        align-items: center;            
+        padding-bottom: 3px;
+        min-height: 30px;
+        
+        &:not(:first-child) {
+            padding-top: 3px;
+        }
+
+        & > .x-panel-bwrap {
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+
+            & > .x-panel-body {
+                display: flex;
+                flex-grow: 1;
+            }
+        }
+
+        & .x-axi-settings-row {
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+        }
+
+        & .x-form-item-label,
+        & .x-axi-form-item-label {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+            width: 120px;
+            min-width: 120px;
+            height: 30px;
+            line-height: 15px;
+            padding: 0;
+
+            &.last {
+                margin-right: 0;
+            }
+
+            &.x-axi-high-input-wrapper {
+                height: 40px;
+            }
+        }
+
+        & .x-axi-checkbox .x-form-check-wrap + .x-axi-info-tooltip-wrapper {
+            display: flex;
+            align-items: center;
+            height: 19px;
+        }
+
+        &.x-axi-settings-row-wrapper-checkbox-with-label {
+            min-height: auto;
+            padding-bottom: 4px;
+
+            &:not(:first-child) {
+                padding-top: 4px;
+            }
+
+            & .x-form-check-wrap-container-full-width {
+                width: 100%;
+
+                & .x-form-check-wrap {
+                    width: 100%;
+                }
+            }
+
+            & .x-form-check-wrap-inner {
+                flex-grow: 1;
+                display: flex;
+                align-items: normal;
+
+                & .x-form-check {
+                    margin-top: 2px;
+                }
+            }
+
+            & .x-form-item-label,
+            & .x-axi-form-item-label {
+                height: auto;
+            }
+
+            & .x-form-cb-label {
+                max-width: 100%;
+            }
+        }
+
+        &.x-axi-settings-row-wrapper + .x-axi-settings-row-wrapper-checkbox-with-label {
+            padding-top: 6px;
+        }
+
+        &.x-axi-settings-row-wrapper + .x-axi-settings-row-wrapper-checkbox-with-label + .x-axi-settings-row-wrapper:not(.x-axi-settings-row-wrapper-checkbox-with-label) {
+            padding-top: 8px;
+        }
+
+        &.x-axi-full-width-row-wrapper {
+            & .x-form-field-wrap {
+                flex-grow: 1;
+                width: auto !important;
+            }
+
+            & .x-axi-textfield-container .x-axi-textfield {
+                flex-grow: 1;
+            }
+        }
+
+        & .x-axi-details-button-container {
+            position: relative;
+            min-width: 100%;
+
+            & .x-axi-textfield {
+                min-width: 100%;
+                height: 30px;
+                padding-right: 30px;
+                box-sizing: border-box;
+            }
+
+            & .x-axi-button-container {
+                position: absolute;
+                top: 4px;
+                right: 0;
+            }
+        }
+    }
+
+    & .x-axi-textfield-with-animated-label-wrapper {
+        padding-bottom: 7px;
+
+        &:not(:first-child) {
+            padding-top: 7px;
+        }
+    }
+
+    & .x-axi-sublabel {
+        font-size: 12px;
+    }
+
+    // Thumbnail in Window
+    $window-thumbnail-width: 24px;
+    $window-thumbnail-height: 24px;
+    & .x-axi-addressbook-thumbnail-container {
+        display: flex;
+        align-items: center;
+
+        & .thumbnail-container {
+            width: $window-thumbnail-width;
+            height: $window-thumbnail-height;
+
+            & .no-thumbnail {
+                width: $window-thumbnail-width;
+                height: $window-thumbnail-height;
+                @include font-body-text(10px, 400);
+            }
+        }
+
+        &::after {
+            width: 5px;
+            content: "";
+        }
+    }
+
+    & .x-axi-window-grid {
+        & .x-axi-grid-body {
+            border: 1px solid;
+            border-radius: 3px;
+            box-sizing: border-box;
+
+            & .x-grid3-header {
+                & tr {
+                    & td {
+                        box-sizing: border-box;
+                        border-bottom-width: 1px;
+                        border-bottom-style: solid;
+                        border-right-width: 1px;
+                        border-right-style: solid;
+                        border-left: none;
+
+                        & .x-grid3-hd-inner {
+                            padding: 3px 5px;
+                            box-sizing: border-box;
+                            @include font-body-text(13px, 400);
+
+                            &.x-grid3-hd-tooltip {
+                                padding: 3px 0;
+                                text-overflow: clip; /// No ellipsis here; just reset to default
+
+                                &::before {
+                                    font-size: 32px;
+                                    content: "\e017";
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            & .x-grid3-body {
+                & tr {
+                    & td {
+                        box-sizing: border-box;
+                        border-bottom-width: 1px;
+                        border-bottom-style: solid;
+                        border-right-width: 1px;
+                        border-right-style: solid;
+                        vertical-align: middle;
+
+                        & .x-grid3-cell-inner {
+                            padding: 0 5px;
+                            box-sizing: border-box;
+                            @include font-body-text(13px, 400);
+
+                            &.x-grid3-col-tooltip {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 0;
+                                font-size: 0;        /// Hack to hide a non-necessary &nbsp;
+                                text-overflow: clip; /// No ellipsis here; just reset to default
+                                cursor: pointer;
+
+                                &::before {
+                                    font-size: 32px;
+                                    content: "\e017";
+                                }
+                            }
+                        }
+                    }
+
+                    &:not(:last-child) {
+                        & td {
+                            border-bottom-width: 1px;
+                            border-bottom-style: solid;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.x-axi-no-border {
+            & .x-axi-grid-body {
+                border: none;
+                border-radius: 0;
+            }
+        }
+
+        // Non selectable grid
+        &.x-axi-non-selectable-grid {
+            & .x-axi-grid-body {
+                & .x-grid3-row {
+                    & .x-grid3-row-table {
+                        cursor: default;
+                    }
+                }
+            }
+        }
+    }
+
+    // START Settings window
+    &.x-axi-settings-window {
+        @include laptop-small-height {
+            align-items: flex-start;
+        }
+
+        @include laptop-smaller-height {
+            align-items: flex-start;
+        }
+
+        & .x-tab-panel-header {
+            height: 40px;
+
+            & .x-tab-strip {
+                display: flex;
+                justify-content: center;
+                max-width: 100%;
+
+                & li {
+                    padding: 0 5px;
+                    border: none;
+
+                    & .x-tab-left {
+                        padding: 0;
+                    }
+
+                    & .x-tab-strip-text {
+                        display: flex;
+                        justify-content: center;
+                        @include font-body-text(15px, 400);
+                    }                    
+                }
+            }
+        }
+
+        & .x-tab-panel-bwrap {
+            padding-top: 10px;
+
+            & .x-axi-settings-row-wrapper-workingdays {
+                & .x-form-check-wrap {
+                    display: flex;
+                    align-items: center;
+
+                    & .x-form-check {
+                        margin-bottom: 0;
+                    }
+
+                    & .x-form-cb-label {
+                        line-height: 15px;
+                    }
+
+                    &::after {
+                        width: 8px;
+                        content: "";
+                    }
+                }
+            }
+
+            & .x-axi-settings-row-wrapper-workinghours {
+                & .x-axi-separator-label {
+                    display: flex;
+                    align-items: center;
+                    height: 30px;
+                    line-height: 15px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+            }
+
+            & .x-axi-window-tabpanel {
+                & .x-axi-lightbulb-label {
+                    padding-top: 8px;
+                }
+
+                // Settings -> General
+                &.x-axi-general-tabpanel {
+                    // Account info
+                    & .x-axi-photo-account-info-wrapper {
+                        display: flex;
+
+                        & .x-axi-photo-wrapper {
+                            & .x-axi-uploadphoto-cell {
+                                & .x-axi-uploadphoto-button {
+                                    & > .x-btn-wrap {
+                                        min-width: calc(100% - 10px);
+
+                                        & .x-btn-center {
+                                            position: relative;
+                                            padding: 0;
+
+                                            & em {
+                                                display: flex;
+                                                align-items: center;
+                                                height: 70px;
+
+                                                & .x-btn-text {
+                                                    width: 67px;
+                                                    height: 67px;
+                                                    background-image: url(../images/common/window-silhouette-big.svg);
+                                                    background-position: left 4px top 4px;
+                                                    background-repeat: no-repeat;
+                                                    background-size: 55px;
+
+                                                    & + div {
+                                                        z-index: 1;
+                                                    }
+                                                }
+                                            }
+
+                                            & .x-axi-photo {
+                                                position: absolute;
+                                                top: 0;
+                                                left: 5px;
+                                                width: 70px;
+                                                height: 70px;
+                                                background-position: 50%;
+                                                background-size: cover;
+                                                background-repeat: no-repeat;
+                                                border-radius: 50%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        & .x-axi-account-info-wrapper {
+                            width: calc(100% - 87px);
+
+                            & .x-axi-settings-row-wrapper-phone {
+                                & .x-axi-combo .x-form-field-wrap {
+                                    width: 120px !important;
+                                    margin-right: 8px;
+
+                                    & .x-form-field {
+                                        width: calc(120px - 34px) !important;
+                                    }
+                                }
+                            }
+
+                            & .x-axi-settings-row-wrapper-buttons {
+                                & .x-column-inner {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                }
+                            }
+                        }
+                    }
+
+                    // Signatures
+                    & .x-axi-signagures-pref-wrap {
+                        & .x-axi-settings-row-wrapper-signatures {
+                            & .x-axi-combo {
+                                & .x-form-field-wrap {
+                                    flex-grow: 1;
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                    }
+
+                    // Archiving
+                    & .x-axi-archive-pref-wrap {
+                        & .x-axi-settings-row-wrapper {
+                            // Hackish approach
+                            // TODO: Calculate this from JS
+                            & .x-form-item-label {
+                                width: 140px !important;
+                            }
+
+                            & .x-axi-combo {
+                                max-width: calc(417px - 148px);
+
+                                & .x-form-field-wrap {
+                                    max-width: 100%;
+                                }
+
+                                & .x-form-field {
+                                    max-width: calc(100% - 44px);
+                                }
+                            }                        
+                        }
+                    }
+
+                    // Out-of-office
+                    & .x-axi-ooo-pref-wrap {
+                        & .x-axi-settings-row-wrapper {
+                            & .x-axi-form-item-label {
+                                min-width: calc(120px - 17px);
+                                max-width: calc(120px - 17px);
+                                padding-left: 17px;
+
+                                & + .x-panel {
+                                    display: flex;
+                                    flex: 1 1 auto;
+
+                                    & .x-panel-bwrap {
+                                        flex-grow: 1;
+    
+                                        & .x-panel-body .x-column-inner .x-column:first-child {
+                                            margin-right: 8px;
+                                        }                                        
+                                    }
+                                }
+                            }
+                        }
+
+                        & .x-axi-settings-row-wrapper-subject,
+                        & .x-axi-settings-row-wrapper-body {
+                            & .x-panel-body {
+                                display: flex;
+
+                                & .x-axi-textfield-container {
+                                    flex-grow: 1;
+
+                                    & .x-axi-textfield {
+                                        flex-grow: 1;
+                                    }
+                                }
+                            }
+
+                            &.x-axi-settings-row-wrapper-body {
+                                & .x-axi-textfield-container {
+                                    & > .x-panel-bwrap > .x-panel-body {
+                                        height: 84px;
+                                    }
+                                }
+                            }
+                        }
+
+                        & .x-axi-settings-row-wrapper-more {
+                            & > .x-panel-bwrap > .x-panel-body {
+                                justify-content: flex-end;
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> Interface
+                &.x-axi-interface-tabpanel {
+                    // Localization
+                    & .x-axi-localization-pref-wrap {
+                        & .x-axi-settings-row-wrapper-update-timezone {
+                            padding-top: 20px;
+                        }
+
+                        & .x-axi-settings-row-wrapper-timezone {
+                            & .x-form-item-label {
+                                padding-left: 17px;
+                                box-sizing: border-box;
+                            }
+                        }
+
+                        & .x-axi-settings-row-wrapper-dateformat {
+                            padding-top: 20px;
+                        }
+                    }
+
+                    // Preferences
+                    & .settings-subsection-preferences {
+                        // On some languages, these labels fall on three rows
+                        & .x-axi-settings-row-wrapper-bodyfiltering {
+                            & .x-axi-form-item-label {
+                                width: 140px;
+                                min-width: 140px;
+                            }
+                        }
+
+                        & .x-axi-settings-row-wrapper-deleteitems {
+                            & .x-form-item-label {
+                                width: 140px;
+                                min-width: 140px;
+                            }
+                        }
+
+                        & .x-axi-settings-row-wrapper-deleteitems + .x-panel {
+                            padding-top: 6px;
+                        }
+
+                        & .x-axi-newfolder-line {
+                            padding-left: 17px;
+
+                            &.first {
+                                padding-bottom: 0;
+                            }
+
+                            &.second {
+                                padding-top: 0;
+                                padding-bottom: 0;
+                            }
+
+                            &.third {
+                                padding-top: 0;
+                            }
+
+                            & .x-form-cb-label {
+                                padding-right: 5px;
+                            }
+
+                            & .x-axi-label-time {
+                                display: flex;
+                                align-items: center;
+                                height: 18px;
+                            }
+
+                            & .x-axi-radio-with-textfield {
+                                display: flex;
+                                align-items: center;
+                            }                        
+                        }                        
+                    }
+                }
+
+                // Settings -> AntiSpam
+                &.x-axi-antispam-tabpanel {
+                    & .x-axi-whitelist-wrap,
+                    & .x-axi-blacklist-wrap {
+                        & > .x-panel-bwrap > .x-panel-body {
+                            flex-wrap: wrap;
+
+                            &.x-axi-form-item-label {
+                                & label:last-child {
+                                    width: 100%;
+                                }
+                            }                          
+                        }
+                    }
+
+                    & .x-axi-filtered-email-fieldset {
+                        & .x-axi-settings-row-wrapper {
+                            & .x-form-check-wrap {
+                                display: flex;
+                                align-items: center;
+
+                                & .x-form-cb-label {
+                                    max-width: none; 
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-spam-thresholds-fieldset {
+                        & > .x-fieldset-header {
+                            margin-bottom: 8px;
+                        }
+
+                        & .x-fieldset-bwrap {
+                            width: 100%;
+
+                            & .x-axi-settings-row-wrapper {
+                                &.x-axi-settings-row-wrapper-move {
+                                    padding-bottom: 5px;
+                                }
+
+                                &.x-axi-settings-row-wrapper-delete {
+                                    padding-top: 5px;
+                                }
+
+                                & > .x-panel-bwrap > .x-panel-body > .x-panel {
+                                    flex-grow: 1;
+
+                                    & > .x-panel-bwrap > .x-axi-form-item-label {
+                                        width: calc(100% - 30px);
+                                    }
+
+                                    &.x-axi-antispam-slider {
+                                        width: 520px;
+                                        flex-grow: 0;
+                                        
+                                        & > .x-panel-bwrap > .x-panel-body {
+                                            display: flex;
+                                            align-items: center;
+                                            width: 520px;
+
+                                            & .x-axi-coloured-slider-left-note,
+                                            & .x-axi-coloured-slider-right-note {
+                                                flex-grow: 1;
+                                                @include font-body-text(22px, 200);
+
+                                                &.x-axi-coloured-slider-right-note {
+                                                    text-align: right;
+                                                }
+
+                                                & .percent {
+                                                    @include font-body-text(13px, 400);
+                                                }
+                                            }
+                                        }
+
+                                        & .x-slider-horz.x-axi-coloured-slider {
+                                            margin-left: 8px;
+                                            margin-right: 8px;
+
+                                            &::before {
+                                                width: 42px;
+                                                border-radius: 2px 0 0 2px;
+                                            }
+
+                                            &::after {
+                                                position: absolute;
+                                                left: 43px;
+                                                display: block;
+                                                width: calc(100% - 43px);
+                                                height: 4px;
+                                                border-radius: 0 2px 2px 0;
+                                                content: "";
+                                            }
+
+                                            & .x-slider-inner {
+                                            }                                      
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> Sharing
+                &.x-axi-sharing-tabpanel {
+                    & .x-axi-sharing-grid {
+                        & .x-axi-grid-body {
+                            & .x-grid3-header {
+                                & .x-grid3-header-inner {
+                                    margin-bottom: 4px;
+
+                                    & .x-grid3-hd-inner {
+                                        text-align: center;
+                                    }
+                                }
+                            }
+
+                            & .x-grid3-body {
+                                & .x-grid3-row {
+                                    & .x-grid3-col-tooltip {
+                                        height: 32px;
+                                    }
+
+                                    & .x-axi-combo {
+                                        border-right: none;
+
+                                        & .x-form-field-wrap {
+                                            margin: 0 auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-shared-folders-info-grid {
+                        & .x-grid3-header {
+                            & .x-grid3-header-inner {
+                                margin-bottom: 4px;
+                            }
+                        }
+
+                        & .x-axi-grid-body {
+                            & .x-grid3-row {
+                                &.x-grid3-row-selected {
+                                    background: none !important;
+                                }
+
+                                & .x-grid3-row-table {
+                                    cursor: default;
+                                }
+                            }
+
+                            & .x-grid3-body tr {
+                                & td {
+                                    & .x-grid3-cell-inner {
+                                        padding-top: 2px;
+                                        padding-bottom: 2px;
+                                    }
+
+                                    &.x-axi-true {
+                                        & .x-grid3-cell-inner {
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+
+                                            &::before {
+                                                position: relative;
+                                                top: 2px;
+                                                left: -8px;
+                                                width: 20px;
+                                                height: 20px;
+                                                font-size: 36px;
+                                                content: "\e006";
+                                            }
+                                        }
+                                    }
+
+                                    &.x-axi-false {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+
+                                        & .x-grid3-cell-inner {
+                                            &::before {
+                                                position: relative;
+                                                top: 2px;
+                                                width: 20px;
+                                                height: 20px;
+                                                font-size: 21px;
+                                                content: "\e000";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> Remote POP
+                &.x-axi-rpop-tabpanel {
+                    & .x-axi-fieldset-with-tools {
+                        & .x-axi-fieldset-tools-container {
+                            display: flex;
+
+                            & .x-axi-button-plus {
+                                & .x-btn-text {
+                                    &::after {
+                                        font-size: 32px;
+                                    }
+                                }
+                                &.x-axi-button-add-rpop-yahoo .x-btn-text {
+                                    &::after {
+                                        content: "\e027";
+                                    }
+                                }
+
+                                &.x-axi-button-add-rpop-gmail .x-btn-text {
+                                    &::after {
+                                        content: "\e028";
+                                    }                                    
+                                }
+
+                                &.x-axi-button-add-rpop-outlook .x-btn-text {
+                                    &::after {
+                                        content: "\e029";
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-window-grid {
+                        & .x-axi-grid-body {
+                            & .x-grid3-header .x-grid3-header-inner {
+                                margin-bottom: 4px;
+                            }
+
+                            & tr td .x-grid3-cell-inner.x-grid3-col-tooltip {
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> Filters
+                &.x-axi-filters-tabpanel {
+                    & .x-axi-filters-grid {
+                        & .x-grid3-header {
+                            & .x-grid3-hd-state {
+                                text-align: center;
+                            }
+                        }
+
+                        & .x-grid3-body {
+                            & .x-grid3-col-run {
+                                & .x-axi-play-button {
+                                    @extend %button-big-rounding;
+                                    @extend %circle-button;
+
+                                    &::before {
+                                        margin-left: 4px;
+                                        width: 0;
+                                        height: 0;
+                                        border-style: solid;
+                                        border-width: 5px 0 5px 6px;
+                                        content: "";
+                                    }
+                                }
+                            }
+
+                            & .x-grid3-col-state {
+                                text-align: center;
+
+                                & .x-form-check-wrap {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    & .x-form-check {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+
+                            & .x-grid3-col-name {
+                                line-height: normal;
+                                padding-top: 5px; 
+                                padding-bottom: 5px;
+                            }                            
+                        }
+
+                        & .x-axi-grid-body {
+                            position: relative;
+
+                            & .x-grid-dd-cursor {
+                                position: absolute;
+                                margin-top: 0;
+                                width: 100%;
+                                height: 2px;
+                            }
+                        }
+
+                        & .x-progress-wrap {
+                            margin: auto;
+                            @include progress-bar(40px, 6px, false);
+                        }
+                    }
+                }
+
+                // Settings -> Aliases
+                &.x-axi-aliases-tabpanel {
+                    & .x-axi-fieldset-temporary-aliases {
+                        & .x-axi-window-grid .x-axi-grid-body {
+                            & .x-grid3-header .x-grid3-header-inner {
+                                margin-bottom: 4px;
+                            }
+                        }
+                    }
+
+                    & .x-axi-fieldset-permanent-aliases {
+                        & .x-axi-window-grid .x-axi-grid-body {
+                            & .x-grid3-header .x-grid3-header-inner {
+                                margin-bottom: 4px;
+                            }
+
+                            & .x-grid3-body tr td .x-grid3-cell-inner {
+                                padding-top: 2px;
+                                padding-bottom: 2px;
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> Import / Export
+                &.x-axi-import-export-tabpanel {
+                    & .x-axi-import-location {
+                        & .x-axi-settings-row-wrapper {
+                            & .x-form-radio-wrap,
+                            & .x-axi-form-item-label {
+                                width: 130px;
+                                min-width: 130px;
+                            }
+                        }                        
+                    }
+
+                    & .x-axi-filetoimport-label,
+                    & .x-axi-contactfolder-line {
+                        padding-bottom: 4px;
+                    }
+
+                    & .x-axi-filetoimport-table {
+                        & .x-axi-filetoimport-table-bwrap {
+                            width: 100%;
+
+                            & .x-axi-filetoimport-table-body {
+                                display: flex;
+
+                                & .x-axi-filename-field {
+                                    flex-grow: 1;
+                                }
+
+                                & .x-form-file-wrap {
+                                    & .x-form-file-text {
+                                        display: none;
+                                    }
+
+                                    & .x-form-file {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-export-folder-container {
+                        & .x-axi-textfield {
+                            flex-grow: 1;
+                        }
+                    }
+
+                    & .x-axi-csvformat-line {
+                        & .x-panel {
+                            flex-grow: 1;
+
+                            & .x-axi-form-item-label {
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> Info
+                &.x-axi-info-tabpanel {
+                    & .x-axi-window-grid.x-axi-shortcuts-grid {
+                        & .x-axi-grid-body {
+                            & .x-grid3-header .x-grid3-header-inner {
+                                margin-bottom: 4px;
+                            }
+
+                            & .x-grid3-body tr td .x-grid3-cell-inner {
+                                padding-top: 2px;
+                                padding-bottom: 2px;
+                            }
+
+                            & .x-grid3-hd-checker,
+                            & .x-grid3-col-checker {
+                                display: flex;
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Settings -> Interface -> Appearance Window
+        @at-root .x-axi-appearance-pref-window {
+            & .x-axi-fieldset .x-form-item-label {
+                display: flex;
+                align-items: center;
+                width: auto !important;
+                padding: 0;
+            }
+        }
+
+        // Settings -> Interface -> Appearance Window
+        @at-root .x-axi-compose-pref-window {
+            & .x-axi-fieldset .x-form-item-label {
+                display: flex;
+                align-items: center;
+                width: auto !important;
+                padding: 0;
+            }
+
+            & .x-axi-settings-row-wrapper-font,
+            & .x-axi-settings-row-wrapper-fontsize {
+                & .x-axi-form-item-label {
+                    min-width: 180px;
+                }
+            }
+        }
+
+        // Settings -> General -> Credentials Recovery Window
+        @at-root .x-axi-credentials-recovery-window {
+            & .x-axi-textfield-container {
+                flex-grow: 1;
+
+                & .x-panel-body {
+                    display: flex;
+
+                    & .x-axi-textfield {
+                        flex-grow: 1;
+                    }
+                }
+            }
+        }
+
+        // Settings -> General -> More Contact Details Window
+        & .x-axi-contact-details-window-tabpanel {
+            & .x-axi-fieldset-personal-details,
+            & .x-axi-fieldset-business-details {
+                padding-bottom: 0;
+            }
+
+            & .x-axi-fieldset-notes {
+                padding-top: 3px;
+
+                & > .x-fieldset-bwrap {
+                    width: 100%;
+                }
+            }
+
+            & .x-axi-settings-row-wrapper {
+                & .x-axi-form-item-label + .x-axi-textfield {
+                    flex-grow: 1;
+                }
+            }
+
+            & .x-axi-settings-row-wrapper-textarea {
+                & .x-axi-textfield-container {
+                    height: 48px;
+                }
+            }
+        }
+
+        // Settings -> General -> Signature Edit Window
+        @at-root .x-axi-signature-window {
+            & .x-axi-row-wrapper-signaturename {
+                & .x-axi-high-input {
+                    flex-grow: 1;
+                }
+            }
+
+            & .x-axi-htmleditor-panel {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        // Settings -> General -> Manage Labels Window
+        @at-root .x-axi-managelabels-window {
+            & .x-axi-fieldset {
+                & .x-fieldset-bwrap {
+                    width: 100%;
+
+                    & .x-axi-grid {
+                        margin-top: 5px;
+
+                        %label-icon {
+                            width: 22px;
+                            font-size: 32px;
+                            text-indent: -6px;
+                            content: "\e049";
+                        }
+
+                        & .x-grid3-row {
+                            position: relative;
+                            padding: 2px 0 0;
+                            border-bottom: none;
+
+                            &::before {
+                                position: absolute;
+                                top: 1px;
+                                left: 14px;
+                                @extend %label-icon;
+
+                                .ext-chrome.ext-mac & {  /// Chrome on macOS
+                                    top: 6px;
+                                }
+
+                                .ext-gecko10plus & {     /// Firefox
+                                    top: -2px;
+                                }
+
+                                .ext-safari & {          /// Safari
+                                    top: 6px;
+                                }
+
+                                .ext-msedgium & {        /// MS Edge (Chromium based)
+                                }
+                            }
+
+                            & td {
+                                vertical-align: middle;
+
+                                &.x-grid3-cell-first {
+                                    padding-left: 8px;
+                                    box-sizing: border-box;
+                                }
+
+                                &.x-grid3-cell-last .x-panel-body {
+                                    display: flex;
+                                    justify-content: center;
+                                }
+
+                                & .x-grid3-cell-inner {
+                                    &.x-grid3-col-name {    /// The label name element
+                                        display: flex;
+                                        align-items: center;
+                                        padding-left: 28px;
+                                        height: 30px;
+                                    }
+                                }
+                            }
+
+                            &.x-grid3-row-selected {
+                                background: none !important;
+                            }
+                        }
+
+                        // Edit mode
+                        & .x-grid-editor {
+                            width: calc(100% - 26px);
+                            overflow: hidden !important;
+
+                            &::before {
+                                position: absolute;
+                                top: -2px;
+                                left: 6px;
+                                @extend %label-icon;
+
+                                .ext-chrome.ext-mac & {  /// Chrome on macOS
+                                    top: 3px;
+                                }
+
+                                .ext-gecko10plus & {     /// Firefox
+                                    top: -5px;
+                                }
+
+                                .ext-safari & {          /// Safari
+                                    top: 3px;
+                                }
+
+                                .ext-msedgium & {        /// MS Edge (Chromium based)
+                                }
+                            }
+
+                            & .x-form-field {
+                                padding: 1px 6px 1px 27px;
+                                min-width: calc(100% - 35px);
+                                height: 26px;
+
+                                @at-root {
+                                    .ext-safari & {
+                                        height: 26px !important;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Border separator
+                        &::after {
+                            display: block;
+                            margin: 15px 0;
+                            width: calc(100% + 60px);
+                            height: 1px;
+                            content: "";
+                        }
+                    }
+                }
+            }   
+        }
+
+        // Settings -> General -> OOO More Window
+        @at-root .x-axi-ooo-more-window {
+            & .x-axi-fieldset.x-axi-autoresponder-startend > .x-fieldset-bwrap {
+                flex-grow: 1;
+
+                & .x-axi-form-item-label.last {
+                    flex-grow: 1;
+                }
+            }
+        }
+
+        // Settings -> General -> 2FA (Marketing) Window
+        & .x-axi-marketing-2fa-window-body {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        & .x-axi-2fa-marketing-window-tabpanel {
+            & .x-axi-fieldset > .x-fieldset-bwrap {
+                width: 100%;
+            }
+
+            & .x-axi-2fa-marketing-content-wrapper > .x-panel-bwrap > .x-panel-body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                %2fa-marketing-window-password-bullet {
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 3px;
+                }
+
+                & .graphics {
+                    display: flex;
+                    margin: 40px auto 60px;
+                    height: 182px;
+
+                    & .pass {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        & .field {
+                            display: flex;
+                            align-items: center;
+                            width: 79px;
+                            height: 28px;
+                            box-sizing: border-box;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-right: none;
+                            border-radius: 3px 0 0 3px;
+
+                            & .bullet-container {
+                                display: flex;
+                                margin-left: 4px;
+                                height: 6px;
+
+                                & .bullet {
+                                    margin-left: 4px;
+                                    @extend %2fa-marketing-window-password-bullet;
+                                }
+                            }
+                        }
+
+                        & .lock {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 56px;
+                            height: 50px;
+                            box-sizing: border-box;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-radius: 10px;
+
+                            &::before {
+                                position: absolute;
+                                top: -22px;
+                                left: calc(50% - 15px);
+                                display: block;
+                                width: 30px;
+                                height: 22px;
+                                box-sizing: border-box;
+                                border-width: 1px;
+                                border-style: solid;
+                                border-bottom: none;
+                                border-radius: 15px 15px 0 0;
+                                content: "";
+                            }
+
+                            & .keyhole {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                width: 9px;
+                                height: 16px;
+
+                                &::before {
+                                    position: relative;
+                                    top: 1px;
+                                    display: block;
+                                    width: 9px;
+                                    height: 9px;
+                                    box-sizing: border-box;
+                                    border-width: 1px;
+                                    border-style: solid;
+                                    border-bottom: none;
+                                    border-radius: 4.5px;
+                                    content: "";
+                                }
+
+                                &::after {
+                                    display: block;
+                                    width: 5px;
+                                    height: 8px;
+                                    box-sizing: border-box;
+                                    border-width: 1px;
+                                    border-style: solid;
+                                    border-top: none;
+                                    border-radius: 1px 0 2.5px 2.5px;
+                                    content: "";
+                                }
+                            }
+                        }
+                    }
+
+                    & .plus {
+                        position: relative;
+                        margin-right: 45px;
+                        margin-left: 45px;
+                        width: 42px;
+
+                        &::before {
+                            position: absolute;
+                            top: calc(50% - 21px);
+                            left: calc(50% - 1px);
+                            width: 2px;
+                            height: 42px;
+                            content: "";
+                        }
+
+                        &::after {
+                            position: absolute;
+                            left: calc(50% - 21px);
+                            top: calc(50% - 1px);
+                            width: 42px;
+                            height: 2px;
+                            content: "";
+                        }
+                    }
+
+                    & .phone {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-left: 19px;
+                        margin-right: 19px;
+                        width: 97px;
+                        box-sizing: border-box;
+                        border-width: 1px;
+                        border-style: solid;
+                        border-radius: 10px;
+
+                        & .top {
+                            position: relative;
+                            display: block;
+                            margin-top: 15px;
+                            width: 17px;
+                            height: 3px;
+                            box-sizing: border-box;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-radius: 1.5px;
+
+                            &::before {
+                                position: absolute;
+                                top: -2.5px;
+                                left: -10px;
+                                display: block;
+                                width: 6px;
+                                height: 6px;
+                                box-sizing: border-box;
+                                border-width: 1px;
+                                border-style: solid;
+                                border-radius: 3px;
+                                content: "";
+                            }
+
+                            &::after {
+                                position: absolute;
+                                top: -8px;
+                                left: calc(50% - 2px);
+                                display: block;
+                                width: 4px;
+                                height: 4px;
+                                box-sizing: border-box;
+                                border-width: 1px;
+                                border-style: solid;
+                                border-radius: 2px;
+                                content: "";
+                            }
+                        }
+
+                        & .bullet-container {
+                            display: flex;
+                            height: 6px;
+
+                            & .bullet {
+                                @extend %2fa-marketing-window-password-bullet;
+
+                                &:not(:first-child) {
+                                    margin-left: 4px;
+                                }
+                            }
+                        }
+
+                        & .bottom {
+                            display: block;
+                            margin-bottom: 8px;
+                            width: 12px;
+                            height: 12px;
+                            box-sizing: border-box;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-radius: 6px;
+                        }
+                    }
+                }
+
+                & .subtitle-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 25px;
+                    width: 100%;
+
+                    & .spacer {
+                        flex-grow: 1;
+                        height: 1px;
+                    }
+
+                    & .x-axi-window-subtitle {
+                        margin-top: 0;
+                        max-width: 400px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                    }
+                }
+
+                & .content {
+                    max-width: 400px;
+
+                    & .x-axi-settings-row-wrapper {
+                        margin-bottom: 20px;
+                        @include font-body-text(14px, 400);
+
+                        & .x-axi-button-big-rounding {
+                            margin-right: 10px;
+
+                            & .checkmark {
+                                cursor: default;
+
+                                &::before {
+                                    position: relative;
+                                    top: -1px;
+                                    width: 8px;
+                                    height: 12px;
+                                    box-sizing: border-box;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    transform: rotate(35deg);
+                                    content: "";
+                                }
+
+                                &:hover {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    } 
+                }   
+            }
+        }
+
+        // Settings -> General -> 2FA (Password) Window
+        @at-root .x-axi-relogin-window {
+            & > .x-window-header {
+                width: inherit;
+            }
+
+            & .x-axi-textfield-with-animated-label-wrapper {
+                justify-content: center;
+                padding-top: 7px;
+
+                & > .x-panel-bwrap {
+                    width: 100%;
+                    max-width: 360px;
+                }
+
+                & .x-axi-high-input-wrapper {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        // Settings -> General -> 2FA (Activate) Window
+        @at-root .x-axi-activate-2fa-window {
+            & .x-window-body {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            & .x-axi-fieldset {
+                padding-left: 0;
+                padding-right: 0;
+
+                & .x-fieldset-bwrap {
+                    width: 100%;
+
+                    & .x-axi-activate-2fa-step {
+                        padding: 15px 20px;
+
+                        & > .x-panel-bwrap {
+                            width: 100%;
+                        }
+
+                        & .x-fieldset-header {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: auto;
+                            min-height: 32px;
+                            padding: 0 40px;
+                            @include font-body-text(18px, 300, 24px);
+                            text-align: center;
+
+                            & span {
+                                position: absolute;
+                                left: 0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 32px;
+                                height: 32px;
+                                box-sizing: border-box;
+                                border: 1px solid;
+                                border-radius: 50%;
+                            }
+                        } 
+
+                        &.x-axi-activate-2fa-step1 {
+                            padding-top: 0;
+                            border-bottom-width: 1px;
+                            border-bottom-style: solid;
+                        }
+
+                        &.x-axi-activate-2fa-step2 {
+                            padding-bottom: 0; 
+                        }
+
+                        &.x-axi-activate-2fa-qrcode {
+                            border-bottom-width: 1px;
+                            border-bottom-style: solid;
+
+                            & .x-panel-body {
+                                display: flex;
+                                justify-content: center;
+                                height: 250px;
+
+                                & .bg {
+                                    position: relative;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    width: 360px;
+                                    height: 220px;
+                                    box-sizing: border-box;
+                                    border: 1px solid;
+                                    border-radius: 4px;
+
+                                    &::before {
+                                        position: absolute;
+                                        left: 7px;
+                                        top: 7px;
+                                        width: 344px;
+                                        height: 204px;
+                                        box-sizing: border-box;
+                                        border: 1px solid;
+                                        content: "";
+                                    }
+
+                                    &::after {
+                                        position: absolute;
+                                        left: -50px;
+                                        top: 225px;
+                                        width: 460px;
+                                        height: 11px;
+                                        box-sizing: border-box;
+                                        border: 1px solid;
+                                        border-radius: 2px 2px 10px 10px;
+                                        content: "";
+                                    }
+                                }
+                            }
+                        }
+
+                        &.x-axi-activate-2fa-step3 {
+                            border-bottom-width: 1px;
+                            border-bottom-style: solid;   
+
+                            & .x-panel-body {
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+
+                                & .x-fieldset-header {
+                                    position: absolute;
+                                    top: calc(50% - 16px);
+                                    left: 0;
+                                    padding: 0;
+                                }
+
+                                & .x-axi-textfield-container {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    width: 350px;
+
+                                    & .x-axi-textfield {
+                                        width: 50px;
+                                        height: 48px;
+                                        padding: 10px;
+                                        box-sizing: border-box;
+                                        @include font-body-text(28px, 300);
+                                        text-align: center;
+
+                                        &:nth-of-type(3) {
+                                            margin-right: 5px;
+                                        }
+
+                                        &:nth-of-type(4) {
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
+                            }                          
+                        }
+
+                    }
+                }
+            }
+        }
+
+        // Settings -> General -> 2FA (Configure) Window
+        @at-root .x-axi-reconfigure-2fa-window {
+            & .x-window-body {
+                padding-left: 0;
+                padding-right: 0;
+
+                & .x-axi-fieldset {
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    & .x-fieldset-bwrap {
+                        width: 100%;
+
+                        & .configure-2fa-wrapper {
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            & div {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                box-sizing: border-box;
+                                @include font-body-text(18px, 300, 24px);
+                                text-align: center;
+
+                                &.status {
+                                    min-height: 125px;
+                                    width: 100%;
+                                    padding: 0 40px 30px;
+                                    border-bottom: 1px solid;
+                                }
+
+                                &.turn-off {
+                                    display: flex;
+                                    flex-direction: column;
+                                    flex-grow: 1;
+                                    justify-content: space-between;
+                                    width: 50%;
+                                    min-height: 205px;
+                                    padding: 50px 30px 50px;
+                                    border-right: 1px solid;
+                                    border-bottom: 1px solid;
+
+                                    & .x-fieldset-header {
+                                        height: auto;
+                                    }
+                                }
+
+                                &.add-device {
+                                    display: flex;
+                                    flex-direction: column;
+                                    flex-grow: 1;
+                                    justify-content: space-between;
+                                    width: 50%;
+                                    min-height: 205px;
+                                    padding: 50px 30px 50px;
+                                    border-bottom: 1px solid;
+
+
+                                    & .x-fieldset-header {
+                                        height: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Settings -> AntiSpam -> Whitelist / Blacklist Window
+        @at-root .x-axi-blacklist-whitelist-window {
+            & .x-axi-fieldset {
+                & .x-fieldset-bwrap {
+                    width: 100%;
+
+                    & .x-axi-grid {
+                        margin-top: 5px;
+
+                        & .x-grid3-row {
+                            padding: 2px 0 0;
+                            border-bottom: none;
+
+                            & td {
+                                vertical-align: middle;
+
+                                &.x-grid3-cell-first {
+                                    padding-left: 8px;
+                                    box-sizing: border-box;
+                                }
+
+                                &.x-grid3-cell-last .x-panel-body {
+                                    display: flex;
+                                    justify-content: center;
+                                }
+                            }
+
+                            &.x-grid3-row-selected {
+                                background: none !important;
+                            }
+                        }
+                    }
+
+                    & .x-axi-settings-row-wrapper-checkbox-with-label {
+                        margin-bottom: 15px;
+                        border-bottom: 1px solid;
+
+                        & .x-form-check-wrap {
+                            flex-grow: 1;
+
+                            & .x-form-check-wrap-inner {
+                                justify-content: center;
+                            }
+                        }
+
+                        & .x-axi-checkbox {
+                            display: flex;
+                            justify-content: center;
+                            padding: 10px 0;
+                        }
+                    }
+
+                    & .x-axi-fieldset-tools {
+                        & > .x-panel-bwrap > .x-panel-body > .x-column-inner { 
+                            display: flex;
+
+                            & .x-axi-field-with-tooltip-container {
+                                flex-grow: 1;
+
+                                & .x-axi-textfield-container {
+                                    position: relative;
+
+                                    & label {
+                                        position: absolute;
+                                        right: 0;
+                                    }
+
+                                    & .x-axi-textfield {
+                                        width: 100%;
+                                        height: 30px;
+                                        padding-right: 30px;
+                                        box-sizing: border-box;
+                                    }
+                                }                            
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Settings -> AntiSpam -> Identity Confirmation Template Edit Window
+        @at-root .x-axi-identity-confirmation-template-edit-window {
+            & .x-axi-settings-row-wrapper {
+                &.x-axi-row-wrapper-ic-template-subject {
+                    margin-bottom: 5px;
+                }
+
+                &.x-axi-row-wrapper-ic-template-keygen {
+                    margin-bottom: 20px;
+
+                    & .x-axi-form-item-label {                        
+                        & > .x-axi-label {
+                            display: flex;
+
+                            &::after {
+                                width: 8px;
+                                height: 100%;
+                                content: "";
+                            }
+                        }
+
+                        & .x-axi-ic-key-container {
+                            flex: 1 1 auto;
+
+                            & > .x-panel-bwrap > .x-panel-body {
+                                display: flex;
+                                align-items: center;
+
+                                & .x-axi-textfield-regenerate-key {
+                                    width: 80px;
+                                }
+                            }
+                        }                    
+                    }
+                }
+
+                &.x-axi-ic-template-body-container {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        // Settings -> Filters -> Add / Edit Filter Window
+        @at-root .x-axi-add-filter-window {
+            @include laptop-smaller-height {
+                align-items: flex-start;
+            }
+
+            & .x-axi-filter-name-container {
+                margin-bottom: 20px;
+            }
+
+            & .x-axi-filters-wizard-title-container {
+                margin-bottom: 20px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid;
+
+                & .x-axi-filters-wizard-title {
+                    @include font-body-text(20px, 300, 30px);
+                }
+            }
+
+            & .x-axi-filters-wizard-step-fieldset {
+                padding: 0 0 10px;
+
+                & .x-fieldset-header-text {
+                    display: flex;
+                }
+
+                & .x-fieldset-bwrap {
+                    width: 100%;
+
+                    & .x-axi-window-grid {
+                        & .x-axi-grid-header {
+                            height: 5px;
+                        }
+
+                        & .x-axi-grid-body {
+                            & .x-axi-filters-grid-row {
+                                padding-top: 3px;
+                                padding-bottom: 3px;
+
+                                & .x-panel-body > table {
+                                    width: 100%;
+
+                                    td {
+                                        &.x-axi-filters-tooltip-td {
+                                            width: 25px;
+                                        }
+
+                                        &.x-axi-filters-options-td {
+                                            width: 40px;
+                                        }
+
+                                        & .x-axi-textfield-container {
+                                            & .x-axi-textfield {
+                                                height: 30px;
+                                                box-sizing: border-box;
+                                            }
+                                        }
+
+                                        $filter-conditions-condition-column-width: 200px;
+                                        & .x-axi-filter-expression-row {
+                                            & table {
+                                                & .x-table-layout-cell {
+                                                    padding-right: 5px;
+
+                                                    &.x-axi-expression-combo-td {
+                                                        width: 1px;
+                                                    }
+
+                                                    &.x-axi-conditions-combo-td {
+                                                        width: $filter-conditions-condition-column-width;
+
+                                                        & .x-form-field-wrap {
+                                                            min-width: $filter-conditions-condition-column-width;
+                                                        }
+                                                    }
+
+                                                    & .x-axi-size-field {
+                                                        display: flex;
+                                                        max-width: 269px;
+
+                                                        & .x-axi-textfield {
+                                                            float: none;
+                                                            flex-grow: 1;
+                                                            margin-right: 5px;
+                                                        }
+                                                    }
+                                                }
+                                            }                                            
+                                        }
+
+                                        $filter-actions-choice-column-width: $filter-conditions-condition-column-width;
+                                        & .x-axi-filter-action-row {
+                                            & table {
+                                                & .x-table-layout-cell {
+                                                    padding-right: 5px;
+
+                                                    &.x-axi-actions-combo-td {
+                                                        width: 1px;
+                                                    }
+
+                                                    &.x-axi-actions-choices-combo-td,
+                                                    & .x-axi-actions-choices-container {
+                                                        width: $filter-actions-choice-column-width;
+
+                                                        & > .x-axi-textfield {
+                                                            min-width: $filter-actions-choice-column-width;
+                                                        }
+
+                                                        & .x-form-field-wrap {
+                                                            min-width: $filter-conditions-condition-column-width;
+                                                        }
+                                                    }
+
+                                                    & .x-axi-forward-to-container {
+                                                        min-width: 100%;
+                                                        display: flex;
+
+                                                        & .x-axi-forward-to-textfield {
+                                                            margin-right: 5px;
+                                                            flex-grow: 1;
+                                                        }
+
+                                                        & .x-btn-wrap {
+                                                            width: auto;
+                                                        }
+                                                    }
+
+                                                    &.x-axi-hiddenfield-td {
+                                                        display: none;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-run-filter-container {
+                        & .x-column-inner {
+                            display: flex;
+                            width: 100%;
+
+                            & .x-form-check-wrap {
+                                display: flex;
+                                align-items: center;
+
+                                & .x-form-check {
+                                    margin-top: 2px;
+                                }
+
+                                &::after {
+                                    width: 8px;
+                                    height: 100%;
+                                    content: "";
+                                }
+                            }
+
+                            & .x-axi-textfield-foldername {
+                                flex-grow: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            & .x-axi-filters-wizard-nav-container .x-panel-body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & .x-axi-filters-wizard-nav {
+                    display: flex;
+
+                    & .separator {
+                        width: 5px;
+                    }
+
+                    & span,
+                    & a {
+                        @extend %button-big-rounding;
+                        @extend %small-circle-button;
+                        padding: 0;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+
+        // Settings -> Filters -> Edit prepended text / autoresponder Window
+        @at-root .x-axi-filter-actions-edit-prepended-text-autoresponder-window {
+            @include laptop-small-height {
+                align-items: center;
+            }
+
+            & .x-axi-form-item-label {
+                line-height: 30px;
+            }
+
+            & .x-axi-autoresponder-startend {
+                & .x-axi-form-item-label {
+                    min-width: auto;
+                    width: auto;                 
+                }
+            }
+        }
+
+        // Settings -> Filters -> Add / Edit RPOP Account Window
+        @at-root .x-axi-rpop-add-account-window {
+            @include laptop-small-height {
+                align-items: flex-start;
+            }
+
+            @include laptop-smaller-height {
+                align-items: flex-start;
+            }
+
+            // If the header is wider than the window body (e.g. on the Japanese language),
+            // the window body needs to be extended as othwewise the borders don't match.
+            & > .x-axi-mainwrapper > .x-window-bwrap > .x-window-body {
+                min-width: 100%;
+                box-sizing: border-box;
+            }
+
+            & .x-axi-remoteacc-window-form {
+                & .x-axi-fieldset {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                & .x-axi-settings-row-wrapper {
+                    & .x-axi-form-item-label {
+                        min-width: 130px;
+                        width: 130px;
+                    }
+
+                    & .x-axi-radio {
+                        & .x-form-radio-wrap {
+                            width: 130px;
+                        }
+                    } 
+                }
+
+                & .x-axi-settings-row-wrapper-checkbox-with-label {
+                    & .x-form-check-wrap {
+                        display: flex;
+                        align-items: center;
+
+                        & .x-form-cb-label {
+                            max-width: none;
+                        }
+                    }
+                }
+            }
+
+            &.x-axi-rpop-add-account-yahoo-window,
+            &.x-axi-rpop-add-account-gmail-window,
+            &.x-axi-rpop-add-account-outlook-window {
+                @include laptop-small-height {
+                    align-items: center;
+                }
+
+                & .x-axi-textfield.username {
+                    float: left;
+                    border-radius: 2px 0 0 2px;
+                }
+
+                & .domain-name {
+                    display: inline-flex;
+                    padding: 1px 6px;
+                    line-height: 26px;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-left: none;
+                    border-radius: 0 2px 2px 0;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    // END Settings window
+
+    // START Progress window
+    &.x-axi-progress-window {
+        & .x-window-header {
+            margin-bottom: 0;
+        }
+
+        & .x-window-body {
+            padding-top: 6px;
+
+            & .x-progress-wrap {
+                @include progress-bar(300px, 8px, true);
+                margin-top: 35px;
+
+                & .x-progress-inner {
+                    & .x-progress-bar {
+                        max-height: 8px;
+                    }
+                }
+            }
+        }
+    }
+    // END Progress window
+
+    // START Address Book window(s)
+    &.x-axi-addressbook-window {
+        @include laptop-small-height {
+            align-items: flex-start;
+        }
+
+        @include laptop-smaller-height {
+            align-items: flex-start;
+        }
+
+        & .x-axi-addressbook-search-container {
+            display: flex;
+            flex-wrap: wrap;
+
+            & > .x-axi-search-input {
+                flex-grow: 1;
+
+                & + .x-form-field-wrap {
+                    margin-left: 5px;
+                    height: 36px;
+
+                    & .x-form-field {
+                        height: 36px;
+                        padding-left: 7px;
+                        padding-right: 7px;
+                    }
+
+                    & .x-form-trigger {
+                        height: 27px;
+                    }
+                }
+            }
+        }
+
+        & .x-axi-window-grid {
+            margin-top: 10px;
+
+            & .x-axi-grid-body {
+                & .x-grid3-body {
+                    & .x-grid3-row {
+                        border-bottom: none;
+
+                        & .x-grid3-cell {
+                            & .x-grid3-cell-inner {
+                                display: flex;
+                                align-items: center;
+                                height: 32px;
+                            }
+                        }
+
+                        &.x-grid3-row-selected {
+                            background: none !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .x-axi-to-cc-bcc {
+            & > .x-panel-bwrap > .x-panel-body {
+                & .x-axi-email-address-row-container {
+                    border-bottom-width: 1px;
+                    border-bottom-style: solid;
+
+                    & .x-form-item-button-label {
+                        padding: 8px 0;
+                        box-sizing: border-box;
+
+                        & > .x-btn-wrap {
+                            height: 24px;
+
+                            & .x-btn-center {
+                                text-align: left;
+                            }
+
+                            &.x-btn-over {
+                                opacity: .7;
+                            }
+                        }
+                    }
+
+                    & .x-form-field-wrap {
+                        & .x-form-trigger {
+                            border: none;
+
+                            &::before {
+                                border-top-width: 7px;
+                                border-left-width: 5px;
+                                border-right-width: 5px;
+                            }
+                        }
+
+                        & .x-form-field {
+                            min-height: 36px;
+                            padding: 0 3px;
+                            box-sizing: border-box;
+                            border: none;
+                        }
+                    }
+
+                    // This calculation should use $email-address-object-height
+                    // but this variable is defined in _axi_components and not
+                    // available here.
+                    //
+                    // TODO: Refactor the email address objects to have the 
+                    // variable available.  
+                    & .email-address-objects-container {
+                        max-height: calc(2 * 24px); /// Max 2 rows                        
+                    }
+                }
+            }
+        }
+    }
+    // END Address Book window(s)
+
+    // START Sharing window
+    &.x-axi-sharing-permissions-window {
+        $window-sharing-grid-col-user-width: 490px;
+        $window-sharing-grid-col-level-width: 138px;
+
+        @include laptop-smaller-height {
+            align-items: flex-start;
+        }
+
+        & > .x-axi-mainwrapper > .x-window-bwrap > .x-window-body {
+            min-height: 425px;
+        }
+        
+        & .x-axi-sharing-permissions-grid-container,
+        & .x-axi-add-permission-container {
+            & .x-panel-header {
+                height: 25px;
+                padding: 0 0 5px;
+                text-align: left;
+            }
+        }
+
+        & .x-axi-sharing-permissions-grid-container {
+            & .x-axi-window-grid {
+                & .x-grid3-scroller {
+                    padding: 4px 0;
+                }
+
+                & .x-grid3-row {
+                    height: 33px;
+                }
+
+                & .x-grid3-td-tooltip:not(.x-axi-grid-tips) {
+                    & .x-grid3-col-tooltip::before {
+                        display: none;
+                    }
+                }
+
+                & .x-grid3-col-user {
+                    display: flex;
+                    align-items: center;
+                }
+
+                & .x-grid3-row-first {
+                    & .x-grid3-cell {
+                        height: 33px;
+
+                        & .x-grid3-col-level {
+                            line-height: 30px;
+                        }
+                    }
+                }
+
+                // Control the widths to correctly align
+                // with the add permission elements
+                & .x-grid3-td-user {
+                    width: $window-sharing-grid-col-user-width !important;
+                }
+
+                & .x-grid3-td-level {
+                    width: $window-sharing-grid-col-level-width !important;
+                }
+
+                & .x-grid3-td-tooltip {
+                    width: auto !important;
+                    padding: 0 15px;
+
+                    & .x-grid3-col-tooltip {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                & .x-grid3-td-options {
+                    width: auto !important;
+                }
+            }
+        }
+
+        & .x-axi-apply-to-subfolders-container {
+            & .x-panel-body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        & .x-axi-add-permission-container {
+            margin-top: 5px;
+            padding-top: 15px;
+            border-top-width: 1px;
+            border-top-style: solid;
+
+            & > .x-panel-bwrap > .x-panel-body > .x-column-inner {
+                display: flex;
+                align-items: center;
+
+                & .x-axi-usergroup-emailaddresses-role-container {
+                    flex-grow: 1;
+                    border-bottom-width: 1px;
+                    border-bottom-style: solid;
+
+                    // Control the widths to correctly align
+                    // with the grid elements
+                    width: calc(#{$window-sharing-grid-col-user-width} + #{$window-sharing-grid-col-level-width});
+                }
+            }
+
+            & .email-address-list {
+                width: auto !important;
+                flex-grow: 1;
+
+                & .email-address-objects-container {
+                    height: 24px; /// one liner only
+
+                    & .x-form-field-wrap {
+                        & .x-form-field {
+                            padding: 0 3px;
+                            border: none;                                
+                        }
+                    }                        
+                }
+            }
+
+            & .x-axi-principal-addbutton-container {
+                flex-grow: 1;
+                padding: 0 8px;
+
+                & .x-panel-body {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+
+        & .x-axi-sharing-noaccess {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & .x-axi-button-big-rounding {
+                margin-top: 20px;
+            }
+        }
+
+        // No sharing permissions
+        &.x-axi-no-sharing-permissions {
+            & .x-axi-mainwrapper {
+                max-width: 565px;
+
+                & .x-window-header {
+                    & .x-window-header-text {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-pack: center;
+                    }
+                }
+            }
+        }
+    }
+    // END Sharing window
+
+    // START Custom Permissions window
+    &.x-axi-custom-permissions-window {
+        & .x-tree-headers {
+            display: flex;
+
+            & .x-tree-hd {
+                @include font-body-text(20px, 300, 30px);
+
+                &:first-child {
+                    flex-grow: 1;
+                }
+
+                &.x-axi-allow-hd,
+                &.x-axi-deny-hd {
+                    justify-content: center;
+
+                    & .x-tree-hd-text {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        & .x-tree-root-ct {
+            margin-top: 5px;
+
+            & .x-tree-node-el {
+                padding: 0;
+
+                & .x-tree-col {
+                    display: flex;
+                    align-items: center;
+                    height: 23px;
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+
+                    &:first-child {
+                        flex-grow: 1;
+                    }
+
+                    &.x-axi-allow,
+                    &.x-axi-deny {
+                        justify-content: center;
+
+                        & .x-tree-col-text {
+                            display: flex;
+                            align-items: center;
+
+                            & .x-form-check-wrap {
+                                display: flex;
+                                align-items: center;
+
+                                & .x-form-check {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    &.x-axi-tooltip {
+                        justify-content: center;
+                        height: 30px;
+                        padding: 0;
+
+                        & .x-tooltip {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 26px;
+                            padding: 0;
+                            cursor: pointer;
+
+                            &::before {
+                                font-size: 32px;
+                                content: "\e017";
+                            }
+
+                            & img {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            & > .x-tree-root-node > .x-tree-node > .x-tree-node-el > .x-tree-col .x-tree-node-icon,
+            & > .x-tree-root-node > .x-tree-node > .x-tree-node-el > .x-tree-col .x-tree-ec-icon:not(.x-tree-elbow-plus):not(.x-tree-elbow-minus) {
+                display: inline-block;
+                width: 4px;
+                background: none;
+            }
+
+            & > .x-tree-root-node > .x-tree-node > .x-tree-node-ct {
+                & .x-tree-node {
+                    & .x-tree-node-icon,
+                    & .x-tree-ec-icon {
+                        display: inline-block;
+                        width: 20px;
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+    // END Custom Permissions window
+
+    // START Open Other Users' Folders (Subscribe) window
+    &.x-axi-subscribe-window {
+        & .x-axi-usergroup-emailaddresses-container {
+            display: flex;
+            align-items: center;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+
+            & > .x-form-item {
+                flex-grow: 1;
+
+                & .email-address-objects-container {
+                    height: 24px; /// one liner only
+
+                    & .x-form-field-wrap {
+                        & .x-form-field {
+                            padding: 0 3px;
+                            border: none;                                
+                        }
+                    }
+                }                        
+            }
+        }
+
+        & .x-axi-lightbulb-label {
+            margin-top: 20px;
+        }
+    }
+    // END Open Other Users' Folders (Subscribe) window
+
+    // START Move / Copy window
+    &.x-axi-move-copy-window {
+        @include laptop-smaller-height {
+            align-items: flex-start;
+        }
+
+        & .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body {
+            display: flex;
+
+            & > .x-panel {
+                width: 50%;
+                box-sizing: border-box;
+                padding: 0 15px 15px;
+
+                & .x-panel-header {
+                    padding-top: 0;
+                    padding-bottom: 20px;
+                }
+
+                & .x-tree-root-ct {
+                    & .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails,
+                    & .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root,
+                    & .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner {
+                        &.x-tree-node-expanded::after,      /// Tree panel
+                        &.x-grid-group-expanded::after {    /// Tree grid
+                        }
+
+                        &.x-tree-node-collapsed::after,     /// Tree panel
+                        &.x-grid-group-collapsed::after {   /// Tree grid
+                        }
+                    }                    
+                }
+
+                &.x-axi-frequent-folders-panel {
+                    position: relative;
+                    border-right-width: 1px;
+                    border-right-style: solid;
+
+                    & .x-axi-folder-grid {
+                        & .x-grid3-row {
+                            border-bottom: none;
+
+                            & .x-grid3-col-folder a span {
+                                display: flex;
+                                align-items: center;
+
+                                &::before {
+                                    margin-left: 0.5px;   /// Hack for pixel perfect rendering
+                                    margin-right: 0.5px;  /// Hack for pixel perfect rendering
+                                    width: 16px;
+                                    height: 23px;
+                                    line-height: 23px;
+                                    padding-left: 2px;
+                                    padding-right: 3px;
+                                    font-size: 32px;
+                                }
+                            }
+
+                            // Inbox
+                            & .menu_folder_inbox a span::before {
+                                top: 1px;
+                                content: "\e001";
+                            }
+
+                            // Drafts
+                            // Flagged / Starred
+                            & .menu_folder_flagged {
+                                @at-root {
+                                    // Flagging type = flags
+                                    .flagging-type-flags & {
+                                        & a span::before {
+                                            top: 1px;
+                                            display: flex;
+                                            justify-content: center;
+                                            width: 16px;
+                                            content: "\e046";
+                                        }
+                                    }
+
+                                    .flagging-type-flags.ext-edge & {          /// MS Edge (Chromium based)
+                                        & a span::before {
+                                            top: -1px;
+                                        }
+                                    }
+
+                                    .flagging-type-flags.ext-gecko10plus & {   /// Firefox
+                                        a span::before {
+                                            top: -1px;
+                                        }
+                                    }
+
+                                    // Flagging type = stars
+                                    .flagging-type-stars & {
+                                        & a span::before {
+                                            top: 0;
+                                            display: flex;
+                                            justify-content: center;
+                                            width: 16px;
+                                            content: "\e044";
+                                        }
+                                    }
+
+                                    .flagging-type-stars.ext-edge & {          /// MS Edge (Chromium based)
+                                        & a span::before {
+                                            top: -2px;
+                                        }
+                                    }
+
+                                    .flagging-type-stars.ext-gecko10plus & {   /// Firefox
+                                        a span::before {
+                                            top: -2px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            & a span::before {
+                                top: 1px;
+                                content: "\e002";
+                            }
+
+                            // Drafts
+                            & .menu_folder_drafts a span::before {
+                                top: 1px;
+                                content: "\e002";
+                            }
+
+                            // Sent
+                            & .menu_folder_sent a span::before {
+                                top: 1px;
+                                content: "\e003";
+                            }
+
+                            // Trash
+                            & .menu_folder_trash a span::before {
+                                content: "\e004";
+                            }
+
+                            // Spam
+                            & .menu_folder_spam a span::before {
+                                content: "\e005";
+                            }
+
+                            // Archive
+                            & .menu_folder_archive a span:first-child::before {
+                                content: "\e017";
+                            }
+
+                            // Filtered email
+                            & .menu_folder_filtered_email a span:first-child::before {
+                                top: 1px;
+                                content: "\e007";
+                            }
+
+                            // All other personal folders
+                            & .menu_folder_mails a span:first-child::before {
+                                content: "\e006";
+                            }
+
+                            // All public & shared folders
+                            & .menu_publicfolder_mails a span:first-child::before,
+                            & .menu_sharedfolder_mails a span:first-child::before, {
+                                content: "\e008";
+                            }
+
+                            &.x-grid3-row-selected {
+                                background: none !important;
+
+                                & a span {
+                                    font-weight: 600;
+                                } 
+                            }
+                        }
+                    }
+
+                    & .x-axi-movecopy-nofreqfolders-label {
+                        position: absolute;
+                        top: 50px;
+                        max-width: calc(100% - 30px);
+                        font-size: 13px;
+                    }
+                }
+
+                &.x-axi-all-folders-panel {
+                    & .x-tree {
+                        & .x-tree-node {
+                            & .x-tree-node-el a span {
+                                flex-grow: 1;
+                                display: flex;
+                                align-items: center;
+
+                                &::before {
+                                    margin-left: 0.5px;   /// Hack for pixel perfect rendering
+                                    margin-right: 0.5px;  /// Hack for pixel perfect rendering
+                                    width: 16px;
+                                    height: 23px;
+                                    line-height: 23px;
+                                    padding-left: 2px;
+                                    padding-right: 3px;
+                                    font-size: 32px;
+                                }
+                            }
+
+                            // Calendar folders
+                            & [class*="parent_menu_folder_events"] a span::before {
+                                content: "\e009";
+                            }
+
+                            & [class*="parent_menu_publicfolder_events"] a span::before {
+                                content: "\e010";
+                            }
+
+                            & [class*="parent_menu_sharedfolder_events"] a span::before {
+                                content: "\e010";
+                            }
+
+                            // Tasks folders
+                            & [class*="parent_menu_folder_tasks"] a span::before {
+                                content: "\e011";
+                            }
+
+                            & [class*="parent_menu_publicfolder_tasks"] a span::before {
+                                content: "\e012";
+                            }
+
+                            & [class*="parent_menu_sharedfolder_tasks"] a span::before {
+                                content: "\e012";
+                            }
+
+                            // Notes folders
+                            & [class*="parent_menu_folder_notes"] a span::before {
+                                content: "\e013";
+                            }
+
+                            & [class*="parent_menu_publicfolder_notes"] a span::before {
+                                content: "\e014";
+                            }
+
+                            & [class*="parent_menu_sharedfolder_notes"] a span::before {
+                                content: "\e014";
+                            }
+
+                            // Contacts folders
+                            & [class*="parent_menu_folder_contacts"] a span::before {
+                                content: "\e015";
+                            }
+
+                            & [class*="parent_menu_publicfolder_contacts"] a span::before {
+                                content: "\e016";
+                            }
+
+                            & [class*="parent_menu_sharedfolder_contacts"] a span::before {
+                                content: "\e016";
+                            }
+                        }
+                    }
+
+                    & .x-axi-button-plus {
+                        margin: 20px auto 0;
+                    }
+
+                    @at-root .x-axi-window.x-axi-move-copy-window ~ .x-small-editor.x-tree-editor::before {
+                        margin-left: 0.5px;
+                        margin-right: 0.5px;
+                    }
+                }
+            }            
+        }
+
+        // Windows without frequent folders
+        &.x-axi-move-copy-window-no-frequent-folders {
+            & .x-window-body {
+                min-width: 100%;
+                box-sizing: border-box;
+
+                & > .x-panel {
+                    height: 100%;
+
+                    & > .x-panel-bwrap {
+                        height: 100%;
+
+                        & > .x-panel-body {
+                            // This is also used for the Advanced Search custom
+                            // folders window, which has an additional panel
+                            flex-direction: column;
+                            justify-content: space-between;
+                            height: 100% !important;
+
+                            & > .x-panel {
+                                width: 100%;
+
+                                // No recursive search container
+                                &:only-child {
+                                    height: 100%;
+
+                                    & > .x-panel-bwrap {
+                                        height: 100%;
+
+                                        & > .x-panel-body {
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: space-between;
+                                            height: 100%;
+                                        }
+                                    }
+                                }
+
+                                & > .x-panel-header {
+                                    display: none;
+                                }
+
+                                &.x-axi-recursive-search-container {
+                                    & .x-axi-settings-row-wrapper {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // END Move / Copy window
+
+    // START Availability (Free / Busy) window
+    &.x-axi-freebusy-window {
+        @include laptop-smaller-height {
+            align-items: flex-start;
+        }
+
+        & .x-axi-freebusy-region {
+            & .x-axi-grid-header {
+                height: 32px;
+                font-size: 13px;
+            }
+
+            & .x-axi-grid-body {
+                & .x-grid3-header tr td {
+                    border-right: none;
+                }
+
+                & .x-grid3-body {
+                    & .x-grid3-row {
+                        & .x-grid3-col {
+                            &.x-grid3-cell-last {
+                                border-right: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.x-axi-freebusy-attendees-region {
+                & .x-axi-grid-body {
+                    min-width: 100%;
+                    border-right: none;
+                    border-radius: 3px 0 0 3px;
+
+                    & .x-grid3-scroller {
+                        overflow: hidden;
+                    }
+
+                    & .x-grid3-row {
+                        padding: 2px 0;
+
+                        & .x-grid3-row-table {
+                            height: 31px;
+
+                            & .x-grid3-col {
+                                padding: 0 5px;
+                                border-right: none;
+                                border-bottom: none;
+
+                                &.fb-attendee-is-organizer {
+                                    & + td {
+                                        display: none;
+                                    }
+                                }
+
+                                & .x-grid3-cell-inner {
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .x-axi-freebusy-add-attendees-container {
+                    & > .x-panel-bwrap > .x-panel-body {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 0;
+
+                        & > .x-column-inner {
+                            display: flex;
+                            align-items: center;
+                            border-bottom-width: 1px;
+                            border-bottom-style: solid;
+
+                            & .email-address-list .email-address-objects-container {
+                                height: 24px;
+                                overflow: hidden;
+
+                                & .axi-textfield-wrapper .x-form-field-wrap .x-form-field {
+                                    padding: 0 3px;
+                                    border: none;
+                                    border-radius: 0;
+                                }
+                            }
+
+                            & .x-axi-button-plus {
+                                & .x-btn-text {
+                                    &::before {
+                                        position: absolute;
+                                        left: -2px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.x-axi-freebusy-canvas-region {
+                & .x-axi-window-grid {
+                    & .x-axi-grid-header {
+                        padding-right: 250px;
+
+                        & .x-axi-freebusy-header {
+                            display: flex;
+                            justify-content: center;
+
+                            & .x-axi-calendar-header-text-container {
+                                padding: 0 5px;
+                                vertical-align: middle;
+                            }
+
+                            & .x-axi-calendar-header-prev,
+                            & .x-axi-calendar-header-next {
+                                @extend %button-big-rounding;
+                                @extend %small-circle-button;
+                                position: relative;
+                                padding: 0 5px;
+
+                                &.x-axi-calendar-header-prev {
+                                    &::before {
+                                        position: absolute;
+                                        top: 7px;
+                                        left: 8px;
+                                        display: block;
+                                        width: 5px;
+                                        height: 5px;
+                                        border-bottom-width: 1px;
+                                        border-bottom-style: solid;
+                                        border-left-width: 1px;
+                                        border-left-style: solid;
+                                        transform: rotate(45deg);
+                                        content: "";
+                                    }
+                                }
+
+                                &.x-axi-calendar-header-next {
+                                    &::before {
+                                        position: absolute;
+                                        top: 7px;
+                                        right: 8px;
+                                        display: block;
+                                        width: 5px;
+                                        height: 5px;
+                                        border-right-width: 1px;
+                                        border-right-style: solid;
+                                        border-bottom-width: 1px;
+                                        border-bottom-style: solid;
+                                        transform: rotate(-45deg);
+                                        content: "";
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .x-axi-grid-body {
+                        border-radius: 0 3px 3px 0;
+
+                        & .x-grid3-header {
+                            & .x-grid3-header-inner {
+                                display: flex;
+                                justify-content: flex-start;
+                            }
+
+                            & .x-grid3-hd-row {
+                                display: flex;
+
+                                & .x-grid3-hd {
+                                    display: inline-block;
+
+                                    &.x-grid3-cell-first {
+                                        width: 25px !important;
+                                        height: 22px;
+
+                                        & .x-grid3-hd-inner {
+                                            display: none;
+                                        }
+                                    }
+
+                                    &.x-grid3-cell-last {
+                                        width: 75px !important;                                    
+                                    }
+                                }
+                            }
+                        }
+
+                        & .x-grid3-col {
+                            border-bottom: none;
+
+                            & .x-grid3-cell-inner {
+                                display: flex;
+                                align-items: center;
+                                height: 35px;
+                                padding: 0;
+
+                                & .x-axi-set {
+                                    width: 100%;
+                                    height: 20px;
+
+                                    & td {
+                                        display: inline-block;
+                                        margin-right: 1px;
+                                        padding: 0 1px;
+                                        box-sizing: content-box;
+
+                                        &:first-child {
+                                            margin-left: 1px;
+                                        }
+
+                                        &.x-axi-tentative,
+                                        &.x-axi-out-of-office, 
+                                        &.x-axi-busy {
+                                            border: none;
+                                            border-radius: 2px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .x-axi-free-busy-form-container {
+                    & > .x-panel-bwrap > .x-panel-body {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+
+                        & label {
+                            display: flex;
+                            align-items: center;
+                            height: 30px;
+                            line-height: 30px;
+                            padding: 0 8px;
+                            font-size: 13px;
+                        }
+
+                        & .x-axi-cal-two-way-fork {
+                            margin-left: 8px;
+                            margin-right: 8px;
+                            width: 10px;
+                            height: 34px;
+                            border-left-width: 1px;
+                            border-left-style: solid;
+                            border-top: 1px solid;
+                            border-bottom: 1px solid;
+                        }
+
+                        & .x-axi-date-combo-container {
+                            width: 104px;
+                        }
+
+                        & .x-axi-datetime-combo {
+                            & .x-form-field-wrap {
+                                width: auto !important;
+
+                                & .x-form-field {
+                                    width: 74px !important;
+                                }
+                            }
+                        }
+
+                        & .x-table-layout {
+                            & .x-table-layout-cell {
+                                & .x-table-layout {
+                                    & .x-table-layout-cell {
+                                        height: 34px;
+                                    }
+                                }
+                            }
+                        }
+
+                        // For some reason the "End after" combo list
+                        // has a shorter width than its combo.
+                        @at-root .x-axi-time-end-after-combo-list {
+                            width: 122px !important;
+
+                            & .x-combo-list-inner {
+                                width: 120px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .freebusy-legend-container {
+            border: none;
+            font-size: 13px;
+        }
+    }
+    // End Availability (Free / Busy) window
+
+    // START Home Address window
+    @at-root .x-axi-home-address-window {
+        & .x-window-body {
+            min-height: 220px;
+            max-height: 220px;
+        }
+    }
+    // END Home Address window
+
+    // START Add to Distribution List window
+    @at-root .x-axi-add-to-distribution-list-window {
+        & .x-window-body {
+            min-height: 150px;
+            max-height: 150px;
+
+            & .x-axi-radio {
+                & > .x-panel {
+                    min-width: 250px;
+
+                    & .x-axi-textfield-container {
+                        display: flex;
+
+                        & .x-axi-textfield {
+                            flex-grow: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // END Add to Distribution List window
+}

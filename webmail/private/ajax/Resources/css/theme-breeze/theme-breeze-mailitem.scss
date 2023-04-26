@@ -1,0 +1,101 @@
+/**
+ * @fileOverview The WebMail mail item theme specific style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-breeze/variables";
+@import "../../../../../../include/webmail/theme-breeze/stubs";
+
+
+@at-root html.dark body {
+	background-color: transparent;
+	filter: invert(1) hue-rotate(180deg);
+
+	& img {
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+@media only screen {
+	@at-root html.dark body.print-page {
+		background-color: $dark-mode-theme-background-color;
+	}
+}
+
+a {
+	color: $theme-main-color;
+}
+
+hr {
+	border-color: $composers-html-elements-hr-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-composers-html-elements-hr-border-color;
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+.x-axi-messagetab-iframe-trailing-dots {
+	border-color: $inner-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-inner-border-color;
+		color: $dark-mode-text-contrast-color;
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+.x-axi-messagetab-iframe-message {
+	color: $text-main-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-text-main-color;
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+.x-axi-messagetab-iframe-download-eml {
+	& a {
+		@extend %button-small-rounding;
+		text-decoration: none;
+	}
+}
+
+// Combo
+@import "../../../../../../include/webmail/theme-breeze/ext-overrides-combo-list";
+
+.mention-combo-list {
+	@at-root html.dark & {
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+	
+	& .x-combo-list-item {
+		color: $text-main-color;
+		
+		& * {
+			color: $text-main-color;
+
+			@at-root html.dark & {
+				color: $dark-mode-text-main-color;
+			}
+		}
+	}
+
+	& .x-combo-list-inner {
+		& .x-combo-selected,
+		& .x-axi-item-selected {	/// Axi extension 
+			& * {
+				color: $combo-list-selected-text-color;
+
+				@at-root html.dark & {
+					color: $combo-list-selected-text-color;
+				}
+			}
+		}
+	}
+} 

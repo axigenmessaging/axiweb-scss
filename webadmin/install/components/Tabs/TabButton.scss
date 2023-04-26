@@ -1,0 +1,108 @@
+/**
+ * @fileOverview The Tab button component style sheet.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ *
+ * @author Mihai Oprea <mihai.oprea@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 2, 2018
+ */
+
+@import "../../../../include/webadmin/theme-default/variables";
+
+.tab-button {
+    position: relative;
+    display: table-cell;
+    padding: 30px 65px;
+    box-sizing: border-box;
+    background-color: $white-color;
+    border-bottom: 1px solid $border-color;
+    text-align: center;
+    cursor: pointer;
+
+    /* 2 tabs */
+    &:nth-child(1):nth-last-child(2),
+    &:nth-child(2):nth-last-child(1) {
+        width: 50%;
+    }
+
+    /* 3 tabs */
+    &:nth-child(1):nth-last-child(3),
+    &:nth-child(2):nth-last-child(2),
+    &:nth-child(3):nth-last-child(1) {
+        width: 33.333333%;
+    }
+
+    &:not(:last-child) {
+        border-right: 1px solid $border-color;
+    }
+
+    &.selected {
+        background-color: $alt-background-color;
+
+        & .arrow {
+            position: absolute;
+            right: calc(50% - 10px);
+            bottom: 0;
+            margin-bottom: -10px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-top: 10px solid $alt-background-color;
+            z-index: 2;
+
+            &::before {
+                position: absolute;
+                left: 5px;
+                bottom: -2px;
+                width: 1px;
+                height: 14px;
+                background: $border-color;
+                -ms-transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                left: -5px;
+                bottom: -2px;
+                width: 1px;
+                height: 14px;
+                background: $border-color;
+                -ms-transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                content: "";
+            }
+        }
+    }
+
+    & input[type="radio"] {
+        margin-bottom: 1em;
+
+        & + span::after {
+            position: absolute;
+            top: 34px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 8px;
+            height: 8px;
+            background: $white-color;
+            border-radius: 50%;
+            content: "";
+        }
+    }
+
+    & .label {
+        display: block;
+        color: $text-heading-color;
+        font-size: 15px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+}

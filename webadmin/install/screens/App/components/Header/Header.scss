@@ -1,0 +1,43 @@
+// @fileOverview The Onboarding header style sheet. 
+//
+// @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+//
+// @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+// @date Oct 16, 2019
+
+@import "../../../../../../include/webadmin/theme-default/variables";
+@import "../../../../../../include/webadmin/mixins";
+
+.header {
+   	position: relative;
+    height: 55px;
+    padding: 4px 35px;
+    box-sizing: border-box;
+    background: $header-color;
+    @include font-titillium-web(28px, 200);
+    text-align: right;
+    color: $white-color;
+
+    @include phone {
+        padding: 4px 20px;
+        @include font-titillium-web(24px, 300, 47px);
+    }
+
+    & .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 150px;
+        height: 35px;
+        background: url('/install/assets/images/axigen-logo-color-darkbg-a-filled.svg') center center no-repeat;
+
+        @include phone {
+            left: -2px;
+            width: 50px;
+            background-position: left center;
+            background-repeat: no-repeat; 
+            overflow: hidden;
+            background-size: 150px 35px;
+        }
+    }
+}

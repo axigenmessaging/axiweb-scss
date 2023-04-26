@@ -1,0 +1,177 @@
+/**
+ * @fileOverview The choose license screen style sheets.
+ *
+ * @copyright Copyright (c) 2019 Axigen Messaging. All rights reserved.
+ *
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * @date Oct 7, 2019
+ */
+
+@import "../../../../include/webadmin/theme-default/variables";
+@import "../../../../include/webadmin/mixins";
+
+.license-screen {
+
+	& .panel-content {
+		width: 560px;
+
+	  	@include phone {
+	  		width: 100%;
+	  	}
+	}
+
+	& .panel-content {
+		& .content-container {
+			& .subheading {
+				margin-left: -20px;
+				margin-right: -20px;
+				margin-bottom: 40px;
+
+			  	@include laptop-small-height {
+			  		margin-top: 10px;
+			  		margin-bottom: 30px;
+			  	}
+
+			  	@include laptop-smaller-height {
+			  		margin-top: 0;
+			  		margin-bottom: 20px;
+			  	}
+
+				& p {
+					font-size: 16px;
+					font-weight: 300;
+					color: $text-main-color;
+
+				  	@include laptop-smaller-height {
+				  		font-size: 15px;
+				  	}
+				}
+
+				& .hspacer {
+					display: table;
+					margin: 25px auto 20px;
+					width: 100px;
+					height: 1px;
+					background: $border-color;
+
+				  	@include laptop-small-height {
+				  		margin: 20px auto 15px;
+				  	}
+
+				  	@include laptop-smaller-height {
+				  		margin: 15px auto 10px;
+				  	}
+				}
+			}
+		}
+
+		// The Error container only shows up on errors and influences the margins
+		// START Error container influenced margins
+		& .content-container .subheading p:first-child {
+			margin-top: 35px;
+
+			@include laptop-small-height {
+				margin-top: 25px;
+			}
+
+			@include laptop-smaller-height {
+				margin-top: 20px;
+			}
+		}
+
+		& form .error-container + .content-container .subheading p:first-child {
+			margin-top: 0;
+
+			@include laptop-small-height {
+				margin-top: 0;
+			}
+
+			@include laptop-smaller-height {
+				margin-top: 0;
+			}
+		}
+		// END Error container influenced margins
+	}
+
+	&.license-screen-main {
+		& .panel-header h1,
+		& .panel-header h2 {
+			width: 600px;
+
+		  	@include phone {
+		  		width: 100%;
+		  	}
+		}
+
+		& .panel-content {
+			display: flex;
+			width: 860px;
+			border: none;
+
+		  	@include phone {
+		  		width: 100%;
+		  		flex-direction: column;
+		  		padding-left: 20px;
+		  		padding-right: 20px;
+		  		box-sizing: border-box;
+		  	}
+
+			& > div {
+				display: flex;
+				flex-direction: column;
+				width: 280px;
+				box-sizing: border-box;
+				border: 1px solid $border-color;
+				border-bottom: none;
+				border-radius: 3px 3px 4px 4px;
+
+			  	@include phone {
+			  		width: 100%;	
+			  	}
+
+				&:not(:last-child) {
+					margin-right: 10px;
+
+				  	@include phone {
+				  		margin-right: 0;
+				  		margin-bottom: 40px;
+				  	}
+				}
+
+				& .column-title {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					height: 144px;
+					border-bottom: 1px solid $border-color;
+					font-size: 16px;
+					font-weight: 900;
+					color: $text-heading-color;
+					text-transform: uppercase;
+				}
+
+				& .column-content {
+					flex: 1 0 0;
+					flex-grow: 1;
+					padding-top: 20px;
+
+					& p {
+						padding: 10px 35px;
+						box-sizing: border-box;
+						font-size: 16px;
+						font-weight: 300;
+						color: $text-main-color;
+
+						&:last-child {
+							padding-bottom: 0;
+						}
+					}
+				}
+
+				& button {
+					padding: 0 25px;
+				}
+			}
+		}
+	}
+}

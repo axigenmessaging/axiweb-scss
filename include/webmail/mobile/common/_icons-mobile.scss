@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+
+/*******************************************************************************
+ * Icon Fonts
+ */
+@font-face {
+    font-family: 'axigen-mobile-iconsregular';
+    src: url('../fonts/axigen-mobile-icons-regular.eot');
+    src: url('../fonts/axigen-mobile-icons-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/axigen-mobile-icons-regular.woff2') format('woff2'),
+         url('../fonts/axigen-mobile-icons-regular.woff') format('woff'),
+         url('../fonts/axigen-mobile-icons-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+div[data-type="actions"] div[data-value="main"] span::before,
+.nav-trigger + label::before,
+.attblock.no-preview::before,
+.folderSharingIcon::before,
+.icon-delete::before,
+.attachment::before,
+.search .search-reset-link::before,
+.folders .toolbar-container::before,
+.nav-attach::before,
+.nav-send::before,
+.nav-close::before,
+.add-contact::before {
+    font-family: "axigen-mobile-iconsregular" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 40px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 32px !important;
+}

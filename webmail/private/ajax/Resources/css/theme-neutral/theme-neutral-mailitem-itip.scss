@@ -1,0 +1,41 @@
+/**
+ * @fileOverview The WebMail mail item iTip theme specific style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Apr 21, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-neutral/variables";
+
+
+@at-root html.dark body {
+	filter: invert(1) hue-rotate(180deg);
+
+	& img {
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+a {
+	color: $theme-main-color;
+}
+
+.iTipFields {
+	& .container {
+		&.iTipFieldDescription {
+			& .label {
+				&::after {
+					background-color: $inner-border-color;
+
+					@at-root html.dark & {
+						background-color: $dark-mode-inner-border-color;
+						filter: invert(1) hue-rotate(180deg);	/// Revert filter
+					}
+				}
+			}
+		}		
+	}
+}

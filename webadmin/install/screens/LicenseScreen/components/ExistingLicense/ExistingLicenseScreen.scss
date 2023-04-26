@@ -1,0 +1,122 @@
+/**
+ * @fileOverview The existing license screen style sheet.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ *
+ * @author Iulian Pobleanu <iulian.pobleanu@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 23, 2018
+ */
+
+@import "../../../../../../include/webadmin/theme-default/variables";
+@import "../../../../../../include/webadmin/mixins";
+
+.existing-license-screen {
+    text-align: center;
+
+    & .upload-cnt {
+    	display: flex;
+        align-items: center;
+        justify-content: center;
+    	margin: 30px;
+    	height: 300px;
+    	box-sizing: border-box;
+    	border: 3px dashed $border-color;
+    	border-radius: 5px;
+    	text-align: center;
+    	color: $text-main-color;
+        transition: border .2s ease-in-out;
+        cursor: pointer;
+
+        & > div {
+        	line-height: 19px;
+        	font-size: 15px;
+        	font-weight: 300;
+
+            transition: all .2s ease-in-out;	
+        }
+
+        &.upload-cnt-active {
+        	border-color: $accent-color;
+
+            & > div {
+                opacity: .5;
+            }
+        }
+
+        &.upload-cnt-dropped {
+            & > div { 
+                & .icon {
+                	position: relative;
+                    display: table;
+                    margin: 0 auto 5px;
+                    width: 54px;
+                    height: 36px;
+                    box-sizing: border-box;
+                    border: 1px solid $accent-color;
+                    border-radius: 2px;
+
+                    &::before {
+                        position: absolute;
+                        bottom: 4px;
+                        right: 5px;
+                        font-size: 7px;
+                        text-align: right;
+                        text-transform: uppercase;
+                        color: $accent-color;
+                        content: attr(data-value);
+                    }
+
+                    & .icon-content {
+                        position: absolute;
+                        top: 10px;
+                        left: 7px;
+                        width: 22px;
+                        height: 3px;
+                        border-top: 1px solid $accent-color;
+                        border-bottom: 1px solid $accent-color;
+
+                        &::before {
+                            position: absolute;
+                            left: 0;
+                            bottom: -5px;
+                            width: 22px;
+                            height: 1px;
+                            background: $accent-color;
+                            content: "";
+                        }
+
+                        &::after {
+                            position: absolute;
+                            left: 0;
+                            bottom: -9px;
+                            width: 15px;
+                            height: 1px;
+                            background: $accent-color;
+                            content: "";
+                        }
+                    }
+
+                    & .icon-symbol {
+                        position: absolute;
+                        top: 7px;
+                        right: 6px;
+                        width: 12px;
+                        height: 18px;
+                        background-image: url('/install/assets/images/icon-star-five.svg');
+                    }
+                }
+
+                & .filename {
+                    display: block;
+                    padding-top: 4px;
+                    max-width: 250px;
+                    text-align: center;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

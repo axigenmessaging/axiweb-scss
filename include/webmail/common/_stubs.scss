@@ -1,0 +1,97 @@
+//** Stubs
+//*
+//* Generic template definitions which are namespace free. 
+//*
+//* The namespace specific stubs will be defined in the 
+//* respective namespaces / files. 
+
+%outline-button {
+    padding: 0 25px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 21px;
+    transition: opacity .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
+    cursor: pointer;
+}
+
+%highlight-button {
+    padding: 0 25px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 21px;
+    transition: opacity .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
+    cursor: pointer;
+}
+
+// Fieldset
+%fieldset-legend {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    padding: 0 5px 0 0;
+    box-sizing: border-box;
+    @include font-body-text(20px, 300);
+
+    &.no-padding {
+        padding: 0;
+    }
+}
+
+// Button
+%button-small-rounding {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+%button-small-rounding-disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+%button-big-rounding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    background: none;
+    border: 1px solid;
+    border-radius: 15px;
+    @include font-body-text(13px, 400);
+    transition: opacity .2s ease-in-out;        
+    cursor: pointer;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
+%button-big-rounding-disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+// Goes with %button-big-rounding
+%circle-button {
+    width: 30px;
+    padding: 0;
+}
+
+// Goes with %button-big-rounding
+%small-circle-button {
+    width: 22px;
+    height: 22px;
+}

@@ -1,0 +1,42 @@
+// Checkbox
+.checkbox-container {
+    & input[type="checkbox"] {
+        & + .checkbox {
+            background-color: $checkbox-background-color;
+            border-color: $checkbox-border-color;
+        }
+
+        &:checked {
+            & + .checkbox {
+                background-color: $checkbox-checked-background-color;
+                border-color: $checkbox-checked-border-color;
+
+                &::before {
+                    border-right-color: $checkbox-checked-checkmark-color;
+                    border-bottom-color: $checkbox-checked-checkmark-color;
+                }
+            }
+        }
+    }
+
+    &.big-checkbox {
+        & input[type="checkbox"] {
+            & + .checkbox {
+                background-color: $big-checkbox-background-color;
+                border-color: $big-checkbox-border-color;
+            }
+
+            &:checked {
+                & + .checkbox {
+                    background-color: $big-checkbox-checked-background-color;
+                    border-color: $big-checkbox-checked-border-color;
+
+                    &::before {
+                        border-right-color: $big-checkbox-checked-checkmark-color;
+                        border-bottom-color: $big-checkbox-checked-checkmark-color;
+                    }
+                }
+            }
+        }
+    }
+}

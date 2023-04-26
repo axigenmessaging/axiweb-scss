@@ -1,0 +1,269 @@
+@charset "UTF-8";
+
+//******************************************************************************
+//* Sidebar icons
+//*
+@font-face {
+    font-family: "axigen-sidebar-icons";
+    src:url("/fonts/axigen-sidebar-icons.eot");
+    src:url("/fonts/axigen-sidebar-icons.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/axigen-sidebar-icons.woff") format("woff"),
+        url("/fonts/axigen-sidebar-icons.ttf") format("truetype"),
+        url("/fonts/axigen-sidebar-icons.svg#sidebar-icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.sidebar-icon::before,
+%addressbook-icon {
+    font-family: "axigen-sidebar-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 32px;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sidebar-icon-email::before {
+    content: "\e000";
+}
+
+.sidebar-icon-calendar::before {
+    content: "\e001";
+}
+
+.sidebar-icon-tasks::before {
+    content: "\e002";
+}
+
+.sidebar-icon-notes::before {
+    content: "\e003";
+}
+
+.sidebar-icon-contacts::before {
+    content: "\e004";
+}
+
+.sidebar-icon-settings::before {
+    content: "\e005";
+}
+
+//******************************************************************************
+//* Tree icons
+//*
+@font-face {
+    font-family: "axigen-tree-icons";
+    src: url("/fonts/axigen-tree-icons.eot");
+    src: url("/fonts/axigen-tree-icons.eot?#iefix") format("embedded-opentype"),
+         url("/fonts/axigen-tree-icons.woff") format("woff"),
+         url("/fonts/axigen-tree-icons.ttf") format("truetype"),
+         url("/fonts/axigen-tree-icons.svg#tree-icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main-container .center-container .x-axi-fieldset > .x-fieldset-bwrap > .x-fieldset-body > .x-panel.x-axi-captcha-container > .x-panel-bwrap > .x-panel-body .x-axi-captcha-reload::before,     /// Public
+.x-axi-tree-sidebar + .x-panel .x-axi-west-panel-body .x-axi-tree-north .x-axi-tree-white-border .x-axi-check-email > table .x-btn-left i::before,
+.x-axi-check-email .x-axi-animated-checkmail i::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-drafts-tab::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-meeting-tab::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-task-tab::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-note-tab::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-contacts-tab::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-dlist-tab::before,
+.x-tree-node .parent_menu_folder_inbox a span:first-child::before,
+.x-tree-node .parent_menu_folder_drafts a span:first-child::before,
+.x-tree-node .parent_menu_folder_sent a span:first-child::before,
+.x-tree-node .parent_menu_folder_trash a span:first-child::before,
+.x-tree-node .parent_menu_folder_spam a span:first-child::before,
+.x-tree-node .parent_menu_folder_archive a span:first-child::before,
+.x-tree-node .parent_menu_folder_filtered_email a span:first-child::before,
+.x-tree-node .parent_menu_folder_mails a span:first-child::before,
+.x-tree-node .parent_menu_publicfolder_mails a span:first-child::before,
+.x-tree-node .parent_menu_sharedfolder_mails a span:first-child::before,
+.x-axi-window.x-axi-move-copy-window .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-frequent-folders-panel .x-axi-folder-grid .x-grid3-row .x-grid3-col-folder a span::before,
+.x-axi-window.x-axi-move-copy-window .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-all-folders-panel .x-tree .x-tree-node .x-tree-node-el a span::before,
+.x-axi-datetime-combo .x-form-field-wrap.x-axi-datefield-wrap .x-form-trigger::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_folder_events"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_publicfolder_events"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_sharedfolder_events"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_folder_tasks"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_publicfolder_tasks"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_sharedfolder_tasks"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_folder_notes"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_publicfolder_notes"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_sharedfolder_notes"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_folder_contacts"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_publicfolder_contacts"] .x-grid3-col-icon::before,
+.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-body .x-grid3-row .x-grid3-row-table .x-grid3-col.x-grid3-td-icon[class*="menu_sharedfolder_contacts"] .x-grid3-col-icon::before,
+.x-small-editor.x-tree-editor::before {
+    font-family: "axigen-tree-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    font-size: 16px;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+//******************************************************************************
+//* Toolbar icons
+//*
+@font-face {
+    font-family: "axigen-toolbar-icons";
+    src: url("/fonts/axigen-toolbar-icons.woff2") format("woff2"), 
+         url("/fonts/axigen-toolbar-icons.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.x-axi-tree-sidebar + .x-panel .new-mail-toolbar .x-toolbar .x-toolbar-table .x-tbsplit-btn > tbody > tr > td:first-child .x-btn-menu-text-wrap .x-btn-center .new-mail-icon .x-btn-icon::before,
+.x-axi-view-body .x-axi-toolbar .x-toolbar .x-btn .x-btn-text:not(.add-attachment-icon):not(.close-icon):not(.addressbook-icon)::before,
+.x-axi-mail-item .x-axi-attachments-actions-toolbar .x-axi-all-attachments-panel .x-axi-attachment-list-preview .x-axi-attachment-container .x-axi-attachment-wrapper .x-axi-attachment-border .x-axi-attachment-body > *.x-axi-attachment-info .x-axi-download-buttons-container a::before,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.re-read .x-grid3-col-checker::before, 
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.re-unread .x-grid3-col-checker::before,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.fw-read .x-grid3-col-checker::before, 
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.fw-unread .x-grid3-col-checker::before,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.refw-read .x-grid3-col-checker::before, 
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.refw-unread .x-grid3-col-checker::before,
+.x-html-editor-tb .x-btn.x-edit-more .x-btn-text::before {
+    font-family: "axigen-toolbar-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 32px !important;
+}
+
+
+//******************************************************************************
+//* Other icons
+//*
+@font-face {
+    font-family: "axigen-other-icons";
+    src: url("/fonts/axigen-other-icons.woff2") format("woff2"), 
+         url("/fonts/axigen-other-icons.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.x-axi-button-big-rounding.edit-button .x-btn-text::before,
+.x-axi-button-big-rounding.delete-button .x-btn-text::before,
+.x-axi-tree-sidebar-menu-display a::before,
+.x-axi-tree-sidebar-menu .sidebar-menu-wrapper .display-options .readingpane-right a span::before,
+.x-axi-tree-sidebar-menu .sidebar-menu-wrapper .display-options .readingpane-bottom a span::before,
+.x-axi-tree-sidebar-menu .sidebar-menu-wrapper .display-options .readingpane-none a span::before,
+.x-tab-strip .x-tab-strip-closable a.x-tab-strip-close::before,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-axi-tab-panel-header-tools li .reminder-count::after,
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-tab-strip-wrap > ul.x-tab-strip li .x-tab-strip-text.x-axi-normal-tab::before,
+.x-axi-print-button .x-btn-center em::before,
+.mail-compose-toolbar .x-btn-text.add-attachment-icon::before,
+%close-icon,
+%tooltip-icon::before,
+.x-axi-search-input-container .x-axi-reset-search-button .x-btn-text::after,
+.x-axi-composer.x-axi-calendar-composer .x-axi-collapsable-title-panel-body .x-axi-attendees-row .x-axi-calendar-composer-attendees-container .x-axi-info-tooltip-panel .x-panel-body::before,
+.x-axi-button-plus .x-btn-text::before,
+.x-axi-button-minus .x-btn-text::before,
+.x-axi-tab-panel-header-menu.x-axi-reminders-menu .x-menu .x-axi-reminders-grid .x-grid3-body .x-grid3-row .x-grid3-cell .x-grid3-col-options .x-table-layout .x-axi-combo-button > .x-form-field-wrap::before,
+.x-axi-tab-panel-header-menu.x-axi-reminders-menu .x-menu .x-axi-reminders-grid .x-grid3-body .x-grid3-row .x-grid3-cell .x-grid3-col-options .x-table-layout .x-axi-last-button .x-btn-center .x-btn-text::before,
+.x-axi-tab-panel-header-menu.x-axi-reminders-menu .x-menu .x-axi-reminders-actions .x-panel-body .x-axi-button-snooze .x-btn-text::before,
+.x-axi-tab-panel-header-menu.x-axi-reminders-menu .x-menu .x-axi-reminders-actions .x-panel-body .x-axi-button-small-rounding .x-btn-text::before,
+.x-axi-window-message .close::after,
+.x-axi-composer.x-axi-mail-composer .x-axi-compose-south .x-axi-attlist-panel .x-axi-attachment-list-container .x-axi-attachment .x-axi-attachment-remove-button::before,
+%x-axi-attachments-title::after,
+.x-axi-attachment .x-axi-attachment-name::before,
+.x-axi-attachment .x-axi-att-img-type .x-axi-type::before,
+.x-axi-upload-dd-container .x-axi-upload-dd-area .attachments::before,
+.x-axi-upload-dd-container .x-axi-upload-dd-area .inline::before,
+.x-axi-window .x-axi-window-grid .x-axi-grid-body .x-grid3-header tr td .x-grid3-hd-inner.x-grid3-hd-tooltip::before,
+.x-axi-window .x-axi-window-grid .x-axi-grid-body .x-grid3-body tr td .x-grid3-cell-inner.x-grid3-col-tooltip::before,
+.x-axi-lightbulb-label .x-panel-body::before,
+.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-sharing-tabpanel .x-axi-shared-folders-info-grid .x-axi-grid-body .x-grid3-body tr td .x-grid3-cell-inner::before,
+.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-rpop-tabpanel .x-axi-fieldset-with-tools .x-axi-fieldset-tools-container .x-axi-button-plus.x-axi-button-add-rpop-yahoo .x-btn-text::after,
+.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-rpop-tabpanel .x-axi-fieldset-with-tools .x-axi-fieldset-tools-container .x-axi-button-plus.x-axi-button-add-rpop-gmail .x-btn-text::after,
+.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-rpop-tabpanel .x-axi-fieldset-with-tools .x-axi-fieldset-tools-container .x-axi-button-plus.x-axi-button-add-rpop-outlook .x-btn-text::after,
+.x-axi-window.x-axi-custom-permissions-window .x-tree-root-ct .x-tree-node-el .x-tree-col.x-axi-tooltip .x-tooltip::before,
+.x-axi-list.x-axi-tasks-list .x-grid3-header .x-grid3-header-inner td.x-grid3-td-taskstatus .x-grid3-hd-inner::before,
+.x-axi-list.x-axi-tasks-list .x-grid3-body .x-grid3-row.x-grid3-row td .x-grid3-col-taskstatus::before,
+.x-axi-list.x-axi-tasks-list .x-grid3-body .x-grid3-row .x-grid3-row-table td.x-grid3-td-taskpriority.task-priority-high ~ .x-grid3-td-tasksummary .x-grid3-col-tasksummary::after,
+.x-axi-list.x-axi-tasks-list .x-grid3-body .x-grid3-row .x-grid3-row-table td.x-grid3-td-taskpriority.task-priority-low ~ .x-grid3-td-tasksummary .x-grid3-col-tasksummary::after,
+.x-axi-composer.x-axi-contacts-composer .x-axi-collapsable-title-panel-body .x-axi-personal-business-details-container .x-axi-personal-details-container .x-axi-remove-field-button-container .x-axi-remove-field-button button::before,
+.x-axi-composer.x-axi-contacts-composer .x-axi-collapsable-title-panel-body .x-axi-personal-business-details-container .x-axi-business-details-container .x-axi-remove-field-button-container .x-axi-remove-field-button button::before,
+.x-axi-has-recurrency::after,
+.x-axi-had-recurrency::after,
+.x-axi-action-bar .content::before,
+.x-axi-action-bar .actions .but-action.action-accept::before,
+.x-axi-action-bar .actions .but-action.action-accept-tentative::before,
+.x-axi-action-bar .actions .but-action.action-reject::before,
+.x-axi-action-bar .actions .but-action.action-propose::before,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.has-attachment + .x-grid3-td-subject .x-axi-maillist-item-row .from::after,
+.x-axi-list.x-axi-conversations-list .x-grid3-row .x-grid3-td-checker.has-attachment + .x-grid3-td-subject .x-axi-maillist-item-row .participants::after,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.importance-high + .x-grid3-td-subject .x-axi-maillist-item-row .size::before,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker.importance-low + .x-grid3-td-subject .x-axi-maillist-item-row .size::before,
+.x-axi-list.x-axi-conversations-list .x-grid3-row .x-grid3-td-checker.importance-high + .x-grid3-td-subject .x-axi-maillist-item-row .importance-container::before,
+.x-axi-list.x-axi-conversations-list .x-grid3-row .x-grid3-td-checker.importance-low + .x-grid3-td-subject .x-axi-maillist-item-row .importance-container::before,
+.x-axi-list.x-axi-mails-list .x-grid3-row .x-grid3-td-checker + .x-grid3-td-subject .flag-btn::before,
+.x-html-editor-tb .x-btn.x-edit-insertimage .x-btn-text::before,
+.autopurge-interval-container span::before,
+.x-tree-node .parent_menu_folder_flagged a span:first-child::before,
+.x-axi-window.x-axi-move-copy-window .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-frequent-folders-panel .x-axi-folder-grid .x-grid3-row .x-grid3-col-folder.menu_folder_flagged a span::before,
+.x-axi-window.x-axi-move-copy-window .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-all-folders-panel .x-tree .x-tree-node .x-tree-node-el.parent_menu_folder_flagged a span::before,
+.x-axi-managelabels-window .x-axi-fieldset .x-fieldset-bwrap .x-axi-grid .x-grid3-row::before,
+.x-axi-managelabels-window .x-axi-fieldset .x-fieldset-bwrap .x-axi-grid .x-grid-editor::before,
+.x-axi-labels-menu .x-menu .x-menu-list.x-axi-labels-list .x-menu-list-item-added .x-menu-item::after,
+.x-axi-labels-menu .x-menu .x-menu-list.x-axi-labels-list .x-menu-item::before,
+.x-axi-btn-menu .x-menu-list-item .x-menu-item.menu-importance.importance-high span::before,
+.x-axi-btn-menu .x-menu-list-item .x-menu-item.menu-importance.importance-low span::before {
+    font-family: "axigen-other-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper .display-options .readingpane-right a span::before,
+.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper .display-options .readingpane-bottom a span::before,
+.x-axi-tree-sidebar-menu .sidebar-settings-menu-wrapper .display-options .readingpane-none a span::before {
+    line-height: 16px;
+}
+
+//******************************************************************************
+//* Emoji icons
+//*
+@font-face {
+    font-family: "axigen-emoji";
+    src: url("/fonts/axigen-emoji.woff2") format("woff2"), 
+         url("/fonts/axigen-emoji.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.x-html-editor-tb .x-btn .x-btn-text::before,
+.x-axi-emoji-menu .x-menu.light-menu .emoji-group-links-container span::before {
+    font-family: "axigen-emoji" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 32px !important;
+}

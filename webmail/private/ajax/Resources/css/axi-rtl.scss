@@ -1,0 +1,2610 @@
+/**
+ * @fileOverview The WebMail base style sheet (RTL).
+ *
+ * @copyright Copyright (c) 2019 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 21, 2019
+ */
+
+@import "../../../../../include/webmail/theme-ocean/variables";
+@import "../../../../../include/webmail/common/mixins";
+
+
+/*******************************************************************************
+ * Ext overrides
+ */
+body.rtl {
+	// Generic elements
+	direction: rtl;
+
+	.x-column {
+		float: right;
+	}
+
+	.x-grid3-focus {
+    	// Fixes a number of grid misalignments on RTL
+    	// grids, caused by the wrong left position calculation.
+    	// Examples: Calendar search grid, Calendar day view grid.
+    	left: 0 !important;
+	}
+
+	// Progress bar
+	%preloader-progress-bar {
+		& .x-progress-inner {
+			& .x-progress-bar {
+				left: auto;
+				right: -1px;
+			}
+		}
+	}
+
+	.x-progress-wrap {
+	    @extend %preloader-progress-bar;
+	}
+
+	.x-form-label-left label {
+		text-align: right;
+	}
+
+	// Tabs
+	.x-tab-scroller-left {
+		right: auto;
+		left: 5px;
+	}
+
+	.x-tab-scroller-right {
+		left: auto;
+		right: 5px;
+	}
+
+	ul.x-tab-strip {
+		& li {
+			border-right-width: 0;
+			border-left-width: 1px;
+			border-left-style: solid;
+		}
+	}
+
+	.x-tab-strip .x-tab-strip-closable a.x-tab-strip-close {
+		right: auto;
+		left: 3px;
+	}
+
+	// Fieldset
+	.x-fieldset {
+	    & .x-fieldset-header {
+	    	padding-right: 0;
+	    	padding-left: 5px;
+
+		    &.no-padding {
+		    	padding: 0;
+		    }
+	    }
+	}
+
+	.x-axi-section { /// Axi extension
+	    & .x-axi-section-title {
+	        & label {
+	            padding: 0 0 0 5px;
+	        }
+	    }
+
+	    & label.x-axi-section-title {
+	        padding: 0 0 0 5px;
+	    }
+	}
+
+	// Text field, text area
+	.x-small-editor {
+	    // Tree panel create / rename folder field
+	    &.x-tree-editor {
+	        &::before {
+	            padding-left: 3px;
+	            padding-right: 2px;
+	        }
+	    }
+	}
+
+	// Checkbox 
+	.x-form-cb-label {
+		padding-left: 0;
+		padding-right: 5px;
+	}
+
+	// Combo
+	.x-form-field-wrap {
+	    & .x-form-field {
+	    	padding-left: 0;
+	    	padding-right: 6px;
+	    	border-left-width: 0;
+	    	border-right-width: 1px;
+	        border-radius: 0 2px 2px 0; 
+	    }
+
+	    & .x-form-trigger {
+	    	border-right-width: 0;
+	    	border-left-width: 1px;
+	    	border-radius: 2px 0 0 2px;
+	    }
+	}
+
+	// Layout splitters
+	.x-layout-split {
+		margin-left: auto;
+		margin-right: -2px;
+
+		&.x-layout-split-west {
+			& .x-layout-mini {
+				display: none;
+			}
+		}
+	}
+
+	// Horizontal Slider
+	.x-slider-horz {
+	    &::before {
+	        left: auto;
+	        right: 0;
+	    }
+	}
+
+	// Window
+	.x-window {
+		// Window borders
+	    & .x-panel-bbar .x-toolbar > table > tbody > tr > td,
+	    & .x-window-bbar .x-toolbar > table > tbody > tr > td {
+	    	&:first-child {
+	    		border-left-width: 0;
+	    		border-right-width: 1px;
+	    		border-right-style: solid;
+	    		border-bottom-left-radius: 0;
+	    		border-bottom-right-radius: 3px;
+	    	}
+
+	    	&:last-child {
+	    		border-right-width: 0;
+	    		border-left-width: 1px;
+	    		border-left-style: solid;
+	    		border-bottom-right-radius: 0;
+	    		border-bottom-left-radius: 3px;
+	    	}
+
+	    	&:not(:first-child):not(:last-child) {
+	    		// Spacer between buttons
+	    		&:not(:nth-last-child(2)) {
+	    			padding-right: 0;
+	    			padding-left: 8px;
+	    		}
+	    	}
+	    }
+	}
+
+	// Menu
+	.x-menu-list-item {
+	    & a.x-menu-item {
+	        &.bullet {
+	            &::after {
+	                margin-left: 0;
+	                margin-right: 5px;
+	            }
+	        }
+
+	        &.x-menu-item-arrow {
+	            & .x-menu-item-icon {
+	                margin-left: 0;
+	                margin-right: 10px;
+					transform: scaleX(-1);
+	            }
+	        }
+	    }
+
+	    &.x-menu-item-checked {
+	        & a.x-menu-item {
+	            &.x-menu-check-item {
+	                & .x-menu-item-icon {
+	                    margin-left: 0;
+	                    margin-right: 10px;
+	                }
+	            }
+	        }
+	    }
+	}
+
+	// Button with menu
+	.x-btn-with-menu .x-btn-center {
+		padding-right: 0 !important;
+		padding-left: 2px;
+
+		@at-root body.rtl .x-toolbar .x-btn-with-menu .x-btn-center em {
+			background-position: -3px 0;
+		}
+
+		& em {
+			padding-right: 0;
+			padding-left: 8px;
+		}
+	}
+
+	// Tree
+	.x-tree-node {
+	    & .x-tree-node-el {
+	        & a {
+	        	& span {
+	                &:first-child {
+	                	&::before {
+	                		padding-left: 3px;
+	                		padding-right: 2px;
+	                	}
+	                }
+	        	}
+	        }
+	    }
+	}
+
+	// Drag and drop ghost
+	.x-dd-drag-proxy {
+	    & .x-dd-drag-ghost {
+	        padding: 0 5px 0 0;
+	    }
+	}
+
+	.x-tree-lines {
+	    & .x-tree-elbow-plus,
+	    & .x-tree-elbow-end-plus {
+	    	transform: scaleX(-1);
+	    }
+	}
+
+	// Date picker + mini calendar
+	.x-date-left a {
+		float: left;
+
+		&::before {
+			right: auto;
+			left: 4px;
+			background-image: url(../images/common/calendar-navigation-right.svg);
+
+            @at-root html.dark & {
+                background-image: url(../images/common/dark-mode/calendar-navigation-right.svg);
+            }
+		}
+	}
+
+	.x-date-right a {
+		float: right;
+
+		&::before {
+			left: auto;
+			right: 4px;
+			background-image: url(../images/common/calendar-navigation-left.svg);
+
+            @at-root html.dark & {
+                background-image: url(../images/common/dark-mode/calendar-navigation-left.svg);
+            }
+		}
+	}
+
+	.x-date-mp-btns td button {
+		margin-right: 0;
+		margin-left: 3px;
+	}
+
+	.x-date-mp-ybtn a {
+		&.x-date-mp-prev::before, 
+		&.x-date-mp-prev:hover::before {
+			margin-left: 0;
+			background-image: url(../images/common/calendar-navigation-right.svg);
+
+            @at-root html.dark & {
+                background-image: url(../images/common/dark-mode/calendar-navigation-right.svg);
+            }
+		}
+
+		&.x-date-mp-next::before,
+		&.x-date-mp-next:hover::before {
+			margin-left: -1px;
+			background-image: url(../images/common/calendar-navigation-left.svg);
+
+            @at-root html.dark & {
+                background-image: url(../images/common/dark-mode/calendar-navigation-left.svg);
+            }
+		}
+	}
+
+	td.x-date-mp-sep {
+		border-right: none;
+		border-left-width: 1px;
+		border-left-style: solid;
+	}
+
+	// HTML Editor
+	.x-html-editor-tb {
+	    // Font combo
+	    %font-combo {
+	        padding-left: 0;
+	        padding-right: 10px;
+	    }
+
+	    @at-root body.rtl {
+	        .x-html-editor-tb .x-toolbar .x-form-text,
+	        &.ext-safari .x-html-editor-tb .x-toolbar .x-form-text,
+	        &.ext-chrome .x-html-editor-tb .x-toolbar .x-form-text {
+	            @extend %font-combo;
+	        }
+	    }
+
+	    // Buttons
+	    & .x-btn {
+	    	&.x-edit-emoji .x-btn-text {
+                @at-root body.rtl.ext-safari .x-html-editor-tb .x-btn.x-edit-emoji .x-btn-text::before {         /// Safari
+                    text-indent: -1px;
+	    		}
+	    	}
+
+	        &.x-edit-more {
+	            & em {
+	            	padding: 0;
+	            }
+
+	            @at-root body.rtl .x-edit-more-menu {
+	            	& .x-menu-list {
+	            		& .x-menu-list-item {
+	            			& .x-menu-item {
+	                            &.x-menu-item-arrow {
+	                                margin-right: 0;
+	                                margin-left: 7px;
+	                                background-position-x: -3px;
+	                            }
+	            			}
+	            		}
+	            	}
+	            }
+	        }
+	    }
+	}
+}
+
+
+/*******************************************************************************
+ * Global Axi components
+ */
+body.rtl {
+	// START Axi rounded button
+	.x-axi-button-big-rounding {
+	    &.edit-button {
+	        .x-btn-text {
+	            &::before {
+	                text-indent: 2px;
+	            }
+	        }
+	    }
+
+	    &.delete-button {
+	        & .x-btn-text {
+	            &::before {
+	                text-indent: 2px;
+	            }
+	        }
+	    }
+
+	    &.x-axi-button-plus {
+	        & .x-btn-text {
+	            padding-left: 15px;
+	            padding-right: 5px;
+
+	            &::before {
+	                width: 28px;
+	            }
+	        }
+	    }
+	}
+	// END Axi rounded button
+
+	// START Axi Input + Animated Label Control 
+	.x-axi-textfield-with-animated-label-wrapper {
+	    & .x-axi-form-item-label > label {
+	        left: auto;
+	        right: 10px;
+	    }	    
+	}
+	// END Axi Input + Animated Label Control
+
+	// START Global messages
+	#x-message-container {
+	    & .x-axi-window-message {
+	        & .message-column {
+	            border-right: none;
+	            border-left-width: 1px;
+	            border-left-style: solid;
+
+	            & a {
+	            	margin-left: 0;
+	            	margin-right: 20px;
+	            }
+
+	            & .message-progress {
+	                margin-left: 0;
+	                margin-right: 20px;
+	            }
+	        }
+	    }
+	}
+	// END Global messages
+
+	// START Axi Search Control
+	.x-axi-search-input-container {
+	    & .x-axi-qsright,
+	    & .x-axi-reset-search-button {
+	        bottom: auto;
+	    	right: auto;
+	    	left: 0;
+	    }
+
+	    // Search control with advanced search
+	    &.has-advanced-search {
+	        & .x-axi-qsright,
+	        & .x-axi-reset-search-button {
+	        	right: auto;
+	            left: 25px;
+
+	            & ~ .x-form-text.x-axi-search-input {
+	                padding-right: 30px;
+	                padding-left: 60px;
+		        }
+		    }
+	    }
+
+	    & .x-axi-advanced-search {
+	        bottom: auto;
+	    	right: auto !important;
+	    	left: 0 !important;
+ 	    }
+	}
+
+	.x-axi-search-input,
+	&.ext-safari .x-toolbar .x-form-text.x-axi-search-input,
+	&.ext-chrome .x-toolbar .x-form-text.x-axi-search-input {
+		background-position: right 8px top 9px;
+	}
+
+	// Advanced search
+	.x-axi-advanced-search-panel {
+		& .x-axi-search-form-body {
+			& > .x-panel {
+				& .x-form-item:not(.x-hide-label) {
+					& .x-form-item-label {
+	                    padding: 2px 0 2px 5px;
+					}
+				}
+			}
+		}
+	}
+	// END Axi Search Control
+
+	// START Axi Boxed Menu Button
+	.x-btn.x-axi-boxed-button-with-menu .x-btn-with-menu .x-btn-center em .x-btn-text {
+		padding-left: 32px;
+		padding-right: 10px;
+
+		&::after {
+			right: auto;
+			left: 0;
+		}
+	}
+	// END Axi Boxed Menu Button
+
+	// START Axi Date Combo
+	.x-axi-datetime-combo {
+	    & .x-form-field-wrap {
+	        &.x-axi-datefield-wrap,
+	        &.x-axi-timefield-wrap {
+	            & .x-form-trigger {
+	                border-right-width: 1px;
+	                border-right-style: solid;
+	            }
+	        }
+	    }
+	}
+	// END Axi Date Combo
+
+	// START Axi Tree & Grid
+	%axi-tree-grid-root {
+	    padding: 0 10px 0 6px;
+	}
+
+	.x-axi-tree-accordion,
+	.x-axi-tree-lines {
+	    // Tree Icons
+	    & .x-tree-node {
+	        // Sent
+	        & .parent_menu_folder_sent a span:first-child::before {
+				transform: scaleX(-1);
+	        }
+	    }
+
+	    // Root nodes
+	    & .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails,
+	    & .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root,
+	    & .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner {
+        	@extend %axi-tree-grid-root;
+	    }
+
+	    // Tree Grid
+	    & .x-grid-panel {
+	        & .x-grid3-scroller {
+	        	& .x-grid3-body {
+	                & .x-grid-group-hd {
+	                    @extend %axi-tree-grid-root;
+                    }
+
+	                & .x-grid-group-body {
+	                    & .x-grid3-row {
+                        	padding: 0 10px 0 6px;
+
+	                        & .x-grid3-row-table {
+	                            & .x-grid3-col {
+	                                &.x-grid3-td-icon {
+	                                    & .x-grid3-col-icon {
+	                                        &::before {
+	                                            padding-left: 3px;
+	                                            padding-right: 2px;
+	                                        }
+	                                    }
+	                                }
+	                            }
+	                        }
+                    	}
+                    }
+	        	}
+	        }
+	    }
+	}
+	// END Axi Tree & Grid
+
+	// START Axi list
+	.x-axi-list {
+		border-right-width: 0;
+		border-left-width: 1px;
+		border-left-style: solid;
+
+		& .x-grid3-header {
+			& .x-grid3-td-checker {
+				padding-left: 6px;
+				padding-right: 0;
+			}
+		}
+
+		// List not focused
+		& .x-grid3-row {
+			& > table {
+				& .x-grid3-td-checker {
+					padding-right: 0;
+					padding-left: 6px;
+				}
+			}
+		}
+
+		// Notes list
+		&.x-axi-notes-list {
+			& .x-grid3-header {
+				& .x-grid3-header-inner {
+					& .x-grid3-td-subject {
+						padding-right: 0;
+						padding-left: 26px;
+					}
+				}
+			}
+		}
+	}
+	// END Axi list
+
+	// START Action bar
+	.x-axi-action-bar {
+	    & .content {
+	        &::before {
+	            margin-left: auto;
+	            margin-right: -7px;
+	        }
+	    }
+
+	    & .actions {
+	        & .but-action {
+	            &::before {
+	                margin-left: auto;
+	                margin-right: -8px;
+	            }
+	        }        
+	    }
+	}
+	// END Action bar
+
+	// START Free / Busy
+	.x-axi-legend-free,
+	.x-axi-legend-busy,
+	.x-axi-legend-ooo,
+	.x-axi-legend-tentative,
+	.x-axi-legend-na {
+	    &::before {
+	        margin-right: 0;
+	        margin-left: 4px;
+	    }
+	}
+	// END Free / Busy
+
+	// START Attachments panel 
+	%attachments-panel {
+		& .x-axi-attachment {
+			& .x-axi-attachment-name {
+				&::before {
+					margin-right: 0;
+					margin-left: 1px;
+				}
+			}
+
+			& .x-axi-attachment-progressbar {
+	            &:not(:empty) {
+	                padding-left: 0;
+	                padding-right: 5px;
+	            }
+			}
+		}
+	}
+
+	.x-axi-attachment-list-container {
+    	@extend %attachments-panel;
+	}
+	// END Attachments panel 
+}
+
+
+/*******************************************************************************
+ * App
+ */
+body.rtl {
+	/* START IDRegionWest */
+	/* START Sidebar */
+	.x-axi-tree-sidebar {
+		& .x-axi-tree-sidebar-navigation {
+			& .x-axi-tree-sidebar-section {
+				& a {
+					margin-left: 0;
+					margin-right: -2px;
+				}
+			}
+		}
+	}
+
+	.x-axi-tree-sidebar-menu {
+		& .light-menu {
+			text-align: right;
+
+			& .sidebar-menu-wrapper {
+				& .section {
+					&.display-options {
+						&.dark-mode {
+							& ul {
+								& li {
+									&.auto {
+										& a span .dark-marker {
+											left: auto;
+											right: 7px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	/* END Sidebar */
+
+	// START Folder Tree or Grid
+	.x-axi-tree-sidebar + .x-panel .new-mail-toolbar .x-toolbar .x-toolbar-table .x-tbsplit-btn {
+
+		// The button container id
+		& > tbody > tr > td:first-child {
+			& .x-btn-menu-text-wrap {
+				& .x-btn-center {
+					& .new-mail-icon {
+						& .x-btn-icon {
+							margin-left: 2px;
+						}
+					}
+				}
+			}
+		}
+
+		& > tbody > tr > td:last-child .x-btn-menu-arrow-wrap .x-btn-center .x-btn-menu-arrow-el {
+			border-left: none;
+			border-right-width: 1px;
+		    border-right-style: solid;
+		}
+	}
+
+	.x-axi-tree-sidebar + .x-panel .x-axi-west-panel-body::after {
+		right: auto;
+		left: 0;
+	}
+	// END Folder Tree or Grid
+	// END IDRegionWest
+
+	// START Main
+	// START Top tabs
+	.x-axi-view-body > .x-tab-panel > .x-tab-panel-header {
+		& .x-tab-scroller-left {
+			left: calc(#{$reminders-count-width} + 25px);
+		}
+
+		& .x-tab-scroller-right {
+			right: 5px;
+		}
+
+		& > .x-tab-strip-wrap {
+			& > ul.x-tab-strip li {
+				&.x-tab-strip-active {
+					&::before {
+						left: auto;
+						right: 0;
+						width: 100%;
+					}
+
+					&:first-of-type::before {
+						right: 1px;
+						width: calc(100% - 1px);
+					}
+				}
+			}
+		}
+
+		@at-root body.rtl .x-axi-tab-panel-header-menu.x-axi-reminders-menu {
+			right: auto;
+			left: 3px !important;
+
+			& .x-menu {
+				.x-axi-reminders-grid .x-grid3-body .x-grid3-row .x-grid3-cell {
+					& .x-grid3-col-due {
+						margin-left: 0;
+						margin-right: 5px;
+					}
+
+					& .x-grid3-col-summary {
+						text-align: right;
+					}
+
+					& .x-grid3-col-options {
+						& .x-table-layout .x-axi-combo-button > .x-form-field-wrap::before {
+							text-indent: -11px;
+						}
+					}
+				}
+
+				& .x-axi-reminders-actions .x-panel-body .x-axi-button-snooze .x-btn-text {
+					padding-left: 32px;
+					padding-right: 34px;
+
+					&::before {
+						left: auto;
+						right: 12px;
+						text-indent: -11px;
+					}
+				}
+			}
+		}
+	}
+	// END Top tabs
+	// START Main view
+	// START Main view toolbar
+	.x-axi-view-body .x-axi-toolbar {
+		// Mails toolbar
+		&.mails-toolbar {
+			padding-left: 0;
+			padding-right: 10px;
+
+			// Mails search
+			& .x-axi-search-input-container {
+				// Separator
+				& + td .ytb-sep {
+					margin-left: 7px;
+					margin-right: 10px;
+				}
+			}
+
+			& .x-toolbar .x-btn .x-btn-text {
+				&.mails-labels-icon {
+					transform: scaleX(-1);
+
+					// Labels menu
+					@at-root .x-axi-labels-menu {
+						& .x-menu {
+							& .x-menu-list {
+								& .x-menu-item {
+									padding-left: 12px;
+									padding-right: 19px;
+								}
+
+		                        %label-icon {
+		                        	text-indent: -4px;
+		                        	transform: scaleX(-1);
+		                        }
+
+								&.x-axi-labels-list {
+									& .x-menu-item {
+										&::before {
+											@extend %label-icon;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Calendar toolbar
+		&.calendar-toolbar.x-axi-calnav {
+			& > .x-axi-calnav-bwrap {
+				& > .x-axi-calnav-body {
+					& > .x-column-inner {
+						& .x-axi-calnav-prev,
+						& .x-axi-calnav-next {
+							&.x-axi-calnav-prev {
+								margin-left: 0;
+								margin-right: 5px;
+
+								& .x-btn-center {
+									padding-right: 5px;
+									padding-left: 1px;
+
+									& .x-btn-text {
+										&::before {
+											left: auto;
+											right: 8px;
+											border-left: none;
+											border-right-width: 1px;
+											border-right-style: solid;
+											transform: rotate(-45deg);
+										}
+									}
+								}
+							}
+
+							&.x-axi-calnav-next {
+								margin-right: auto;
+								margin-left: 5px;
+
+								& .x-btn-center {
+									padding-left: 5px;
+									padding-right: 1px;
+
+									& .x-btn-text {
+										&::before {
+											right: auto;
+											left: 8px;
+											border-right: none;
+											border-left-width: 1px;
+											border-left-style: solid;
+											transform: rotate(45deg);
+										}
+									}
+								}
+							}
+						}
+
+						& .x-cal-nav-weeknumber {
+							padding-left: 0;
+							padding-right: 8px;
+						}
+
+						& .x-axi-calnav-view-menu {
+							& .x-axi-boxed-button-with-menu {
+								padding-right: 5px;
+								padding-left: 0;
+							}
+						}
+					}				
+				}
+			}
+		}
+
+	}
+	// END Main view toolbar
+
+	// START Main view body
+	// START Mail
+	// START Mails list
+	.x-axi-list {
+		&.x-axi-mails-list {
+			// In Spam and Trash, there's a top container which
+			// shows a message about the number of days emails 
+			// will be deleted after.
+			@at-root body.rtl .autopurge-interval-container {
+				padding-left: 20px;
+				padding-right: 1px;
+				border-right: none;
+				border-left-width: 1px;
+				border-left-style: solid;
+			}
+
+			// List not focused
+			& .x-grid3-row {
+				& .x-grid3-td-checker {
+					// Replied, forwarded, replied & forwarded
+					&.re-read,
+					&.re-unread,
+					&.fw-read,
+					&.fw-unread,
+					&.refw-read,
+					&.refw-unread {
+						& .x-grid3-col-checker {
+							&::before {
+								left: auto;
+								right: 2px;
+								transform: scaleX(-1);
+							}
+						}
+					}
+					
+				}
+
+				& .x-grid3-td-subject {
+					& .x-axi-maillist-item-row {
+						& .folder {
+							margin-left: 0;
+							margin-right: 3px;
+						}
+
+						& .labels-container {
+							& .label {
+								margin-right: 0;
+								margin-left: 3px;
+							}
+						}
+					}
+				}
+			}
+
+			// Flagged / starred
+			@at-root {
+				// Flagging type = flags
+				.flagging-type-flags & {
+					& .x-grid3-row {
+						& .x-grid3-td-checker {
+							& + .x-grid3-td-subject {
+								& .flag-btn {							
+									&::before {
+										left: auto;
+										right: 0;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// Flagging type = stars
+				.flagging-type-stars & {
+					& .x-grid3-row {
+						& .x-grid3-td-checker {
+							& + .x-grid3-td-subject {
+								& .flag-btn {							
+									&::before {
+										left: auto;
+										right: 0;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	// END Mails list
+	// START Mail item
+	.x-axi-mail-item {
+		// START Mail item header
+		& .x-axi-compose-north {
+			& > .x-panel-bwrap {
+				& > .x-panel-body {
+					padding-left: 7px;
+					padding-right: 10px; 
+				}
+			}
+		}
+		// END Mail item header
+
+		// START Footer tabs
+		.x-axi-tabs .x-tab-panel-footer .x-tab-strip-wrap ul.x-tab-strip li:first-child {
+			border-right-width: 1px;
+		}
+		// END Footer tabs
+	}
+	// END Mail item
+
+	// START Attachments tab
+	& .x-axi-attachments-actions-toolbar {
+		& .x-axi-all-attachments-panel {
+			& .x-axi-attachment-list-preview {
+				& .x-axi-attachment-container {
+					margin-right: 0;
+					margin-left: 10px;
+
+					& .x-axi-attachment-wrapper {
+						& .x-axi-attachment-border {
+							&::after {
+								right: auto;
+								left: -1px;
+								transform: scaleX(-1);
+							}
+
+							& .x-axi-attachment-body {
+								& > * {
+									&.x-axi-attachment-info {
+										& .x-axi-download-buttons-container {
+											margin-left: 0;
+											margin-right: 5px;
+
+											& a {
+												&::before {
+													direction: ltr;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	// END Attachments tab
+	// END Mail
+
+	// START Calendar
+	// Calendar views
+	.x-axi-calendar-panel {
+		// Common components
+		& > .x-panel-header {
+			& .x-axi-calendar-header-tz {
+				& .active {
+					margin-right: 0;
+					margin-left: 5px;
+
+					& center {
+						text-align: left;
+					}
+
+					&::after {
+						right: auto;
+						left: -6px;
+					}
+				}
+			}
+		}
+
+		// Attendees icon
+		.x-axi-has-attendees {
+			margin-right: 0;
+			margin-left: 2px;
+		}
+
+		// Recurrence icon
+		.x-axi-has-recurrency {
+			margin-right: 0;
+			margin-left: 3px;
+
+			&::after {
+				transform: scaleX(-1);
+			}
+		}
+
+		// Recurrence broken icon
+		.x-axi-had-recurrency {
+			margin-right: 0;
+			margin-left: 3px;
+
+			&::before {
+		        left: auto;
+		        right: calc(50% - 1px);
+		        transform: rotate(-25deg);
+			}
+
+			&::after {
+				transform: scaleX(-1);
+			}
+		}
+
+		& .x-grid3-row {
+			& td {
+				border-right: none;
+				border-left-width: 1px;
+				border-left-style: solid;
+			} 
+		}
+
+	// Tooltips
+	@at-root body.rtl .x-tip.x-axi-tips-window.x-axi-calendar-event-tooltip {
+		& .x-tip-bwrap {
+			& .x-tip-body {	
+				& .date-time-container {
+					& .x-axi-calendar-event-tooltip-day-interval {
+						padding-right: 0;
+						padding-left: 5px;
+					}
+				}
+			}
+		}
+	}
+
+		// Applies to Day view and Week view
+		& .x-axi-calendar-allday-panel {
+			& .x-axi-calendar-allday-header {
+				border-right: none;
+				border-left-width: 1px;
+				border-left-style: solid;
+
+				& span {
+					text-align: left;
+				}
+			}
+
+			& .x-axi-calendar-allday-column {
+				border-right: none;
+				border-left-width: 1px;
+				border-left-style: solid;
+			}
+		}
+
+		& .x-axi-calendar-timeline-cell {
+			left: auto;
+			right: 0 !important;
+		    margin-left: auto;
+		    margin-right: 0;
+		    padding-right: 0;
+		    padding-left: 5px;
+		    text-align: left;
+		}
+
+		& .x-axi-calendar-event {
+			padding-left: 0;
+			padding-right: 1px;
+		}
+
+		// All day events
+		& .x-axi-calendar-allday-container {
+			& .x-axi-calendar-event-wrapper {
+				margin-right: -12px;
+			}
+		}
+
+		// Day view
+		&.x-axi-calendar-day {
+			// All day events
+			& .x-axi-calendar-allday-container {
+				& .x-axi-calendar-event-wrapper {
+					margin-right: -8px;
+				}
+			}
+		}
+
+		// Month view
+		&.x-axi-calendar-month {
+			& > .x-panel-bwrap {
+				& .calendar-month-cell-title {
+					padding: 0 30px 0 10px;
+					text-align: left;
+
+					& .today {
+						& span {
+							margin-left: 0;
+							margin-right: 3px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Calendar search
+	.x-axi-calendar-search-view {
+		& .x-axi-calendar-search-grid {
+			border-left: none;
+			border-right-width: 1px;
+			border-right-style: solid;
+		}
+	}
+	// END Calendar
+
+	// START Tasks
+	// START Tasks list
+	.x-axi-list.x-axi-tasks-list .x-grid3-body .x-grid3-row .x-grid3-row-table td.x-grid3-td-taskpriority.task-priority-high ~ .x-grid3-td-tasksummary .x-grid3-col-tasksummary, 
+	.x-axi-list.x-axi-tasks-list .x-grid3-body .x-grid3-row .x-grid3-row-table td.x-grid3-td-taskpriority.task-priority-low ~ .x-grid3-td-tasksummary .x-grid3-col-tasksummary {
+		padding-right: 0;
+		padding-left: 28px;
+
+		&::after {
+			right: auto;
+			left: 5px;
+		}
+	}
+	// END Tasks list
+	// END Tasks
+
+	// START Notes
+	// START Notes list
+	.x-axi-list {
+		&.x-axi-notes-list {
+			& .x-grid3-row {
+				& .x-grid3-td-checker ~ td {
+					& .folder-container {
+						& .folder {
+							margin-left: 0;
+							margin-right: 3px;
+						}						
+					}
+				}
+			}
+		}
+	}
+	// END Notes
+	// END Notes list
+
+	// START Contacts
+	.x-axi-list.x-axi-contacts-list .x-grid3-row .x-grid3-td-contacticon {
+		padding-right: 0;
+		padding-left: 5px;
+	}
+
+	&.axi-reading-pane-west .x-axi-list.x-axi-contacts-list .x-grid3-row .x-grid3-td-details {
+		& .email,
+		& .phone,
+		& .company,
+		& .name:empty {
+			display: none;
+		}
+
+		& .name:empty + .email:empty + .phone {
+			display: inline;
+		}
+	}
+	// START Contacts list
+	// END Contacts list
+
+	// START Contact item
+	.x-axi-contact-preview-container {
+		& .x-axi-contact-item-container {
+			& > table {
+				& .x-axi-contact-icon {
+					float: left;
+				}
+
+				& .x-axi-item-container-table {
+					&.important-details {
+						& .x-axi-item-container-table-td {
+							&:first-child {
+								padding-left: 6px;
+								padding-right: 0;
+							}
+
+							&:last-child {
+								padding-right: 6px;
+								padding-left: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	// END Contact item	
+	// END Contacts
+
+	// END Main view body
+	// END Main view
+
+	// START Composers
+	.x-axi-composer {
+		// Common components
+	    %x-axi-cal-two-way-fork {
+	    	border-left: none;
+	        border-right-width: 1px;
+	        border-right-style: solid;
+	    }
+
+	    %x-axi-cal-three-way-fork {
+	    	border-left: none;
+	        border-right-width: 1px;
+	        border-right-style: solid;
+
+	        &::before {
+	            left: auto;
+	            right: 0;
+	        }
+	    }
+
+	    %x-axi-cal-weekly-from-dots {
+	    	border-left: none;
+	        border-right-width: 1px;
+	        border-right-style: solid;
+
+	        &::before,
+	        &::after {
+	            left: auto;
+	            right: 0;
+	        }
+
+	        & span {
+	            left: auto;
+	            right: 0;
+	        }
+	    }
+
+		// Email address objects
+		.email-address-list .email-address-objects-container .axi-email-address-object-wrapper > .x-btn .x-btn-center .x-btn-text {
+			// Ensures the brackets are shown correctly
+			// as they otherwise break on RTL
+			direction: ltr;
+			text-align: right;
+
+			&::after {
+				content: " ";
+			}
+		}
+
+	    // Active recipient tooltip
+		@at-root body.rtl .x-tip.x-axi-tips-window.active-recipient-tooltip {
+			padding-left: 10px;
+			padding-right: calc(56px + 20px - 5px);
+
+			& .x-tip-bwrap .x-tip-body .tooltip-contact-thumbnail {
+				left: auto;
+				right: 10px;
+			}
+		}
+
+		& .x-axi-attendees-row {
+			& > .x-column-inner {
+				& > .x-column {
+					float: right;
+
+					& .x-axi-calendar-composer-attendees-container > .x-axi-info-tooltip-panel {
+						float: right;
+					}
+				}
+			}
+		}
+
+	    // Toolbar icons used in multiple places
+	    %save-send-icon {
+			transform: scaleX(-1);
+	    }
+
+	    // START Mail Composer
+	    &.x-axi-mail-composer {
+	        & .mail-compose-toolbar {
+	            & .x-btn-text {
+	                &.send-icon {
+	                    &::before {
+	                        @extend %save-send-icon;
+	                    }
+	                }
+
+	                &.mails-more-icon {
+	                	@at-root body.rtl .x-axi-btn-menu .x-menu-list-item {
+	                        & .x-menu-item {
+	                            &.menu-importance {
+	                                & span {
+	                                    &::before {
+	                                        margin-right: 0;
+	                                    	margin-left: 5px;
+	                                    }
+	                                }
+	                            }
+	                        }
+	                	}
+	                }
+	            }
+	        }
+
+	        & .x-axi-compose-north {
+	            & .x-axi-email-address-row-container {
+	            	& .x-form-item-button-label + .x-axi-combo {
+	            		& .x-form-field-wrap {
+	            			& .x-form-field {
+	            				direction: ltr;
+	            				text-align: right;
+	            			}
+	            		}
+	            	}
+	            }
+	        }
+	    }
+
+	    // START Calendar Composer
+	    &.x-axi-calendar-composer {
+	        & .new-meeting-toolbar {
+	            & .x-btn-text {
+	                &.save-icon {
+	                    &::before {
+	                        @extend %save-send-icon;
+	                    }
+	                }
+	            }
+	        }
+
+	        & .x-axi-collapsable-title-panel-body {
+	            & .x-axi-cal-two-way-fork {
+	                @extend %x-axi-cal-two-way-fork;
+	            }
+
+	            & .x-axi-cal-three-way-fork {
+	                @extend %x-axi-cal-three-way-fork;
+	            }
+
+	            & .x-axi-cal-weekly-from-dots {
+	                @extend %x-axi-cal-weekly-from-dots;
+	            }
+
+	        	& .x-axi-folder-selection-row {
+	        		& .x-axi-combo {
+	                    @at-root .x-axi-folder-selection-combo-list.x-axi-events-combo {
+	                        & .x-combo-list-item {
+	                            padding-left: 10px;
+	                            padding-left: 28px;
+
+	                            &::before {
+	                                left: auto;
+	                                right: 10px;
+	                            }
+	                        }
+	                    }
+	        		}
+	        	}
+
+	            & .x-axi-recurrence-row {
+	                .x-axi-time-interval-combo {
+	                    & .x-form-field-wrap {
+	                        & + .x-form-field-wrap {
+	                            margin-left: 0;
+	                            margin-right: 5px;
+	                        }
+	                    }
+	                }
+	            }
+
+	            & .x-axi-fromuntil-row {
+	                .x-axi-daily-until {
+	                    & .x-axi-datefield-wrap {
+	                        margin-left: 0;
+	                        margin-right: 5px;
+	                    }
+	                }
+	            }
+
+	            & .x-axi-showas-row {
+	                & .x-axi-showas-combo {
+	                    & .x-form-field-wrap {
+	                        &::before {
+	                            left: 0;
+	                            right: 6px;
+	                        }
+
+	                        & .x-form-field {
+	                            padding-left: 0;
+	                            padding-right: 19px;
+	                        }
+	                    }
+	                }
+
+	                @at-root .x-combo-list .x-combo-list-item {
+	                    &.menu-item-availability-free,
+	                    &.menu-item-availability-busy,
+	                    &.menu-item-availability-ooo,
+	                    &.menu-item-availability-tentative {
+	                        &::before {
+	                            margin-right: 0;
+	                            margin-left: 4px;
+	                        }
+	                    }
+	                }
+	            }
+
+	            & .x-axi-reminder-row {
+	                & .x-axi-first-reminder-action-button .x-btn-text,
+	                & .x-axi-second-reminder-action-button .x-btn-text {
+	                    &::before {
+	                        left: auto;
+	                        right: -2px;
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    // END Calendar Composer
+
+	    // START Tasks Composer
+	    &.x-axi-tasks-composer {
+	        & .new-task-toolbar {	            
+	            & .x-btn-text {
+	                &.save-icon {
+	                    &::before {
+	                        @extend %save-send-icon;
+	                    }
+	                }
+	            }
+	        }
+
+	        & .x-axi-collapsable-title-panel-body {
+	            & .x-axi-cal-two-way-fork {
+	                @extend %x-axi-cal-two-way-fork;
+	            }
+
+	            & .x-axi-cal-three-way-fork {
+	                @extend %x-axi-cal-three-way-fork;
+	            }
+
+	            & .x-axi-cal-weekly-from-dots {
+	                @extend %x-axi-cal-weekly-from-dots;
+	            }
+
+                & .x-axi-daily-until {
+                    & .x-axi-datefield-wrap {
+                        margin-left: 0;
+                        margin-right: 5px;
+                    }
+                }
+	        }
+	    }
+	    // END Tasks Composer
+
+	    // START Notes Composer
+	    &.x-axi-notes-composer {
+	        & .new-note-toolbar {
+	            & .x-btn-text {
+	                &.save-icon {
+	                    &::before {
+	                        @extend %save-send-icon;
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    // START Contacts Composer
+	    &.x-axi-contacts-composer {
+	        & .new-contact-toolbar {	            
+	            & .x-btn-text {
+	                &.save-icon {
+	                    &::before {
+	                        @extend %save-send-icon;
+	                    }
+	                }
+	            }
+	        }
+
+	        & .x-axi-collapsable-title-panel-body {
+	            & .x-axi-folder-selection-row {
+	                & .x-column-inner {
+	                    & .x-axi-details-button-container {
+	                        & .x-axi-textfield {
+	                            padding-right: 0;
+	                            padding-left: 30px;
+	                        }
+
+	                        & .x-axi-button-container {
+	                            right: auto;
+	                            left: 0;
+	                        }
+	                    }
+	                }
+	            }
+
+	            & .x-axi-phone-row {
+	                & > .x-panel-bwrap {
+	                    & .x-panel-body {
+	                        &.x-axi-phone-details-container {
+	                            & .x-axi-details-button-container {
+	                                & .x-panel-body {
+	                                    & .x-axi-button-container {
+	                                    	right: auto;
+	                                        left: 0;
+	                                    }
+	                                }
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+
+	            & .x-axi-personal-business-details-container {
+	                & .x-axi-personal-details-container,
+	                & .x-axi-business-details-container {
+	                    & .x-axi-remove-field-button-container {
+	                        & .x-axi-remove-field-button {
+	                            right: auto;
+	                            left: 0;
+	                        }
+	                    }
+
+	                    & .x-axi-phone-row-wrapper,
+	                    & .x-axi-address-row-wrapper {
+	                        & > .x-panel-bwrap {
+	                            & .x-axi-details-button-container {
+	                                & .x-axi-details-button {
+	                                    right: auto;
+	                                    left: 0;
+	                                }
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    // END Contacts Composer
+
+	    // START DLISTs Composer
+	    &.x-axi-dlist-composer {
+	        & .new-dlist-toolbar {
+	            & .x-btn-text {
+	                &.save-icon {
+	                    &::before {
+	                        @extend %save-send-icon;
+	                    }
+	                }
+	            }
+	        }
+	    }
+	}
+	// END Composers
+
+	// START Windows
+	.x-axi-window {
+        // Common components
+	    &.x-axi-frameless-window {
+	        & .x-window-bbar .x-toolbar > table > tbody > tr > td:first-child,
+	        & .x-window-bbar .x-toolbar > table > tbody > tr > td:last-child {
+	            border: none;
+	        }
+	    }
+
+        & .x-axi-settings-row-wrapper {
+            & .x-form-item-label,
+            & .x-axi-form-item-label {
+            	margin-right: 0;
+            	margin-left: 8px;
+            	text-align: right;
+
+            	&.last {
+            		margin-left: 0;
+            	}
+            }
+
+	        & .x-axi-details-button-container {
+				& .x-axi-textfield {
+					padding-right: 6px;
+					padding-left: 30px;
+				}
+
+	            & .x-axi-button-container {
+	            	right: auto;
+	            	left: 0;
+	            }
+	        }
+        }
+
+	    & .x-axi-window-grid {
+	        & .x-axi-grid-body {
+	            & .x-grid3-header {
+	                & tr {
+	                    & td {
+		                    border-right: none;
+	                        border-left-width: 1px;
+	                        border-left-style: solid;
+	                    }
+	                }
+	            }
+
+	            & .x-grid3-body {
+	                & tr {
+	                    & td {
+		                    border-right: none;
+	                        border-left-width: 1px;
+	                        border-left-style: solid;
+	                    }
+	                }
+	            }
+	        }
+	    }
+        
+	    // START Settings window
+		&.x-axi-settings-window {
+			& .x-tab-panel-bwrap .x-axi-window-tabpanel {
+                // Settings -> Interface
+				&.x-axi-interface-tabpanel {
+					// Localization
+					& .x-axi-localization-pref-wrap .x-axi-settings-row-wrapper-timezone .x-form-item-label {
+						padding-left: 0;
+						padding-right: 17px;
+					}
+
+					// Preferences
+					& .settings-subsection-preferences .x-axi-newfolder-line {
+						padding-left: 0;
+						padding-right: 17px;
+
+                        & .x-form-cb-label {
+                            padding-left: 5px;
+                        }
+					}
+				}
+
+                // Settings -> General
+                &.x-axi-general-tabpanel {
+                    // Account info
+                    & .x-axi-photo-account-info-wrapper .x-axi-account-info-wrapper {
+	                    & .x-axi-settings-row-wrapper-phone .x-axi-combo .x-form-field-wrap {
+	                    	margin-right: 0;
+	                    	margin-left: 8px;
+	                    }
+	                }
+
+                    // Signatures
+                    & .x-axi-signagures-pref-wrap .x-axi-settings-row-wrapper-signatures {
+                    	& .x-axi-combo {
+	                    	& .x-form-field-wrap {
+	                    		margin-right: 0;
+	                    		margin-left: 5px;
+	                    	}
+	                    }
+                    }
+
+                    // Out-of-office
+                    & .x-axi-ooo-pref-wrap .x-axi-settings-row-wrapper .x-axi-form-item-label {
+                    	padding-left: 0;
+                    	padding-right: 17px;
+
+                        & + .x-panel {
+                            & .x-panel-bwrap {
+                                & .x-panel-body .x-column-inner .x-column:first-child {
+                                    margin-right: 0;
+                                    margin-left: 8px;
+                                }                                        
+                            }
+                        }
+                    }
+                }
+
+                // Settings -> AntiSpam
+                &.x-axi-antispam-tabpanel {
+                	& .x-axi-spam-thresholds-fieldset .x-fieldset-bwrap .x-axi-settings-row-wrapper > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-antispam-slider > .x-panel-bwrap > .x-panel-body {
+	                	& .x-slider-horz.x-axi-coloured-slider {
+	                		&::before {
+	                			border-radius: 0 2px 2px 0;
+	                		}
+
+		                	&::after {
+		                		left: auto;
+		                		right: 43px;
+		                		border-radius: 2px 0 0 2px;
+		                	}
+		                }
+
+	                	& .x-axi-coloured-slider-left-note {
+	                		text-align: right;
+	                	}
+
+	                	& .x-axi-coloured-slider-right-note {
+	                		text-align: left;
+	                	}
+	                }
+                }
+
+                // Settings -> Sharing
+                &.x-axi-sharing-tabpanel {
+                	& .x-axi-shared-folders-info-grid {
+                		& .x-axi-grid-body {
+                			& .x-grid3-body tr {
+                				& td {
+                					&.x-axi-true {
+                						& .x-grid3-cell-inner {
+                							&::before {
+                								left: auto;
+                								right: -8px;
+                							}	
+                						}
+                					}
+
+                					&.x-axi-false {
+                						& .x-grid3-cell-inner {
+                							&::before {
+
+                							}	
+                						}
+                					}
+								}
+                			}
+                		}
+                	}
+                }
+
+                // Settings -> Filters
+                &.x-axi-filters-tabpanel {
+                    & .x-axi-filters-grid {
+                        & .x-grid3-body {
+                            & .x-grid3-col-run {
+                                & .x-axi-play-button {
+                                    &::before {
+                                        margin-left: 0;
+                                        margin-right: 4px;
+										transform: scaleX(-1);
+									}
+                                }
+                            }
+                        }
+                    }
+                }
+			}
+
+	        // Settings -> General -> Manage Labels Window
+	        @at-root body.rtl .x-axi-managelabels-window {
+	            & .x-axi-fieldset {
+	                & .x-fieldset-bwrap {
+	                    & .x-axi-grid {
+	                        %label-icon {
+	                        	text-indent: -4px;
+	                        	transform: scaleX(-1);
+	                        }
+
+	                        & .x-grid3-row {
+	                            &::before {
+	                                left: auto;
+	                                right: 14px;
+	                                @extend %label-icon;
+	                            }
+
+	                            & td {
+	                                &.x-grid3-cell-first {
+	                                    padding-left: 0;
+	                                    padding-right: 8px;
+	                                }
+
+	                                & .x-grid3-cell-inner {
+	                                    &.x-grid3-col-name {    /// The label name element
+	                                        padding-left: 5px;
+	                                        padding-right: 28px;
+	                                    }
+	                                }
+	                            }
+	                        }
+
+	                        // Edit mode
+	                        & .x-grid-editor {
+	                        	left: auto !important;
+	                        	right: 8px;
+
+	                            &::before {
+	                                left: auto;
+	                                right: 6px;
+	                                @extend %label-icon;
+	                            }
+
+	                            & .x-form-field {
+	                                padding-left: 6px;
+	                                padding-right: 27px;
+	                            }
+	                        }
+	                    }
+	                }
+	            }   
+	        }
+
+	        // Settings -> General -> 2FA (Marketing) Window
+	        & .x-axi-2fa-marketing-window-tabpanel {
+	            & .x-axi-2fa-marketing-content-wrapper > .x-panel-bwrap > .x-panel-body {
+	            	& .graphics {
+	            		& .pass .field {
+		            		border-left: none;
+		            		border-right-width: 1px;
+		            		border-right-style: solid;
+		            		border-radius: 0 3px 3px 0;
+
+	                        & .bullet-container {
+	                        	margin-left: 0;
+	                        	margin-right: 4px;
+
+	                        	& .bullet {
+		                        	margin-left: 0;
+		                        	margin-right: 4px;
+	                        	}
+	                        }
+	                    }
+
+	                    & .phone {
+	                    	& .bullet-container .bullet:not(:first-child) {
+	                    		margin-left: 0;
+	                    		margin-right: 4px;
+	                    	}
+	                    }
+	            	}
+
+	            	& .content {
+	            		& .x-axi-settings-row-wrapper .x-axi-button-big-rounding {
+	            			margin-right: 0;
+	            			margin-left: 10px;
+	            		}
+	            	}
+	            }
+	        }
+
+	        // Settings -> General -> 2FA (Activate) Window
+	        @at-root body.rtl .x-axi-activate-2fa-window {
+	        	& .x-axi-fieldset .x-fieldset-bwrap .x-axi-activate-2fa-step {
+		        	.x-fieldset-header span {
+		        		left: auto;
+		        		right: 0;
+		        	}
+
+                    &.x-axi-activate-2fa-step3 {
+                    	& .x-panel-body {
+				        	& .x-fieldset-header {
+				        		left: auto;
+				        		right: 0;
+				        	}
+
+                    		& .x-axi-textfield-container {
+                    			& .x-axi-textfield {
+                                    &:nth-of-type(3) {
+                                        margin-right: 0;
+                                        margin-left: 5px;
+                                    }
+
+                                    &:nth-of-type(4) {
+                                        margin-left: 0;
+                                        margin-right: 5px;
+                                    }
+                    			}
+                    		}
+                    	}
+                    }
+		        }
+	        }
+
+	        // Settings -> General -> 2FA (Configure) Window
+	        @at-root body.rtl .x-axi-reconfigure-2fa-window {
+	        	& .x-window-body .x-axi-fieldset .x-fieldset-bwrap .configure-2fa-wrapper div.turn-off {
+	        		border-right: none;
+	        		border-left: 1px solid;
+	        	}
+			}
+
+	        // Settings -> AntiSpam -> Whitelist / Blacklist Window
+	        @at-root body.rtl .x-axi-blacklist-whitelist-window {
+	        	& .x-axi-fieldset .x-fieldset-bwrap {
+	        		& .x-axi-grid .x-grid3-row td.x-grid3-cell-first {
+	        			padding-left: 0;
+	        			padding-right: 8px;
+	        		}
+
+		        	& .x-axi-fieldset-tools > .x-panel-bwrap > .x-panel-body > .x-column-inner .x-axi-field-with-tooltip-container .x-axi-textfield-container {
+			        	& .x-axi-textfield {
+			        		padding-right: 6px;
+			        		padding-left: 30px;
+			        	}
+
+			        	& label {
+			        		right: auto;
+			        		left: 0;	
+			        	}
+		        	}
+	        	}
+	        }
+
+	        // Settings -> Filters -> Add / Edit Filter Window
+	        @at-root body.rtl .x-axi-add-filter-window {
+	            & .x-axi-filters-wizard-step-fieldset {
+ 					& .x-fieldset-bwrap {
+                        & .x-axi-grid-body {
+                            & .x-axi-filters-grid-row {
+                                & .x-panel-body > table {
+                                    td {
+                                        & .x-axi-filter-expression-row {
+                                            & table {
+                                                & .x-table-layout-cell {
+                                                    padding-right: 0;
+                                                    padding-left: 5px;
+
+                                                    & .x-axi-size-field {
+                                                        & .x-axi-textfield {
+                                                            margin-right: 0;
+                                                            margin-left: 5px;
+                                                        }
+                                                    }
+                                                }
+                                            }                                            
+                                        }
+
+                                        & .x-axi-filter-action-row {
+                                            & table {
+                                                & .x-table-layout-cell {
+                                                    padding-right: 0;
+                                                    padding-left: 5px;
+
+                                                    & .x-axi-forward-to-container {
+                                                        & .x-axi-forward-to-textfield {
+                                                            margin-right: 0;
+                                                            margin-left: 5px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }	               
+	            }
+	        }
+		}
+	    // END Settings window
+
+	    // START Sharing window
+	    &.x-axi-sharing-permissions-window {
+	        & .x-axi-sharing-permissions-grid-container,
+	        & .x-axi-add-permission-container {
+	            & .x-panel-header {
+	                text-align: right;
+	            }
+	        }
+	    }
+	    // END Sharing window
+
+	    // START Move / Copy window
+	    &.x-axi-move-copy-window {
+	        & .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body {
+	            & > .x-panel {
+	                &.x-axi-frequent-folders-panel {
+	                    border-right: none;
+	                    border-left-width: 1px;
+	                    border-left-style: solid;
+
+	                    & .x-axi-folder-grid {
+	                        & .x-grid3-row {
+	                            & .x-grid3-col-folder a span {
+	                                &::before {
+	                                    padding-left: 3px;
+	                                    padding-right: 2px;
+	                                }
+	                            }
+
+						        // Sent
+						        & .menu_folder_sent a span:first-child::before {
+						        	transform: scaleX(-1);
+						        }
+	                        }
+	                    }
+	                }
+
+	                &.x-axi-all-folders-panel {
+	                    & .x-tree {
+	                        & .x-tree-node {
+	                        	& .x-tree-node-el a span::before {
+	                                padding-left: 3px;
+	                                padding-right: 2px;
+	                        	}
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    // END Move / Copy window
+
+	    // START Availability (Free / Busy) window
+	    &.x-axi-freebusy-window {
+	        & .x-axi-freebusy-region {
+	            & .x-axi-grid-body {
+	                & .x-grid3-header tr td {
+	                    border-left: none;
+	                }
+
+	                & .x-grid3-body {
+	                    & .x-grid3-row {
+	                        & .x-grid3-col {
+	                            &.x-grid3-cell-last {
+	                                border-left: none;
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+
+	            &.x-axi-freebusy-attendees-region {
+	                & .x-axi-grid-body {
+                        border-right-width: 1px;
+                        border-right-style: solid;
+                        border-left: none;
+	                    border-radius: 0 3px 3px 0;
+
+	                    & .x-grid3-row {
+	                        & .x-grid3-row-table {
+	                            & .x-grid3-col {
+			                        border-left: none;
+	                            }
+	                        }
+	                    }
+	                }
+
+	                & .x-axi-freebusy-add-attendees-container {
+	                    & > .x-panel-bwrap > .x-panel-body {
+	                        & > .x-column-inner {
+	                            & .x-axi-button-plus {
+	                                & .x-btn-text {
+	                                    &::before {
+	                                        position: absolute;
+	                                        left: auto;
+	                                        right: -2px;
+	                                    }
+	                                }
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+
+	            &.x-axi-freebusy-canvas-region {
+	                & .x-axi-window-grid {
+	                    & .x-axi-grid-header {
+	                        padding-right: 0;
+	                        padding-left: 250px;
+
+
+	                        & .x-axi-freebusy-header {
+	                            & .x-axi-calendar-header-prev,
+	                            & .x-axi-calendar-header-next {
+	                                &.x-axi-calendar-header-prev {
+										&::before {
+											left: auto;
+											right: 8px;
+											border-left: none;
+											border-right-width: 1px;
+											border-right-style: solid;
+											transform: rotate(-45deg);
+										}
+	                                }
+
+	                                &.x-axi-calendar-header-next {
+										&::before {
+											right: auto;
+											left: 8px;
+											border-right: none;
+											border-left-width: 1px;
+											border-left-style: solid;
+											transform: rotate(45deg);
+										}
+	                                }
+	                            }
+	                        }
+	                    }
+
+	                    & .x-axi-grid-body {
+	                        border-radius: 3px 0 0 3px;
+
+	                        & .x-grid3-col {
+	                            & .x-grid3-cell-inner {
+	                                & .x-axi-set {
+	                                    & td {
+	                                    	margin-right: 0;
+	                                    	margin-left: 1px;
+
+	                                        &:first-child {
+	                                            margin-left: 0;
+	                                            margin-right: 1px;
+	                                        }
+	                                    }
+	                                }
+	                            }
+	                        }
+	                    }
+	                }
+
+	                & .x-axi-free-busy-form-container {
+	                    & > .x-panel-bwrap > .x-panel-body {
+	                        & .x-axi-cal-two-way-fork {
+	                            border-left: none;
+	                            border-right-width: 1px;
+	                            border-right-style: solid;
+
+	                        }
+	                    }
+	                }
+	            }
+	        }
+
+	        & .freebusy-legend-container {
+	            border: none;
+	            font-size: 13px;
+	        }
+	    }
+	    // End Availability (Free / Busy) window
+
+	}
+	// END Windows
+
+	// END Main
+}
+
+
+/*******************************************************************************
+ *  Reading pane right vs. south vs. none
+ */
+body.rtl {
+	&.axi-reading-pane-south,
+	&.axi-reading-pane-none {
+		// General
+		& .x-axi-advanced-search-panel {
+			right: auto;
+			left: 10px !important;
+		}
+
+		// Toolbars
+		& .x-axi-view-body .x-axi-toolbar {
+			// Mails toolbar
+			&.mails-toolbar,
+			&.notes-toolbar,
+			&.contacts-toolbar {
+				& .x-axi-search-input-container {
+					right: auto;
+					left: 10px;
+				}
+			}
+		}
+
+		// Lists
+		& .x-axi-list {
+			border-left: none;
+
+			// Mails list
+			&.x-axi-mails-list {
+				@at-root {
+					body.rtl.axi-reading-pane-south,
+					body.rtl.axi-reading-pane-none {
+						& .autopurge-interval-container {
+							border-left: none;
+
+							& span {
+								&::before {
+									margin-left: 0;
+									margin-right: -4px;
+								}
+							}
+						}
+					}
+				}
+
+				& .x-grid3-row {
+					& .x-grid3-td-checker {
+						& .x-grid3-col-checker {
+							&::after {
+								margin-left: 0;
+								margin-right: 8px;
+							} 
+						}
+
+						// Replied, forwarded, replied & forwarded
+						&.re-read,
+						&.re-unread,
+						&.fw-read,
+						&.fw-unread,
+						&.refw-read,
+						&.refw-unread {
+							& .x-grid3-col-checker {
+								&::before {
+									left: auto;
+									right: 33px;
+								}
+							}
+						}
+
+						& + .x-grid3-td-subject {
+							& .flag-btn {
+								margin-left: 7px;
+								margin-right: -9px;
+							}
+						}
+					}
+
+					& .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .from {
+								margin-right: 0;
+								margin-left: 5px;
+							}
+
+							& .subject-snippet-container {
+								& .subject {
+									margin-right: 0;
+									margin-left: 5px;
+								}
+
+								& .snippet {
+									margin-right: 0;
+									margin-left: 5px;
+								}							
+							}
+
+							& .size {
+								padding-left: 3px;
+								padding-right: 35px;
+
+								&::before {
+									left: auto;
+									right: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Notes list
+			&.x-axi-notes-list {
+				// List not focused
+				& .x-grid3-row {
+					& .x-grid3-td-checker ~ td {
+						& [class^="x-axi"][class$="-item-row"] {
+							& .subject-snippet-container {
+								margin-right: 0;
+								margin-left: 5px;
+
+								& .subject {
+									margin-right: 0;
+									margin-left: 5px;
+								}
+
+								& .snippet {
+									margin-right: 0;
+									margin-left: 5px;
+								}							
+							}
+						}
+					}
+				}
+			}
+
+			// Contacts list
+			&.x-axi-contacts-list {
+				& .x-axi-contactlist-item-row {
+					& .contact-details-container {
+						& span {
+							padding-right: 0;
+							padding-left: 5px;
+						}
+					}
+
+					& .folder-container {
+						& .folder {
+							margin-left: 0;
+							margin-right: 3px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/*******************************************************************************
+ *  More space vs. More content
+ */
+body.rtl {
+	&.axi-more-content {
+		// Lists
+		.x-axi-list {
+			& .x-grid3-row {
+				& > table .x-grid3-td-checker {
+					padding: 3px 0 3px 2px;
+				}
+			}
+
+			// Mails list
+			&.x-axi-mails-list {
+				@at-root {
+					body.rtl.axi-more-content .autopurge-interval-container {
+						& span {
+							&::before {
+								margin-left: -4px;
+								margin-right: -5px;
+							}
+						}
+					}
+				}
+
+				.x-grid3-row {
+					& .x-grid3-td-checker.flagged + .x-grid3-td-subject::after {
+						right: auto;
+						left: -4px;
+					}
+				}
+			}
+		}
+
+		// Mail item
+		.x-axi-mail-item .x-axi-compose-north > .x-panel-bwrap > .x-panel-body {
+			padding: 3px 6px 0 3px;
+		}
+
+		&.axi-reading-pane-south,
+		&.axi-reading-pane-none {
+			// Lists
+			& .x-axi-list {
+				// Mails list
+				&.x-axi-mails-list {
+					.x-grid3-row {
+						& .x-grid3-td-checker.flagged + .x-grid3-td-subject::after {
+							right: auto;
+							left: -6px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*******************************************************************************
+ *  Language specific tweaks
+ */
+body.rtl.lang-fa {
+    @include font-body-text-lang-fa();
+
+    .x-fieldset .x-fieldset-header, .x-axi-section .x-axi-section-title label, .x-axi-section label.x-axi-section-title,
+    .x-axi-button-big-rounding .x-btn-text,
+	&.ext-gecko .x-axi-button-big-rounding .x-btn-text, .x-axi-view-body .x-axi-toolbar.calendar-toolbar.x-axi-calnav > .x-axi-calnav-bwrap > .x-axi-calnav-body > .x-column-inner .x-axi-calnav-prev .x-btn-center .x-btn-text,
+	.x-axi-view-body .x-axi-toolbar.calendar-toolbar.x-axi-calnav > .x-axi-calnav-bwrap > .x-axi-calnav-body > .x-column-inner .x-axi-calnav-next .x-btn-center .x-btn-text, .x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-filters-tabpanel .x-axi-filters-grid .x-grid3-body .x-grid3-col-run .x-axi-play-button, .x-axi-add-filter-window .x-axi-filters-wizard-nav-container .x-panel-body .x-axi-filters-wizard-nav span,
+	.x-axi-add-filter-window .x-axi-filters-wizard-nav-container .x-panel-body .x-axi-filters-wizard-nav a, .x-axi-window.x-axi-freebusy-window .x-axi-freebusy-region.x-axi-freebusy-canvas-region .x-axi-window-grid .x-axi-grid-header .x-axi-freebusy-header .x-axi-calendar-header-prev,
+	.x-axi-window.x-axi-freebusy-window .x-axi-freebusy-region.x-axi-freebusy-canvas-region .x-axi-window-grid .x-axi-grid-header .x-axi-freebusy-header .x-axi-calendar-header-next,
+	.x-mask-loading div .wrapp .msg-text,
+	ul.x-tab-strip li .x-tab-strip-text,
+	ul.x-tab-strip li .x-tab-strip-text strong,
+	ul.x-tab-strip li .x-tab-strip-text b,
+	ul.x-tab-strip li .x-tab-strip-text em,
+	.x-axi-form-item-label,
+	.x-form-field,
+	.x-small-editor .x-form-field,
+	&.ext-safari .x-small-editor .x-form-field,
+	&.ext-chrome .x-small-editor .x-form-field,
+	.x-form-cb-label,
+	.x-form-item-label,
+	.x-combo-list-item,
+	.x-panel-header,
+	.x-panel-mc,
+	.x-window-dlg .ext-mb-text,
+	.x-window-dlg .x-window-header-text,
+	.x-menu.light-menu,
+	.x-menu-list-item,
+	.x-tip .x-tip-body,
+	.x-toolbar td,
+	.x-toolbar span,
+	.x-toolbar input,
+	.x-toolbar div,
+	.x-toolbar select,
+	.x-toolbar label,
+	.x-btn button,
+	.x-tree-node,
+	.x-grid3-hd-row td,
+	.x-grid3-row td,
+	.x-grid3-summary-row td,
+	.x-dd-drag-proxy .x-dd-drag-ghost,
+	.x-date-picker a,
+	.x-date-inner th span,
+	.x-date-inner a,
+	.x-date-mp-btns td button,
+	td.x-date-mp-month a,
+	td.x-date-mp-year a,
+	.x-axi-high-text,
+	.x-axi-high-input,
+	&.ext-safari .x-form-text.x-axi-high-input,
+	&.ext-chrome .x-form-text.x-axi-high-input,
+	.x-axi-high-input.x-axi-standard-font-size,
+	&.ext-safari .x-form-text.x-axi-high-input.x-axi-standard-font-size,
+	&.ext-chrome .x-form-text.x-axi-high-input.x-axi-standard-font-size,
+	.x-axi-contact-area-label .x-panel-body span,
+	#x-message-container .x-axi-window-message,
+	.x-axi-list .x-axi-emptytext .x-axi-view-infomessage,
+	.x-axi-grid .x-axi-emptytext .x-axi-view-infomessage,
+	.x-axi-combo.x-axi-high-combo > .x-form-field-wrap > .x-form-field,
+	.x-axi-lightbulb-label .x-panel-body label,
+	.dark-tooltip,
+	.x-tip .dark-tooltip .x-tip-body,
+	.x-tip.x-axi-tips-window,
+	.x-tip.x-axi-tips-window .x-tip-header .x-tip-header-text,
+	.x-axi-tree-accordion .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails a span, .x-axi-tree-accordion .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root a span, .x-axi-tree-accordion .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner a span, .x-axi-tree-lines .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails a span, .x-axi-tree-lines .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root a span, .x-axi-tree-lines .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner a span, .x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-hd a span, .x-axi-tree-lines .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-hd a span,
+	.x-axi-tree-accordion .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails div,
+	.x-axi-tree-accordion .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root div,
+	.x-axi-tree-accordion .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner div,
+	.x-axi-tree-lines .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails div,
+	.x-axi-tree-lines .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root div,
+	.x-axi-tree-lines .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner div,
+	.x-axi-tree-accordion .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-hd div,
+	.x-axi-tree-lines .x-grid-panel .x-grid3-scroller .x-grid3-body .x-grid-group-hd div,
+	.x-axi-tooltip-thumbnail-container .thumbnail-container .no-thumbnail,
+	.x-axi-action-bar,
+	.x-axi-attachment-list-container .x-axi-attachments-title, .x-axi-mail-item .x-axi-attachments-actions-toolbar .x-panel-tbar .x-toolbar > table > tbody > tr > td .ytb-text,
+	.x-axi-attachment-list-container .x-axi-attachment .x-axi-attachment-name,
+	.x-axi-attachment-list-container .x-axi-attachment .x-axi-attachment-size,
+	.x-axi-attachment-list-container .x-axi-attachments-view-all-container .x-axi-attachments-view-all-white-bg .x-axi-attachments-view-all-button,
+	.x-axi-upload-dd-container .x-axi-upload-dd-area .attachments,
+	.x-axi-upload-dd-container .x-axi-upload-dd-area .inline,
+	.x-axi-tree-sidebar .x-axi-tree-sidebar-navigation .x-axi-tree-sidebar-section a span,
+	.x-axi-tree-sidebar .x-axi-tree-sidebar-navigation .x-axi-tree-sidebar-section a span .text,
+	.x-axi-tree-sidebar-menu .light-menu > div .sidebar-settings-menus-wrapper .sidebar-settings-menu-wrapper > div .name,
+	.x-axi-tree-sidebar-menu .light-menu > div .sidebar-settings-menus-wrapper .sidebar-settings-menu-wrapper > div .name:empty + .email,
+	.x-axi-tree-sidebar-menu .light-menu > div .sidebar-settings-menus-wrapper .sidebar-settings-menu-wrapper > div.quota-bar-ct .quota-bar .quota-text,
+	.x-axi-tree-sidebar-menu .light-menu > div .sidebar-settings-menus-wrapper .sidebar-settings-menu-wrapper > div.quota-bar-ct .quota-bar .quota-text .percent,
+	.x-axi-view-body > .x-tab-panel > .x-tab-panel-header > .x-axi-tab-panel-header-tools li .reminder-count,
+	.x-axi-tab-panel-header-menu.x-axi-reminders-menu .x-menu .x-panel-header,
+	.x-axi-view-body .x-axi-toolbar .x-toolbar .x-btn .x-btn-text .x-btn-rawtext,
+	.x-axi-view-body .x-axi-toolbar.calendar-toolbar.x-axi-calnav > .x-axi-calnav-bwrap > .x-axi-calnav-body > .x-column-inner .x-cal-nav-current,
+	.x-axi-view-body .x-axi-toolbar.calendar-toolbar.x-axi-calnav > .x-axi-calnav-bwrap > .x-axi-calnav-body > .x-column-inner .x-cal-nav-date,
+	.x-axi-view-body .x-axi-toolbar.calendar-toolbar.x-axi-calnav > .x-axi-calnav-bwrap > .x-axi-calnav-body > .x-column-inner .x-cal-nav-weeknumber,
+	.x-axi-mail-item .x-axi-compose-north > .x-panel-bwrap > .x-panel-body .x-axi-mail-item-container > .x-panel-header .mail-item-summary .subject,
+	.x-axi-mail-item .x-axi-compose-north > .x-panel-bwrap > .x-panel-body .x-axi-mail-item-container > .x-panel-bwrap > .x-panel-body,
+	.x-axi-mail-item .x-axi-attachments-actions-toolbar .x-axi-all-attachments-panel .x-axi-attachment-list-preview .x-axi-attachment-container .x-axi-attachment-wrapper .x-axi-attachment-border .x-axi-attachment-body > *.x-axi-attachment-info .info,
+	.x-axi-calendar-panel > .x-panel-header .x-axi-calendar-header-tz, .x-axi-calendar-panel.x-axi-calendar-day .x-axi-calendar-panel > .x-panel-header .x-axi-calendar-header .x-axi-calendar-header-nav, .x-axi-calendar-panel.x-axi-calendar-week .x-axi-calendar-panel > .x-panel-header .x-axi-day-view-header td, .x-axi-calendar-panel.x-axi-calendar-month > .x-panel-header .x-axi-calendar-days .x-axi-calendar-day,
+	.x-axi-calendar-panel input[name="summary"],
+	.x-axi-calendar-panel .x-axi-calendar-allday-panel .x-axi-calendar-allday-header,
+	.x-axi-calendar-panel .x-axi-calendar-event .x-axi-calendar-event-body > div .x-axi-calendar-event-description,
+	.x-axi-calendar-panel.x-axi-calendar-month > .x-panel-bwrap .more-container,
+	.x-axi-calendar-search-view,
+	.x-axi-calendar-search-view .x-axi-calendar-search-grid .x-grid3-scroller .x-grid3-body .x-grid-group .x-grid-group-hd div,
+	.x-axi-calendar-search-view .x-axi-calendar-search-grid .x-grid3-scroller .x-grid3-body .x-grid-group .x-grid3-row .x-grid3-cell-inner .x-axi-search-result-container tr td.x-axi-calendar-search-startDayNumber,
+	.x-axi-contact-preview-container .x-axi-contact-item-container,
+	.x-tip.x-axi-tips-window.active-recipient-tooltip .x-tip-header .x-tip-header-text,
+	.x-tip.x-axi-tips-window.active-recipient-tooltip .x-tip-header .x-tip-header-text .normal,
+	.x-axi-folder-selection-combo-list .x-combo-list-inner .x-combo-list-group,
+	.x-axi-composer.x-axi-tasks-composer .x-axi-collapsable-title-panel-body .x-axi-progress-slider-container td .x-axi-horz-slider-desc,
+	.x-axi-composer.x-axi-contacts-composer .x-axi-htmleditor-panel .x-axi-contact-dialog-htmleditor textarea.x-form-field,
+	.x-axi-composer.x-axi-contacts-composer .x-axi-htmleditor-panel .x-axi-contact-dialog-htmleditor .x-panel-body,
+	.x-axi-composer.x-axi-contacts-composer .x-axi-htmleditor-panel .x-axi-panel-htmleditor textarea.x-form-field,
+	.x-axi-composer.x-axi-contacts-composer .x-axi-htmleditor-panel .x-axi-panel-htmleditor .x-panel-body,
+	.x-axi-composer.x-axi-dlist-composer .x-axi-dlist-members-list .x-axi-fieldset-with-tools > .x-fieldset-header,
+	.x-axi-composer.x-axi-dlist-composer .x-axi-htmleditor-panel .x-axi-contact-dialog-htmleditor textarea.x-form-field,
+	.x-axi-composer.x-axi-dlist-composer .x-axi-htmleditor-panel .x-axi-contact-dialog-htmleditor .x-panel-body,
+	.x-axi-composer.x-axi-dlist-composer .x-axi-htmleditor-panel .x-axi-panel-htmleditor textarea.x-form-field,
+	.x-axi-composer.x-axi-dlist-composer .x-axi-htmleditor-panel .x-axi-panel-htmleditor .x-panel-body,
+	.x-axi-window .x-axi-window-subtitle,
+	.x-axi-window .x-axi-addressbook-thumbnail-container .thumbnail-container .no-thumbnail,
+	.x-axi-window .x-axi-window-grid .x-axi-grid-body .x-grid3-header tr td .x-grid3-hd-inner,
+	.x-axi-window .x-axi-window-grid .x-axi-grid-body .x-grid3-body tr td .x-grid3-cell-inner,
+	.x-axi-window.x-axi-settings-window .x-tab-panel-header .x-tab-strip li .x-tab-strip-text,
+	.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-antispam-tabpanel .x-axi-spam-thresholds-fieldset .x-fieldset-bwrap .x-axi-settings-row-wrapper > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-antispam-slider > .x-panel-bwrap > .x-panel-body .x-axi-coloured-slider-left-note,
+	.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-antispam-tabpanel .x-axi-spam-thresholds-fieldset .x-fieldset-bwrap .x-axi-settings-row-wrapper > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-antispam-slider > .x-panel-bwrap > .x-panel-body .x-axi-coloured-slider-right-note,
+	.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-antispam-tabpanel .x-axi-spam-thresholds-fieldset .x-fieldset-bwrap .x-axi-settings-row-wrapper > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-antispam-slider > .x-panel-bwrap > .x-panel-body .x-axi-coloured-slider-left-note .percent,
+	.x-axi-window.x-axi-settings-window .x-tab-panel-bwrap .x-axi-window-tabpanel.x-axi-antispam-tabpanel .x-axi-spam-thresholds-fieldset .x-fieldset-bwrap .x-axi-settings-row-wrapper > .x-panel-bwrap > .x-panel-body > .x-panel.x-axi-antispam-slider > .x-panel-bwrap > .x-panel-body .x-axi-coloured-slider-right-note .percent,
+	.x-axi-window.x-axi-settings-window .x-axi-2fa-marketing-window-tabpanel .x-axi-2fa-marketing-content-wrapper > .x-panel-bwrap > .x-panel-body .content .x-axi-settings-row-wrapper,
+	.x-axi-activate-2fa-window .x-axi-fieldset .x-fieldset-bwrap .x-axi-activate-2fa-step .x-fieldset-header,
+	.x-axi-activate-2fa-window .x-axi-fieldset .x-fieldset-bwrap .x-axi-activate-2fa-step.x-axi-activate-2fa-step3 .x-panel-body .x-axi-gacode,
+	.x-axi-reconfigure-2fa-window .x-window-body .x-axi-fieldset .x-fieldset-bwrap .configure-2fa-wrapper div,
+	.x-axi-add-filter-window .x-axi-filters-wizard-title-container .x-axi-filters-wizard-title,
+	.x-axi-window.x-axi-progress-window .x-window-body .x-progress-wrap .x-progress-text > div,
+	.x-axi-window.x-axi-progress-window .x-window-body .x-progress-wrap .x-progress-text > div span,
+	.x-axi-window.x-axi-theme-change-window .x-axi-theme-change-fieldset .x-fieldset-bwrap .x-fieldset-body .x-axi-theme-button .x-btn-center em button,
+	.x-axi-window.x-axi-theme-change-window .x-axi-theme-change-fieldset .x-fieldset-bwrap .x-fieldset-body .x-axi-theme-button.x-btn-over .x-btn-center em button,
+	.x-axi-window.x-axi-custom-permissions-window .x-tree-headers .x-tree-hd {
+	    @include font-body-text-lang-fa();
+	}
+
+	.x-window .x-window-header .x-window-header-text,
+	.x-axi-upload-dd-container .x-axi-upload-dd-area-separator {
+		@include font-title-text-lang-fa();
+	}
+}

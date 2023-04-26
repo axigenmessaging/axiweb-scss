@@ -1,0 +1,6259 @@
+/**
+ * @fileOverview The WebMail theme Breeze style sheet.
+ *
+ * @copyright Copyright (c) 2019 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-breeze/variables";
+
+
+/*******************************************************************************
+ * Global rules
+ */
+html, body {
+	color: $text-main-color;
+
+	@at-root html.dark body {
+		background-color: $dark-mode-theme-background-color;
+		color: $dark-mode-text-main-color;
+	}
+}
+
+a {
+	color: $theme-main-color;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: $input-placeholder-text-color;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+    color: $input-focus-placeholder-text-color;
+}
+
+hr {
+	background-color: $inner-border-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-inner-border-color;
+	}
+}
+
+
+/*******************************************************************************
+ * Ext overrides
+ */
+@import "../../../../../../include/webmail/theme-breeze/stubs";
+
+// Loading mask
+.loading-spinner {
+	@extend %loading-spinner;
+}
+
+.x-mask-loading {
+    & div {
+        & .wrapp {
+        	background-color: $loader-background-color;
+
+            @at-root html.dark & {
+            	background-color: $dark-mode-loader-background-color;
+            }
+
+            & .msg-text {
+                color: $loader-text-color;
+
+                @at-root html.dark & {
+	                color: $dark-mode-loader-text-color;                	
+                }
+            }
+        }
+    }
+}
+
+// Progress bar
+.x-progress-wrap {
+    @extend %preloader-progress-bar;
+}
+
+// Tabs
+.x-tab-panel-header,
+.x-tab-panel-footer {
+	&::after {
+		background-color: $inner-border-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-inner-border-color;
+		}
+	}
+}
+
+.x-tab-scroller-left {
+	border-color: rgba($theme-main-color, .4);
+	background-color: $tab-background-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-tab-background-color;
+	}
+
+	&:hover {
+		border-color: rgba($theme-main-color, .28);
+
+		&::before {
+			opacity: .7;
+		}
+	}
+}
+
+.x-tab-scroller-right {
+	border-color: rgba($theme-main-color, .4);
+	background-color: $tab-background-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-tab-background-color;
+	}
+
+	&:hover {
+		border-color: rgba($theme-main-color, .28);
+
+		&::before {
+			opacity: .7;
+		}
+	}
+}
+
+ul.x-tab-strip {
+	& li {
+		border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+		& .x-tab-strip-text {
+			color: $tab-text-color;
+
+			& strong,
+			& b,
+			& em {
+				color: $tab-text-color;
+			}
+		}
+
+		&.x-tab-strip-active {
+			background-color: $tab-background-color;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-tab-background-color;
+			}
+
+			& .x-tab-strip-text {
+				color: $tab-active-text-color;
+
+				@at-root html.dark & {
+					color: $dark-mode-tab-active-text-color;
+				}
+				
+				& strong,
+				& b,
+				& em {
+					color: $tab-active-text-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-tab-active-text-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.x-tab-strip .x-tab-strip-closable a.x-tab-strip-close {
+	&::before {
+		color: $tab-text-color;
+	}
+
+	&:hover {
+		&::before {
+			color: $tab-active-text-color;
+
+			@at-root html.dark & {
+				color: $dark-mode-tab-active-text-color;
+			}
+		}
+	}
+}
+
+// Text field, text area
+.x-form-text, 
+textarea.x-form-field {
+	border-color: $input-border-color;
+    transition: border-color .2s ease-in-out;
+
+    @at-root html.dark & {
+    	border-color: $dark-mode-input-border-color;
+    }
+
+	&.x-form-focus {
+		border-color: $input-focus-border-color;
+	}
+}
+
+.x-form-field {
+	color: $input-text-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-input-text-color;
+	}
+}
+
+.x-small-editor {
+    // Tree panel create / rename folder field
+    &.x-tree-editor {
+    	// Folder icon
+    	&::before {
+        	color: $folder-tree-node-icon-text-color;
+
+        	@at-root html.dark & {
+        		color: $dark-mode-folder-tree-node-icon-text-color;	                		
+        	}
+        }
+
+        & .x-form-field {
+            border-color: $input-focus-border-color;
+        }
+    }
+}
+
+// Checkbox
+.x-form-check,
+.x-grid3-row-checker, 
+.x-grid3-hd-checker {
+	background-color: $checkbox-background-color;
+	border-color: $checkbox-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-checkbox-border-color;
+	}
+}
+
+// Checked
+.x-form-check-checked .x-form-check,
+.x-grid3-hd-checker-on .x-grid3-hd-checker, 
+.x-grid3-row-selected .x-grid3-row-checker {
+	background-color: $checkbox-checked-background-color;
+	border-color: $checkbox-checked-border-color;
+	
+	&::before {
+		border-color: $checkbox-checked-checker-color; 
+	}
+
+	@at-root html.dark & {
+		border-color: $checkbox-checked-border-color;
+	}
+}
+
+// Combo
+@import "../../../../../../include/webmail/theme-breeze/ext-overrides-combo-list";
+
+// Radio
+.x-form-radio-wrap {
+    & .x-form-radio {
+    	background-color: $radio-background-color; 
+        border-color: $radio-border-color;
+        transition: background-color .2s ease-in-out, border-color .2s ease-in-out;
+
+        @at-root html.dark & {
+        	border-color: $dark-mode-radio-border-color;
+        }
+    }
+
+    & .x-form-cb-label {
+        color: $text-main-color;
+
+        @at-root html.dark & {
+			color: $dark-mode-text-main-color;
+        }
+    }
+
+    &.x-form-check-checked {
+	    & .x-form-radio {
+	    	background-color: $radio-selected-background-color; 
+    	    border-color: $radio-selected-border-color;
+
+    	    &::before {
+		    	background-color: $radio-selected-checker-background-color; 
+    	    }
+	    }
+    }
+}
+
+// Panel
+.x-panel-header {
+	color: $panel-header-text-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-panel-header-text-color;
+	}
+}
+
+// Horizontal Slider
+.x-slider-horz {
+	&::before {
+	    background-color: rgba($theme-main-color, .3);		
+	}
+
+	& .x-slider-thumb {
+		background-color: $theme-main-color;
+		box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+		@at-root html.dark & {
+			box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+		}
+	}
+}
+
+// Window
+.x-window {
+	// Window header
+	& .x-window-header {
+		& .x-window-header-text {
+			color: $window-title-text-color;
+		}
+	}
+
+    // Window borders
+    & .x-window-body {
+    	border-top-color: $window-border-color;
+    	border-left-color: $window-border-color;
+    	border-right-color: $window-border-color;
+    }
+
+    & .x-window-bbar .x-toolbar > table > tbody > tr > td {
+    	&:first-child {
+    		border-color: $window-border-color;
+    	}
+
+    	&:last-child {
+    		border-color: $window-border-color;
+    	}
+    }
+
+    & .x-panel-bbar .x-toolbar > table > tbody > tr > td,
+	& .x-window-bbar .x-toolbar > table > tbody > tr > td {
+	    // Window action buttons
+		& .x-btn {
+			& .x-btn-center {
+				button {
+					background-color: $window-action-button-background-color;
+					border-color: $window-action-button-border-color;
+					color: $window-action-button-text-color;
+				}
+			}
+			
+			// Hover
+			&.x-btn-over {				
+				& .x-btn-center {
+					button {
+						background-color: $window-action-button-hover-background-color;
+						border-color: $window-action-button-hover-border-color;
+						color: $window-action-button-hover-text-color;
+					}
+				}
+
+				&.x-item-disabled {
+					background-color: $window-action-button-background-color;
+					border-color: $window-action-button-border-color;
+					color: $window-action-button-text-color;
+				}
+			}
+
+			// Main button
+			&.bold {
+				& .x-btn-center {
+					button {
+						@extend %highlight-button;
+					}
+				}
+
+				// Hover
+				&.x-btn-over {				
+					& .x-btn-center {
+						button {
+							@extend %highlight-button-hover;
+						}
+					}
+				}
+
+				&.x-item-disabled {
+					& .x-btn-center {
+						button {
+							color: $window-action-button-main-text-color !important;
+						}
+					}
+				}
+
+				&.x-btn-over .x-item-disabled {
+					& .x-btn-center {
+						button {
+							@extend %highlight-button;
+							color: $window-action-button-main-text-color !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Components in Window
+.x-window-body {
+	color: $window-text-color;
+
+	// Tabs in Window
+	& ul.x-tab-strip li.x-tab-strip-active {
+		& .x-tab-strip-text {
+			color: $theme-main-color;
+
+			@at-root html.dark & {
+				color: $theme-main-color;
+			}
+		}
+	}
+
+	// Panel in Window
+	& .x-panel-header {
+		color: $window-panel-header-text-color;
+	}
+
+	// Fieldset in Window
+	%fieldset-in-window-legend {
+		color: $window-fieldset-text-color;
+	}
+
+	& .x-fieldset {
+	    border: none;
+
+	    & .x-fieldset-header {
+	        @extend %fieldset-in-window-legend;
+	    }
+	}
+
+	& .x-axi-section { /// Axi extension
+		& .x-axi-section-title {
+		    & label {
+		        @extend %fieldset-in-window-legend;
+		    }
+		}
+
+		& label.x-axi-section-title {
+			@extend %fieldset-in-window-legend;
+		}
+	}
+
+	// Form element and item in Window
+	.x-form-item {
+		& label {
+			color: $window-label-text-color;
+		}
+	}
+
+	.x-axi-form-item-label { /// Axi extension
+		color: $window-label-text-color;
+	}
+
+	// Text field, text area
+	.x-form-text, 
+	textarea.x-form-field {
+		border-color: $window-input-border-color;
+
+		&.x-form-focus {
+			border-color: $window-input-focus-border-color;
+		}
+	}
+
+	// Checkbox in Window
+	& .x-form-check,
+	& .x-grid3-row-checker, 
+	& .x-grid3-hd-checker {
+		border-color: $window-checkbox-border-color;
+	}
+
+	& .x-form-check-checked .x-form-check,
+	& .x-grid3-hd-checker-on .x-grid3-hd-checker, 
+	& .x-grid3-row-selected .x-grid3-row-checker {
+		border-color: $window-checkbox-checked-border-color;
+	}
+
+	& .x-form-cb-label {
+		color: $window-checkbox-label-text-color;	
+	}
+
+	// Input in Window
+	& .x-form-field {
+		color: $window-input-text-color;		
+	}
+
+	// Combo in Window
+	& .x-form-field-wrap {
+		& .x-form-field {
+			border-color: $window-combo-border-color;
+		}
+
+		& .x-form-trigger {
+			border-color: $window-combo-border-color;
+
+			&::before {
+				border-top-color: $window-combo-arrow-trigger-border-color;
+			}
+		}
+
+		&.x-trigger-wrap-focus {
+			& .x-form-field {
+				border-color: $window-combo-focus-border-color;
+			}
+
+			& .x-form-trigger {
+				border-color: $window-combo-focus-border-color;
+
+				&::before {
+					border-top-color: $window-combo-focus-border-color;
+				}
+			}
+		}
+	}
+
+	// Radio in Window
+	& .x-form-radio-wrap {
+	    & .x-form-radio {
+	        border-color: $window-radio-border-color;
+	    }
+
+	    &.x-form-check-checked {
+		    & .x-form-radio {
+		    	background-color: $window-radio-selected-background-color; 
+	    	    border-color: $window-radio-selected-border-color;
+
+	    	    &::before {
+			    	background-color: $window-radio-selected-checker-background-color; 
+	    	    }
+		    }
+	    }
+	}
+
+	// Tree in Window
+	& .x-tree-node {
+		color: $window-text-color;
+
+	    & .x-tree-node-el {
+			& a {
+				& span {
+					color: $window-text-color;
+
+	                &:first-child {
+	                	&::before {
+		                	color: $window-folder-tree-node-icon-text-color;
+		                }
+	                }
+
+	                // Same color as above for create / edit element icon
+	                @at-root .x-axi-window ~ .x-small-editor.x-tree-editor {
+		                &::before {
+			                color: $window-folder-tree-node-icon-text-color;
+		                }
+
+		                & .x-form-field {
+		                	color: $window-text-color;
+		                }
+	                }
+				}
+			}
+
+		    &.x-tree-selected {
+		    	background-color: $window-folder-tree-node-selected-background-color;
+
+		        & a {
+		            & span {
+		            	&:first-child {
+		                	color: $window-folder-tree-node-selected-text-color;
+
+		                	&::before {
+			                	color: $window-folder-tree-node-selected-icon-text-color;
+		                	}
+
+		                	@at-root html.dark & {
+		                		color: $window-folder-tree-node-selected-text-color;
+		                	}
+		            	}
+		            }
+		        }
+		    }
+		}
+	}
+
+	// Date / time combo in Window
+	& .x-axi-datetime-combo {
+	    & .x-form-field-wrap {
+	        // Date
+	        &.x-axi-datefield-wrap {
+	            & .x-form-trigger {
+	                &::before {
+		            	color: $window-combo-arrow-trigger-border-color;
+	                }
+	            }
+
+		        &.x-trigger-wrap-focus {
+		        	& .x-form-trigger {
+						&::before {
+							color: $window-combo-focus-arrow-trigger-border-color;
+						}
+		        	}
+		        }
+	        }
+
+	        // Time
+	        &.x-axi-timefield-wrap {
+	            & .x-form-trigger {
+	            }
+	        }
+	    }
+	}
+
+	@at-root .x-combo-list.x-axi-window-combo-list {
+		& .x-combo-list-inner {
+			background-color: $window-combo-list-background-color;
+			border-color: $window-combo-list-border-color;
+			color: $window-combo-list-text-color;			
+		}
+	}
+
+
+	& .x-item-disabled {
+		opacity: .5;
+
+		& .x-form-field {
+			color: $window-input-text-color !important;
+		}
+
+		& .x-form-item label {
+			color: $window-label-text-color !important;
+		}
+
+	}
+} 
+
+// Plain window
+.x-window-dlg {
+	& .ext-mb-text, 
+	& .x-window-header-text {
+		color: $window-panel-header-text-color;
+	}
+
+	// Plain window action buttons
+	& .x-panel-btns-ct .x-panel-btns .x-panel-btn-td {
+		& .x-btn {
+			& .x-btn-center {
+				button {
+					background-color: $window-action-button-background-color;
+					border-color: $window-action-button-border-color;
+					color: $window-action-button-text-color;
+				}
+			}
+			
+			// Hover
+			&.x-btn-over {				
+				& .x-btn-center {
+					button {
+						background-color: $window-action-button-hover-background-color;
+						border-color: $window-action-button-hover-border-color;
+						color: $window-action-button-hover-text-color;
+					}
+				}
+			}
+
+			// Main button
+			&.bold {
+				& .x-btn-center {
+					button {
+						background-color: $window-action-button-main-background-color;
+						border-color: $window-action-button-main-border-color;
+						color: $window-action-button-main-text-color;
+					}
+				}
+
+				// Hover
+				&.x-btn-over {				
+					& .x-btn-center {
+						button {
+							background-color: $window-action-button-main-hover-background-color;
+							border-color: $window-action-button-main-hover-border-color;
+							color: $window-action-button-main-hover-text-color;
+							opacity: .7;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+// Menu
+.x-menu {
+	background-color: $menu-background-color;
+	border-color: $menu-border-color;
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-menu-background-color;
+		border-color: $dark-mode-menu-border-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
+
+	&.x-axi-no-shadow { /// Axi extension
+		box-shadow: none;
+	}
+}
+
+.x-menu-list-item {
+	& a.x-menu-item {
+		color: $text-main-color;
+
+		@at-root html.dark & {
+			color: $dark-mode-text-main-color;
+		}
+
+		&.bullet {
+			&::after {
+				background-color: $theme-main-color;
+			}
+		}
+
+        &.x-menu-item-arrow {
+            & .x-menu-item-icon {
+                border-color: transparent transparent transparent $combo-arrow-trigger-border-color;
+            }
+        }
+	}
+
+	&.x-menu-item-active {
+		background-color: $theme-main-color;
+
+		& a.x-menu-item {
+			color: $menu-item-hover-text-color;
+			opacity: 1;
+
+			@at-root html.dark & {
+				color: $menu-item-hover-text-color;
+			}
+
+			&.bullet {
+				&::after {
+					background-color: $menu-item-hover-text-color;
+				}
+			}
+
+	        &.x-menu-item-arrow {
+	            & .x-menu-item-icon {
+	                border-color: transparent transparent transparent $menu-item-hover-text-color;
+	            }
+	        }
+		}
+	}
+
+    &.x-menu-item-checked {
+        & a.x-menu-item {
+            &.x-menu-check-item {
+                & .x-menu-item-icon {
+					background-color: $theme-main-color;
+                }
+            }
+        }
+
+        &.x-menu-item-active {
+	        & a.x-menu-item {
+	            &.x-menu-check-item {
+	                & .x-menu-item-icon {
+						background-color: $menu-item-hover-text-color;
+	                }
+	            }
+	        }
+        }
+    }
+}
+
+.x-menu-sep { 
+	background-color: $inner-border-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-inner-border-color;
+	}
+}
+
+// Ext Quick tips
+.x-tip {
+	& .x-tip-body {
+		background-color: $menu-background-color;
+		border-color: $menu-border-color;
+		box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+		color: $text-main-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-menu-background-color;
+			border-color: $dark-mode-menu-border-color;
+			box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+			color: $dark-mode-text-main-color;
+		}
+	}
+}
+
+// Toolbar
+.x-toolbar {
+    & .ytb-sep {
+		background-color: $inner-border-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-inner-border-color;
+		}
+    }
+
+    & .x-btn {
+	    &.x-btn-over {
+			opacity: .7;
+	    }
+
+	    &.x-btn-pressed {
+			background-color: $toolbar-button-pressed-background-color;
+	    }
+	}
+}
+
+// Drag and drop ghost
+.x-dd-drag-proxy {
+	background-color: $menu-background-color;
+	border-color: $menu-border-color;
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-menu-background-color;
+		border-color: $dark-mode-menu-border-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
+
+	& .x-dd-drag-ghost {
+		background-color: transparent;
+		color: $dd-drag-ghost-text-color;
+
+		@at-root html.dark & {
+			color: $dark-mode-dd-drag-ghost-text-color;			
+		}
+	}
+
+    // Checkmark icon
+    &.x-dd-drop-ok,
+    &.x-tree-drop-ok-append {
+        & .x-dd-drop-icon {
+        	border-color: $dd-drop-ok-icon-color;
+
+            &::before {
+            	border-color: $dd-drop-ok-icon-color;
+            }
+        }
+    }
+
+    // Plus icon
+    &.x-tree-drop-ctrlok-append {
+        & .x-dd-drop-icon {
+        	border-color: $dd-drop-ok-icon-color;
+
+            &::before {
+            	background-color: $dd-drop-ok-icon-color;
+            }
+
+            &::after {
+            	background-color: $dd-drop-ok-icon-color;
+            }
+        }
+    }
+
+    // Forbidden icon
+    &.x-dd-drop-nodrop {
+        & .x-dd-drop-icon {
+        	border-color: $dd-drop-nodrop-icon-color;
+
+            &::before {
+            	background-color: $dd-drop-nodrop-icon-color;
+            }
+        }
+    }
+}
+
+// Color palette + date picker
+.x-menu-plain {
+	background-color: $menu-background-color !important;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-menu-background-color !important;
+	}
+
+}
+
+// Color palette
+.x-color-palette {
+	& a {
+		background-color: $menu-background-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-menu-background-color; 
+		}
+
+		&:hover,
+		&.x-color-palette-sel {
+			background-color: $color-palette-color-selected-background-color;
+
+			@at-root html.dark & {
+				background-color: $color-palette-color-selected-background-color;
+			}
+		}
+
+		&.color-FFFFFF {
+			& em {
+				border-color: $inner-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+			}
+		}
+	}
+}
+
+// Tree 
+.x-tree-node {
+	color: $text-main-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-text-main-color;
+	}
+
+    & .x-tree-node-el {
+		& a {
+			& span {
+				color: $text-main-color;
+
+				@at-root html.dark & {
+					color: $dark-mode-text-main-color;
+				}
+
+                &:first-child {
+                	&::before {
+	                	color: $folder-tree-node-icon-text-color;
+
+	                	@at-root html.dark & {
+	                		color: $dark-mode-folder-tree-node-icon-text-color;	                		
+	                	}
+	                }
+                }
+
+                &.x-axi-folder-counter {
+					color: $folder-tree-node-counter-text-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-folder-tree-node-counter-text-color;
+					}
+                }
+			}
+		}
+
+	    &.x-tree-selected,
+	    &.x-tree-drag-append {
+	    	background-color: $folder-tree-node-selected-background-color;
+
+	        & a {
+	            & span {
+	            	&:first-child {
+	                	color: $folder-tree-node-selected-text-color;
+
+	                	@at-root html.dark & {
+	                		color: $dark-mode-folder-tree-node-selected-text-color;
+	                	}
+
+	                	&::before {
+		                	color: $folder-tree-node-selected-icon-text-color;
+	                	}
+	            	}
+
+	                &.x-axi-folder-counter {
+						color: $folder-tree-node-selected-counter-text-color;
+	                }
+	            }
+	        }
+	    }
+	}
+} 
+
+// Grid panel
+.x-grid3-row {
+	border-color: transparent;
+}
+
+.x-grid3-row-selected {
+	background-color: $list-not-focused-row-selected-background-color !important;
+}
+
+.x-grid3-row:not(:last-child) {
+	border-color: $inner-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-inner-border-color;
+	}
+}
+
+// Date picker + mini calendar
+.x-date-middle {
+	& .x-btn {
+		& .x-btn-text {
+			color: $theme-main-color;
+		}
+	}
+}
+
+.x-date-bottom {
+	border-color: $menu-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-menu-border-color;
+	}
+}
+
+.x-date-inner {
+	& th {
+		& span {
+			color: $datepicker-days-header-color;
+
+			@at-root html.dark & {
+				color: $dark-mode-datepicker-days-header-color;
+			}
+		}
+	}
+
+	& a {
+		color: $text-main-color;
+
+		@at-root html.dark & {
+			color: $dark-mode-text-main-color;
+		}
+	}
+
+	& a:hover,
+	& .x-date-disabled a:hover {
+		color: $text-main-color;
+
+		@at-root html.dark & {
+			color: $dark-mode-text-main-color;
+		}
+	}
+
+	& .x-date-selected {
+		& a {
+			&::before {
+				border-color: rgba($theme-main-color, .4);
+			}
+		}
+
+		& span {
+			color: $theme-main-color;
+		}
+	}
+
+	& .x-date-today {
+		& a {
+			&::before {
+				border-color: $theme-secondary-color;
+				background-color: $theme-secondary-color;
+			}
+		}
+
+		& span {
+			color: $datepicker-selected-text-color;
+		}
+	}
+}
+
+// Year-month navigation menu
+.x-date-mp {
+	background-color: rgba($folder-tree-background-color, .7);
+	
+	@at-root html.dark & {
+		background-color: rgba($dark-mode-folder-tree-background-color, .7);
+	}
+}
+
+.x-date-mp-btns {
+	& td {
+		border-top-color: $menu-border-color;
+
+		@at-root html.dark & {
+			border-top-color: $dark-mode-menu-border-color;
+		}
+
+		& button {
+			border-color: $theme-main-color;
+			color: $theme-main-color;
+		}
+	}	
+}
+
+td.x-date-mp-month a, 
+td.x-date-mp-year a {
+	color: $text-main-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-text-main-color;
+	}
+
+	&:hover {
+		color: $text-main-color;
+
+		@at-root html.dark & {
+			color: $dark-mode-text-main-color;
+		}
+	}
+}
+
+td.x-date-mp-sep {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-color: $menu-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-menu-border-color;
+	}
+}
+
+td.x-date-mp-sel a,
+td.x-date-mp-sel a:hover {
+	background-color: $theme-secondary-color;
+	color: $datepicker-selected-text-color;
+
+	@at-root html.dark & {
+		color: $datepicker-selected-text-color;
+	}
+}
+
+.x-date-mp-ybtn {
+	& a {
+		border-color: rgba($theme-main-color, .4);
+	}
+}
+
+// HTML Editor
+.x-html-editor-wrap {
+	background-color: $theme-background-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-theme-background-color;
+	}
+
+    & .x-html-editor-tb {
+		border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+	    // Buttons
+	    & .x-btn {
+	        // Specific buttons
+	        &.x-edit-insertimage .x-btn-text {
+	        	&::before {
+	        		color: $html-editor-icon-color;
+
+	        		@at-root html.dark & {
+	        			color: $dark-mode-html-editor-icon-color;
+	        		}
+	        	}
+	        }
+
+	        &.x-edit-emoji .x-btn-text {
+	        	&::before {
+	        		color: $html-editor-icon-color;
+
+	        		@at-root html.dark & {
+	        			color: $dark-mode-html-editor-icon-color;
+	        		}
+	        	}
+
+	            @at-root .x-axi-emoji-menu {
+	                & .x-menu.light-menu {
+	                	& .emoji-container {
+	                		& .group {
+	                			& .name {
+	                				color: $html-editor-emoji-groups-text-color;
+
+	                				@at-root html.dark & {
+	                					color: $dark-mode-html-editor-emoji-groups-text-color;
+	                				}
+	                			}
+	                		}
+	                	}
+	                    & .emoji-group-links-container {
+	                    	border-top-color: $inner-border-color;
+
+	                    	@at-root html.dark & {
+	                    		border-top-color: $dark-mode-inner-border-color;
+	                    	}
+
+	                    	& span {	                    		
+		                    	&::before {
+		                    		color: $html-editor-emoji-links-icon-color;
+
+		                    		@at-root html.dark & {
+		                    			color: $dark-mode-html-editor-emoji-links-icon-color;
+		                    		}
+		                    	}
+
+	                    		&.x-axi-active {
+	                    			&::before {
+	                    				color: $html-editor-emoji-links-active-icon-color;
+
+	                    				@at-root html.dark & {
+	                    					color: $dark-mode-html-editor-emoji-links-active-icon-color;
+	                    				}
+	                    			}	
+	                    		}
+		                    }
+	                    }
+	                }
+	            }
+	        }
+
+
+			&.x-edit-more .x-btn-text {
+	        	&::before {
+	        		color: $html-editor-icon-color;
+
+	        		@at-root html.dark & {
+	        			color: $dark-mode-html-editor-icon-color;
+	        		}
+	        	}
+			}
+	    }
+    }
+
+    & .x-form-textarea {
+    	color: $text-contrast-color;
+
+    	@at-root html.dark & {
+	    	color: $dark-mode-text-contrast-color;    		
+    	}
+    }
+}
+
+.x-html-editor-tb {
+    // Font combo
+    %font-combo {
+    	border-color: $combo-border-color;
+    	color: $text-main-color !important;
+
+    	@at-root html.dark & {
+    		border-color: $dark-mode-combo-border-color;
+	    	color: $dark-mode-text-main-color !important;
+    	}
+    }
+
+    @at-root {
+        .x-html-editor-tb .x-toolbar .x-form-text,
+        .ext-safari .x-html-editor-tb .x-toolbar .x-form-text,
+        .ext-chrome .x-html-editor-tb .x-toolbar .x-form-text {
+            @extend %font-combo;
+        }
+    }
+
+    & .x-form-field-wrap {
+	    & .x-form-arrow-trigger {
+	    	border-color: $combo-border-color;
+
+	    	@at-root html.dark & {
+	    		border-color: $dark-mode-combo-border-color;
+	    	}
+
+	    	&::before {
+	    		border-top-color: $combo-arrow-trigger-border-color;
+	    	}
+	    }
+
+	    &.x-trigger-wrap-focus {
+		    & .x-form-arrow-trigger {
+		    	border-color: $combo-border-color;
+
+		    	@at-root html.dark & {
+		    		border-color: $dark-mode-combo-border-color;
+		    	}
+		    }
+	    }    	
+    }
+
+    & .x-combo-list-item {
+        &.x-combo-selected {
+        }
+    }
+}
+
+
+/*******************************************************************************
+ * Global Axi components
+ */
+// START Overlay mask
+.x-axi-window-mask-level0 {
+    background-color: $mask-level-0;
+
+    @at-root html.dark & {
+    	background-color: $dark-mode-mask-level-0;
+    }
+}
+
+.x-axi-window-mask-level1 {
+    background-color: $mask-level-1;
+
+    @at-root html.dark & {
+    	background-color: $dark-mode-mask-level-1;
+    }
+}
+
+.x-axi-window-mask-level2 {
+    background-color: $mask-level-2;
+
+    @at-root html.dark & {
+    	background-color: $dark-mode-mask-level-2;
+    }
+}
+// START Overlay mask
+
+// START Axi rounded button
+.x-axi-button-small-rounding,
+.ext-gecko .x-axi-button-small-rounding {     /// Firefox
+	& .x-btn-text {
+    	@extend %button-small-rounding;
+    }
+
+    &.x-item-disabled,
+    & > .x-btn-wrap.x-item-disabled {
+    	& .x-btn-text {
+	        @extend %button-small-rounding-disabled;    		
+    	}
+    }
+}
+
+.x-axi-button-big-rounding,
+.ext-gecko .x-axi-button-big-rounding {     /// Firefox  
+	& .x-btn-text {
+    	@extend %button-big-rounding;
+    }
+
+    &.x-item-disabled,
+    & > .x-btn-wrap.x-item-disabled {
+    	& .x-btn-text {
+	        @extend %button-big-rounding-disabled;
+	    }
+    }
+}
+// END Axi rounded button
+
+// START Date picker
+.x-axi-cal-menu {
+	// Year-month navigation menu
+	& .x-date-mp {
+		background-color: rgba($theme-background-color, .7);
+		
+		@at-root html.dark & {
+			background-color: rgba($dark-mode-theme-background-color, .7);
+		}
+	}
+}
+// END Date picker
+
+// START Axi High Text
+.x-axi-high-text {
+    color: $text-contrast-color;
+
+    @at-root html.dark & {
+    	color: $dark-mode-text-contrast-color;
+    }
+}
+// END Axi High Text
+
+// START Axi Input + Animated Label Control 
+.x-axi-textfield-with-animated-label-wrapper {
+	& .x-axi-form-item-label > label {
+		background-color: $input-animated-label-label-background-color;
+
+        @at-root html.dark & {
+            background-color: $dark-mode-input-animated-label-label-background-color;
+        }
+	}
+
+	& .x-axi-high-input {
+		&.x-form-focus + label {
+			color: $theme-main-color;
+		}
+
+	    &.x-item-disabled + label {
+	        color: $input-animated-label-disabled-label-color;
+	    }
+	}
+}
+// END Axi Input + Animated Label Control 
+
+// START Axi Contact Area Label
+.x-axi-contact-area-label {
+    & .x-panel-body {
+        &::after {
+        	background-color: $inner-border-color;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-inner-border-color;
+			}
+        }
+    }
+}
+// END Axi Contact Area Label
+
+// START Global messages
+@import "../../../../../../include/webmail/theme-breeze/global-messages";
+// END Global messages
+
+// START Axi Search Control
+.x-axi-search-input-container {
+    & .x-axi-reset-search-button {
+		& .x-btn-text {
+			&::after {
+				border-color: $theme-main-color;
+				color: $theme-main-color;
+			}
+		}
+	}
+
+	& .x-axi-advanced-search {
+		& .x-btn-text {
+			&::before {
+			    border-top-color: $combo-arrow-trigger-border-color;
+			    border-right-color: transparent;
+			    border-left-color: transparent;
+			}
+		}
+	}
+}
+
+.x-axi-search-input,
+.ext-safari .x-toolbar .x-form-text.x-axi-search-input,
+.ext-chrome .x-toolbar .x-form-text.x-axi-search-input {
+	border-color: $search-input-border-color;
+
+	// Focus
+	&:focus,
+	&.x-form-focus {
+		border-color: $search-input-focus-border-color;
+	}
+
+	@at-root html.dark & {
+		border-color: $dark-mode-search-input-border-color;
+
+		// Focus
+		&.x-form-focus {
+			border-color: $search-input-focus-border-color;
+		}
+	}
+}
+
+// Advanced search
+.x-axi-advanced-search-panel {
+    & .x-axi-search-form-body {
+        & > .x-panel {
+
+            %bottom-border-field {
+				border-color: $search-input-border-color;
+
+				// Focus
+				&.x-form-focus,
+				&.x-form-focus + .x-form-trigger {
+					border-color: $search-input-focus-border-color;
+				}
+
+				@at-root html.dark & {
+					border-color: $dark-mode-search-input-border-color;
+
+					// Focus
+					&.x-form-focus,
+					&.x-form-focus + .x-form-trigger {
+						border-color: $search-input-focus-border-color;
+					}
+				}
+            }
+
+            & .x-axi-textfield {
+                @extend %bottom-border-field;
+            }
+
+            & .x-form-field-wrap {
+                & .x-form-field {
+                    @extend %bottom-border-field;
+                }
+
+                & .x-form-field + .x-form-trigger {
+                    @extend %bottom-border-field;
+                }                 
+            } 
+
+            &.x-axi-advanced-search-buttons-container > .x-panel-bwrap > .x-panel-body {
+			    & .x-axi-adv-search-btn-search {
+			        & .x-btn-center button {
+			            @extend %highlight-button;
+			        }
+
+			        &.x-btn-over {
+			            & .x-btn-center button {
+			                @extend %highlight-button-hover;
+			            }
+			        }
+			    }
+
+			    & .x-axi-search-panel-close-button {
+			        & .x-btn-center button {
+			            @extend %outline-button;
+			        }
+
+			        &.x-btn-over {
+			            & .x-btn-center button {
+			                @extend %outline-button-hover;
+			            }
+			        }
+			    }
+			}
+        }
+    }
+}
+// END Axi Search Control
+
+// Grid panel / list empty text 
+.x-axi-list,
+.x-axi-grid {
+    & .x-axi-emptytext {
+        & .x-axi-view-infomessage {
+            color: $theme-main-lighter-color;
+        }
+    }
+}
+
+// START Axi Boxed Menu Button
+.x-btn.x-axi-boxed-button-with-menu {
+    & .x-btn-with-menu {
+        & .x-btn-text,
+        & .x-btn-rawtext {
+        	@extend %button-small-rounding;
+
+        	&::after {
+				border-top-color: $theme-main-color;
+			    border-right-color: transparent;
+			    border-left-color: transparent;
+
+        	}
+        }
+    }
+}
+// END Axi Boxed Menu Button
+
+// START Axi Date Combo
+.x-axi-datetime-combo {
+    & .x-form-field-wrap {
+    	// Both date and time 
+        &.x-axi-datefield-wrap,
+        &.x-axi-timefield-wrap {
+            & .x-form-trigger {
+            }            
+        }
+
+        // Date
+        &.x-axi-datefield-wrap {
+            & .x-form-trigger {
+                &::before {
+	            	color: $combo-arrow-trigger-border-color;
+                }
+            }
+
+	        &.x-trigger-wrap-focus {
+	        	& .x-form-trigger {
+					&::before {
+						color: $combo-focus-arrow-trigger-border-color;
+					}
+	        	}
+	        }
+        }
+
+        // Time
+        &.x-axi-timefield-wrap {
+            & .x-form-trigger {
+            }
+        }
+    }
+}
+// END Axi Date Combo
+
+// START Tooltips
+// Menu tooltips
+.menu-tooltip-arrow-left {
+	&::before {
+		border-right-color: $menu-border-color;
+
+		@at-root html.dark & {
+			border-right-color: $dark-mode-menu-border-color;
+		}
+	}
+
+	&::after {
+		border-right-color: $menu-background-color;
+
+		@at-root html.dark & {
+			border-right-color: $dark-mode-menu-background-color;
+		}
+	}
+}
+
+.menu-tooltip-arrow-right {
+	&::before {
+		border-left-color: $menu-border-color;
+
+		@at-root html.dark & {
+			border-left-color: $dark-mode-menu-border-color;
+		}
+	}
+
+	&::after {
+		border-left-color: $menu-background-color;
+
+		@at-root html.dark & {
+			border-left-color: $dark-mode-menu-background-color;
+		}
+	}
+}
+
+// Dark tooltips
+.dark-tooltip {
+	background-color: $dark-tooltip-background-color;
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+	color: $dark-tooltip-text-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-dark-tooltip-background-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
+
+    // Arrows 
+    & .arrow {
+        // Defines the different arrow positions
+		&.top {
+			border-bottom-color: $dark-tooltip-background-color;
+
+			@at-root html.dark & {
+				border-bottom-color: $dark-mode-dark-tooltip-background-color;
+			}
+		}
+
+		&.bottom {
+		    border-top-color: $dark-tooltip-background-color;
+
+			@at-root html.dark & {
+				border-top-color: $dark-mode-dark-tooltip-background-color;
+			}
+		}
+
+		&.left {
+			border-right-color: $dark-tooltip-background-color;
+
+			@at-root html.dark & {
+				border-right-color: $dark-mode-dark-tooltip-background-color;
+			}
+		}
+
+		&.right {
+			border-left-color: $dark-tooltip-background-color;
+
+			@at-root html.dark & {
+				border-left-color: $dark-mode-dark-tooltip-background-color;
+			}
+		}
+	}
+}
+
+.x-tip {
+	& .dark-tooltip {
+		background-color: $dark-tooltip-background-color;
+		box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-dark-tooltip-background-color;
+			box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+		}
+	}
+
+	& .dark-tooltip { 
+		& .x-tip-body {
+			color: $dark-tooltip-text-color;
+		}
+	}
+}
+
+// Light tooltips
+.x-tip.x-axi-tips-window {
+	background-color: $menu-background-color;
+	border-color: $menu-border-color;
+	box-shadow: 0 0 20px 0 $menu-box-shadow-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-menu-background-color;
+		border-color: $dark-mode-menu-border-color;
+		box-shadow: 0 0 20px 0 $dark-mode-menu-box-shadow-color;
+	}
+
+    & .x-tip-header {
+    	border-color: $light-tooltip-header-border-color;
+
+    	@at-root html.dark & {
+    		border-color: $dark-mode-light-tooltip-header-border-color;
+    	}
+
+    	& .x-tip-header-text {
+    		color: $light-tooltip-header-text-color;
+
+    		@at-root html.dark & {
+    			color: $dark-mode-light-tooltip-header-text-color;
+    		}
+    	}
+    }
+
+    & .contenthr,
+    & .hr {
+        background-color: $light-tooltip-separator-border-color;
+
+        @at-root html.dark & {
+        	background-color: $dark-mode-light-tooltip-separator-border-color;
+        }
+    }
+
+    // Arrows
+    &.x-axi-topleft-arrow,
+    &.x-axi-topright-arrow {
+        &::before {
+        	border-bottom-color: $menu-border-color;
+
+			@at-root html.dark & {
+				border-bottom-color: $dark-mode-menu-border-color;
+			}
+        }
+
+        &::after {
+        	border-bottom-color: $menu-background-color;
+
+			@at-root html.dark & {
+				border-bottom-color: $dark-mode-menu-background-color;
+			}
+        }
+    }
+
+    &.x-axi-lefttop-arrow,
+    &.x-axi-leftbottom-arrow {
+        &::before {
+        	border-right-color: $menu-border-color;
+
+			@at-root html.dark & {
+				border-right-color: $dark-mode-menu-border-color;
+			}
+        }
+
+        &::after {
+        	border-right-color: $menu-background-color;
+
+			@at-root html.dark & {
+				border-right-color: $dark-mode-menu-background-color;
+			}
+        }
+	}
+
+    &.x-axi-bottomleft-arrow,
+    &.x-axi-bottomright-arrow {
+        &::before {
+        	border-top-color: $menu-border-color;
+
+			@at-root html.dark & {
+				border-top-color: $dark-mode-menu-border-color;
+			}
+        }
+
+        &::after {
+        	border-top-color: $menu-background-color;
+
+			@at-root html.dark & {
+				border-top-color: $dark-mode-menu-background-color;
+			}
+        }
+    }
+
+    &.x-axi-righttop-arrow,
+    &.x-axi-rightbottom-arrow {
+        &::before {
+        	border-left-color: $menu-border-color;
+
+			@at-root html.dark & {
+				border-left-color: $dark-mode-menu-border-color;
+			}
+        }
+
+        &::after {
+        	border-left-color: $menu-background-color;
+
+			@at-root html.dark & {
+				border-left-color: $dark-mode-menu-background-color;
+			}
+        }
+	}
+}
+// END Tooltips
+
+// START Axi Tree & Grid
+%axi-tree-grid-root {
+    & a span,               /// Tree panel
+    & div {                 /// Tree grid
+        color: $folder-tree-root-node-text-color;
+
+        @at-root html.dark & {
+	        color: $dark-mode-folder-tree-root-node-text-color;        	
+        }
+    }
+
+    &::after {
+    	background-color: $folder-tree-root-node-minus-icon-background-color;
+    	border-color: $folder-tree-root-node-minus-icon-border-color;
+    	background-repeat: no-repeat;
+    	background-size: 9px 5px;
+
+    	@at-root html.dark & {
+    		background-color: $dark-mode-folder-tree-root-node-minus-icon-background-color;
+    		border-color: $dark-mode-folder-tree-root-node-minus-icon-border-color;
+    	}
+    }
+}
+// Focused
+.x-axi-focused .x-tree-node .x-tree-node-el.x-tree-selected {
+	background-color: $folder-tree-focused-node-selected-background-color;
+
+	& a {
+		& span {
+			&:first-child {
+				color: $folder-tree-focused-node-selected-text-color;
+
+				&::before {
+					color: $folder-tree-focused-node-selected-icon-text-color;
+				}
+			}
+
+            &.x-axi-folder-counter {
+				color: $folder-tree-focused-node-selected-counter-text-color;
+            }
+		}
+	}
+}
+
+.x-axi-tree-accordion,
+.x-axi-tree-lines {
+	& .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails,
+	& .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root,
+	& .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner {
+        @extend %axi-tree-grid-root;
+
+        &.x-tree-selected {
+        	@extend %axi-tree-grid-root;	
+        }
+	}
+
+    // Tree Grid
+    & .x-grid-panel {
+        & .x-grid-group-hd {
+            @extend %axi-tree-grid-root;
+        }
+
+        & .x-grid-group-body {
+            & .x-grid3-row {
+            	& .x-grid3-row-table {
+
+            		& span {
+            			color: $text-main-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-text-main-color;
+						}
+            		}
+
+					& .x-grid3-col {
+						&.x-grid3-td-icon {
+							& .x-grid3-col-icon::before {
+								color: $folder-tree-node-icon-text-color;
+
+								@at-root html.dark & {
+									color: $dark-mode-folder-tree-node-icon-text-color;
+								}
+							}
+						}
+					}
+            	}
+
+        		&.x-grid3-row-selected-and-active {
+					background-color: $folder-tree-node-selected-background-color !important;
+
+            		& span {
+        				color: $folder-tree-node-selected-text-color;
+
+        				@at-root html.dark & {
+        					color: $dark-mode-folder-tree-node-selected-text-color;
+        				}
+        			}
+
+					& .x-grid3-row-table {
+						& .x-grid3-col {
+							&.x-grid3-td-icon {
+								& .x-grid3-col-icon::before {
+									color: $folder-tree-node-selected-icon-text-color;
+								}
+							}
+						}
+					}
+        		}
+            }
+        }        
+    }
+}
+// END Axi Tree & Grid
+
+// START Axi list
+.x-axi-list {
+	// List not focused
+	& .x-grid3-row {
+		&:not(:last-child) {
+			border-color: $list-not-focused-row-border-color;
+		}
+
+		& .x-grid3-td-checker ~ td {
+			& [class^="x-axi-"][class$="-item-row"] {
+				& span {
+					// Inherited color
+				}
+			}
+		}
+
+		// Row selected
+		&.x-grid3-row-selected {
+			background: $list-not-focused-row-selected-background-color !important;
+			border-color: $list-not-focused-row-selected-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-list-not-focused-row-selected-border-color;
+			}
+
+				& span {
+					// Inherited color
+				}
+		}
+
+		// Only one row selected
+		&.x-grid3-row-selected-no-checkbox {
+			& .x-grid3-td-checker {
+				& .x-grid3-row-checker {
+					background-color: transparent;
+					border-color: $checkbox-border-color;
+
+					@at-root html.dark & {
+						border-color: $dark-mode-checkbox-border-color;
+					}
+
+					&::before {
+						display: none;
+					}
+				}
+			}
+		}
+
+		// Unread
+		&.unread {
+			& .x-grid3-td-checker {
+				& .x-grid3-col-checker {
+					&::after {
+						background-color: $mails-list-unread-bullet;
+					}
+				}
+			}
+		}
+	}
+
+	// List focused
+	& .x-axi-focused {
+		& .x-grid3-row {
+			// Selected
+			&.x-grid3-row-selected {
+				background-color: $list-focused-row-selected-background-color !important;
+				border-color: $list-focused-row-selected-border-color;
+
+				& .x-grid3-td-checker {
+					& .x-grid3-row-checker {
+						background-color: $list-focused-row-selected-checkbox-checked-background-color;
+						border-color: $list-focused-row-selected-checkbox-checked-border-color;
+
+						&::before {
+							border-color: $grid-panel-row-selected-checkbox-checked-checker-color;
+						}
+					}
+				}
+
+				& .x-grid3-td-checker ~ td {
+					& [class^="x-axi"][class$="-item-row"] {
+						& span {
+							color: $list-focused-row-selected-text-color;
+						}
+					}
+				}
+			}
+
+			// Only one row selected
+			&.x-grid3-row-selected-no-checkbox {
+				& .x-grid3-td-checker {
+					& .x-grid3-row-checker {
+						background-color: transparent;
+						border-color: $checkbox-border-color;
+
+						@at-root html.dark & {
+							border-color: $dark-mode-checkbox-border-color;
+						}
+
+						&::before {
+							display: none;
+						}
+					}
+				}
+
+				&.x-axi-active {
+					& .x-grid3-td-checker {
+						& .x-grid3-row-checker {
+							border-color: $checkbox-border-color;
+
+							@at-root html.dark & {
+								border-color: rgba($checkbox-border-color, .8);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Footer
+	& .x-grid3-header {
+		border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+		& .x-grid3-header-inner {
+			& .x-grid3-hd-inner {
+				display: flex;
+				justify-content: space-between;
+
+				& span {
+					color: $list-footer-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-list-footer-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Context menu
+.x-axi-list-cmenu {
+	& .x-axi-list-cmenu-sort-asc,
+	& .x-axi-list-cmenu-sort-desc {
+		& .x-menu-item {
+			&::before {
+				color: $text-main-color;
+
+				@at-root html.dark & {
+					color: $dark-mode-text-main-color;
+				}
+			}
+		}
+	}
+
+	& .x-menu-item-active {
+		&.x-axi-list-cmenu-sort-asc,
+    	&.x-axi-list-cmenu-sort-desc {
+	        & .x-menu-item {
+		        &::before {
+		        	color: $menu-item-hover-text-color;
+		        }
+	    		&.bullet {
+	    			&::after {
+	    				background-color: $menu-item-hover-text-color;
+	    			}
+	    		}
+	        }
+    	}
+	}
+    & .x-axi-list-cmenu-sort-asc + .x-axi-list-cmenu-sort-desc {
+        border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+    }
+}
+// END Axi list
+
+// START Contact thumbnails
+.thumbnail-container {
+	& .no-thumbnail {
+		background-color: $thumbnail-no-thumbnail-background-color;
+		color: $thumbnail-no-thumbnail-text-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-thumbnail-no-thumbnail-background-color;
+		}
+	}
+
+	& .thumbnail {
+		box-sizing: border-box;
+	}
+}
+
+// START Action bar
+.x-axi-action-bar {
+    background-color: $action-bar-background-color;
+
+    @at-root html.dark & {
+		background-color: $dark-mode-action-bar-background-color;
+    }
+
+    & .actions {
+        & .but-action {
+            @extend %button-small-rounding;
+        }        
+    }
+}
+// END Action bar
+
+// START Print button
+.x-axi-print-button {	
+    & .x-btn-center {
+        & em {
+            &::before {
+ 				color: $print-button-text-color;
+
+ 				@at-root html.dark & {
+ 					color: $dark-mode-print-button-text-color; 					
+ 				}
+            }
+        }
+    }
+}
+// END Print button
+
+// START Email address objects
+.email-address-list {
+    & .email-address-objects-container {
+        & .axi-email-address-object-wrapper {
+            & > .x-btn { 
+            	& .x-btn-center {
+            		& .x-btn-text {
+						color: $email-address-object-text-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-email-address-object-text-color;
+						}
+            		}
+            	}
+
+            	// Hover
+            	&.x-btn-over {
+                    & .x-btn-center {
+                        & .x-btn-text {
+                        	color: $email-address-object-hover-text-color;
+                        	opacity: 1;
+
+                            &::after {
+								color: $email-address-object-text-color;
+                            }
+
+							@at-root html.dark & {
+								color: $email-address-object-hover-text-color;
+
+								&::after {
+									color: $dark-mode-email-address-object-text-color;
+								}
+							}
+                        }
+                    }
+                }
+
+            	// Selected
+            	&.x-btn-focus {
+                    & .x-btn-center {
+                        & .x-btn-text {
+                        	background-color: $email-address-object-focused-background-color;
+                        	color: $email-address-object-focused-text-color;
+
+                        	@at-root html.dark & {
+                        		color: $email-address-object-focused-text-color;
+                        	}
+                        }
+                    }
+                }
+
+                // Invalid address objects
+                &.axi-invalid {
+	            	& .x-btn-center {
+	            		& .x-btn-text {
+							color: $email-address-object-invalid-text-color;
+
+                            &::after {
+								color: $email-address-object-text-color;
+                            }
+
+							@at-root html.dark & {
+								color: $dark-mode-email-address-object-invalid-text-color;
+
+								&::after {
+									color: $dark-mode-email-address-object-text-color;
+								}
+							}
+	            		}
+	            	}
+
+	            	// Hover
+	            	&.x-btn-over {
+	                    & .x-btn-center {
+	                        & .x-btn-text {
+	                        	color: $email-address-object-invalid-hover-text-color;
+	                        	opacity: 1;
+
+	                            &::after {
+									color: $email-address-object-text-color;
+	                            }
+
+								@at-root html.dark & {
+									color: $email-address-object-invalid-hover-text-color;
+
+									&::after {
+										color: $dark-mode-email-address-object-text-color;
+									}
+								}
+	                        }
+	                    }
+	                }
+
+	            	// Selected
+	            	&.x-btn-focus {
+	                    & .x-btn-center {
+	                        & .x-btn-text {
+	                        	background-color: $email-address-object-invalid-focused-background-color;
+	                        	color: $email-address-object-focused-text-color;
+
+	                        	@at-root html.dark & {
+	                        		color: $email-address-object-focused-text-color;
+	                        	}
+	                        }
+	                    }
+	                }
+                }
+            }
+        }
+
+        & .axi-textfield-wrapper {
+            flex-grow: 1;
+        }
+    }
+
+    @at-root .x-address-objects-dd-drag-proxy {
+    	& .x-btn {
+	    	& .x-btn-text {
+	        	background-color: $email-address-object-focused-background-color;
+	        	color: $email-address-object-focused-text-color;                              
+			}
+
+			&.axi-invalid {
+		    	& .x-btn-text {
+		    		background-color: $email-address-object-invalid-focused-background-color;
+		    	}
+			}
+		}
+    }
+
+    & .drop-cursor {
+    	&::after {
+        	background-color: $theme-main-color;                            		
+    	}
+    }
+}
+// END Email address objects
+
+// START Attachments panel
+%x-axi-attachments-title {
+    color: $text-main-color;
+
+	@at-root html.dark & {
+		color: $dark-mode-text-main-color;
+	}
+
+    &::after {
+		color: $theme-main-lighter-color;
+    }
+}
+
+%attachments-panel {
+
+    & .x-axi-attachments-title {
+        @extend %x-axi-attachments-title;
+    }
+
+    & .x-axi-attachment {
+    	// border-color: $attachment-border-color;
+    	// background-color: $attachment-background-color;
+
+        & .x-axi-attachment-name {
+            color: $theme-main-color;
+
+            &::before {
+            	// color: rgba($theme-main-color, .5);	
+            }
+        }
+
+        & .x-axi-attachment-size {
+            color: rgba($theme-main-lighter-color, .7);
+        }
+
+        & .x-axi-attachment-remove-button {
+        	color: $theme-main-color;
+        }
+    }
+
+    & .x-axi-attachments-view-all-container {
+        & .x-axi-attachments-view-all-white-bg {
+        	background-color: $theme-background-color;
+
+        	@at-root html.dark & {
+        		background-color: $dark-mode-theme-background-color;
+        	}
+
+            & .x-axi-attachments-view-all-button {
+                @extend %button-small-rounding;
+            }
+        }
+    }
+}
+
+.x-axi-attachment-list-container {
+    @extend %attachments-panel;
+}
+// END Attachments panel 
+
+// START Attachments drag-and-drop
+.x-axi-upload-dd-container {
+    background-color: rgba($theme-background-color, .9);
+
+    @supports (backdrop-filter: blur(2px)) {
+	    background-color: rgba($theme-background-color, .7);
+    }
+
+    @supports (-webkit-backdrop-filter: blur(2px)) {
+	    background-color: rgba($theme-background-color, .7);
+    }
+
+    @at-root html.dark & {
+    	background-color: rgba($dark-mode-theme-background-color, .9);
+
+	    @supports (backdrop-filter: blur(2px)) {
+		    background-color: rgba($dark-mode-theme-background-color, .7);
+	    }
+
+	    @supports (-webkit-backdrop-filter: blur(2px)) {
+		    background-color: rgba($dark-mode-theme-background-color, .7);
+	    }
+    }
+
+    & .x-axi-upload-dd-area {
+    	border-color: $attachments-drag-and-drop-border-color;
+
+    	@at-root html.dark & {
+    		border-color: $dark-mode-attachments-drag-and-drop-border-color;
+    	}
+
+    	& .attachments,
+    	& .inline {
+    		background-color: $attachments-drag-and-drop-attachment-background-color;
+    		border-color: $attachments-drag-and-drop-attachment-border-color;
+    		color: $attachments-drag-and-drop-attachment-text-color;
+
+    		@at-root html.dark & {
+    			background-color: $dark-mode-attachments-drag-and-drop-attachment-background-color;
+    			border-color: $dark-mode-attachments-drag-and-drop-attachment-border-color;
+    		}
+    	}
+
+        &.hover {
+            & .attachments,
+            & .inline {
+            	background-color: $attachments-drag-and-drop-attachment-hover-background-color;
+            	border-color: $attachments-drag-and-drop-attachment-hover-border-color;
+
+            	@at-root html.dark & {
+            		background-color: $dark-mode-attachments-drag-and-drop-attachment-hover-background-color;
+            		border-color: $dark-mode-attachments-drag-and-drop-attachment-hover-border-color;
+            	}
+            }
+        }
+    }
+
+    & .x-axi-upload-dd-area-separator {
+		color: $attachments-drag-and-drop-separator-text-color;
+
+		@at-root html.dark & {
+			color: $dark-mode-attachments-drag-and-drop-separator-text-color;			
+		}
+
+        & .arrow-top,
+        & .arrow-bottom {
+            background-color: $theme-background-color;
+            background-image: url(../../images/common/drag-and-drop-arrow.svg);
+            background-position: center top;
+            background-repeat: no-repeat;
+
+            @at-root html.dark & {
+            	background-color: $dark-mode-theme-background-color;
+            	background-image: url(../../images/common/dark-mode/drag-and-drop-arrow.svg);
+            }
+        }
+	}
+}
+// END Attachments drag-and-drop
+
+// START Free / Busy
+.x-axi-legend-free::before,
+.menu-item-availability-free::before {
+	border-color: $freebusy-free-color;
+}
+
+.x-axi-legend-busy::before,
+.menu-item-availability-busy::before {
+	border-color: $freebusy-busy-color;
+}
+
+.x-axi-legend-ooo::before,
+.menu-item-availability-ooo::before {
+	border-color: $freebusy-ooo-color;
+}
+
+.x-axi-legend-tentative::before,
+.menu-item-availability-tentative::before {
+	border-color: $freebusy-tentative-color;
+}
+
+.x-axi-legend-na::before {
+	background: url(../../images/common/x-axi-legend-na.png) repeat 50%;
+	border-color: $freebusy-na-color;
+}
+
+.freebusy-legend-container {
+	border-color: $input-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-input-border-color;
+	}	
+}
+// END Free / Busy
+
+// START Axi Components in Window
+.x-axi-window {
+	// Axi Tree in Window
+	& .x-axi-tree-accordion,
+	& .x-axi-tree-lines {
+		& .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_folder_mails,
+		& .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_publicfolder_root,
+		& .x-tree-root-ct > .x-tree-root-node > .x-tree-node > .parent_menu_sharedfolder_owner {
+			& a {
+				& span {
+					color: $window-folder-tree-root-node-text-color;
+				}
+			}
+
+	        &::after {
+	        	background-color: $window-folder-tree-root-node-minus-icon-background-color;
+	        	border-color: $window-folder-tree-root-node-minus-icon-border-color;
+	        }
+		}
+	}
+
+	// Thumbnail in Window
+    & .thumbnail-container {
+        & .no-thumbnail {
+            background-color: $window-thumbnail-no-thumbnail-background-color;            
+            color: $window-thumbnail-no-thumbnail-text-color;            
+        }
+    }
+
+	// Email address objects in Window
+	& .email-address-list {
+	    & .email-address-objects-container {
+	        & .axi-email-address-object-wrapper {
+	            & > .x-btn { 
+	            	& .x-btn-center {
+	            		& .x-btn-text {
+							color: $window-email-address-object-text-color;
+	            		}
+	            	}
+
+	            	// Hover
+	            	&.x-btn-over {
+	                    & .x-btn-center {
+	                        & .x-btn-text {
+	                        	color: $window-email-address-object-hover-text-color;
+	                        	opacity: 1;
+
+	                            &::after {
+									color: $window-email-address-object-text-color;
+	                            }
+	                        }
+	                    }
+	                }
+
+	            	// Selected
+	            	&.x-btn-focus {
+	                    & .x-btn-center {
+	                        & .x-btn-text {
+	                        	background-color: $email-address-object-focused-background-color;
+	                        	color: $email-address-object-focused-text-color;
+	                        }
+	                    }
+	                }
+	             }
+	        }
+	    }
+	}
+	// END Email address objects
+}
+// END Axi Components in Window
+
+
+/*******************************************************************************
+ *  App
+ */
+// START IDRegionWest
+// START Sidebar
+.x-axi-tree-sidebar {
+	background-color: $sidebar-background-color; 
+
+	& .x-axi-tree-sidebar-navigation {
+		& .x-axi-tree-sidebar-logo {
+			height: $top-area-height;
+			background-color: $logo-background-color;
+
+			& a {
+				background-image: url(../../images/common/axigen-logo.svg); 
+			}		
+		}
+
+		& .x-axi-tree-sidebar-section {
+			& a {
+				color: $sidebar-icon-color;
+
+				&:hover {
+					opacity: 1;
+					color: $sidebar-icon-hover-color;
+				}
+			}
+
+			&.x-axi-tree-sidebar-selected {
+				& a {
+					& span {
+						color: $sidebar-icon-selected-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.x-axi-tree-sidebar-menu {
+	& .light-menu {
+    	& .sidebar-menu-wrapper {
+    		& .section {
+    			border-color: $inner-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+
+				& .title {
+					color: $menu-title-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-menu-title-color;
+					}
+				}
+
+				&.account {
+		    		& .name {
+		    			color: $menu-title-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-menu-title-color;
+						}
+
+		    			&:empty {
+		    				& + .email {
+								color: $menu-title-color;
+
+								@at-root html.dark & {
+									color: $dark-mode-menu-title-color;
+								}
+		    				}
+		    			}
+		    		}
+				}
+
+    			&.quota {
+		    		& .quota-bar-ct {
+		    			& .quota-bar {
+		    				& .quota-bar-svg {
+		    					& .bg {
+		    						stroke: $inner-border-color;				/// emptyColor
+
+			    					@at-root html.dark & {
+			    						stroke: $dark-mode-inner-border-color;	/// emptyColor
+			    					}
+		    					}
+
+		    					& .bar {
+		    						stroke: $theme-main-color;					/// fillColor
+		    					}
+		    				}
+		    			}
+		    		}
+		    	}
+
+	    		&.display-options {
+	    			& ul {
+	    				& li {
+			    			&.axi-active {
+			    				& a {
+			    					&::before {
+			    						background-color: $theme-main-color;
+			    					}
+			    				}
+			    			}
+	    				}
+	    			}
+	    			
+	    			&.display-density {
+	    				& ul {
+		    				& li {
+		    					&.more-space {
+			    					& a {
+			    						& span {
+				    						&::before {
+				    							border-top-color: $theme-main-color;
+				    							border-bottom-color: $theme-main-color;
+				    						}
+
+				    						&::after {
+				    							background-color: $theme-main-color;
+				    						}			    							
+			    						}
+			    					}
+			    				}
+
+		    					&.more-content {
+			    					& a {
+			    						& span {
+				    						&::before,
+				    						&::after {
+				    							border-top-color: $theme-main-color;
+				    							border-bottom-color: $theme-main-color;
+				    						}
+			    						}
+			    					}
+			    				}
+		    				}
+		    			}
+		    		}
+
+					&.themes {
+						& ul {
+			    			& li {
+			    				&.ocean {
+			    					& a::before {
+			    						background-color: $theme-ocean-color;
+			    					}
+			    				}
+			    				
+			    				&.breeze {
+			    					& a::before {
+			    						background-color: $theme-breeze-color;
+			    					}
+			    				}
+
+			    				&.neutral {
+			    					& a::before {
+			    						background-color: $theme-neutral-color;
+			    					}				    					
+			    				}
+
+			    				&.axi-active {
+			    					&.ocean a {
+			    						border-color: $theme-ocean-color;
+			    					}
+
+			    					&.breeze a {
+			    						border-color: $theme-breeze-color;
+			    					}
+
+			    					&.neutral a {
+			    						border-color: $theme-neutral-color;
+			    					}
+			    				}
+			    			}
+						}
+					}
+
+	    			&.dark-mode {
+	    				& ul {
+		    				& li {
+		    					&.light {
+		    						& a span::before {
+			    						background-color: $dark-mode-light-background-color;
+			    						border-color: $dark-mode-light-border-color;
+		    						}
+		    					}
+
+		    					&.auto {
+		    						& a span::before {
+			    						background-color: $dark-mode-light-background-color;
+			    						border-color: $dark-mode-light-border-color;
+		    						}
+
+		    						& a span .dark-marker::after {
+			    						border-left-color: transparent;
+			    						border-bottom-color: $dark-mode-dark-background-color;
+		    						}
+		    					}
+
+		    					&.dark {
+		    						& a span::before {
+			    						background-color: $dark-mode-dark-background-color;
+			    						border-color: $dark-mode-dark-border-color;
+		    						}
+		    					}
+		    				}
+	    				}
+	    			}
+	    		}
+
+	    		&.bottom-menu {
+		    		& ul {
+		    			& li {
+							&.settings {
+								&::after {
+									background-color: $inner-border-color;
+
+									@at-root html.dark & {
+										background-color: $dark-mode-inner-border-color;
+									}										
+								}
+							}
+		    			}
+		    		}
+	    		}
+    		}
+    	}
+	}
+}
+// END Sidebar
+
+// START Folder Tree or Grid
+.x-axi-tree-sidebar + .x-panel {
+	// START New Mail toolbar
+	& .new-mail-toolbar {
+		height: $top-area-height;
+
+		& .x-toolbar {
+			min-height: $top-area-height;
+
+			& .x-toolbar-table {
+				height: $top-area-height;
+
+				& .x-tbsplit-btn {
+					& > tbody > tr > td {
+						&:first-child {
+							background-color: $new-mail-button-background-color;
+							transition: background-color .2s ease-in-out;
+
+							& .x-btn-menu-text-wrap .x-btn-center .new-mail-icon .x-btn-icon {
+								color: $new-mail-button-icon-color;
+							}
+
+							& .x-btn-menu-text-wrap .x-btn-center .new-mail-icon .x-btn-rawtext {
+								color: $new-mail-button-text-color;
+							}
+						}
+
+						&:last-child {
+							background-color: $new-mail-button-background-color;
+							transition: background-color .2s ease-in-out;
+
+							& .x-btn-menu-arrow-wrap .x-btn-center .x-btn-menu-arrow-el {
+								border-color: $new-mail-button-separator-color;
+
+								&::before {
+									border-top-color: $new-mail-button-arrow-color;
+								}
+							}
+						}
+					}
+
+					&.x-tbsplit-btn-over {
+						& > tbody > tr > td {
+							&:first-child {
+								background-color: $new-mail-button-hover-background-color;
+							}
+						}
+					}
+
+					&.x-tbsplit-btn-arrow-over {
+						& > tbody > tr > td {
+							&:last-child {
+								background-color: $new-mail-button-hover-background-color;
+							}
+						}				
+					}
+				}
+			}
+		}
+	}
+
+	// Submenu
+	@at-root {
+		.x-menu.menu-new {
+			background-color: $new-mail-button-background-color;
+
+			@at-root html.dark & {
+				background-color: $new-mail-button-background-color;	/// Use the light mode background color, otherwise it will be overridden
+				box-shadow: 0 0 20px 0 $menu-box-shadow-color;			/// Use the light mode box shadow here
+			}
+			
+			&::before {
+				background-color: $new-mail-button-separator-color;
+			}
+
+			& .x-menu-list-item {
+				background-color: transparent;
+				transition: background-color .2s ease-in-out;
+
+				& a.x-menu-item {
+					color: $new-mail-button-text-color;
+				}
+
+				&.x-menu-item-active {
+					background-color: $new-mail-button-hover-background-color;
+				}
+			}
+
+			& .x-menu-sep {
+				background-color: $new-mail-button-separator-color;
+			}
+		}
+	}
+	// END New Mail toolbar
+
+	// START Check email + Folder Tree or Grid + mini calendar container
+	& .x-axi-west-panel-body {
+		background-color: $folder-tree-background-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-folder-tree-background-color;
+		}
+
+		&::after {
+			background-color: $menu-border-color;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-menu-border-color;
+			}			
+		}
+		
+		// START Check Email button
+		& .x-axi-tree-north {
+			& .x-axi-tree-white-border {
+				& .x-axi-check-email {
+					border-color: $menu-border-color;
+
+					@at-root html.dark & {
+						border-color: $dark-mode-menu-border-color;
+					}
+
+					& > table {
+						& .x-btn-left {
+							& i {
+								opacity: .5;
+							}
+						}
+
+						& .x-btn-center {
+							& em {
+								width: 100%;
+								height: $top-toolbar-height;
+
+								color: $check-email-text-color;
+
+								@at-root html.dark & {
+									color: $dark-mode-check-email-text-color;
+								}
+
+								& button {
+									color: $check-email-text-color;	
+
+									@at-root html.dark & {
+										color: $dark-mode-check-email-text-color;
+									}							
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		// END Check Email button
+
+		// START Folder Tree or Grid
+		// START Tree
+		& .x-axi-tree-center {
+			& > .x-panel-bwrap > .x-panel-body {
+				& > .x-axi-tree-accordion > .x-panel-bwrap > .x-panel-body {
+					& .x-axi-tree-category-calendar {
+						& .x-grid-group-body {
+							& .x-grid3-row {
+		                        @for $i from 1 to length($calendar-colors) + 1 {
+		                            &.color_#{$i} {
+										& .x-grid3-row-table {
+				                            & .x-grid3-col {
+												&.x-grid3-td-checker {
+													& .x-grid3-row-checker {
+														background-color: map-get($calendar-colors, cc-#{$i});
+													}
+												}
+
+												&.x-grid3-td-icon {
+													& .x-grid3-col-icon::before {
+														color: map-get($calendar-colors, cc-#{$i});
+													}
+												}
+											}
+										}
+
+										&.x-grid3-row-selected-and-active {
+											& .x-grid3-row-table {
+					                            & .x-grid3-col {
+													&.x-grid3-td-icon {
+														& .x-grid3-col-icon::before {
+															color: map-get($calendar-colors, cc-#{$i});
+														}
+													}
+												}
+											}
+										}
+		                            }
+		                        }
+
+								// Calendar color submenu
+								@at-root .x-menu.x-tree-calendar-icon-menu {
+									& .x-menu-list {
+										& .x-menu-list-item {
+											& .x-menu-item {
+												&.menu_folder_events,
+												&.menu_publicfolder_events,
+												&.menu_sharedfolder_events {
+													&::before {
+														background-color: map-get($calendar-colors, cc-1);
+													}
+												}
+
+												@for $i from 1 to length($calendar-colors) + 1 {
+													&.menu_folder_events_#{$i},
+													&.menu_publicfolder_events_#{$i},
+													&.menu_sharedfolder_events_#{$i} {
+														&::before {
+															background-color: map-get($calendar-colors, cc-#{$i});
+														}
+													}
+												}
+											}
+
+					                        &.x-menu-item-checked {
+				                            	& .x-menu-item {
+						                            &.menu_folder_events,
+						                            &.menu_publicfolder_events,
+						                            &.menu_sharedfolder_events {
+						                            	& .x-menu-item-icon {
+						                            		border-color: map-get($calendar-colors, cc-1);
+							                            }
+							                        }
+
+							                        @for $i from 1 to length($calendar-colors) + 1 {
+							                            &.menu_folder_events_#{$i},
+							                            &.menu_publicfolder_events_#{$i},
+							                            &.menu_sharedfolder_events_#{$i} {
+							                            	& .x-menu-item-icon {
+							                            		border-color: map-get($calendar-colors, cc-#{$i});
+								                            }
+								                        }
+						                            }
+						                        }
+					                        }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		// END Tree
+		// END Folder Tree or Grid
+
+		// START Mini calendar
+		& .x-axi-tree-bottom-panels {
+			& .x-axi-tree-bottom-panels-bwrap {
+				& .x-layout-split-south {
+					& .x-layout-mini {
+					    background: $inner-border-color;
+					    border-color: $menu-border-color;
+
+						@at-root html.dark & {
+							background: $dark-mode-inner-border-color;
+							border-color: $dark-mode-menu-border-color;
+						}
+					}
+				}
+
+				& .x-axi-cal {
+					position: relative;
+					background-color: $folder-tree-background-color;
+					border-color: $menu-border-color;
+
+					@at-root html.dark & {
+						background-color: $dark-mode-folder-tree-background-color;
+						border-color: $dark-mode-menu-border-color;
+					}
+				}
+			}
+		}
+		// END Mini calendar 
+	}
+	// END Check email + Folder Tree or Grid + mini calendar container
+}
+// END Folder Tree or Grid
+// END IDRegionWest
+
+// START Main
+// START Top tabs
+.x-axi-view-body > .x-tab-panel > .x-tab-panel-header {
+	& .x-tab-scroller-right {
+		right: calc(#{$reminders-count-width} + 25px);
+	}
+
+	& > .x-tab-strip-wrap {
+		width: calc(100% - #{$reminders-count-width});
+
+		& > ul.x-tab-strip li {
+			height: $top-area-height;
+
+			&.x-tab-strip-active::before {
+				background-color: $top-tab-strip-background-color;
+			}
+			
+			& .x-tab-strip-text {
+				&::before {
+					color: $tab-icon-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-tab-icon-color;
+					}
+				}
+			}
+		}
+	}
+
+	& > .x-axi-tab-panel-header-tools li {
+    	width: $reminders-count-width;
+		height: $top-area-height;
+
+    	& .reminder-count {
+    		color: $theme-main-color;
+
+	    	@at-root .x-axi-tab-panel-header-menu.x-axi-reminders-menu {
+	    		top: calc(#{$top-toolbar-height} + 3px) !important; 
+
+	    		& .x-menu {
+		    		& .x-axi-reminders-grid {
+		    			border-color: $inner-border-color;
+
+						@at-root html.dark & {
+							border-color: $dark-mode-inner-border-color;
+						}
+
+						& .x-grid3-body {
+							& .x-grid3-row {
+								& .x-grid3-cell {
+									& .x-grid3-col-due {
+						    			border-color: $reminders-menu-row-col-due-border-color;
+						    			color: $reminders-menu-row-col-due-text-color;
+
+						    			@at-root html.dark & {
+						    				border-color: $dark-mode-reminders-menu-row-col-due-border-color;
+							    			color: $dark-mode-reminders-menu-row-col-due-text-color;						    				
+						    			}
+									}
+
+									& .x-grid3-col-summary {
+						    			color: $reminders-menu-row-col-summary-text-color;
+
+						    			@at-root html.dark & {
+						    				color: $dark-mode-reminders-menu-row-col-summary-text-color;						    				
+						    			}
+									}
+
+									& .x-grid3-col-options {
+			    						& .x-table-layout {
+			    							& .x-axi-combo-button {
+			    								& > .x-form-field-wrap {
+			    									border-color: $reminders-menu-row-col-options-text-color;
+			    									color: $reminders-menu-row-col-options-text-color;
+			    								}
+			    							}
+
+			    							& .x-axi-last-button .x-btn-center {
+			    								& .x-btn-text {
+			    									border-color: $reminders-menu-row-col-options-text-color;
+			    									color: $reminders-menu-row-col-options-text-color;
+			    								}
+			    							}
+			    						}
+			    					}
+								}
+
+								&:hover { /// Use :hover as .x-grid3-row-over has some lag issues
+									background-color: $theme-main-color;
+
+									& .x-grid3-cell {
+										& .x-grid3-col-due {
+											border-color: $reminders-menu-row-hover-col-due-border-color;
+											color: $reminders-menu-row-hover-col-due-text-color;
+
+											@at-root html.dark & {
+												border-color: $reminders-menu-row-hover-col-due-border-color;
+												color: $reminders-menu-row-hover-col-due-text-color;
+											}
+										}
+
+										& .x-grid3-col-summary {
+							    			color: $reminders-menu-row-hover-col-summary-text-color;
+
+							    			@at-root html.dark & {
+							    				color: $reminders-menu-row-hover-col-summary-text-color;
+							    			}
+										}
+
+										& .x-grid3-col-options {
+				    						& .x-table-layout {
+				    							& .x-axi-combo-button {
+				    								& > .x-form-field-wrap {
+				    									border-color: $reminders-menu-row-hover-col-options-text-color;
+				    									color: $reminders-menu-row-hover-col-options-text-color;
+				    								}
+				    							}
+
+				    							& .x-axi-last-button .x-btn-center {
+				    								& .x-btn-text {
+				    									border-color: $reminders-menu-row-hover-col-options-text-color;
+				    									color: $reminders-menu-row-hover-col-options-text-color;
+				    								}
+				    							}
+				    						}
+				    					}
+									}
+								}
+							}
+						}
+		    		}
+
+		    		& .x-axi-reminders-actions {
+		    			& .x-panel-body {
+		    				& .x-axi-button-snooze .x-btn-text {
+		    					&::before {
+		    						border-color: $combo-focus-border-color;
+		    						color: $combo-focus-text-color;
+		    					}
+		    				}
+
+		    				& .x-axi-button-small-rounding .x-btn-text {
+		    					&::before {
+		    						@extend %button-small-rounding;
+		    					}
+		    				}
+		    			}
+		    		}
+		    	}
+	    	}
+    	}
+	}
+}
+// END Top tabs
+
+// START Main view
+// START Main view toolbar
+.x-axi-view-body .x-axi-toolbar {
+	border-bottom-color: $inner-border-color;
+
+	@at-root html.dark & {
+		border-bottom-color: $dark-mode-inner-border-color;
+	}
+
+	& .x-toolbar {
+		height: $top-toolbar-height !important;
+
+		& .x-btn {
+			& .x-btn-text {
+				&::before {
+					color: $toolbar-icon-color;
+				}
+
+				& .x-btn-rawtext {
+					color: $toolbar-icon-text-color;					
+				}
+			}
+		}
+	}
+
+	// Mails toolbar
+	&.mails-toolbar {
+		& .x-axi-search-input-container {
+			& + td .ytb-sep {
+				&::after {
+					background-color: $mails-toolbar-search-vertical-separator-color;
+
+					@at-root html.dark & {
+						background-color: $dark-mode-mails-toolbar-search-vertical-separator-color;
+					}
+				}
+			}
+		}
+
+		& .x-toolbar .x-btn .x-btn-text {
+			&.mails-labels-icon {
+				// Labels menu
+				@at-root .x-axi-labels-menu {
+					& .x-menu {
+						& .x-menu-list {
+							&.x-axi-labels-list {
+								& .x-menu-item {
+									&::before {
+										opacity: .5;
+									}
+									&::after {
+										opacity: .6;
+									}
+								}
+							}
+
+							& strong {
+								color: $text-contrast-color;
+
+								@at-root html.dark & {
+									color: $dark-mode-text-contrast-color;
+								}
+							}
+
+							// Hover
+							& .x-menu-item-active {
+								& strong {
+									color: $menu-item-hover-text-color;
+
+									@at-root html.dark & {
+										color: $menu-item-hover-text-color;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Calendar toolbar
+	&.calendar-toolbar.x-axi-calnav {
+		& > .x-axi-calnav-bwrap {
+			& > .x-axi-calnav-body {
+				& > .x-column-inner {
+					& .x-cal-nav-current {
+		                @extend %button-small-rounding;
+					}
+
+					& .x-axi-calnav-prev,
+					& .x-axi-calnav-next {
+						& .x-btn-center {
+							& .x-btn-text {
+								@extend %button-big-rounding;
+								border-color: $theme-main-color;
+							}
+						}
+					}
+
+					& .x-cal-nav-weeknumber {
+						color: $theme-main-lighter-color;
+					}
+				}				
+			}
+		}
+	}
+
+	// Notes toolbar
+	&.notes-toolbar {
+		& .x-axi-search-input-container {
+			& + td .ytb-sep {
+				&::after {
+					background-color: $mails-toolbar-search-vertical-separator-color;
+
+					@at-root html.dark & {
+						background-color: $dark-mode-mails-toolbar-search-vertical-separator-color;
+					}
+				}
+			}
+		}
+	}
+
+	// Contacts toolbar
+	&.contacts-toolbar {
+		& .x-axi-search-input-container {
+			& + td .ytb-sep {
+				&::after {
+					background-color: $mails-toolbar-search-vertical-separator-color;
+
+					@at-root html.dark & {
+						background-color: $dark-mode-mails-toolbar-search-vertical-separator-color;
+					}
+				}
+			}
+		}
+	}
+}
+// END Main view toolbar
+
+// START Main view body
+// START Mail
+// START Mails list
+.x-axi-list {
+	border-color: $menu-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-menu-border-color;
+	}
+
+	// Mails list
+	&.x-axi-mails-list {
+		// In Spam and Trash, there's a top container which
+		// shows a message about the number of days emails 
+		// will be deleted after.
+		@at-root .autopurge-interval-container {
+			background-color: $action-bar-background-color;
+			border-left-color: $menu-border-color;
+			border-right-color: $menu-border-color;
+			border-bottom-color: $inner-border-color;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-action-bar-background-color;
+				border-left-color: $dark-mode-menu-border-color;
+				border-right-color: $dark-mode-menu-border-color;
+				border-bottom-color: $dark-mode-inner-border-color;
+			}
+		}
+
+		// List not focused
+		& .x-grid3-row {
+			& .x-grid3-td-checker {
+				// Has attachment
+				&.has-attachment {
+					& + .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .from {
+								&::after {
+									color: $mails-list-not-focused-row-from-attachment-icon-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-mails-list-not-focused-row-from-attachment-icon-color;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// High importance
+				&.importance-high {
+					& + .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .size {
+								&::before {
+									color: $mails-list-not-focused-row-importance-high-icon-color;
+								}
+							}
+						}
+					}
+				}
+
+				// Low importance
+				&.importance-low {
+					& + .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .size {
+								&::before {
+									color: $mails-list-not-focused-row-importance-low-icon-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-mails-list-not-focused-row-importance-low-icon-color;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// Replied, forwarded, replied & forwarded
+				&.re-read,
+				&.re-unread,
+				&.fw-read,
+				&.fw-unread,
+				&.refw-read,
+				&.refw-unread {
+					& .x-grid3-col-checker {
+						&::before {
+							color: $mails-list-not-focused-row-refw-icon-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-refw-icon-color;
+							}
+						}
+					}
+				}
+
+				& ~ td {
+					& [class^="x-axi"][class$="-item-row"] {
+						& .from {
+							color: $mails-list-not-focused-row-from-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-from-color;
+							}
+						}
+
+						& .subject {
+							color: $mails-list-not-focused-row-subject-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-subject-color;
+							}
+						}
+
+						& .date,
+						& .size {
+							color: $mails-list-not-focused-row-date-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-date-color;
+							}
+						}
+
+						& .folder {
+							color: $mails-list-not-focused-row-folder-color;
+							border-color: $mails-list-not-focused-row-folder-border-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-folder-color;
+								border-color: $dark-mode-mails-list-not-focused-row-folder-border-color;
+							}
+						}
+						
+						& .snippet {
+							color: $mails-list-not-focused-row-snippet-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-snippet-color;
+							}
+						}
+
+						& .labels-container {
+							& .label {
+								background-color: $mails-list-not-focused-row-label-background-color;
+
+								@at-root html.dark & {
+									background-color: $dark-mode-mails-list-not-focused-row-label-background-color;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Row selected
+			&.x-grid3-row-selected {
+				& .x-grid3-td-checker {
+					// Has attachment
+					&.has-attachment {
+						& + .x-grid3-td-subject {
+							& .x-axi-maillist-item-row {
+								& .from {
+									&::after {
+										color: $mails-list-not-focused-row-selected-from-attachment-icon-color;
+									}
+								}
+							}
+						}
+					}
+
+					// High importance
+					&.importance-high {
+						& + .x-grid3-td-subject {
+							& .x-axi-maillist-item-row {
+								& .size {
+									&::before {
+										color: $mails-list-not-focused-row-selected-importance-high-icon-color;
+									}
+								}
+							}
+						}
+					}
+
+					// Low importance
+					&.importance-low {
+						& + .x-grid3-td-subject {
+							& .x-axi-maillist-item-row {
+								& .size {
+									&::before {
+										color: $mails-list-not-focused-row-selected-importance-low-icon-color;
+									}
+								}
+							}
+						}
+					}
+
+					// Replied, forwarded, replied & forwarded
+					&.re-read,
+					&.re-unread,
+					&.fw-read,
+					&.fw-unread,
+					&.refw-read,
+					&.refw-unread {
+						& .x-grid3-col-checker {
+							&::before {
+								color: $mails-list-not-focused-row-selected-refw-icon-color;
+							}
+						}
+					}
+
+					& ~ td {
+						& [class^="x-axi"][class$="-item-row"] {
+							& .from {
+								color: $mails-list-not-focused-row-selected-from-color;
+							}
+
+							& .subject {
+								color: $mails-list-not-focused-row-selected-subject-color;
+							}
+
+							& .date,
+							& .size {
+								color: $mails-list-not-focused-row-selected-date-color;
+							}
+
+							& .folder {
+								color: $mails-list-not-focused-row-selected-folder-color;
+								border-color: $mails-list-not-focused-row-selected-folder-border-color;
+							}
+
+							& .snippet {
+								color: $mails-list-not-focused-row-selected-snippet-color;
+							}
+
+							& .labels-container {
+								& .label {
+									background-color: $mails-list-not-focused-row-selected-label-background-color;
+
+									@at-root html.dark & {
+										background-color: $dark-mode-mails-list-not-focused-row-label-background-color;
+									}
+								}
+							}
+						}
+					}
+				}
+			}			
+		}
+
+		// Flagged or starred
+		@at-root {
+			// Flagging type = flags
+			.flagging-type-flags & {
+				& .x-grid3-row {
+					& .x-grid3-td-checker {
+						& + .x-grid3-td-subject {
+							& .flag-btn {							
+								&::before {
+									color: $mails-list-flag-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-mails-list-flag-color;
+									}
+								}
+							}
+						}
+
+						// Flagged or starred
+						&.flagged {
+							& + .x-grid3-td-subject {
+								& .flag-btn {
+									&::before {
+										color: $mails-list-flag-flagged-color;
+
+										@at-root html.dark & {
+											color: $mails-list-flag-flagged-color;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Flagging type = stars
+			.flagging-type-stars & {
+				& .x-grid3-row {
+					& .x-grid3-td-checker {
+						& + .x-grid3-td-subject {
+							& .flag-btn {							
+								&::before {
+									color: $mails-list-star-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-mails-list-star-color;
+									}
+								}
+							}
+						}
+
+						// Flagged or starred
+						&.flagged {
+							& + .x-grid3-td-subject {
+								& .flag-btn {
+									&::before {
+										color: $mails-list-star-starred-color;
+
+										@at-root html.dark & {
+											color: $mails-list-star-starred-color;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// List focused
+		& .x-axi-focused {
+			& .x-grid3-row {
+				// Row selected
+				&.x-grid3-row-selected {
+					& .x-grid3-td-checker {
+						// Has attachment
+						&.has-attachment {
+							& + .x-grid3-td-subject {
+								& .x-axi-maillist-item-row {
+									& .from {
+										&::after {
+											color: $mails-list-focused-row-selected-from-attachment-icon-color;
+										}
+									}
+								}
+							}
+						}
+
+						// High importance
+						&.importance-high {
+							& + .x-grid3-td-subject {
+								& .x-axi-maillist-item-row {
+									& .size {
+										&::before {
+											color: $mails-list-focused-row-selected-importance-high-icon-color;
+										}
+									}
+								}
+							}
+						}
+
+						// High importance
+						&.importance-low {
+							& + .x-grid3-td-subject {
+								& .x-axi-maillist-item-row {
+									& .size {
+										&::before {
+											color: $mails-list-focused-row-selected-importance-low-icon-color;
+										}
+									}
+								}
+							}
+						}
+
+						// Replied, forwarded, replied & forwarded
+						&.re-read,
+						&.re-unread,
+						&.fw-read,
+						&.fw-unread,
+						&.refw-read,
+						&.refw-unread {
+							& .x-grid3-col-checker {
+								&::before {
+									color: $mails-list-focused-row-selected-refw-icon-color;
+								}
+							}
+						}
+
+						& ~ td {
+							& [class^="x-axi"][class$="-item-row"] {
+								& .from {
+									color: $mails-list-focused-row-selected-from-color;
+								}
+
+								& .subject {
+									color: $mails-list-focused-row-selected-subject-color;
+								}
+
+								& .date,
+								& .size {
+									color: $mails-list-focused-row-selected-date-color;
+								}
+
+								& .folder {
+									color: $mails-list-focused-row-selected-folder-color;
+									border-color: $mails-list-focused-row-selected-folder-border-color;
+								}
+
+								& .snippet {
+									color: $mails-list-focused-row-selected-snippet-color;
+								}
+
+								& .labels-container {
+									& .label {
+										background-color: $mails-list-focused-row-selected-label-background-color;
+										color: $mails-list-focused-row-selected-label-text-color;
+
+										@at-root html.dark & {
+											background-color: $mails-list-focused-row-selected-label-background-color;
+											color: $mails-list-focused-row-selected-label-text-color;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					// Unread
+					&.unread {
+						& .x-grid3-td-checker {
+							& .x-grid3-col-checker {
+								&::after {
+									background-color: $mails-list-focused-selected-unread-bullet;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Flagged / starred
+		@at-root {
+			// Flagging type = flags
+			.flagging-type-flags & {
+				& .x-axi-focused {				
+					& .x-grid3-row {
+						&.x-grid3-row-selected {
+							& .x-grid3-td-checker {
+								& + .x-grid3-td-subject {
+									& .flag-btn {							
+										&::before {
+											color: $mails-list-focused-row-selected-flag-color;
+										}
+									}
+								}
+
+								// Flagged or starred
+								&.flagged {
+									& + .x-grid3-td-subject {
+										& .flag-btn {
+											&::before {
+												color: $mails-list-flag-flagged-color;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Flagging type = stars
+			.flagging-type-stars & {
+				& .x-axi-focused {				
+					& .x-grid3-row {
+						&.x-grid3-row-selected {
+							& .x-grid3-td-checker {
+								& + .x-grid3-td-subject {
+									& .flag-btn {							
+										&::before {
+											color: $mails-list-focused-row-selected-star-color;
+										}
+									}
+								}
+
+								// Flagged or starred
+								&.flagged {
+									& + .x-grid3-td-subject {
+										& .flag-btn {
+											&::before {
+												color: $mails-list-star-starred-color;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Conversations list
+	&.x-axi-conversations-list {
+		// List not focused
+		& .x-grid3-row {
+			& .x-grid3-td-checker {
+				// Has attachment
+				&.has-attachment {
+					& + .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .participants {
+								&::after {
+									color: $mails-list-not-focused-row-from-attachment-icon-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-mails-list-not-focused-row-from-attachment-icon-color;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// High importance
+				&.importance-high {
+					& + .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .importance-container {
+								&::before {
+									color: $mails-list-not-focused-row-importance-high-icon-color;
+								}
+							}
+						}
+					}
+				}
+
+				// Low importance
+				&.importance-low {
+					& + .x-grid3-td-subject {
+						& .x-axi-maillist-item-row {
+							& .importance-container {
+								&::before {
+									color: $mails-list-not-focused-row-importance-low-icon-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-mails-list-not-focused-row-importance-low-icon-color;
+									}
+								}
+							}
+						}
+					}
+				}				
+
+				& ~ td {
+					& [class^="x-axi"][class$="-item-row"] {
+						& .participant {
+							color: $mails-list-not-focused-row-from-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-from-color;
+							}
+						}
+
+						& .draft {
+							color: $mails-list-not-focused-row-draft-color;
+						}
+
+						& .count {
+							border-color: $conversations-list-not-focused-row-count-border-color;
+							color: $conversations-list-not-focused-row-count-color;
+						}
+					}
+				}
+			}
+
+			// Row selected
+			&.x-grid3-row-selected {
+				& .x-grid3-td-checker {
+					// Has attachment
+					&.has-attachment {
+						& + .x-grid3-td-subject {
+							& .x-axi-maillist-item-row {
+								& .participants {
+									&::after {
+										color: $mails-list-not-focused-row-selected-from-attachment-icon-color;
+
+										@at-root html.dark & {
+											color: $dark-mode-mails-list-not-focused-row-from-attachment-icon-color;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					// High importance
+					&.importance-high {
+						& + .x-grid3-td-subject {
+							& .x-axi-maillist-item-row {
+								& .importance-container {
+									&::before {
+										color: $mails-list-not-focused-row-selected-importance-high-icon-color;
+									}
+								}
+							}
+						}
+					}
+
+					// Low importance
+					&.importance-low {
+						& + .x-grid3-td-subject {
+							& .x-axi-maillist-item-row {
+								& .importance-container {
+									&::before {
+										color: $mails-list-not-focused-row-selected-importance-low-icon-color;
+									}
+								}
+							}
+						}
+					}
+
+					& ~ td {
+						& [class^="x-axi"][class$="-item-row"] {
+							& .participant {
+								color: $mails-list-not-focused-row-selected-from-color;
+							}
+
+							& .count {
+								border-color: $conversations-list-not-focused-row-selected-count-border-color;
+								color: $conversations-list-not-focused-row-selected-count-color;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// List focused
+		& .x-axi-focused {
+			& .x-grid3-row {
+				// Row selected
+				&.x-grid3-row-selected {
+					& .x-grid3-td-checker {
+						// Has attachment
+						&.has-attachment {
+							& + .x-grid3-td-subject {
+								& .x-axi-maillist-item-row {
+									& .participants {
+										&::after {
+											color: $mails-list-focused-row-selected-from-attachment-icon-color;
+
+											@at-root html.dark & {
+												color: $mails-list-focused-row-selected-from-attachment-icon-color;
+											}
+										}
+									}
+								}
+							}
+						}
+
+						// High importance
+						&.importance-high {
+							& + .x-grid3-td-subject {
+								& .x-axi-maillist-item-row {
+									& .importance-container {
+										&::before {
+											color: $mails-list-focused-row-selected-importance-high-icon-color;
+										}
+									}
+								}
+							}
+						}
+
+						// High importance
+						&.importance-low {
+							& + .x-grid3-td-subject {
+								& .x-axi-maillist-item-row {
+									& .importance-container {
+										&::before {
+											color: $mails-list-focused-row-selected-importance-low-icon-color;
+										}
+									}
+								}
+							}
+						}
+
+						& ~ td {
+							& [class^="x-axi"][class$="-item-row"] {
+								& .participant {
+									color: $mails-list-focused-row-selected-from-color;
+								}
+
+								& .draft {
+									color: $mails-list-focused-row-draft-color;
+								}
+
+								& .count {
+									border-color: $conversations-list-focused-row-selected-count-border-color;
+									color: $conversations-list-focused-row-selected-count-color;
+								}
+							}
+						}
+					}
+				}	
+			}
+		}
+	}
+}
+// END Mails list
+
+// START Mail item
+.x-axi-mail-item {
+	// START Mail item header
+	& .x-axi-compose-north {
+		border-bottom-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-bottom-color: $dark-mode-inner-border-color;
+		}
+
+		& > .x-panel-bwrap {
+			& > .x-panel-body {
+				& .x-axi-mail-item-container {
+					& > .x-panel-header {
+						& .mail-item-summary {
+							& .subject {
+								color: $mail-item-subject-color;
+
+								@at-root html.dark & {
+									color: $dark-mode-mail-item-subject-color;
+								}
+							}
+						}
+					}
+
+					& > .x-panel-bwrap {
+						& > .x-panel-body {
+							color: $mail-item-recipients-info-color;
+						}
+					}
+				}
+
+				// Attachments panel
+				& .x-axi-attachment-list-container {
+					border-color: $inner-border-color;
+
+					@at-root html.dark & {
+						border-color: $dark-mode-inner-border-color;
+					}
+				}
+			}
+		}
+	}
+	// END Mail item header
+
+	// START Attachments tab
+	& .x-axi-attachments-actions-toolbar {
+		& .x-panel-tbar {
+			& .x-toolbar {
+				& > table {
+					& > tbody > tr > td {
+						&.x-axi-small-thumbs,
+						&.x-axi-medium-thumbs,
+						&.x-axi-large-thumbs {
+							& .x-btn-wrap {
+								@extend %button-small-rounding;
+
+								&.x-btn-pressed {
+									background-color: $theme-main-color;
+								}
+							}
+						}
+
+						& .ytb-text {
+							@extend %x-axi-attachments-title;
+						}
+					}
+				}
+			}
+		}
+
+		& .x-axi-all-attachments-panel {
+			& .x-axi-attachment-list-preview {
+				& .x-axi-attachment-container {
+					& .x-axi-attachment-wrapper {
+						& .x-axi-attachment-border {
+							border-color: $attachments-tab-attachment-border-color;
+
+							@at-root html.dark & {
+								border-color: $dark-mode-attachments-tab-attachment-border-color;
+							}
+
+							&::after {
+							    border-color: $theme-background-color $theme-background-color $attachments-tab-attachment-corner-background-color $attachments-tab-attachment-corner-background-color;
+
+							    @at-root html.dark & {
+							    	border-color: $dark-mode-theme-background-color $dark-mode-theme-background-color $dark-mode-attachments-tab-attachment-corner-background-color $dark-mode-attachments-tab-attachment-corner-background-color;							    	
+							    }
+							}
+
+							& .x-axi-attachment-body {
+								background-color: $attachments-tab-attachment-background-color;
+
+								@at-root html.dark & {
+									background-color: $dark-mode-attachments-tab-attachment-background-color;
+								}
+
+								& > * {
+									&.x-axi-att-img-type {
+										& .x-axi-type::before {
+											color: $attachments-tab-attachment-icon-color;
+										}
+									}
+
+									&.x-axi-attachment-info {
+										& .info {
+											& .x-axi-attachment-size {
+												color: rgba($theme-main-lighter-color, .7);
+											}
+										}
+
+										& .x-axi-download-buttons-container {
+											& a {
+												border-color: $theme-main-color;
+
+												&::before {
+
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	// END Attachments tab
+}
+// END Mail item
+// END Mail
+
+// START Calendar
+// Calendar views
+.x-axi-calendar-panel {
+	// Common components
+	%x-axi-calendar-header {
+		color: $theme-main-lighter-color;
+
+		& div,
+		& span {
+			color: $theme-main-lighter-color;
+		}
+	}
+
+	%today-highlight {
+		color: $theme-secondary-color;
+
+		& span {
+			background-color: $highlight-button-background-color;
+			color: $highlight-button-text-color !important;
+		}
+	}
+
+	& > .x-panel-header {
+		& .x-axi-calendar-header-tz {
+			& .active {
+				&::after {
+					background-color: $inner-border-color;
+
+					@at-root html.dark & {
+						background-color: $dark-mode-inner-border-color;
+					}
+				}
+			}
+		}
+	}
+
+	& .x-axi-calendar-timebar {
+		background-color: $theme-main-color;
+	}
+
+	& .x-axi-calendar-timebar-day {
+		background-color: $theme-main-color;
+		border-color: $theme-background-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-theme-background-color;
+		}
+	}
+
+	// Attendees icon
+	.x-axi-has-attendees {
+		opacity: .35;
+
+		&::before,
+		&::after {
+			border-color: $calendar-event-attendees-icon-color;			
+		}
+	}
+
+	// Recurrence icon
+	.x-axi-has-recurrency {
+		opacity: .35;
+
+		&::after {
+			color: $calendar-event-recurrence-icon-color;
+		}
+	}
+
+	// Recurrence exception icon
+	.x-axi-had-recurrency {
+		opacity: .35;
+
+		&::before {
+			background-color: $calendar-event-recurrence-icon-color;
+		}
+
+		&::after {
+			color: $calendar-event-recurrence-icon-color;
+		}
+	}
+
+	& .x-grid3-scroller {
+		border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+	}
+
+	& .x-grid3-row {
+		& td {
+			border-color: $inner-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+
+			&.x-axi-calendar-non-working-day {
+				background-color: $calendar-cell-non-working-day-background-color;
+
+				@at-root html.dark & {
+					background-color: $dark-mode-calendar-cell-non-working-day-background-color;
+				}
+			}
+
+			&.x-grid3-cell-selected {
+				background-color: $calendar-cell-selected-background-color !important;
+			}
+
+			&.x-grid3-cell-first {
+				background-color: $theme-background-color;
+
+				@at-root html.dark & {
+					background-color: $dark-mode-theme-background-color;
+				}
+			}
+		}
+
+		&.x-axi-grid-even {
+			border-bottom-color: rgba($inner-border-color, .6);
+
+			@at-root html.dark & {
+				border-bottom-color: rgba($dark-mode-inner-border-color, .6);
+			}
+		}
+	}
+
+	// Applies to Day view and Week view
+	& .x-axi-calendar-allday-panel {
+		border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+		& .x-axi-calendar-allday-header {
+			border-color: $inner-border-color;
+			color: $theme-main-lighter-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+		}
+
+		& .x-axi-calendar-allday-column {
+			border-color: $inner-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+		}
+	}
+
+	& .x-axi-calendar-timeline-cell {
+	    background-color: $theme-background-color;
+
+	    @at-root html.dark & {
+	    	background-color: $dark-mode-theme-background-color;	    	
+	    }
+
+	    & span {
+	    	color: $theme-main-lighter-color;
+	    }
+	}
+
+	& .x-axi-calendar-event {		
+        @for $i from 1 to length($calendar-colors) + 1 {
+            &.color#{$i} .x-axi-calendar-event-body {
+				background-color: rgba(map-get($calendar-colors, cc-#{$i}), .85);
+            }
+
+            &.color#{$i}-selected .x-axi-calendar-event-body {
+				background-color: map-get($calendar-colors, cc-#{$i});
+            }
+        }
+
+		&.tentative,
+		&.need-action {
+			&::after {
+				border-color: $calendar-event-tentative-border-color;
+			}
+		}
+
+		& .x-axi-calendar-event-body {
+			& > div {
+		        & .x-axi-calendar-event-description {
+		        	color: $calendar-event-description-text-color !important;
+
+		        	& .x-axi-calendar-event-description-tinterval {
+		        		color: $calendar-event-description-text-color !important;
+		        		opacity: .7;
+		        	}
+		        }
+		    }
+	    }
+	}
+
+	// Day view
+	&.x-axi-calendar-day {
+		& .x-axi-calendar-panel {
+			& > .x-panel-header {
+				border-color: $inner-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+
+				& .x-axi-calendar-header-tz {
+					@extend %x-axi-calendar-header;
+				}
+
+				& .x-axi-calendar-header-nav {
+					@extend %x-axi-calendar-header;
+
+					& .x-axi-calendar-header-text {
+						&.today {
+							@extend %today-highlight;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Week view
+	&.x-axi-calendar-week {
+		& .x-axi-calendar-panel {
+			& > .x-panel-header {
+				border-color: $inner-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+
+				& .x-axi-day-view-header td {
+					@extend %x-axi-calendar-header;
+
+					&.today {
+						@extend %today-highlight;
+					}
+				}
+			}
+		}
+	}
+
+	// Month view
+	&.x-axi-calendar-month {
+		& > .x-panel-header {
+			& .x-axi-calendar-days {
+				& .x-axi-calendar-day {
+					@extend %x-axi-calendar-header;
+				}
+			}
+		}
+
+		& > .x-panel-bwrap {
+			& .calendar-month-week-number {
+				color: $theme-main-lighter-color;
+			}
+
+			& .calendar-month-cell-title {
+				color: $theme-main-lighter-color !important;
+
+				& em,
+				& span {
+					color: $theme-main-lighter-color !important;
+				}
+
+				& .today {
+					@extend %today-highlight;
+				}
+			}
+
+			& .more-container {
+				color: $theme-main-color;
+			}
+		}
+	}
+}
+
+// Calendar search
+.x-axi-calendar-search-view {
+	& .x-axi-calendar-search-grid {
+		border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+		& .x-grid3-scroller {
+			& .x-grid3-body {
+				& .x-grid-group {
+					& .x-grid-group-hd {
+						background-color: $calendar-search-group-header-background-color;
+
+						@at-root html.dark & {
+							background-color: $dark-mode-calendar-search-group-header-background-color;
+						}
+
+						& div {
+							color: $calendar-search-group-header-text-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-calendar-search-group-header-text-color;
+							}
+						}
+					}
+
+					& .x-grid3-row {
+						border-color: $inner-border-color;
+
+						@at-root html.dark & {
+							border-color: $dark-mode-inner-border-color;
+						}
+
+						& .x-grid3-cell-inner {
+							& .x-axi-search-result-container {
+								& tr {
+									& td {
+										padding: 3px;
+
+										&.x-axi-calendar-search-startDayNumber {
+											color: $calendar-search-results-date-text-color;
+
+											@at-root html.dark & {
+												color: $dark-mode-calendar-search-results-date-text-color;
+											}
+										}
+
+										&.x-axi-calendar-search-folder-color {
+					                        @for $i from 1 to length($calendar-colors) + 1 {
+					                            &.color_#{$i} {
+													&::before {
+					 									background-color: map-get($calendar-colors, cc-#{$i});
+					 								}
+					                            }
+					                        } 
+					                    }
+
+					                    &.x-axi-calendar-search-startDayShort,
+					                    &.x-axi-calendar-search-timeInterval {
+											color: $calendar-search-results-second-row-text-color;
+
+											@at-root html.dark & {
+												color: $dark-mode-calendar-search-results-second-row-text-color;
+											}
+					                    }
+									}
+								}
+							}
+						}
+
+						&.x-axi-calendar-search-row-past {
+							opacity: .5;
+						}
+					}
+
+					// Present line marker
+					&.x-axi-calendar-search-group-past.x-axi-calendar-search-group-future .x-grid3-row.x-axi-calendar-search-row-past + .x-axi-calendar-search-row-future,
+					&.x-axi-calendar-search-group-past:not(.x-axi-calendar-search-group-future) + .x-grid-group.x-axi-calendar-search-group-future:not(.x-axi-calendar-search-group-past) .x-grid-group-hd {
+						&::before {
+							background-color: $theme-main-color;
+						}
+
+						&::after {
+						    background-color: $theme-main-color;
+						    border-color: $theme-background-color;
+
+						    @at-root html.dark & {
+						    	border-color: $dark-mode-theme-background-color;
+						    }
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+// END Calendar
+
+// START Tasks
+// START Tasks list
+.x-axi-list {
+	&.x-axi-tasks-list {		
+		& .x-grid3-body {
+			& .x-grid3-row {
+				background-color: $tasks-list-not-focused-row-background-color;
+
+				& .x-grid3-row-table {
+					& td {
+						&.x-grid3-td-taskpriority {
+							&.task-priority-high ~ .x-grid3-td-tasksummary {
+								& .x-grid3-col-tasksummary::after {
+									color: $theme-secondary-color;
+								}
+							}
+
+							&.task-priority-low ~ .x-grid3-td-tasksummary {
+								& .x-grid3-col-tasksummary::after {
+									color: $text-main-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-text-main-color;
+									}
+								}								
+							}
+						}
+
+						& .x-grid3-col-tasksummary {
+							color: $tasks-list-not-focused-row-summary-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-tasks-list-not-focused-row-summary-color;
+							}
+						}
+
+						& .x-grid3-col-taskduedate {
+							color: $tasks-list-not-focused-row-duedate-color;
+						}
+
+						& .x-grid3-col-taskprogress {
+							color: $tasks-list-not-focused-row-progress-color;
+						}
+
+						& .x-grid3-col-taskstatus {
+							&::before {
+								border-color: $theme-main-color;
+								color: $theme-main-color;
+							}
+						}
+
+						// Overdue
+						&.task-overdue {
+							& .x-grid3-col-tasksummary {
+								color: $tasks-list-not-focused-row-overdue-summary-color;
+							}
+
+							& .x-grid3-col-taskduedate {
+								color: $tasks-list-not-focused-row-overdue-duedate-color;
+							}
+
+							& .x-grid3-col-taskprogress {
+								color: $tasks-list-not-focused-row-overdue-progress-color;
+							}
+
+							& + td .x-grid3-col-taskprogress {
+								& .x-progress-wrap {
+									& .x-progress-inner {
+										border-color: rgba($tasks-list-not-focused-row-overdue-summary-color, .3);
+
+										& .x-progress-bar::before {
+											background: $tasks-list-not-focused-row-overdue-summary-color;;
+										}
+									}
+								}
+							}
+						}
+
+						& .x-axi-tasks-quickedit {
+							& .x-axi-textfield,
+							& .x-form-trigger {
+								background-color: $theme-background-color;
+							}							
+						}
+					}
+				}
+
+				// Row selected
+				&.x-grid3-row-selected {
+					& .x-grid3-row-table {
+						& td {
+							& .x-grid3-col-tasksummary {
+								color: $tasks-list-not-focused-row-selected-summary-color;
+							}
+
+							& .x-grid3-col-taskduedate {
+								color: $tasks-list-not-focused-row-selected-duedate-color;
+							}
+
+							& .x-grid3-col-taskprogress {
+								color: $tasks-list-not-focused-row-selected-progress-color;
+							}
+						}
+					}
+				}
+
+				&.x-axi-tasks-quickedit-row {
+					background-color: $theme-main-color !important;
+
+					& .x-grid3-row-table {
+						& td {
+							&.x-grid3-td-taskpriority {
+								&.task-priority-high ~ .x-grid3-td-tasksummary {
+									& .x-grid3-col-tasksummary::after {
+										color: $tasks-list-focused-row-selected-summary-color;
+									}
+								}
+
+								&.task-priority-low ~ .x-grid3-td-tasksummary {
+									& .x-grid3-col-tasksummary::after {
+										color: $tasks-list-focused-row-selected-duedate-color;
+									}								
+								}
+							}
+
+							& .x-grid3-col-taskprogress {
+								color: $tasks-list-focused-row-selected-progress-color;
+
+								& .x-progress-wrap {
+									& .x-progress-inner {
+										border-color: rgba($tasks-list-focused-row-selected-summary-color, .3) !important;
+
+										& .x-progress-bar::before {
+											background: $tasks-list-focused-row-selected-summary-color !important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.x-axi-focused {
+				& .x-grid3-row {
+					&.x-grid3-row-selected {
+						& .x-grid3-row-table {
+							& td {
+								&.x-grid3-td-taskpriority {
+									&.task-priority-high ~ .x-grid3-td-tasksummary {
+										& .x-grid3-col-tasksummary::after {
+											color: $tasks-list-focused-row-selected-summary-color;
+										}
+									}
+
+									&.task-priority-low ~ .x-grid3-td-tasksummary {
+										& .x-grid3-col-tasksummary::after {
+											color: $tasks-list-focused-row-selected-duedate-color;
+										}								
+									}
+								}
+								
+								& .x-grid3-col-tasksummary {
+									color: $tasks-list-focused-row-selected-summary-color;
+								}
+
+								& .x-grid3-col-taskduedate {
+									color: $tasks-list-focused-row-selected-duedate-color;
+								}
+
+								& .x-grid3-col-taskprogress {
+									color: $tasks-list-focused-row-selected-progress-color;
+
+									& .x-progress-wrap {
+										& .x-progress-inner {
+											border-color: rgba($tasks-list-focused-row-selected-summary-color, .3);
+
+											& .x-progress-bar::before {
+												background: $tasks-list-focused-row-selected-summary-color;
+											}
+										}
+									}
+								}
+							}
+						}
+
+						// Row hover 
+						&.x-grid3-row-over {
+							& .x-grid3-row-table {
+								& td {
+									& .x-grid3-col-taskstatus::before {
+										border-color: $tasks-list-focused-row-selected-summary-color;
+										color: $tasks-list-focused-row-selected-summary-color;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// END Tasks list
+// END Tasks
+
+// START Notes
+// START Notes list
+.x-axi-list {
+	&.x-axi-notes-list {
+		background-color: $notes-list-background-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-notes-list-background-color;
+		}
+
+		& .x-grid3-header {
+			background-color: $list-footer-background-color;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-list-footer-background-color;
+			}
+		}
+
+		// List not focused
+		& .x-grid3-row {
+			background-color: $notes-list-not-focused-row-background-color;
+			border-color: $inner-border-color;
+			border-radius: 2px;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-notes-list-not-focused-row-background-color;
+				border-color: $dark-mode-inner-border-color;
+			}
+
+			& .x-grid3-td-checker ~ td {
+				& [class^="x-axi"][class$="-item-row"] {
+					& .subject {
+						color: $notes-list-not-focused-row-subject-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-notes-list-not-focused-row-subject-color;
+						}
+					}
+
+					& .date {
+						color: $notes-list-not-focused-row-date-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-notes-list-not-focused-row-date-color;
+						}
+					}
+
+					& .snippet {
+						color: $notes-list-not-focused-row-snippet-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-notes-list-not-focused-row-snippet-color;
+						}
+					}
+
+					& .folder {
+						color: $mails-list-not-focused-row-folder-color;
+						border-color: $mails-list-not-focused-row-folder-border-color;
+
+						@at-root html.dark & {
+							color: $dark-mode-mails-list-not-focused-row-folder-color;
+							border-color: $dark-mode-mails-list-not-focused-row-folder-border-color;
+						}
+					}
+				}
+			}
+
+			// Row selected
+			&.x-grid3-row-selected {
+				border-color: $notes-list-not-focused-row-selected-border-color;
+
+				& .x-grid3-td-checker ~ td {
+					& [class^="x-axi"][class$="-item-row"] {
+						& .subject {
+							color: $notes-list-not-focused-row-selected-subject-color;
+						}
+
+						& .date {
+							color: $notes-list-not-focused-row-selected-date-color;
+						}
+
+						& .snippet {
+							color: $notes-list-not-focused-row-selected-snippet-color;
+						}
+					}
+				}
+			}
+		}
+
+		// List focused
+		& .x-axi-focused {
+			& .x-grid3-row {
+				// Row selected
+				&.x-grid3-row-selected {
+					border-color: $notes-list-focused-row-selected-border-color;
+					
+					& .x-grid3-td-checker ~ td {
+						& [class^="x-axi"][class$="-item-row"] {
+
+							& .subject {
+								color: $notes-list-focused-row-selected-subject-color;
+							}
+
+							& .date {
+								color: $notes-list-focused-row-selected-date-color;
+							}
+
+							& .snippet {
+								color: $notes-list-focused-row-selected-snippet-color;
+							}
+
+							& .folder {
+								color: $mails-list-focused-row-selected-folder-color;
+								border-color: $mails-list-focused-row-selected-folder-border-color;
+							}
+						}
+					}
+				}
+			}			
+		}
+	}
+}
+// END Notes list
+
+// START Note item
+.x-axi-note-preview-container .x-axi-contact-item-iframe,
+.x-axi-toolbar.notes-toolbar ~ .x-axi-listview-body .x-layout-split,
+.x-axi-notecomposer-htmleditor-panel .x-panel-body-noheader .x-html-editor-wrap {
+	background-color: $notes-list-background-color;
+
+	@at-root html.dark & {
+		background-color: $dark-mode-notes-list-background-color;
+	}
+}
+// END Note item
+// END Notes
+
+// START Contacts
+// START Contacts list
+.x-axi-list {
+	&.x-axi-contacts-list {
+		& .x-grid3-body {
+			& .x-grid3-row {
+				& .x-grid3-td-details {
+					& .x-axi-contactlist-item-row {
+						& .folder {
+							color: $mails-list-not-focused-row-folder-color;
+							border-color: $mails-list-not-focused-row-folder-border-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-mails-list-not-focused-row-folder-color;
+								border-color: $dark-mode-mails-list-not-focused-row-folder-border-color;
+							}
+						}
+					}
+				}
+			}
+
+			&.x-axi-focused {
+				& .x-grid3-row {
+					&.x-grid3-row-selected {
+						& .x-grid3-td-details {
+							& .x-axi-contactlist-item-row {
+								& .folder {
+									color: $mails-list-focused-row-selected-folder-color;
+									border-color: $mails-list-focused-row-selected-folder-border-color;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// END Contacts list
+// END Contacts
+
+// END Main view body
+// END Main view
+
+// START Composers
+.x-axi-composer {
+	// Common components
+    %x-axi-cal-two-way-fork {
+    	border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+    }
+
+    %x-axi-cal-three-way-fork {
+    	border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+        &::before {
+        	background-color: $inner-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+        }
+    }
+
+    %x-axi-cal-weekly-from-dots {
+    	border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+
+        &::before,
+        &::after {
+        	border-color: $inner-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+        }
+
+        & span {
+        	background-color: $inner-border-color;
+
+			@at-root html.dark & {
+				background-color: $dark-mode-inner-border-color;
+			}
+        }
+    }
+
+	& .x-axi-hspacer {
+	    background-color: $composers-north-field-border-color;
+
+		@at-root html.dark & {
+			background-color: $dark-mode-composers-north-field-border-color;
+		}
+	}
+
+    // Active recipient tooltip
+    @at-root .x-tip.x-axi-tips-window.active-recipient-tooltip {
+        & .x-tip-header {
+            & .normal {
+                color: $text-main-color;
+
+				@at-root html.dark & {
+					color: $dark-mode-text-main-color;
+				}
+            }
+        }
+    }
+
+    & .x-axi-folder-selection-row {
+    	border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+    }
+
+    & .x-axi-attendees-row,
+    & .x-axi-assignees-row {
+    	border-color: $inner-border-color;
+
+		@at-root html.dark & {
+			border-color: $dark-mode-inner-border-color;
+		}
+    }
+
+    %save-send-icon {
+		border-radius: 16px;
+		background-color: $composers-toolbar-send-save-button-icon-background-color;
+		color: $composers-toolbar-send-save-button-icon-text-color !important;
+    }
+
+    // Folder selection combo
+    @at-root .x-axi-folder-selection-combo-list {
+        & .x-combo-list-inner {
+	        & .x-combo-list-group {
+	            color: $folder-tree-root-node-text-color;
+
+	            @at-root html.dark & {
+		            color: $dark-mode-folder-tree-root-node-text-color;
+	            }
+	        }
+	    }
+    }
+
+	// START Mail Composer
+	&.x-axi-mail-composer {
+		& .mail-compose-toolbar {
+			& .x-btn-text {
+				&.send-icon {
+					&::before {
+                        @extend %save-send-icon;
+					}
+
+					& .x-btn-rawtext {
+						color: $composers-toolbar-send-save-button-text-color !important;
+					}
+				}
+
+				&.mails-more-icon {
+                    // Importance menu
+                    @at-root .x-axi-btn-menu .x-menu-list-item {
+	                    & .x-menu-item {
+	                    	&.menu-importance {
+		                    	&.importance-high {
+		                    		& span {
+			                    		&::before {
+			                    			color: $mails-list-not-focused-row-importance-high-icon-color;
+			                    		}
+
+		                    		}
+		                    	}
+
+		                    	&.importance-low {
+		                    		& span {
+			                    		&::before {
+			                    			color: $mails-list-not-focused-row-importance-low-icon-color;
+
+			                    			@at-root html.dark & {
+			                    				color: $dark-mode-mails-list-not-focused-row-importance-low-icon-color;
+			                    			}
+			                    		}
+		                    		}
+		                    	}
+	                    	}
+	                    }
+
+                    	&.x-menu-item-active {
+                    		& .x-menu-item {
+                    			&.menu-importance {
+                    				&.importance-high {
+	                    				& span {
+	                    					&::before {
+	                    						color: $mails-list-focused-row-selected-importance-high-icon-color;
+	                    					}		                    					
+	                    				}
+                    				}
+
+                    				&.importance-low {
+	                    				& span {
+	                    					&::before {
+	                    						color: $mails-list-focused-row-selected-importance-low-icon-color;
+
+	                    						@at-root html.dark & {
+	                    							color: $mails-list-focused-row-selected-importance-low-icon-color;
+	                    						}
+	                    					}
+	                    				}
+                    				}
+                    			}
+                    		}
+                    	}
+                    }
+				}
+			}
+		}
+
+		// Headers
+		& .x-axi-compose-north {
+			border-color: $inner-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+
+			& .x-axi-email-address-row-container {
+				border-color: $composers-north-field-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
+
+				& .x-form-item-button-label {
+					& > .x-btn-wrap {
+						& .x-btn-center {
+                            & em {
+								& .x-btn-text {
+									color: $text-main-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-text-main-color;
+									}
+								}
+							}
+						}
+
+						&.x-btn-over {
+							& .x-btn-center {
+								& .x-btn-text {
+									color: $composers-north-addressbook-button-hover-text-color;
+									opacity: 1;
+
+									@at-root html.dark & {
+										color: $composers-north-addressbook-button-hover-text-color;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				& .x-form-field-wrap {
+					& .x-form-field {
+					}
+				}
+			}
+		}
+
+		// Body
+		& .x-axi-compose-south {
+            // Attachments panel
+            & .x-axi-attlist-panel {
+	            border-color: $inner-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+	        }
+		}
+	}
+	// END Mail Composer
+
+    // START Calendar Composer
+    &.x-axi-calendar-composer {
+        & .new-meeting-toolbar {
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+
+					& .x-btn-rawtext {
+						color: $composers-toolbar-send-save-button-text-color !important;
+					}
+                }
+            }
+        }
+
+        & .x-axi-collapsable-title-panel-body {
+            & .x-axi-cal-two-way-fork {
+            	@extend %x-axi-cal-two-way-fork;
+            }
+
+            & .x-axi-cal-three-way-fork {
+            	@extend %x-axi-cal-three-way-fork;
+            }
+
+            & .x-axi-cal-weekly-from-dots {
+            	@extend %x-axi-cal-weekly-from-dots;
+            }
+
+        	& .x-axi-location-row {
+        		border-color: $composers-north-field-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
+        	}
+
+        	& .x-axi-folder-selection-row {
+        		& .x-axi-combo {
+        			& > .x-form-field-wrap {
+                        @for $i from 1 to length($calendar-colors) + 1 {
+                            &.folder_color_#{$i} {
+								&::before {
+ 									background-color: map-get($calendar-colors, cc-#{$i});
+ 								}
+                            }
+                        }       				
+        			}
+
+                    @at-root .x-axi-folder-selection-combo-list.x-axi-events-combo {
+                        & .x-combo-list-item {
+                        	&.menu_folder_events,
+                        	&.menu_publicfolder_events,
+                        	&.menu_sharedfolder_events {
+								&::before {
+ 									background-color: map-get($calendar-colors, cc-1);
+ 								}
+                        	}
+
+	                        @for $i from 1 to length($calendar-colors) + 1 {
+	                            &.menu_folder_events_#{$i},
+	                            &.menu_publicfolder_events_#{$i},
+	                            &.menu_sharedfolder_events_#{$i} {
+									&::before {
+	 									background-color: map-get($calendar-colors, cc-#{$i});
+	 								}
+	                            }
+	                        } 
+	                    }
+                    }
+        		}
+        	}
+
+            & .x-axi-recurrence-row {
+                & .x-axi-rec-weekly {
+                    & .x-form-check-wrap {
+                    	& .x-form-cb-label {
+                    		color: $text-main-color;
+
+							@at-root html.dark & {
+								color: $dark-mode-text-main-color;
+							}
+                    	}
+                    }
+                }
+            }
+
+        	& .x-axi-attendees-row {
+                & .x-axi-calendar-composer-attendees-container {
+                    // Free / busy infotip
+                    & .x-axi-info-tooltip-panel {
+                        & .x-panel-body {
+                            &::before {
+                            	color: $attendees-availability-icon-text-color;
+                            }
+
+                            &::after {
+                            	background-color: $attendees-availability-icon-background-color;                            	
+                            }
+                        }
+
+                        &.x-axi-info-tooltip-panel-free .x-panel-body {
+                            &::before {
+                            	color: $attendees-availability-free-icon-text-color;
+                            }
+
+                            &::after {
+                            	background-color: $attendees-availability-free-icon-background-color;
+                            }
+                        }
+
+                        &.x-axi-info-tooltip-panel-busy .x-panel-body {
+                            &::before {
+                            	color: $attendees-availability-busy-icon-text-color;
+                            }
+
+                            &::after {
+                            	background-color: $attendees-availability-busy-icon-background-color;
+                            }
+                        }
+
+
+                        &.x-axi-info-tooltip-panel-na .x-panel-body {
+                            &::before {
+                            	color: $attendees-availability-na-icon-text-color;
+                            }
+
+                            &::after {
+                            	background-color: $attendees-availability-na-icon-background-color;
+                            }
+                        }
+                    }
+                }
+
+                & .x-axi-availability-button-noicon {
+                    & .x-btn-center {
+                    	& .x-btn-text {
+							@extend %button-small-rounding;                    		
+                    	}
+					}
+				}
+        	}
+        }
+    }
+    // END Calendar Composer
+
+    // START Tasks Composer
+    &.x-axi-tasks-composer {
+        & .new-task-toolbar {            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+
+					& .x-btn-rawtext {
+						color: $composers-toolbar-send-save-button-text-color !important;
+					}
+                }
+            }
+        }
+
+        & .x-axi-collapsable-title-panel-body {
+            & .x-axi-horz-slider-desc {
+                color: $theme-main-lighter-color;
+            }
+
+            & .x-axi-cal-two-way-fork {
+            	@extend %x-axi-cal-two-way-fork;
+            }
+
+            & .x-axi-cal-three-way-fork {
+            	@extend %x-axi-cal-three-way-fork;
+            }
+
+            & .x-axi-cal-weekly-from-dots {
+            	@extend %x-axi-cal-weekly-from-dots;
+            }
+
+            & .x-axi-assignees-row {
+                & .x-form-item-button-label {
+                    & > .x-btn-wrap {
+	                    & .x-btn-center {
+		                    & em {
+			                    & .x-btn-text {
+			                        color: $text-main-color;
+
+									@at-root html.dark & {
+										color: $dark-mode-text-main-color;
+									}
+			                    }
+			                }
+		                }
+
+						&.x-btn-over {
+							& .x-btn-center {
+								& .x-btn-text {
+									color: $composers-north-addressbook-button-hover-text-color;
+									opacity: 1;
+								}
+							}
+						}
+		            }
+                }
+            }
+        }
+    }
+    // END Tasks Composer
+
+    // START Notes Composer
+    &.x-axi-notes-composer {
+        & .new-note-toolbar {            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+
+					& .x-btn-rawtext {
+						color: $composers-toolbar-send-save-button-text-color !important;
+					}
+                }
+            }
+        }
+
+        & .x-axi-htmleditor-panel {
+        	& .x-html-editor-wrap {
+	        	background-color: $notes-composer-body-background-color;
+
+	        	@at-root html.dark & {
+	        		background-color: $dark-mode-notes-composer-body-background-color;
+	        	}
+
+	        	& .x-html-editor-tb {
+	        		background-color: $theme-background-color;
+
+	        		@at-root html.dark & {
+	        			background-color: $dark-mode-theme-background-color;
+	        		}
+	        	}
+
+	        	// In reading pane editing
+	        	@at-root .x-axi-notecomposer-htmleditor-panel .x-panel-body-noheader .x-html-editor-wrap .x-html-editor-tb {
+	        		background-color: $theme-background-color;
+
+		        	@at-root html.dark & {
+		        		background-color: $dark-mode-theme-background-color;
+		        	}
+	        	}
+        	}
+        }
+    }
+    // END Notes Composer
+
+    // START Contacts Composer
+    &.x-axi-contacts-composer {
+        & .new-contact-toolbar {            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+
+					& .x-btn-rawtext {
+						color: $composers-toolbar-send-save-button-text-color !important;
+					}
+                }
+            }
+        }
+
+        & .x-axi-collapsable-title-panel-body {
+            & .x-axi-email-row {
+        		border-color: $composers-north-field-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
+            }
+
+            & .x-axi-phone-row {
+        		border-color: $composers-north-field-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-composers-north-field-border-color;
+				}
+            }
+
+            & .x-axi-personal-business-details-container {
+            	border-color: $inner-border-color;
+
+				@at-root html.dark & {
+					border-color: $dark-mode-inner-border-color;
+				}
+
+                & .x-axi-personal-details-container,
+                & .x-axi-business-details-container {
+                    & .x-axi-button-small-rounding {
+                        &::before,
+                        &::after {
+                        	background-color: $inner-border-color;
+
+							@at-root html.dark & {
+								background-color: $dark-mode-inner-border-color;
+							}
+                        }
+                    }
+                }
+            }
+        }
+
+        & .x-axi-htmleditor-panel {
+            & .x-axi-contact-dialog-htmleditor,
+            & .x-axi-panel-htmleditor {
+                & textarea.x-form-field,
+                & .x-panel-body {
+                	color: $text-contrast-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-text-contrast-color;
+					}
+                }                
+            }
+        }
+
+    }
+    // END Contacts Composer
+
+    // START Distribution List Composer
+    &.x-axi-dlist-composer {
+        & .new-dlist-toolbar {            
+            & .x-btn-text {
+                &.save-icon {
+                    &::before {
+                        @extend %save-send-icon;
+                    }
+
+					& .x-btn-rawtext {
+						color: $composers-toolbar-send-save-button-text-color !important;
+					}
+                }
+            }
+        }
+
+        & .x-axi-dlist-members-list {
+        	border-color: $inner-border-color;
+
+			@at-root html.dark & {
+				border-color: $dark-mode-inner-border-color;
+			}
+
+            & .x-axi-fieldset-with-tools {
+                & > .x-fieldset-header {
+                    &::after {
+                    	background-color: $inner-border-color;
+
+						@at-root html.dark & {
+							background-color: $dark-mode-inner-border-color;
+						}
+                    }
+                }
+            }
+
+            & .x-axi-grid {
+                & .x-grid3-body {
+                    & .x-grid3-row {
+                    	background-color: $composer-dlist-grid-row-not-selected-background-color;
+                    }
+                }
+            }
+        }
+
+        & .x-axi-htmleditor-panel {
+            & .x-axi-contact-dialog-htmleditor,
+            & .x-axi-panel-htmleditor {
+                & textarea.x-form-field,
+                & .x-panel-body {
+                	color: $text-contrast-color;
+
+					@at-root html.dark & {
+						color: $dark-mode-text-contrast-color;
+					}
+                }                
+            }
+        }
+    }
+    // END Distribution List Composer
+}
+// END Composers
+
+// START Windows
+.x-axi-window {
+    // Common components
+    & .x-axi-window-subtitle {
+        color: $window-subtitle-text-color;
+    }
+
+    & .x-axi-sublabel {
+        color: $window-sublabel-text-color;
+    }
+
+    & .x-axi-window-grid {
+        & .x-axi-grid-body {
+            border-color: $window-inner-border-color;
+
+            & .x-grid3-header {
+	            & tr {
+	                & td {
+				        border-color: $window-inner-border-color;
+	                }
+	            }   
+            }
+
+            & .x-grid3-body {
+				& .x-grid3-row {
+					border-color: $window-inner-border-color;
+
+                    &.x-grid3-row-selected {
+                    	background: $theme-main-color !important;
+                    }
+                }
+
+	            & tr {
+	                & td {
+				        border-color: transparent;
+	                }
+	            }   
+            }  
+        }
+
+        // Non selectable grid
+		&.x-axi-non-selectable-grid {
+            & .x-axi-grid-body {
+                & .x-grid3-row {
+                    &.x-grid3-row-selected {
+                        background: none !important;
+                    }
+                }
+            }
+		}
+    }
+
+    // START Settings window
+	&.x-axi-settings-window {
+        & .x-tab-panel-header {
+        	&::after {
+        		background-color: $window-border-color;
+        	}
+        }
+
+		.x-tab-panel-bwrap {
+			& .x-axi-settings-row-wrapper-workinghours .x-axi-separator-label {
+				color: $window-label-text-color;
+			}
+
+            & .x-axi-window-tabpanel {
+                // Settings -> AntiSpam
+                &.x-axi-antispam-tabpanel {
+                	& .x-axi-spam-thresholds-fieldset .x-fieldset-bwrap {
+                		& .x-axi-settings-row-wrapper {
+							& > .x-panel-bwrap > .x-panel-body > .x-panel {
+		                		&.x-axi-antispam-slider { 
+		                			& > .x-panel-bwrap > .x-panel-body {
+			                			& .x-slider-horz.x-axi-coloured-slider {
+			                				&::before {
+			                					background: $window-border-color;
+			                				}
+
+			                				&::after {
+			                                    background: linear-gradient(90deg, $window-settings-antispam-slider-gradient-start-color 0, $window-settings-antispam-slider-gradient-end-color);
+			                                    opacity: .7;
+			                				}
+			                			}
+			                		}
+		                		}
+		                	}
+		                }
+		            }
+                }
+
+                // Settings -> Sharing
+                &.x-axi-sharing-tabpanel {
+				    & .x-axi-window-grid {
+				        & .x-axi-grid-body {
+				            & .x-grid3-body {
+								& .x-grid3-row {
+									border-color: transparent;
+				                }
+				            }  
+				        }
+				    }
+                }
+
+                // Settings -> Remote POP
+                &.x-axi-rpop-tabpanel {
+					& .x-axi-window-grid {
+	                    & .x-grid3-body .x-grid3-row {
+	                        border-color: transparent;
+	                    }
+					}
+                }
+
+                // Settings -> Filters
+                &.x-axi-filters-tabpanel {
+                    & .x-axi-filters-grid {
+	                    & .x-grid3-body .x-grid3-row {
+	                        border-color: transparent;
+	                    }
+
+                        & .x-grid3-body {
+                            & .x-grid3-col-run {
+                                & .x-axi-play-button {
+                                    @extend %button-big-rounding;
+
+                                    &::before {
+										border-color: transparent transparent transparent $theme-main-color;
+                                    }
+                                }
+                            }
+                        }
+
+                        & .x-grid-dd-cursor {
+                        	background-color: $theme-main-color;
+                        }
+                    }
+                }
+
+                // Settings -> Aliases
+                &.x-axi-aliases-tabpanel {
+                    & .x-axi-fieldset-temporary-aliases {
+	                    & .x-axi-window-grid .x-axi-grid-body {
+		                    & .x-grid3-body .x-grid3-row {
+		                        border-color: transparent;
+		                    }
+		                }                        
+                    }
+
+                	& .x-axi-fieldset-permanent-aliases {
+	                    & .x-axi-window-grid .x-axi-grid-body {
+		                    & .x-grid3-body .x-grid3-row {
+		                        border-color: transparent;
+		                    }
+		                }
+                	}
+                }
+
+                // Settings -> Info
+                &.x-axi-info-tabpanel {
+                    & .x-axi-window-grid.x-axi-shortcuts-grid .x-axi-grid-body {
+	                    & .x-grid3-body .x-grid3-row {
+	                        border-color: transparent;
+	                    }
+                    }
+                }
+            }
+		}
+
+        // Settings -> General -> Manage Labels Window
+        @at-root .x-axi-managelabels-window {
+            & .x-axi-fieldset {
+                & .x-fieldset-bwrap {
+                    & .x-axi-grid {
+
+						%label-icon {
+							opacity: .5;
+						}
+
+                    	& .x-grid3-row {
+    						&::before {
+    							@extend %label-icon;
+    						}
+
+                    		& td {
+	            				& .x-grid3-cell-inner {
+	            					&.x-grid3-col-name {	/// The label name element
+	            						&::before {
+	            							color: $input-placeholder-text-color;
+	            						}
+	            					}
+	            				}
+
+                    			&.x-grid3-cell-selected {
+                    				& .x-grid3-cell-inner {
+                    					color: $window-text-color;
+
+                    					&.x-grid3-col-name {	/// The label name element
+                    					}
+                    				}
+                    			}
+                    		}
+                    	}
+
+                        // Edit mode
+                        & .x-grid-editor {
+                            &::before {
+                                @extend %label-icon;
+                            }
+                        }
+
+                        // Border separator
+                        &::after {
+                        	background-color: $window-inner-border-color;
+                        }
+                    }
+                }
+            }   
+        }
+
+        // Settings -> General -> 2FA (Marketing) Window
+        & .x-axi-2fa-marketing-window-tabpanel {
+            & .x-axi-2fa-marketing-content-wrapper > .x-panel-bwrap > .x-panel-body {
+                %2fa-marketing-window-password-bullet {
+                    background-color: $window-contrast-color;
+                }
+
+                & .graphics {
+                    & .pass {
+                    	& .field {
+                    		border-color: $theme-main-color;
+
+                            & .bullet-container {
+                                & .bullet {
+                                    @extend %2fa-marketing-window-password-bullet;
+                                }
+                            }
+                    	}
+
+                        & .lock {
+                    		border-color: $theme-main-color;
+
+                            &::before {
+	                    		border-color: $theme-main-color;
+                            }
+
+                            & .keyhole {
+                                &::before {
+		                    		border-color: $theme-main-color;
+                                }
+
+                                &::after {
+		                    		border-color: $theme-main-color;
+                                }
+                            }
+                    	}
+                    }
+
+                    & .plus {
+                        &::before {
+                        	background-color: $window-border-color;
+                        }
+
+                        &::after {
+                        	background-color: $window-border-color;
+                        }
+                    }
+
+                    & .phone {
+                    	border-color: $theme-main-color;
+
+                    	& .top {
+                    		border-color: $theme-main-color;
+
+                    		&::before,
+                    		&::after {
+	                    		border-color: $theme-main-color;                    			
+                    		}
+                    	}
+
+                        & .bullet-container {
+                            & .bullet {
+                                @extend %2fa-marketing-window-password-bullet;
+                            }
+                        }
+
+                    	& .bottom {
+                    		border-color: $theme-main-color;
+                    	}
+                    }
+                }
+
+                & .subtitle-container {
+                    & .spacer {
+                    	background-color: $window-inner-border-color;
+                    }
+               	}
+            }
+        }
+
+        // Settings -> General -> 2FA (Activate) Window
+        @at-root .x-axi-activate-2fa-window {
+        	& .x-axi-fieldset {
+        		& .x-fieldset-bwrap {        			
+		            & .x-axi-activate-2fa-step {
+		            	border-color: $window-border-color;
+
+		                & .x-fieldset-header {
+		                    & span {
+		                        border-color: $window-inner-border-color;
+		                    }
+		                } 
+
+                        &.x-axi-activate-2fa-qrcode {
+                            & .x-panel-body {
+                                & .bg {
+                                    border-color: $window-border-color;
+
+                                    &::before {
+	                                    border-color: $window-border-color;
+                                    }
+
+                                    &::after {
+	                                    border-color: $window-border-color;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.x-axi-activate-2fa-step3 {
+                        	& .x-panel-body {
+                        		& .x-axi-textfield-container {
+                        			& .x-axi-textfield:focus {
+                        				border-color: $input-focus-border-color;
+                        			}
+                        		}
+                        	}
+                        }
+		            }
+		        }
+            }
+        }
+
+        // Settings -> General -> 2FA (Configure) Window
+        @at-root .x-axi-reconfigure-2fa-window {
+            & .x-window-body {
+                & .x-axi-fieldset {
+                    & .x-fieldset-bwrap {
+                        & .configure-2fa-wrapper {
+                            & div {
+                                &.status {
+					            	border-color: $window-border-color;
+                                }
+
+                                &.turn-off {
+					            	border-color: $window-border-color;
+                                }
+
+                                &.add-device {
+					            	border-color: $window-border-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Settings -> AntiSpam -> Whitelist / Blacklist Window
+        @at-root .x-axi-blacklist-whitelist-window {
+	        & .x-axi-window-grid {
+				& .x-axi-grid-body .x-grid3-body .x-grid3-row.x-grid3-row-selected {
+                    background: none !important;
+				}
+	        }
+
+            & .x-axi-fieldset {
+                & .x-fieldset-bwrap {
+                    & .x-axi-settings-row-wrapper-checkbox-with-label {
+                    	border-color: $window-inner-border-color;
+                    }
+                }
+            }
+        }
+
+        // Settings -> Filters -> Add / Edit Filter Window
+        @at-root .x-axi-add-filter-window {
+            & .x-axi-filters-wizard-title-container {
+            	border-color: $window-border-color;
+            }
+
+            & .x-axi-filters-wizard-nav-container .x-panel-body {
+                & .x-axi-filters-wizard-nav {
+                    & span,
+                    & a {
+                        @extend %button-big-rounding;
+                    }
+
+                    & span {
+                    	background-color: $theme-main-color;
+                    	border-color: $theme-main-color;
+                    	color: $window-contrast-color;
+
+                    	&:hover {
+                    		opacity: 1;
+                    	}
+                    }
+                }
+            }
+        }
+
+        // Settings -> Filters -> Add / Edit RPOP Account Window
+        @at-root .x-axi-rpop-add-account-window {
+            &.x-axi-rpop-add-account-yahoo-window,
+            &.x-axi-rpop-add-account-gmail-window,
+            &.x-axi-rpop-add-account-outlook-window {
+                & .domain-name {
+                    border-color: $window-input-border-color;
+                }
+            }
+        }
+	}
+    // END Settings window
+
+    // START Address Book window(s)
+    &.x-axi-addressbook-window {
+        & .x-axi-window-grid {
+			& .x-axi-grid-body .x-grid3-body .x-grid3-row.x-grid3-row-selected .x-grid3-cell .x-grid3-cell-inner {
+				color: $theme-main-color;
+			}
+        }
+
+        & .x-axi-to-cc-bcc {
+            & > .x-panel-bwrap > .x-panel-body {
+                & .x-axi-email-address-row-container {
+                    border-color: $window-inner-border-color;
+
+                    & .x-form-item-button-label {                    	
+                        & > .x-btn-wrap {
+                            & .x-btn-center {
+                                & .x-btn-text {
+                                	color: $theme-main-color;
+                                }
+                            }                            
+	                    }
+                    }
+                }
+            }
+        }
+    }
+
+    // START Sharing window
+    &.x-axi-sharing-permissions-window {
+        & .x-axi-window-grid .x-axi-grid-body {
+            & .x-grid3-body .x-grid3-row {
+                border-color: transparent;
+            }            
+        }
+
+        & .x-axi-add-permission-container {
+        	border-color: $window-inner-border-color;
+
+            & > .x-panel-bwrap > .x-panel-body > .x-column-inner {
+                & .x-axi-usergroup-emailaddresses-role-container {
+                	border-color: $window-inner-border-color;
+                }
+            }
+
+            & .x-axi-principal-name-container {
+                display: flex;
+                align-items: center;
+
+                & .x-axi-usergroup-button {
+                    & .x-btn-text {
+                 		color: $theme-main-color;       
+                    }
+                }
+            }
+
+            & .x-axi-principal-role-container {
+            	// This combo is borderless, as an exception
+            	& .x-form-field-wrap {
+            		& .x-form-field,
+            		& .x-form-trigger {
+            			border-color: transparent;
+            		}
+            	}
+            }
+        }
+    }
+    // END Sharing window
+
+    // START Custom Permissions window
+    &.x-axi-custom-permissions-window {
+    }
+    // END Custom Permissions window
+
+    // START Open Other Users' Folders (Subscribe) window
+    &.x-axi-subscribe-window {
+        & .x-axi-usergroup-emailaddresses-container {
+			border-color: $window-inner-border-color;
+
+            & .x-axi-usergroup-button {
+                & .x-btn-text {
+             		color: $theme-main-color;       
+                }
+            }
+        }
+    }
+    // END Open Other Users' Folders (Subscribe) window
+
+    // START Move / Copy window
+    &.x-axi-move-copy-window {
+        & .x-window-body > .x-panel > .x-panel-bwrap > .x-panel-body {
+            & > .x-panel {
+                &.x-axi-frequent-folders-panel {
+                    border-color: $window-inner-border-color;
+
+                    & .x-axi-folder-grid {
+                    	& .x-grid3-row {
+							& .x-grid3-col-folder a span {
+								color: $window-text-color;
+
+			                	&::before {
+				                	color: $window-folder-tree-node-icon-text-color;
+				                }
+							}
+
+							&.x-grid3-row-selected {
+								& .x-grid3-col-folder a span {
+									color: $window-folder-tree-node-selected-text-color;
+
+									&::before {
+										color: $window-folder-tree-node-selected-icon-text-color;
+									}
+								}
+							}
+                    	}
+                    }
+                }
+
+                &.x-axi-all-folders-panel {
+                    
+                }
+            }
+        }
+    }
+    // END Move / Copy window
+
+    // START Availability (Free / Busy) window
+    &.x-axi-freebusy-window {
+        & .x-axi-freebusy-region {
+            & .x-axi-grid-body {
+            	& .x-grid3-body {
+	                & .x-grid3-row {
+	                	& .x-grid3-col {
+		                    border-color: $window-inner-border-color;	                		
+	                	}
+	                }
+            	}
+            }
+
+            &.x-axi-freebusy-attendees-region {
+            	& .x-axi-grid-body {
+        	 		border-color: $window-inner-border-color;
+            	}
+	        }
+
+            & .x-axi-freebusy-add-attendees-container {
+            	& > .x-panel-bwrap > .x-panel-body {
+            	 	& > .x-column-inner {
+            	 		border-color: $window-inner-border-color;
+            	 	}
+            	}
+            }
+
+            &.x-axi-freebusy-canvas-region {
+            	& .x-axi-window-grid {
+            		& .x-axi-grid-header {
+            			& .x-axi-freebusy-header {
+                            & .x-axi-calendar-header-prev,
+                            & .x-axi-calendar-header-next {
+								@extend %button-big-rounding;
+
+								&::before {
+									border-color: $theme-main-color;
+								}
+							}
+            			}
+            		}
+
+	                & .x-axi-grid-body {
+		            	& .x-grid3-body {
+			                & .x-grid3-row {
+			                	& .x-grid3-col {
+				                    border-color: $window-inner-border-color;
+				                    
+				                	& .x-grid3-cell-inner {
+				                		& .x-axi-tentative {
+				                			background-color: $freebusy-tentative-color;
+				                		}
+				                		
+				                        & .x-axi-out-of-office {
+				                			background-color: $freebusy-ooo-color;
+				                        }
+
+				                		& .x-axi-busy {
+				                			background-color: $freebusy-busy-color;
+				                		}
+				                	}
+			                	}
+
+	                            &.x-axi-na {
+	                            	& .x-grid3-col {
+	                            		& .x-grid3-cell-inner {
+	                            			margin: 0 1px;
+			                            	background: url(../../images/common/x-axi-na.png) repeat 50%;
+			                            	opacity: .5;
+	                            		}
+	                            	}
+	                            }
+
+			                }
+		            	}
+	                }
+	            }
+
+                & .x-axi-free-busy-form-container {
+                    & > .x-panel-bwrap > .x-panel-body {
+                        & .x-axi-cal-two-way-fork {
+                        	border-color: $window-inner-border-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .freebusy-legend-container {
+            border: none;
+            font-size: 13px;
+        }
+    }
+    // End Availability (Free / Busy) window
+}
+// END Windows
+// END Main

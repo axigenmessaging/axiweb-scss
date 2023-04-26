@@ -1,0 +1,98 @@
+/**
+ * @author Mihai Oprea <mihai.oprea@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * @date Apr 7, 2020
+ *
+ * @fileoverview Axigen Custom Web Fonts
+ * @copyright Copyright &copy; Axigen Messaging. All Rights Reserved.
+ */
+
+/*******************************************************************************
+ * Custom Fonts
+ */
+
+/**
+ * Titillium Web
+ */
+// Titillium Web - 200 version
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../fonts/Titillium_Web_200.woff2') format('woff2'), url('../fonts/Titillium_Web_200.woff') format('woff');
+    font-style: normal;
+    font-weight: 200;
+}
+
+// Titillium Web - 300 version
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../fonts/Titillium_Web_300.woff2') format('woff2'), url('../fonts/Titillium_Web_300.woff') format('woff');
+    font-weight: 300;
+}
+
+// Titillium Web - 400 (default) version
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../fonts/Titillium_Web_400.woff2') format('woff2'), url('../fonts/Titillium_Web_400.woff') format('woff');
+    font-weight: 400;
+}
+
+// Titillium Web - 600 (bold) version
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../fonts/Titillium_Web_600.woff2') format('woff2'), url('../fonts/Titillium_Web_600.woff') format('woff');
+    font-weight: 600;
+}
+
+/**
+ * Source Sans Pro
+ */
+// Source Sans Pro - 200 version
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/Source_Sans_Pro_200.woff2') format('woff2'), url('../fonts/Source_Sans_Pro_200.woff') format('woff');
+    font-weight: 200;
+}
+
+// Source Sans Pro - 300 version
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/Source_Sans_Pro_300.woff2') format('woff2'), url('../fonts/Source_Sans_Pro_300.woff') format('woff');
+    font-weight: 300;
+}
+
+// Source Sans Pro - 400 (default) version
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/Source_Sans_Pro_400.woff2') format('woff2'), url('../fonts/Source_Sans_Pro_400.woff') format('woff');
+    font-weight: 400;
+}
+
+// Source Sans Pro - 600 (bold) version
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/Source_Sans_Pro_600.woff2') format('woff2'), url('../fonts/Source_Sans_Pro_600.woff') format('woff');
+    font-weight: 600;
+}
+
+/**
+ * Language specific fonts
+ */
+/* Farsi (lang-fa) */
+// Vazir
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Vazir.woff') format('woff'),
+		 url('../fonts/Vazir.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Vazir-Bold.woff') format('woff'),
+		 url('../fonts/Vazir-Bold.ttf') format('truetype');
+    font-weight: bold;
+}

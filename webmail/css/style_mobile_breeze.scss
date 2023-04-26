@@ -1,0 +1,91 @@
+/**
+ * @fileOverview The WebMail mobile login theme Breeze style sheet.
+ *
+ * @copyright Copyright (c) 2020 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Sep 4, 2020
+ */
+
+@import "../../include/webmail/mobile/theme-breeze/variables";
+@import "../../include/webmail/mobile/theme-breeze/components-mobile";
+
+/*******************************************************************************
+ * Main
+ */
+a { 
+    color: $links-text-color; 
+}
+
+h1 {
+    color: $login-main-title-color;
+}
+
+h2 {
+    color: $login-main-subtitle-color;
+}
+
+.footer {
+    background: $theme-background-color;
+    color: $login-footer-text-color;
+
+    & div {
+        &:first-child {
+            border-bottom-color: $login-footer-border-color;
+        }
+    }
+}
+
+.main {
+    & #loginForm {
+        & .textfield:focus + label.darkText {
+            color: $login-form-input-focused-label-color;
+        }
+
+        & .textfield + label.darkText {
+            background: $theme-background-color;
+            color: $login-form-input-label-color;
+        }
+    }
+}
+
+.textfield {
+    background: $theme-background-color;
+    border-color: $login-form-input-border-color;
+    color: $login-form-input-text-color;
+}
+
+.main #loginForm .textfield:focus { 
+    border-color: $login-form-input-focused-border-color;
+    color: $login-form-input-focused-text-color;
+}
+
+.textfield:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0 1000px $theme-background-color inset; 
+    color: $login-form-input-text-color; 
+    -webkit-text-fill-color: $login-form-input-text-color; 
+}
+
+.textfield:-webkit-autofill:focus { 
+    color: $login-form-input-focused-text-color; 
+    -webkit-text-fill-color: $login-form-input-focused-text-color; 
+}
+
+.main #loginForm {
+    & .checkRemember label {
+        color: $login-form-checkbox-label-text-color;
+    }
+
+    & .submit_input {
+        & button {
+            background: $login-form-submit-button-background-color;
+            color: $login-form-submit-button-text-color;
+        }
+    }
+}
+
+#error_msg {
+	background: $message-success-background-color;
+	color: $message-success-text-color;
+}

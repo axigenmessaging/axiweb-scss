@@ -1,0 +1,64 @@
+// Combo
+// Styled separately as it's used 
+// by the HTML Editor as well
+
+@import "variables";
+
+.x-form-field-wrap {
+    & .x-form-field {
+        border-color: $combo-border-color;
+        transition: border-color .2s ease-in-out, color .2s ease-in-out;
+
+        @at-root html.dark & {
+            border-color: $dark-mode-combo-border-color;
+        }
+    }
+
+    & .x-form-trigger {
+        border-color: $combo-border-color;
+        transition: border-color .2s ease-in-out;
+
+        @at-root html.dark & {
+            border-color: $dark-mode-combo-border-color;
+        }
+
+        &::before {
+            border-top-color: $combo-arrow-trigger-border-color;
+            border-right-color: transparent;
+            border-left-color: transparent;
+        }
+    }
+
+    &.x-trigger-wrap-focus {
+        & .x-form-field {
+            border-color: $combo-focus-border-color;
+            color: $combo-focus-text-color;
+        }
+
+        & .x-form-trigger {
+            border-color: $combo-focus-border-color;
+
+            &::before {
+                border-top-color: $combo-focus-border-color;
+            }
+        }
+    }
+}
+
+.x-combo-list {
+    & .x-combo-list-inner {
+        background-color: $combo-list-background-color;
+        border-color: $combo-list-border-color;     
+
+        @at-root html.dark & {
+            background-color: $dark-mode-combo-list-background-color;
+            border-color: $dark-mode-combo-list-border-color;
+        }
+        
+        & .x-combo-selected,
+        & .x-axi-item-selected { /// Axi extension
+            background: $combo-list-selected-background-color;
+            color: $combo-list-selected-text-color;
+        }
+    }
+}

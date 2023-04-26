@@ -1,0 +1,164 @@
+/**
+ * @fileOverview The WebMail mail item base style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Dec 6, 2019
+ */
+
+@import "/css/axigen-web-fonts.css";
+@import "axi-custom-scrollbar";
+@import "../../../../../include/webmail/common/mixins";
+@import "../../../../../include/webmail/common/stubs";
+
+
+/*******************************************************************************
+ * Global rules
+ */
+body {
+	margin: 0;
+	padding: 15px 10px;
+	box-sizing: border-box;
+	@include font-body-text(10pt, 400);
+}
+
+@media only screen {
+	@at-root body.print-page {
+		padding: 15px;
+
+		& .print-page-header {
+			& .subject {
+				padding: 0 5px; 
+				@include font-body-text(30px, 300, 35px);
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			& .headers-container {
+				display: flex;
+				padding: 5px;
+
+				& .headers {
+					flex: 1 1 auto;
+
+					& .header {
+						display: flex;
+					}
+				}
+			}
+
+			& .attachments-container {
+				display: flex;
+				padding: 5px;
+
+				& .attachments {
+					flex: 1 1 auto;
+
+					& .attachment {
+						display: inline-block;
+
+						&:not(:last-child)::after {
+							content: ",\00a0";
+						}
+					}				
+				}			
+			}
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+	transition: opacity .2s ease-in-out;	
+
+	&:hover {
+		opacity: .7;		
+	}
+}
+
+hr {
+	border: none;
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+
+// Make images fit in the viewport, so that
+// the user doesn't have to scroll horizontally.
+//
+// Plus, keep its original aspect ratio, in case
+// they have width and height specified.
+img {
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.x-axi-messagetab-iframe-trailing-dots {
+    margin: 0 auto;
+    width: 90px;
+    padding: 20px 0 40px;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+.x-axi-messagetab-iframe-message {
+	padding: 30px 0 7px;
+    @include font-body-text(14px, 400);
+    text-align: center;
+}
+
+.x-axi-messagetab-iframe-download-eml {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+
+	& a {
+		@extend %button-small-rounding;
+	}
+}
+
+// Combo
+@import "../../../../../include/webmail/common/_ext-overrides-combo-list";
+
+.mention-container {
+	position: relative;
+	display: inline-block;
+}
+
+.mention-combo-list {	
+	& .x-combo-list-inner {
+		overflow-x: hidden;
+		
+
+		& .x-combo-list-item {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+
+			& * {
+				display: inline;
+				font-style: normal;
+				font-weight: 400;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			& .x-clear {
+				display: none;
+			}
+		}
+	}
+} 
+
+// RTL
+body[style*="direction: rtl"] {
+	.mention-combo-list {
+		left: auto !important;
+		right: 0;
+		direction: ltr;
+		text-align: right;
+	}
+}

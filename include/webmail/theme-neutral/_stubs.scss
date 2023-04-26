@@ -1,0 +1,84 @@
+// Stubs
+//
+// Theme specific template definitions which are namespace free. 
+//
+// The namespace specific stubs will be defined in the 
+// respective namespaces / files. 
+
+@import "variables";
+
+//*******************************************************************************
+//* Ext overrides
+//*
+%outline-button {
+	background-color: $outline-button-background-color;
+	border-color: $outline-button-border-color;
+	color: $outline-button-text-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-outline-button-border-color;
+		color: $dark-mode-outline-button-text-color;
+	}
+}
+
+%outline-button-hover {
+	@extend %outline-button;
+	opacity: .7;
+}
+
+%highlight-button {
+	background-color: $window-action-button-main-background-color;
+	border-color: $window-action-button-main-border-color;
+	color: $window-action-button-main-text-color;
+}
+
+%highlight-button-hover {
+	@extend %highlight-button;
+	opacity: .7;
+}
+
+// Loading mask
+%loading-spinner {
+	& .path {
+		stroke: $theme-main-color;
+	}
+}
+
+// Progress bar
+%preloader-progress-bar {
+    & .x-progress-inner {
+        background-color: $preloader-frame-background-color;
+        border-color: $preloader-frame-border-color;
+
+        & .x-progress-bar {
+            &::before {
+                background: $preloader-progressbar-background-color;
+            }
+        }
+    }
+
+    & .x-progress-text {
+        & > div {
+            color: $preloader-percent-text-color;
+        }
+    }
+}
+
+// Button
+%button-small-rounding {
+	border-color: $theme-main-color;
+	color: $theme-main-color;
+}
+
+%button-small-rounding-disabled {
+	color: $theme-main-color !important;
+}
+
+%button-big-rounding {
+	border-color: rgba($theme-main-color, .3);
+	color: $theme-main-color;
+}
+
+%button-big-rounding-disabled {
+	color: $theme-main-color !important;
+}

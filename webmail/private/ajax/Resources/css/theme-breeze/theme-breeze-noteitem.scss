@@ -1,0 +1,68 @@
+/**
+ * @fileOverview The WebMail note item theme specific style sheet.
+ *
+ * @copyright Copyright (c) Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Mar 30, 2020
+ */
+
+@import "../../../../../../include/webmail/theme-breeze/variables";
+
+@at-root html.dark body {
+	filter: invert(1) hue-rotate(180deg);
+}
+
+@media only screen {
+	@at-root html.dark body.print-page {
+		background-color: $dark-mode-theme-background-color;
+	}
+}
+
+a {
+	color: $theme-main-color;
+}
+
+hr {
+	border-color: $composers-html-elements-hr-border-color;
+
+	@at-root html.dark & {
+		border-color: $dark-mode-composers-html-elements-hr-border-color;
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+}
+
+// Combo
+@import "../../../../../../include/webmail/theme-breeze/ext-overrides-combo-list";
+
+.mention-combo-list {
+	@at-root html.dark & {
+		filter: invert(1) hue-rotate(180deg);	/// Revert filter
+	}
+	
+	& .x-combo-list-item {
+		color: $text-main-color;
+		
+		& * {
+			color: $text-main-color;
+
+			@at-root html.dark & {
+				color: $dark-mode-text-main-color;
+			}
+		}
+	}
+
+	& .x-combo-list-inner {
+		& .x-combo-selected,
+		& .x-axi-item-selected {	/// Axi extension 
+			& * {
+				color: $combo-list-selected-text-color;
+
+				@at-root html.dark & {
+					color: $combo-list-selected-text-color;
+				}
+			}
+		}
+	}
+} 

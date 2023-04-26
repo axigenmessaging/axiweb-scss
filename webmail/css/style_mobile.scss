@@ -1,0 +1,324 @@
+/**
+ * @fileOverview The WebMail mobile login base.
+ *
+ * @copyright Copyright (c) 2020 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Sep 4, 2020
+ */
+
+@import "../../include/webmail/common/mixins";
+@import "../../include/webmail/mobile/common/components-mobile";
+
+/*******************************************************************************
+ * Main
+ */
+html, body { 
+    width: 100%; 
+    height: 100%; 
+}
+
+body {
+    margin: 0;
+    @include font-body-text(13px, 400);
+}
+
+a { 
+    text-decoration: none; 
+}
+
+form {
+	margin: 0;
+    padding: 0;
+}
+
+input, button {
+    @include font-body-text(13px, 400);
+}
+
+.main {
+    position: relative;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto; 
+    max-width: 85%;
+    z-index: 0;
+	transition: top .2s ease-in-out;
+
+    & #loginForm { 
+        margin: auto; 
+        width: 85%; 
+    }
+}
+
+.errorContainer + .main { 
+    top: 14%; 
+}
+
+.logo {
+    background: url(../images/mobile/a-logo.svg) top center no-repeat;
+    height: 50px;
+	margin-bottom: 8px;	
+}
+
+h1 {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 25px;
+    font-family: "Source Sans Pro",sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;    
+    height: 70px;
+	margin: 0 auto;
+    padding-bottom: 10px;
+    text-align: center;
+    z-index: 1;
+
+    @at-root body.change_pass & { 
+        display: none; 
+    }
+
+    & div { 
+        padding: 5px 0; 
+
+        &:first-child {
+            margin: 0 auto;
+            max-width: 265px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+    }
+}
+
+.main {
+    & #loginForm {
+        & .formOption {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 55px;
+            padding-top: 5px;
+            text-align: center;
+        }
+
+        & .checkRemember {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 45px;
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        & .textfield:focus + label.darkText,
+        & input[type=text]:valid + label.darkText, 
+        & #password.notEmpty + label.darkText,
+        & #newpassword.notEmpty + label.darkText,
+        & #retypePassword.notEmpty + label.darkText { 
+            transform: translate(-0.3em, -1.7em) scale(0.9, 0.9);
+            transition-duration: 0.2s;
+            -webkit-transform:translate(-0.3em, -1.7em) scale(0.9, 0.9);
+            -webkit-transition-duration: 0.2s;
+        }
+    }
+
+    & .textfield + label.darkText {
+        position: absolute;
+        display: inline-block;
+        line-height: 1.5em;
+        pointer-events: none;
+        font-size: 14px;
+        top: 18px;
+        left: 15px;
+        padding: 2px 5px;
+        text-align: left;
+        font-family: 'Source Sans Pro',sans-serif;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: all 0.3s ease-in-out 0s;
+        content: attr(placeholder);
+        z-index: 1;
+        cursor: default;
+    }
+}
+
+
+.textfield {
+    width: 100%;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    height: 48px;
+    padding: 0 3px 0 20px;
+    -webkit-appearance: none;
+    outline: none;
+
+    &#token {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 18px;
+        text-align: center;
+    } 
+}
+
+.main #loginForm .textfield:focus { 
+    border-width: 1px;
+    border-style: solid;
+}
+
+.textfield:-webkit-autofill { 
+    background: none; 
+}
+
+.main #loginForm {
+    & .checkRemember div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .checkRemember label {
+        display: inline-block;
+        margin-left: 5px;
+        font-family: 'Source Sans Pro',sans-serif;
+    }
+
+    & .submit_input { 
+        text-align: center; 
+
+        & button {
+            display: inline-block;
+            min-width: 250px;
+            height: 50px;
+            padding: 12px 20px;
+            margin: 10px 0 5px 0;
+            border: none;
+            border-radius: 30px;
+            line-height: 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            outline: none;
+            transition: opacity .2s ease-in-out;
+            -moz-transition: opacity .2s ease-in-out;
+            -webkit-transition: opacity .2s ease-in-out;
+        }
+    }
+}
+
+.login_2fa {
+    .main #loginForm .submit_input button {
+        margin-top: 20px;
+
+        & + a {
+            display: table;
+            margin: 57px auto 0;
+        }
+    }
+}
+
+.errorContainer { 
+    margin: 10px; 
+
+    & #error_msg:empty { 
+        display: none; 
+    }
+}
+
+#error_msg {
+    display: table;
+    width: 95%; 
+    height: 40px;
+	border-radius: 2px;
+	text-align: center;
+	vertical-align: middle;
+	position:fixed;
+	z-index:2;
+
+    & span {
+        display: table-cell;
+        line-height: 15px;
+        vertical-align: middle;
+    }
+}
+
+// CAPTCHA
+.x-axi-captcha-image {
+    width: 280px;
+    padding-left: 50%;
+    margin-left: -140px;
+}
+
+/* Media Queries */
+@media (max-height: 700px) {
+    .footer { 
+        display: none; 
+    }
+}
+
+@media (max-height: 600px) {
+    .main { 
+        top: 8%; 
+    }
+    
+    .errorContainer + .main { 
+        top: 14%; 
+    }
+}
+
+@media (max-height: 535px) {
+    .main { 
+        top: 6%; 
+    }
+    
+    .errorContainer + .main { 
+        top: 14%; 
+    }
+}
+
+@media (max-width: 360px) {
+    .main { 
+        max-width: 80%; 
+    }
+    
+    h1 { 
+        font-size: 22px; 
+    }
+    
+    h2 { 
+        font-size: 16px; 
+    }
+}
+
+@media (max-width: 320px) {
+    .main { 
+        max-width: 90%; 
+    }
+}
+
+@media (min-width: 700px) {
+    .main { 
+        max-width: 300px; 
+    }
+}

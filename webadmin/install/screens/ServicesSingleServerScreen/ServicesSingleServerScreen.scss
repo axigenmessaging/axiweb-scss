@@ -1,0 +1,93 @@
+/**
+ * @fileOverview The single server services screen style sheets.
+ *
+ * @copyright Copyright (c) 2018 Axigen Messaging. All rights reserved.
+ *
+ * @author Iulian Pobleanu <iulian.pobleanu@axigen.com>
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Nov 2, 2018
+ */
+
+@import "../../../../include/webadmin/theme-default/variables";
+@import "../../../../include/webadmin/mixins";
+
+.single-server-services-screen {
+    & .panel-content {
+        & .content-container {
+            padding: 40px 0 30px 0;
+
+            & .service {
+                border-bottom: 1px solid rgba($border-color, .7);
+                margin: 10px 50px 0;
+                padding: 10px;
+                height: 20px;
+
+                @include laptop-small-height {
+                    margin-top: 6px;
+                }
+
+                @include laptop-smaller-height {
+                    margin-top: 4px;
+                }
+
+                @include phone {
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+
+                &:not(:first-child) {
+                    @include phone {
+                        padding-top: 15px;
+                    }
+                }
+
+                & .name {
+                    float: left;
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: $text-heading-color;
+
+                    @include phone {
+                        float: none;
+                    }
+                }
+
+                & .interface {
+                    float: right;
+                    color: $text-main-color;
+
+                    @include phone {
+                        float: none;
+                    }
+
+                    & .ssl {
+                        position: relative;
+                        display: inline-block;
+                        margin-left: 3px;
+                        min-width: 10px;
+                        min-height: 17px;
+                        line-height: 15px;
+                        padding: 0 0 0 13px;
+                        box-sizing: border-box;
+                        border: 1px solid transparent;
+                        border-left-color: $border-color;
+                        border-radius: 2px;
+                        font-size: 10px;
+                        color: $text-main-color;
+                        opacity: .7;
+
+                        &::before {
+                            position: absolute;
+                            top: -2px;
+                            left: 0;
+                            font-size: 16px !important;
+                            content: "\e003";
+                            color: $text-main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

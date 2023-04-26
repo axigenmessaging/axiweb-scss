@@ -1,0 +1,657 @@
+/**
+ * @fileOverview The WebMail theme specific style sheet.
+ *
+ * @copyright Copyright (c) 2020 Axigen Messaging. All rights reserved.
+ * 
+ * @author Gabriel Cotruta <gabriel.cotruta@axigen.com>
+ * 
+ * @date Sep 2, 2020
+ */
+
+@import "../../../../../include/webmail/mobile/theme-breeze/variables";
+@import "../../../../../include/webmail/mobile/theme-breeze/components-mobile";
+
+/*******************************************************************************
+ * Template
+ */
+// Contact thumbnails
+.thumbnail-container {
+    & .no-thumbnail {
+        background-color: $thumbnail-no-thumbnail-background-color;
+        color: $thumbnail-no-thumbnail-text-color;        
+    }
+}
+
+// Switch control
+.onoffswitch {
+    // Not checked
+    .onoffswitch-checkbox:not(:checked) + .onoffswitch-label,
+    .onoffswitch-checkbox[value~=ON] + .onoffswitch-label {
+        background-color: $onoffswitch-background-color;
+        border-color: $onoffswitch-border-color;
+
+        & .onoffswitch-switch {
+            background-color: $onoffswitch-switch-background-color;
+        }
+    }
+
+    // Checked
+    .onoffswitch-checkbox:checked + .onoffswitch-label,
+    .onoffswitch-checkbox[value~=OFF] + .onoffswitch-label {
+        background-color: $onoffswitch-checked-background-color;
+        border-color: $onoffswitch-checked-border-color;
+
+        & .onoffswitch-switch {
+            background-color: $onoffswitch-checked-switch-background-color;
+        }
+    }
+}
+
+.nav-trigger {
+    & + label {
+        background-color: $header-background-color;
+
+        &::before {
+            color: $hamburger-menu-text-color;
+        }
+
+        &::after {
+            background-color: $lightbox-background-color;
+        }
+    }
+}
+
+.sidebar {
+    background: $sidebar-background-color;
+
+    & .header {
+        background: $sidebar-header-background-color;
+
+        & .username {
+            color: $sidebar-header-subtext-color;
+
+            & .full-name {
+                color: $sidebar-header-text-color;
+            }
+        }
+    }
+
+    & + .app {
+        background: $theme-background-color;
+    }
+}
+
+.app-header {
+    background: $header-background-color;
+    border-bottom-color: $header-border-color;
+}
+
+.top-link-back {
+    background: $header-background-color;
+
+    & a {
+        color: $links-text-color;
+    }
+}
+
+.top-link-compose {
+    & a {
+        background: $primary-highlight-button-background-color;
+
+        &::before {
+            background: $primary-highlight-button-text-color;
+        }
+
+        &::after {
+            background: $primary-highlight-button-text-color;
+        }
+    }
+}
+    
+.list-item-row-container { 
+    border-bottom-color: $list-border-color;
+}
+
+.date {
+    color: $mails-list-date-text-color;
+}
+
+.sender {
+    color: $mails-list-from-text-color;
+}
+
+.name {
+    color: $contacts-list-name-text-color;
+}
+
+.unread::before {
+    background: $mails-list-unread-bullet-color;
+}
+
+.subject {
+    color: $mails-list-subject-text-color;
+}
+
+.email {
+    color: $contacts-list-email-text-color;
+}
+
+.snippet {
+    color: $mails-list-snippet-text-color;
+}
+
+.phone {
+    color: $contacts-list-phone-text-color;
+}
+
+.name:not(.empty) + .email:not(.empty) {
+    color: $contacts-list-phone-text-color;
+}
+
+.name.empty + .email.empty + .phone {
+    color: $contacts-list-name-text-color;
+}
+
+.icon-delete { 
+    background: $theme-background-color;
+
+    &::before {
+        color: $list-button-icon-color;
+    }
+}
+
+.attachment {
+    &::before { 
+        color: $mails-list-attachment-icon-color; 
+    }
+}
+
+.pagenav {
+    color: $list-pagenav-text-color;
+
+    & .pagenav-prev {
+        background: $theme-background-color;
+        border-color: $secondary-button-border-color;
+
+        &::before {
+            color: $secondary-button-text-color;
+        }
+    }
+
+    & .pagenav-next {
+        background: $theme-background-color;
+        border-color: $secondary-button-border-color;
+
+        &::before {
+            color: $secondary-button-text-color;
+        }
+    }
+}
+
+.no-items { 
+    color: $list-empty-text-color;
+}
+
+div[data-type="actions"] div[data-value="main"] {
+    background: #f6f8f8;
+    border-top-color: #e1e9ed;
+}
+
+div[data-type="actions"] div[data-value="move"] span {
+    color: $toolbar-submenu-button-text-color; 
+}
+
+.folders div a {
+    border-bottom-color: $sidebar-folder-list-border-color;
+    color: $sidebar-folder-list-text-color; 
+}
+
+body.has-selection::after {
+    background: $lightbox-background-color;
+}
+
+div[data-type="actions"] div[data-value="main"] span[data-value="archive"]::before {
+    color: $toolbar-button-icon-color; 
+}
+
+div[data-type="actions"] div[data-value="main"] span[data-value="init-move"]::before,
+.folders .toolbar-container.move::before { 
+    color: $toolbar-button-icon-color; 
+}
+
+.folders .toolbar-container.reply { 
+    &::before { 
+        color: $toolbar-button-icon-color;
+    }
+}
+
+div[data-type="actions"] div[data-value="main"] span[data-value="delete"]::before,
+.folders .toolbar-container.delete::before { 
+    color: $toolbar-button-icon-color;
+}
+    
+.folders .toolbar-submenu-lightbox {
+    background: $lightbox-background-color;
+}
+
+div[data-type="actions"] div[data-value="move"] span,
+.folders .toolbar-submenu a {
+    background: $toolbar-submenu-button-background-color;
+    border-color: $toolbar-submenu-button-border-color; 
+}
+
+div[data-type="actions"] div[data-value="move"] span:first-child,
+.folders .toolbar-submenu a:first-child { 
+    border-top-color: #d1dbe0; 
+}
+
+div[data-type="actions"] div[data-value="move"] span[data-value="cancel-move"],
+.folders .toolbar-submenu a.cancel { 
+    border-color: $toolbar-submenu-button-border-color; 
+}
+
+.search {
+    & form {
+        & .search-icon {
+            &::before {
+                border-color: $search-field-icon-color;
+            }
+
+            &::after {
+                background: $search-field-icon-color;
+            }
+        }
+
+        & input[name=quicksearch] {
+            border-bottom-color: $search-field-border-color;
+
+            &::placeholder {
+                color: $search-field-placeholder-text-color;
+            }
+
+            &:focus {
+                &::placeholder {
+                    color: $search-field-focused-placeholder-text-color;
+                }
+
+                & + .search-icon {
+                    &::before {
+                        border-color: $search-field-focused-icon-color;
+                    }
+
+                    &::after {
+                        background-color: $search-field-focused-icon-color;
+                    }
+                }
+            }
+        }
+
+        & .search-reset-link {
+            &::before { 
+                color: $links-text-color;
+            }
+        }
+    }
+}
+
+.toolbar {
+    background: $toolbar-background-color;
+    border-top-color: $toolbar-border-color;
+    color: $toolbar-text-color;
+}
+
+.logout {
+    background: $sidebar-footer-background-color;
+    color: $sidebar-links-color;
+
+    & a {
+        color: $sidebar-links-color;
+    }
+}
+
+/* General */
+.cblock {
+    border-bottom-color: $inner-border-color;
+}
+
+.from-title {
+    color: $theme-main-lighter-color;
+}
+
+.citem {
+    border-bottom-color: $inner-border-color;
+}
+
+.citem a,
+.cblock a { 
+    color: $links-text-color;
+}
+
+/* Navigator prev, next buttons */
+.btnlink {
+  color: $composer-button-link-text-color;
+}
+
+/* Success & Errors Messages*/
+.errors,
+.success-messages {
+    background: $message-success-background-color;
+    color: $message-success-text-color;
+}
+
+/* Close, Add Contact & Save buttons*/
+.nav-close {
+    &::before {
+        color: $close-icon-color;
+    }
+}
+
+.nav-send {
+    background: $primary-highlight-button-background-color;
+
+    &::before {
+        color: $primary-highlight-button-text-color;
+    }
+}
+
+.add-contact {
+    border-color: $secondary-button-border-color;
+
+    &::before {
+        color: $secondary-button-text-color;
+    }
+}
+
+// Other folders
+.other-users {
+    border-bottom-color: $list-border-color;
+}
+
+.other-users input,
+.other-users .compose-label {
+    color: $composer-button-link-text-color;
+}
+
+.user {
+    color: $text-main-color;
+}
+
+// Attachments panel
+.attfield {
+    border-top-color: $list-border-color;
+
+    &::before {
+        color: $mails-list-attachment-icon-color;
+    }
+
+    & a { 
+        color: $links-text-color; 
+    }
+}
+
+
+/*******************************************************************************
+ * Settings
+ */
+body.section_settings {
+    .frmsubmit-ooo {
+        & .fieldsblock {
+            border-bottom-color: $list-border-color;
+
+            & .compose-label,
+            & input {
+                color: $composer-button-link-text-color;
+            }
+
+            &.fields-enable {
+                & .ooo-enable {
+                    color: $composer-button-link-text-color;
+                }
+            }
+        }
+
+        & .fieldsblock-message {
+            & .compose-label {
+                & span {
+                    color: $composer-button-link-text-color;
+                }
+
+                & textarea {
+                    color: $composer-button-link-text-color;
+                }
+            }
+        }
+
+        & .compose-nav-save input {
+            color: $theme-main-color;
+        }
+    }
+}
+
+
+/*******************************************************************************
+ * Attachments List
+ */
+body.section_attachments_list {
+    .attblock {
+        background: #f6f8f8;
+        border-color: #e1e9ed;
+
+        &.no-preview::before {
+            border-right-color: $attachments-list-attachment-download-icon-color;
+            color: $attachments-list-attachment-download-icon-color;
+        } 
+    }
+
+    .attlink {
+        color: $attachments-list-attachment-link-color;
+    }
+}
+
+
+/*******************************************************************************
+ * Compose
+ */
+body.section_compose {
+    .fieldsblock {
+        border-bottom-color: $list-border-color;
+    }
+
+    .fieldsblock input,
+    .compose-label {
+        color: $composer-button-link-text-color;
+    }
+
+    .fieldsblock-message {
+        & div {
+            & textarea {
+                border-top-color: $list-border-color; 
+            }
+        }
+    }
+
+    .compose-nav-save input {
+        color: $toolbar-links-text-color;
+    }
+
+    // Attachment button
+    .nav-attach {
+        background-color: transparent;
+        border-color: $secondary-button-border-color;
+
+        &::before {
+            color: $secondary-button-text-color;
+        }
+    }
+}
+
+
+/*******************************************************************************
+ * Contact Edit
+ */
+body.section_contact_edit {
+    .warning_container {
+        background: $message-success-background-color;
+        color: $message-success-text-color;
+    }
+
+    .warning_btn {
+        color: $theme-main-color;
+
+        &:first-child { 
+            border-right-color: rgba(255, 255, 255, .3); 
+        }
+    }
+
+    .fieldsblock {
+        border-bottom-color: $list-border-color;
+    }
+
+    .labelcontainer {
+        color: $composer-button-link-text-color;
+    }
+
+    .input {
+        color: $composer-button-link-text-color;
+    }
+}
+
+
+/*******************************************************************************
+ * Contacts List
+ */
+body.section_contacts_list {
+}
+
+
+/*******************************************************************************
+ * Folder Edit
+ */
+body.section_folder_edit {
+    .msg {
+        color: $list-empty-text-color;
+    }
+
+    .listrow {
+        border-color: $list-border-color;
+
+        & .username-perm { 
+            & span {
+                &:first-child {
+                    color: $sharing-users-list-user-text-color;                    
+                }
+
+                &:last-child {
+                    color: $sharing-users-list-perm-text-color;                    
+                }
+            }  
+        }
+    }
+
+    .toolbar a {
+        color: $toolbar-button-icon-color;
+    }
+
+    .btnapply_header {
+        color: $text-main-color;
+    }
+
+    .folder-title {
+        color: $sharing-users-list-folder-title-text-color;
+    }
+}
+
+
+/*******************************************************************************
+ * Folders List
+ */
+body.section_folders_list {
+    .folder { 
+        border-bottom-color: $list-border-color;
+    }
+
+    .folderName {
+        color: $folders-list-folder-name-text-color;
+    }
+
+    .folderSharingIcon {
+        &::before { 
+            color: $list-button-icon-color;
+        }
+    }
+
+    .toolbar a { 
+        color: $toolbar-button-icon-color;
+    }
+}
+
+
+/*******************************************************************************
+ * Message View
+ */
+body.section_message_view {
+    .messdata { 
+        border-bottom-color: $list-border-color; 
+    }
+
+    .messdate {
+        color: $mail-item-date-text-color;
+    }   
+
+    .mailfield { 
+        color: $mail-item-sender-recipients-text-color;
+
+        & span { 
+            color: $mail-item-sender-recipients-text-color; 
+        }
+    }
+
+    .alladdrfield {
+        & a { 
+            color: $links-text-color;
+        } 
+    }
+}
+
+
+/*******************************************************************************
+ * User Edit
+ */
+body.section_user_edit {
+    & .user {
+        color: $permissions-user-text-color;
+    }
+
+    .permission-level:last-child {
+        border-bottom-color: $list-border-color;
+    }
+
+    /* One radio button per line */
+    label {
+        color: $radio-label-text-color;
+    }
+
+    [type="radio"] {
+        & + span {
+            // The basic, unchecked style
+            &::before {
+                background-color: $radio-background-color;
+                border-color: $radio-border-color;
+            }
+        }
+
+        // The checked style using the :checked pseudo class
+        &:checked {
+            & + span {
+                &::before {
+                    background: $radio-checked-background-color;
+                    border-color: $radio-checked-border-color;
+                }
+
+                &::after {
+                    background-color: $radio-checked-checkmark-color;
+                }
+            }
+        }
+    }
+}
